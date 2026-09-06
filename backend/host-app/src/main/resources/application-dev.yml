@@ -1,0 +1,32 @@
+# 本地开发配置：仅 dev profile 生效，勿用于生产部署。
+spring:
+  datasource:
+    url: ${LABELHUB_DATASOURCE_URL:jdbc:mysql://localhost:3306/labelhub?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true}
+    username: ${LABELHUB_DATASOURCE_USERNAME:root}
+    password: ${LABELHUB_DATASOURCE_PASSWORD}
+
+labelhub:
+  async:
+    # Prompt 优化含离线 A/B 重放，本地默认放宽 claim 超时避免误判僵尸任务
+    claim-timeout-ms: ${LABELHUB_ASYNC_CLAIM_TIMEOUT_MS:900000}
+  internal-token: ${LABELHUB_INTERNAL_TOKEN}
+  security:
+    aes-key: ${LABELHUB_AES_KEY}
+    llm-outbound-allow-localhost: true
+  agent:
+    base-url: ${LABELHUB_AGENT_BASE_URL:http://localhost:8000}
+  storage:
+    minio:
+      endpoint: ${LABELHUB_MINIO_ENDPOINT:http://localhost:9000}
+      access-key: ${LABELHUB_MINIO_ACCESS_KEY}
+      secret-key: ${LABELHUB_MINIO_SECRET_KEY}
+      bucket: ${LABELHUB_MINIO_BUCKET:labelhub}
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+knife4j:
+  enable: true

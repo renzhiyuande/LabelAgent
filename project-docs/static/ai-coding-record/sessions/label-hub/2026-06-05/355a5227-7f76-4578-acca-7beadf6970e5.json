@@ -1,0 +1,1793 @@
+{
+  "project": "label-hub",
+  "session_id": "355a5227-7f76-4578-acca-7beadf6970e5",
+  "date": "2026-06-05",
+  "modified_at": "2026-06-05 19:55:36",
+  "time_bucket": "evening",
+  "top_stage": "design",
+  "stages": [
+    "design",
+    "development"
+  ],
+  "tracks": [
+    "system_infrastructure",
+    "business_development"
+  ],
+  "module_tags": [
+    "低代码-模板设计器"
+  ],
+  "key_topics": [],
+  "tool_usage": [
+    "SemanticSearch",
+    "Grep",
+    "Read",
+    "Glob",
+    "StrReplace",
+    "Write",
+    "Shell",
+    "ReadLints"
+  ],
+  "models_used": [],
+  "selected_prompt_count": 2,
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "标注工作台 LHResourceForm 组件内，表单 section 标题「题目上下文」在 DOM 中重复出现，疑似模板 schema 解析或 widget 渲染异常。",
+      "text_snippet": "<user_query>\nDOM Path: div#root > div.flex h-.creen overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.08),_tran.parent_36%),linear-gradient(180deg,#f8fbff_0%,#f…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "browser_trace",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "display_text": "用户想了解后端 template schema 的 section 如何在前端标注工作台显示为 widget。正在搜索相关解析与渲染逻辑。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "用户想了解后端 template schema 的 section 如何在前端标注工作台显示为 widget。正在搜索相关解析与渲染逻辑。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "SemanticSearch",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/split-labeler-schema.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/panels/payload/PayloadPanelForm.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/display/support/FormSchemaRuntimeSanitizer.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/import-field-meta.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/panels/LabelerPayloadPanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/panels/payload/payload-display-fields.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/build-display-values.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/pages/LabelerWorkPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/shared/schema-data/build-schema-display-values.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/forms"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 6,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/forms/use-resource-form-engine.core.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/show-item-utils.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/docs/template-designer-design.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/forms/use-resource-form-engine.core.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 8,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/import-field-meta.test.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 9,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/controls/ShowItemFieldControl.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 10,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/form-schema/template-helper.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 11,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/FieldControlRenderer.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 12,
+      "role": "assistant",
+      "display_text": "可以。**后端模板里的 `sections` 会原样参与题面渲染**；你看到的「标注说明」「题目上下文」就是 `FormSchema.sections[].title`，下面每个字段按 `component` 走对应的展示控件（widget）。\n\n---\n\n## 整体数据流\n\n```mermaid\nflowchart LR\n  A[模板设计器 schemaJson] --> B[DB template_version.schema_json]\n  B --> C[FormSchemaRuntimeSanitizer 脱敏 LLM]\n  C --> D[标注工作台 API templateVersion.schemaJson]\n  D --> E[parseFormSchemaJson]\n  E --> F[splitLabelerFormSchema]\n  F --> G[displaySchema]\n  G --> H[PayloadPanelForm + LHResourceForm]\n  H --> I[FieldControlRenderer / ShowItemFieldControl 等]\n```\n\n1. **后端**：`DbLabelerWorkbenchService` 下发前对 schema 做 `FormSchemaRuntimeSanitizer.sanitizeForClient`（主要去掉 `llmSuggest` 的密钥、完整 prompt 等），**不改 section 结构**。\n2. **前端**：`LabelerWorkPage` 用 `parseFormSchemaJson` 解析 JSON，再 `splitLabelerFormSchema` 拆成「题面」和「作答」两套 schema。\n3. **题面面板**（卡片视图）：`LabelerPayloadPanel` → `PayloadPanelForm` → `LHResourceForm`（`variant=\"labeler-display\"`）。\n\n---\n\n## Section 怎么变成你看到的区块\n\n`LHResourceForm` 按 **section 顺序** 渲染：有 `title` 就输出 `<h3>`，字段放在 `lh-form-grid` 里。\n\n```70:94:frontend/src/low-code/components/forms/LHResourceForm.tsx\n      {resource.form.sections.map((section) => {\n        if (!isFormSectionVisible(section, mode)) {\n          return null;\n        }\n        const sectionFields = section.fields\n          .map((field) => engine.renderFormField(field))\n          .filter((node) => node != null);\n        // ...\n        return (\n          <section className={cn(\"lh-form-section\", ...)} key={section.key}>\n            {section.title ? <h3>{section.title}</h3> : null}\n            {section.description ? <p>{section.description}</p> : null}\n            <div className=\"lh-form-grid\">{sectionFields}</div>\n          </section>\n        );\n      })}\n```\n\n因此 DOM 里的 `section.lh-labeler-form-section` + `h3`「题目上下文」，就是模板里对应 section 的 `key` / `title`，不是前端硬编码文案。\n\n---\n\n## 哪些字段会进「题面」displaySchema\n\n`splitLabelerFormSchema` 用 **导入角色 + 展示类组件** 筛字段，并**保留原 section 分组**：\n\n```4:57:frontend/src/features/labeler/work/utils/split-labeler-schema.ts\nfunction isDisplaySurfaceField(field: FormFieldSchema): boolean {\n  if (resolveImportRole(field) === \"display\") {\n    return true;\n  }\n  if (field.component === \"showItem\") {\n    return field.showItem?.contentSource !== \"payload\";\n  }\n  // showImage / showFile / showVideo：非 payload 来源也算题面展示\n  // ...\n}\n\nfunction cloneSchemaWithFields(schema: FormSchema, pickRole: \"display\" | \"input\"): FormSchema {\n  const sections = schema.sections\n    .map((section) => ({\n      ...section,\n      fields: filterFieldsByRole(section.fields, pickRole),\n    }))\n    .filter((section) => section.fields.length > 0);\n  // ...\n}\n```\n\n**角色判定**（`resolveImportRole`）核心规则：\n\n| 组件 / 配置 | 角色 | 题面 displaySchema |\n|------------|------|-------------------|\n| `showItem` + `contentSource: \"payload\"`（默认） | `display` | ✅ 读导入 payload |\n| `showItem` + `static` / `template` | 逻辑上偏 `runtime`，但 `isDisplaySurfaceField` 仍算题面 | ✅ 固定文案 / `{{path}}` 模板 |\n| `showImage` / `showFile` / `showVideo` + `payload` | `display` | ✅ |\n| 同上 + `asset` / `static` | 题面展示控件 | ✅ |\n| `meta.importRole: \"input\"` 或普通可编辑字段 | `input` | ❌ 在标注作答区 |\n| `llmSuggest` 等 | `runtime` | ❌（可进「智能辅助」区，不进题面 cards） |\n| `readonly: true` 且无 binding | 常当作 `display` | 视具体组件而定 |\n\n设计器里「导入角色」在 `BasicPropertyTab` 写进 `field.meta.importRole`；`showItem` 还会根据 `showItem.contentSource` 自动推断。\n\n---\n\n## 题面组件（widget）怎么解析内容\n\n每个字段的 **`component`** 决定控件类型；题面值来自 **payload → displayValues**：\n\n```6:24:frontend/src/components/workbench/shared/schema-data/build-schema-display-values.ts\nexport function buildSchemaDisplayValues(schema: FormSchema, data: Record<string, unknown>) {\n  let values: Record<string, unknown> = { ...data };\n  for (const section of schema.sections) {\n    for (const field of section.fields) {\n      const binding = getFieldBinding(field);\n      if (binding && binding in data) {\n        values = setValueAtPath(values, binding, data[binding]);\n      }\n    }\n  }\n  return values;\n}\n```\n\n`renderFormField` → `FieldControlRenderer` → 例如 **`showItem`**：\n\n```225:256:frontend/src/low-code/components/fields/show-item-utils.ts\nexport function resolveShowItemRawContent(field, options) {\n  const source = resolveShowItemContentSource(field); // payload | static | template\n  if (source === \"static\") return field.showItem?.staticContent ?? \"\";\n  if (source === \"template\") {\n    return interpolateShowItemTemplate(field.showItem?.templateContent ?? \"\", context);\n  }\n  // payload：用 path/key 从 boundValue / context 取值\n}\n```\n\n`ShowItemFieldControl` 再按 `renderAs`（text / markdown / json / html）和 `layout`（inline / card / pre / table）渲染。你截图里大段「偏好对比标注」说明，典型是 **`showItem` + `static` 或 `markdown/html`**，或 **`contentSource: \"payload\"`** 绑定到导入列。\n\n其它题面 widget 同理：`showImage`、`showFile`、`showVideo`、只读的 `text`/`textarea`（`importRole: display`）等。\n\n---\n\n## 和三种视图的关系\n\n| 视图 | 实现 |\n|------|------|\n| **卡片（cards）** | 上面的 `LHResourceForm`，**完整 section + widget** |\n| **表格（inline）** | `buildPayloadSectionTableGroups`，按 section 列行，偏键值表 |\n| **JSON** | 原始 `payload` |\n\n只有 **卡片视图** 才是「模板 section → widget」的完整还原；表格/JSON 不跑 `FieldControlRenderer`。\n\n---\n\n## 结合你当前页面\n\n- **`标注说明`**：多半是 section1，里面是 **静态/模板型 `showItem`**（规则文案），不依赖本题 payload。\n- **`题目上下文`**：section2，多半是 **绑定 payload 的 `showItem` 或其它 display 字段**（如 `prompt`、`response_a` 等）。\n\n若要确认某一字段，在模板设计器看该字段的 **`component`**、**`showItem.contentSource`**、**`path`/`key`**、**`meta.importRole`** 即可；运行时与预览共用同一套 `LHResourceForm` + `FieldControlRenderer`（设计器预览也是 `LHResourceForm`）。\n\n如果你愿意贴一段该模板的 `schemaJson` 里「标注说明」「题目上下文」两个 section，我可以按字段逐项标出会渲染成哪种 widget、读哪份数据。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "可以。**后端模板里的 `sections` 会原样参与题面渲染**；你看到的「标注说明」「题目上下文」就是 `FormSchema.sections[].title`，下面每个字段按 `component` 走对应的展示控件（widget）。\n\n---\n\n## 整体数据流\n\n```mermaid\nflowchart LR\n A[模板设计器 schemaJ…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 13,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "根据角色进入题面功能缺失，需支持按section渲染不同widget或同时支持两种渲染方式。",
+      "text_snippet": "<user_query>\n不根据 角色进入题面 可以根据 section 渲染不同的widget 或者支持两种方式 一种就是现在的这种方式 另外一种根据 section 渲染多个widget\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 14,
+      "role": "assistant",
+      "display_text": "理解需求：除按字段角色拆分题面外，还支持按 section 配置不同 widget 或整段渲染。正在查看现有 schema 与题面面板结构。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "理解需求：除按字段角色拆分题面外，还支持按 section 配置不同 widget 或整段渲染。正在查看现有 schema 与题面面板结构。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 15,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/shared/schema-data/split-template-content-sections.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/property-pane/SectionPropertyEditor.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 16,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/labeler-widget-factory.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/panels/PayloadPanelBody.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 17,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/schema.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/shared/panel-sections/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 18,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/docs/template-designer-design.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 19,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/labeler-widget-registry.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 20,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/form/FormSchemaAnnotateFieldSupport.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 21,
+      "role": "assistant",
+      "display_text": "你的方向可行，而且和仓库里已有能力是对得上的。下面按「现状 → 两种策略 → 推荐 schema → 两种题面 UI」说明，便于你选型或开工。\n\n---\n\n## 现状：按「字段角色」切题面 / 作答\n\n当前标注工作台核心是 `splitLabelerFormSchema`：\n\n- **题面 `displaySchema`**：字段级筛选（`importRole=display`、`showItem` 非 payload、静态展示控件等），再按 **原 section 结构** 塞进一个 `payload-main` widget。\n- **作答 `annotateSchema`**：只保留 `importRole=input`，runtime 进「智能辅助」区。\n\n因此会出现：\n\n- 同一 section 里既有说明又有作答字段时，会被**拆到不同面板**；\n- 「标注说明」「题目上下文」能成块显示，是因为它们主要是 **static/template 的 `showItem`**，被算进题面，而不是因为 section 配置了「这是题面块」。\n\n审核侧已有**按 section 猜分区**的启发式（`split-template-content-sections.ts`，靠 `context` / `labeling` 等 key），但标注工作台还没做成可配置的 section 策略。\n\n---\n\n## 两种策略对比\n\n| 维度 | **A. byRole（现状）** | **B. bySection（你要的）** |\n|------|----------------------|---------------------------|\n| 分区依据 | `meta.importRole` + 组件类型 | `section.workbench.slot` |\n| 题面内容 | 全模板里所有 display 字段，可能跨多个 section | 指定 section 的**全部字段**（不再按角色拆） |\n| 作答内容 | 全模板 input 字段 | `slot=annotate` 的 section |\n| 多 widget | 固定一个「题面」widget | 每个 `slot=payload` 的 section 可拆成独立 widget |\n| 提交校验 | 前后端都认 `importRole=input` | **作答区仍建议保留字段级 `importRole`**，否则 Java 侧 `FormSchemaAnnotateFieldSupport` 要对齐改 |\n\n两种可以并存，用模板级开关切换，默认保持 **byRole**，避免老模板行为变化。\n\n---\n\n## 推荐 schema 扩展（最小、可演进）\n\n```ts\n// FormSchema\nlabelerWorkbench?: {\n  /** 默认 \"byRole\" */\n  layout?: \"byRole\" | \"bySection\";\n  /**\n   * bySection 且多个 payload section 时：\n   * - \"singleForm\"：一个题面 widget，内按 section 纵向排（类似现在 LHResourceForm）\n   * - \"sectionWidgets\"：每个 payload section 一个 widget（可拖布局）\n   */\n  payloadPresentation?: \"singleForm\" | \"sectionWidgets\";\n};\n\n// FormSectionSchema\nworkbench?: {\n  /** 标注工作台分区 */\n  slot?: \"payload\" | \"annotate\";\n  /** sectionWidgets 模式下的默认视图 */\n  defaultViewMode?: \"cards\" | \"inline\" | \"json\";\n};\n```\n\n设计器里在 `SectionPropertyEditor` 增加「工作台分区」即可；`layout` 可放在模板高级设置。\n\n---\n\n## 解析与渲染怎么走\n\n### 1）`splitLabelerFormSchema` 分支\n\n```text\nparseFormSchemaJson(schemaJson)\n  └─ labelerWorkbench.layout === \"bySection\"?\n        ├─ displaySchema = sections.filter(slot !== \"annotate\")，字段不过滤角色\n        └─ annotateSchema  = sections.filter(slot === \"annotate\")\n     : 现有 byRole 逻辑（不变）\n```\n\n`bySection` 下题面值仍用 `buildDisplayValuesFromPayload(displaySchema, payload)`；每个字段仍由 `component` → `FieldControlRenderer` / `ShowItemFieldControl` 决定 widget。\n\n### 2）题面 UI 两种形态\n\n**形态 1 — `singleForm`（改动小）**  \n仍是一个 `PayloadPanelForm` + `LHResourceForm`，只是 `displaySchema.sections` 按 section 配置生成，**不再**用 `isDisplaySurfaceField` 抽字段。  \n你看到的「标注说明」「题目上下文」会稳定地以 section 为边界显示。\n\n**形态 2 — `sectionWidgets`（改动大）**  \n在 `labeler-widget-factory` 为每个 `slot=payload` 的 section 动态生成 widget，例如 `payload-section:context`：\n\n```ts\n{\n  id: `payload-section:${section.key}`,\n  title: section.title ?? section.key,\n  body: <PayloadSectionPanel sectionSchema={slice} values={displayValues} />,\n}\n```\n\n需要扩展 `LabelerWorkbenchWidgetId` 或改为 `string` + 动态 registry（当前是固定 4 个 widget id）。\n\n审核侧的 `WorkbenchPanelSectionDefinition` + `SchemaDataView` 已是「一节一块」的先例，题面 section widget 可以复用同一套 panel 抽象。\n\n---\n\n## 和导入契约 / 提交的关系\n\n- **展示（题面）**：`bySection` 可以不再依赖角色；section 里放什么组件就展示什么（作答型组件若放在 `payload` section 会在题面可编辑，需在设计上约束）。\n- **提交（作答）**：建议 **annotate section 内字段仍标 `importRole=input`**，与后端 `FormSchemaAnnotateFieldSupport`、`inferImportContractFromFormSchema` 保持一致。\n- **静态说明**：放在 `slot=payload` 的 section 即可，不必再靠 `showItem.static` 被「算进题面」。\n\n---\n\n## 建议落地顺序\n\n1. **Phase 1**：`bySection` + `singleForm` — 只改 `split-labeler-schema.ts`、类型、设计器 section 属性；行为立刻符合「按 section 进题面」。\n2. **Phase 2**：`sectionWidgets` — 动态 widget + 布局存储（`labeler-widget-registry` / board storage）。\n3. **Phase 3（可选）**：未配置 `workbench.slot` 时按 section 内字段角色**推断** slot，兼容旧模板逐步迁移。\n\n---\n\n## 小结\n\n- **可以**不按角色进题面，改为 **按 section 的 `workbench.slot` 决定进题面还是作答**。\n- **可以**同时支持两种方式：`labelerWorkbench.layout: \"byRole\" | \"bySection\"`。\n- **多 widget** 是 section 模式上的第二层：`payloadPresentation: \"sectionWidgets\"`，与单表单复用同一套 `LHResourceForm` 字段渲染。\n\n如果你确定默认策略（老模板继续 `byRole` 还是新模板默认 `bySection`）以及先要 **singleForm** 还是直接 **sectionWidgets**，我可以按 Phase 1 直接改代码（类型 + `splitLabelerFormSchema` + 设计器 section 配置 + 单测）。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "你的方向可行，而且和仓库里已有能力是对得上的。下面按「现状 → 两种策略 → 推荐 schema → 两种题面 UI」说明，便于你选型或开工。\n\n---\n\n## 现状：按「字段角色」切题面 / 作答\n\n当前标注工作台核心是 `splitLabelerFormSchema`：\n\n- **题面 `displaySchema`**：字段级筛选（`importRo…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 22,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "设置模块中，展示方式配置项存在功能缺失或未实现，影响用户自定义界面显示。",
+      "text_snippet": "<user_query>\n支持在设置里设置 不同的展示方式\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 23,
+      "role": "assistant",
+      "display_text": "实现模板设置中的题面展示方式配置。先查看设计器设置与相关拆分逻辑的现状。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "实现模板设置中的题面展示方式配置。先查看设计器设置与相关拆分逻辑的现状。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/skills/labelhub-development-standards/SKILL.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/split-labeler-schema.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 24,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/DesignerWorkbenchHeader.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 25,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/stores/designer-editor-store.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/pages/LabelerWorkPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 26,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/DesignerZenWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/ReviewConfigDrawer.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 27,
+      "role": "assistant",
+      "display_text": "正在实现：在模板 schema 中增加工作台展示配置、设计器设置面板，并更新拆分与标注题面渲染逻辑。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在实现：在模板 schema 中增加工作台展示配置、设计器设置面板，并更新拆分与标注题面渲染逻辑。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/panels/LabelerPayloadPanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 28,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/panels/payload/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/property-pane/BasicPropertyTab.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/stores/designer-editor-store.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 29,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 30,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 31,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/labeler-workbench-meta.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/split-labeler-schema.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/split-labeler-schema.test.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 32,
+      "role": "user",
+      "display_text": "支持在设置里设置 不同的展示方式 先设计。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n支持在设置里设置 不同的展示方式 先设计 \n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "rewritten"
+    },
+    {
+      "order": 33,
+      "role": "assistant",
+      "display_text": "先梳理现有模板设置与工作台配置入口，再给出可在「设置」里切换展示方式的设计方案。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "先梳理现有模板设置与工作台配置入口，再给出可在「设置」里切换展示方式的设计方案。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 34,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/DesignerWorkbenchHeader.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/property-pane/ComponentPropertyTab.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 35,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/chrome/LabelerWidgetViewModeToggle.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/form-schema/template-helper.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 36,
+      "role": "assistant",
+      "display_text": "## 标注工作台展示设置 — 设计方案（v0.1）\n\n### 1. 目标\n\n在**模板设计器**中提供「工作台展示设置」，让模板作者配置标注员打开题目时的展示策略，而不改代码：\n\n| 能力 | 说明 |\n|------|------|\n| **分区策略** | 按字段角色（现状）或按 Section 划分题面/作答 |\n| **题面呈现** | 单表单多 Section / 每 Section 独立 Widget |\n| **默认视图** | 题面、作答区默认「紧凑 / 卡片 / JSON」 |\n| **Section 级** | 每个区块归属（题面/作答）及可选默认视图 |\n\n**非目标（本期不做）**\n\n- 标注员个人布局（拖拽 widget）与模板设置混写 — 仍走现有 `labelhub:workbench2:labeler` 本地存储  \n- 审核工作台完整复刻 — 仅预留 `reviewerWorkbench` 扩展位  \n- 改导入契约、提交校验语义 — 作答字段仍认 `importRole=input`\n\n---\n\n### 2. 配置存放位置\n\n与 `sections`、`actions` 同级，写入 **`schemaJson`（`form_schema_v1`）**，随模板版本发布，标注/审核运行时只读。\n\n```ts\n// types.ts 拟增\n\n/** 分区策略 */\nexport type LabelerPartitionMode = \"byRole\" | \"bySection\";\n\n/** 题面在 bySection 下的容器形态 */\nexport type LabelerPayloadPresentation = \"singleForm\" | \"sectionWidgets\";\n\nexport type LabelerWidgetViewMode = \"inline\" | \"cards\" | \"json\";\n\nexport interface LabelerWorkbenchSettings {\n  /** 分区策略，默认 byRole（兼容老模板） */\n  partition?: LabelerPartitionMode;\n\n  /**\n   * 仅 partition=bySection 时生效\n   * - singleForm：一个「题面」widget，内按 section 纵向排（LHResourceForm）\n   * - sectionWidgets：每个题面 section 一个可拖拽 widget\n   */\n  payloadPresentation?: LabelerPayloadPresentation;\n\n  /** 全局默认视图（widget 未单独覆盖时使用） */\n  defaults?: {\n    payload?: LabelerWidgetViewMode;\n    annotate?: LabelerWidgetViewMode;\n  };\n\n  /**\n   * sectionWidgets 时，是否允许标注员在运行时切换视图\n   * false = 锁死为 defaults（培训/规范场景）\n   */\n  allowRuntimeViewToggle?: boolean;\n}\n\nexport interface FormSectionWorkbenchSettings {\n  /** bySection 时必填语义；byRole 时可作提示/预览用 */\n  slot?: \"payload\" | \"annotate\";\n  /** 覆盖该 section 对应 widget 的默认视图 */\n  defaultViewMode?: LabelerWidgetViewMode;\n  /** sectionWidgets 时是否在题面区展示（false=隐藏空块） */\n  visible?: boolean;\n}\n\nexport interface FormSectionSchema {\n  // ...existing\n  workbench?: FormSectionWorkbenchSettings;\n}\n\nexport interface FormSchema {\n  // ...existing\n  labelerWorkbench?: LabelerWorkbenchSettings;\n}\n```\n\n**示例（偏好对比模板）**\n\n```json\n{\n  \"schemaFormat\": \"form_schema_v1\",\n  \"labelerWorkbench\": {\n    \"partition\": \"bySection\",\n    \"payloadPresentation\": \"singleForm\",\n    \"defaults\": { \"payload\": \"cards\", \"annotate\": \"cards\" },\n    \"allowRuntimeViewToggle\": true\n  },\n  \"sections\": [\n    {\n      \"key\": \"instructions\",\n      \"title\": \"标注说明\",\n      \"workbench\": { \"slot\": \"payload\" }\n    },\n    {\n      \"key\": \"context\",\n      \"title\": \"题目上下文\",\n      \"workbench\": { \"slot\": \"payload\", \"defaultViewMode\": \"cards\" }\n    },\n    {\n      \"key\": \"labeling\",\n      \"title\": \"偏好判断\",\n      \"workbench\": { \"slot\": \"annotate\" }\n    }\n  ]\n}\n```\n\n---\n\n### 3. 「设置」入口与 UI 结构\n\n参考现有 **审核配置抽屉**（`ReviewConfigDrawer`），新增 **工作台展示设置**。\n\n#### 3.1 入口\n\n| 位置 | 行为 |\n|------|------|\n| 设计器顶栏 | 按钮「展示设置」（`Layout` / `PanelTop` 图标），与「审核配置」并列 |\n| Section 属性面板 | 精简项：分区归属、默认视图（与全局设置联动提示） |\n| 预览模式 | 顶栏只读展示当前策略摘要 |\n\n#### 3.2 设置抽屉布局（三块）\n\n```\n┌─ 工作台展示设置 ─────────────────────────────┐\n│ [预览] 使用右侧预览样本模拟标注员视图          │\n├─ 1. 分区策略 ─────────────────────────────────┤\n│  ○ 按字段角色（推荐·兼容）                     │\n│     题面=display/runtime展示控件；作答=input   │\n│  ○ 按区块（Section）                          │\n│     由下方「区块归属」决定，区块内字段不再按角色拆 │\n├─ 2. 题面呈现（仅「按区块」时启用）───────────────┤\n│  ○ 单卡片·多区块（默认）                       │\n│  ○ 每区块独立 Widget（可拖拽布局）              │\n├─ 3. 默认视图 ─────────────────────────────────┤\n│  题面默认：[紧凑|卡片|JSON]                     │\n│  作答默认：[紧凑|卡片|JSON]                     │\n│  □ 允许标注员切换视图（否则锁死默认）            │\n├─ 4. 区块归属表（仅「按区块」时展示）─────────────┤\n│  key │ 标题     │ 归属      │ 默认视图 │ 显示 │\n│  instructions │ 标注说明 │ 题面 ▼ │ 卡片 ▼ │ ✓ │\n│  context      │ 题目上下文│ 题面 ▼ │ 继承 ▼ │ ✓ │\n│  labeling     │ 偏好判断 │ 作答 ▼ │ 继承 ▼ │ ✓ │\n└──────────────────────────────────────────────┘\n```\n\n**交互规则**\n\n- 切到 `byRole`：隐藏「题面呈现」「区块归属表」；Section 面板的 `workbench.slot` 只读并提示「当前为按角色分区」  \n- 切到 `bySection`：若存在未配置 `slot` 的 section，保存前 **警告** 并支持「一键推断」（见 §5）  \n- `sectionWidgets`：设计器预览可模拟 2 个题面 widget，保存后不强制改用户本地 board 布局（首次打开用模板默认 widget 列表）\n\n---\n\n### 4. 运行时解析（标注工作台）\n\n```mermaid\nflowchart TD\n  A[templateVersion.schemaJson] --> B[parseFormSchemaJson]\n  B --> C{labelerWorkbench.partition}\n  C -->|byRole 默认| D[splitLabelerFormSchema 现状]\n  C -->|bySection| E[splitLabelerFormSchemaBySection]\n  E --> F{displaySchema sections}\n  F --> G{payloadPresentation}\n  G -->|singleForm| H[PayloadPanelForm 一次 LHResourceForm]\n  G -->|sectionWidgets| I[动态 N 个 payload-section:key widget]\n  D --> J[annotateSchema + annotate-main]\n  E --> J\n  H --> K[视图: defaults + 用户 localStorage 覆盖]\n  I --> K\n```\n\n| 步骤 | 说明 |\n|------|------|\n| 读配置 | `resolveLabelerWorkbenchSettings(schema)`，缺省 `{ partition: \"byRole\" }` |\n| 拆 schema | `bySection`：`displaySchema.sections = slot===payload`；`annotateSchema.sections = slot===annotate`；**区块内字段全保留** |\n| 建 widget | `singleForm` → 现有 `payload-main`；`sectionWidgets` → `payload-section:${key}` |\n| 视图模式 | `widgetModes[id] ?? section.workbench.defaultViewMode ?? labelerWorkbench.defaults.payload` |\n| 提交 | 仍只提交 `annotate` 区 + `importRole=input` 字段；`bySection` 不改变后端校验规则 |\n\n**与标注员本地设置的关系**\n\n| 层级 | 存储 | 内容 |\n|------|------|------|\n| 模板 | `schemaJson.labelerWorkbench` | 分区策略、默认视图、是否允许切换 |\n| 用户 | `labelhub:workbench2:labeler` | 区域大小、widget 顺序/隐藏 |\n| 用户 | `labeler-widget-board` / `slotModes` | 各 widget 当前 inline/cards/json（若 `allowRuntimeViewToggle=true`） |\n\n---\n\n### 5. 兼容与推断\n\n#### 5.1 老模板\n\n- 无 `labelerWorkbench` → `partition: \"byRole\"`，行为与线上一致  \n- 无 `section.workbench` → 不参与 bySection\n\n#### 5.2 一键推断 `slot`（设计器保存/切换策略时）\n\n优先级：\n\n1. 已手动配置 `section.workbench.slot`  \n2. section.key 命中启发式（复用审核侧）：`instructions/rules/guide` → payload；`labeling/annotate/result` → annotate；`context/payload/item` → payload  \n3. 区块内字段：若 **全部** `resolveImportRole !== \"input\"` → payload，否则 annotate  \n4. 兜底：第一个 section → payload，最后一个 → annotate，中间按字段多数投票  \n\n推断结果仅写回 schema（用户确认后），避免静默改线上行为。\n\n#### 5.3 校验（保存模板时）\n\n| 条件 | 处理 |\n|------|------|\n| `bySection` 且无任何 `slot=payload` | 阻止保存 |\n| `bySection` 且无任何 `slot=annotate` | 阻止保存 |\n| annotate section 无 `importRole=input` 字段 | 警告（无法提交） |\n| `sectionWidgets` 且某 payload section 无字段 | 建议 `visible:false` 或合并 |\n\n---\n\n### 6. 设计器预览\n\n- **画布预览**（`LHResourceForm`）：仍展示完整 schema，不受 partition 影响（作者要看全量）  \n- **标注预览**（顶栏「预览」+ 预览样本）：走与 `LabelerWorkbench` 相同的 `split` + 展示设置，便于验收「说明 + 上下文 + 作答」分区效果  \n\n---\n\n### 7. 后端\n\n| 项 | 方案 |\n|----|------|\n| 存储 | 不新增表字段，继续 `template_version.schema_json` |\n| 下发 | `FormSchemaRuntimeSanitizer` **保留** `labelerWorkbench` / `section.workbench`（非敏感） |\n| 校验 | 可选：`DbTaskService.saveDraft` 增加 JSON schema 轻量校验（非法 enum 拒绝） |\n| 提交 | `FormSchemaAnnotateFieldSupport` **暂不改**；文档注明：作答区字段须 `importRole=input` |\n\n---\n\n### 8. 模块改动清单（实现阶段参考）\n\n| 模块 | 改动 |\n|------|------|\n| `schema/types.ts` | 类型定义 |\n| `split-labeler-schema.ts` | `splitLabelerFormSchemaBySection` + 统一入口 |\n| `labeler-widget-factory.tsx` | 动态 section widget |\n| `labeler-widget-registry.ts` | 支持动态 id 或注册表 |\n| `PayloadPanelForm` / 新 `PayloadSectionPanel` | 单 section 渲染 |\n| `designer-editor-store` | `updateLabelerWorkbench` / `updateSectionWorkbench` |\n| `LabelerWorkbenchSettingsDrawer.tsx` | 设置 UI |\n| `SectionPropertyEditor.tsx` | 区块归属简表 |\n| `split-labeler-schema.test.ts` | 分区 + 默认值单测 |\n\n---\n\n### 9. 分期交付\n\n| 阶段 | 交付 | 风险 |\n|------|------|------|\n| **P0** | 类型 + `labelerWorkbench` 持久化 + 设置抽屉（分区/默认视图）+ `bySection` + `singleForm` | 低 |\n| **P1** | Section 属性联动 + 一键推断 + 设计器标注预览对齐 | 低 |\n| **P2** | `sectionWidgets` + 动态 widget 注册 | 中 |\n| **P3** | 审核工作台复用 `reviewerWorkbench`（可选） | 低 |\n\n---\n\n### 10. 待你拍板的选项\n\n1. **默认策略**：新模板默认 `byRole` 还是 `bySection`？（建议仍 `byRole`，偏好对比类模板在设置里切）  \n2. **sectionWidgets**：P0 是否必须，还是 P2 再做？（建议 P2，先满足「按区块单卡片」）  \n3. **设置入口名称**：「展示设置 / 工作台设置 / 标注布局」选一个  \n4. **bySection 下题面里的 input 字段**：禁止保存 vs 允许但警告 vs 自动标 readonly？（建议 **保存时警告 + 预览标红**）\n\n你确认以上 4 点后，可以按 **P0** 直接开工实现（类型 → split → 设置抽屉 → 标注页接入）。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 标注工作台展示设置 — 设计方案（v0.1）\n\n### 1. 目标\n\n在**模板设计器**中提供「工作台展示设置」，让模板作者配置标注员打开题目时的展示策略，而不改代码：\n\n| 能力 | 说明 |\n|------|------|\n| **分区策略** | 按字段角色（现状）或按 Section 划分题面/作答 |\n| **题面呈现** | 单表单多 …",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 37,
+      "role": "user",
+      "display_text": "不要写入 schemaJson，只在标注时通过 labeler workbench2 设置不同的渲染方式，模板 schema 保持不变。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n不要写入 schemaJson 只是 标注时labeler workbech2 里 设置不同的渲染方式 模板schema 不变\n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "deepseek_rewritten"
+    },
+    {
+      "order": 38,
+      "role": "assistant",
+      "display_text": "明确：展示方式仅存于标注员 workbench2 本地设置，不写入模板 schema。正在查看现有 workbench2 的配置与存储方式。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "明确：展示方式仅存于标注员 workbench2 本地设置，不写入模板 schema。正在查看现有 workbench2 的配置与存储方式。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/labeler-edit-layout-storage.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/labeler-widget-board-storage.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 39,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/chrome/LabelerSlotWidgetBoard.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench2/extensions/StandardWorkbenchV2.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 40,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/layout/top-bar.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/shared/schema-data/SchemaSectionsLayoutToggle.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerSlotFrame.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 41,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/shared/schema-data/use-schema-section-state.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 42,
+      "role": "assistant",
+      "display_text": "## 标注工作台展示设置（修订版）\n\n**约束：`schemaJson` / 模板 schema 不改**；所有「怎么渲染」只在 **Labeler Workbench2** 里配置，存 **浏览器本地**（与现有 `labelhub:labeler:slot-modes`、`labelhub:labeler:widget-board:*` 一致）。\n\n---\n\n### 1. 目标与边界\n\n| 要做 | 不做 |\n|------|------|\n| 标注员在顶栏「设置」里选题面/作答的**渲染策略** | 在模板设计器或 `schemaJson` 写 `labelerWorkbench` |\n| 偏好写入 `localStorage`，刷新/换题仍生效 | 同步服务端、随提交保存 |\n| 运行时根据**当前题的 `displaySchema`/`annotateSchema`** 切 UI | 改 `importRole`、导入契约、后端校验 |\n\n模板仍由 `splitLabelerFormSchema` + `resolveImportRole` 产出 schema；工作台只是在**消费 schema 时**选择不同「壳」。\n\n---\n\n### 2. 与现有能力的关系\n\nWorkbench2 里**已有**（继续沿用）：\n\n- **Widget 视图**：紧凑 / 卡片 / JSON → `labelhub:labeler:widget-board:{board}:widget-modes`\n- **Widget 顺序 / 分栏 / 拖拽布局** → widget-board order、layout、splits\n- **区域 tab 视图** → `labelhub:labeler:slot-modes`\n- **全局布局** → `labelhub:workbench2:labeler`\n\n**本次新增**（仍不进 schema）：\n\n- **内容分区策略**：题面字段从哪来（按角色 vs 按 section）\n- **题面 Section 编排**：多 section 时上下 / 左右 / 标签\n- **题面 Section 拆 Widget**：一个题面 widget vs 每 section 一个 widget（仅客户端虚拟 widget）\n\n审核侧已有 `useSchemaSectionsLayout` + `WorkbenchSortableSchemaSections`，标注题面可**复用同一套 UI 组件**，只换 storage key 前缀。\n\n---\n\n### 3. 本地配置模型\n\n新建 `labeler-render-prefs.ts`（命名可调整），**不**进 `FormSchema` 类型。\n\n```ts\n/** 题面/作答内容从 schema 怎么切（不改模板文件） */\nexport type LabelerContentPartition = \"byRole\" | \"bySection\";\n\n/** 题面区多个 section 怎么装在一个 widget 里 */\nexport type LabelerPayloadShell = \"singleForm\" | \"sectionPanels\";\n\n/** 与 WidgetViewMode / slotModes 对齐 */\nexport type LabelerSurfaceViewMode = \"inline\" | \"cards\" | \"json\";\n\nexport interface LabelerRenderPrefs {\n  version: 1;\n\n  /** 默认：byRole，与线上一致 */\n  contentPartition: LabelerContentPartition;\n\n  /**\n   * bySection 时：section.key -> payload | annotate\n   * 未出现的 section：运行时启发式补全（见 §5），不写回 schema\n   */\n  sectionSlots?: Record<string, \"payload\" | \"annotate\">;\n\n  /** 题面区内 section 排布（仅 payload 且 sectionPanels / 多 section 时） */\n  payloadSectionLayout?: \"stack\" | \"row\" | \"tabs\";\n\n  /** 题面是一个 LHResourceForm 还是每 section 独立面板 */\n  payloadShell: LabelerPayloadShell;\n\n  defaults: {\n    payload: LabelerSurfaceViewMode;\n    annotate: LabelerSurfaceViewMode;\n  };\n}\n\n/** 按模板版本记住 section 归属（换版本可保留或重置） */\nexport interface LabelerRenderPrefsByTemplate {\n  [templateVersionId: string]: Partial<LabelerRenderPrefs>;\n}\n```\n\n**Storage**\n\n| Key | 内容 |\n|-----|------|\n| `labelhub:labeler:render-prefs` | 全局默认 `LabelerRenderPrefs` |\n| `labelhub:labeler:render-prefs:tpl:{templateVersionId}` | 可选覆盖（仅 `sectionSlots` 等） |\n\n合并规则：`resolveRenderPrefs(templateVersionId) = { ...GLOBAL_DEFAULT, ...tplOverride }`。\n\n重置布局时（现有「重置布局」）：**默认只清 widget-board / workbench2**；设置里单独提供「恢复展示默认为 byRole」。\n\n---\n\n### 4. 「设置」入口 UI（顶栏 Popover 扩展）\n\n在 `top-bar.tsx` 已有 **设置 → 工作台设置** 上增加 **「展示方式」** 区块（与「编辑布局 / 重置布局」并列）：\n\n```\n┌─ 工作台设置 ─────────────────────────┐\n│ … 编辑布局 / 重置布局（现有）          │\n├─ 展示方式 ────────────────────────────┤\n│ 内容分区                               │\n│   ○ 按字段角色（默认）                  │\n│   ○ 按模板区块（Section）               │\n│                                       │\n│ [仅 bySection] 区块归属（表格）         │\n│   instructions  → 题面 ▼              │\n│   context       → 题面 ▼              │\n│   labeling      → 作答 ▼              │\n│   [根据当前模板刷新列表]                │\n│                                       │\n│ 题面呈现                               │\n│   ○ 单表单（区块标题保留）              │\n│   ○ 每区块独立面板（题面区内标签/折叠）  │\n│                                       │\n│ 题面多区块排列 [上下|左右|标签]          │\n│                                       │\n│ 默认视图                               │\n│   题面 [紧凑|卡片|JSON]                │\n│   作答 [紧凑|卡片|JSON]                │\n└───────────────────────────────────────┘\n```\n\n说明文案写清：**仅影响本机显示，不修改模板**。\n\n**区块归属表**数据来源：当前 `parsedSchema.sections`（只读 key/title），改选项只写 `localStorage.sectionSlots`。\n\n---\n\n### 5. 运行时解析（schema 不变）\n\n```mermaid\nflowchart TD\n  A[templateVersion.schemaJson 只读] --> B[parseFormSchemaJson]\n  B --> C[loadRenderPrefs]\n  C --> D{contentPartition}\n  D -->|byRole| E[splitLabelerFormSchema 现有逻辑]\n  D -->|bySection| F[splitBySectionSlots schema + sectionSlots]\n  E --> G[displaySchema / annotateSchema]\n  F --> G\n  G --> H{payloadShell}\n  H -->|singleForm| I[PayloadPanelForm 一个 widget]\n  H -->|sectionPanels| J[PayloadPanelSections 多 section UI]\n  I --> K[viewMode 来自 prefs.defaults + widget-modes]\n  J --> K\n```\n\n#### 5.1 `byRole`（默认）\n\n与现在一致：`displaySchema` / `annotateSchema` 仍走 `split-labeler-schema.ts`，**不读** `sectionSlots`。\n\n#### 5.2 `bySection`（仅客户端）\n\n```ts\nfunction splitBySectionSlots(\n  schema: FormSchema,\n  slots: Record<string, \"payload\" | \"annotate\">,\n): { displaySchema; annotateSchema }\n```\n\n- 按 `section.key` 整段复制 section，`fields` **不做** `importRole` 过滤（section 内有什么就渲染什么）。\n- `slots` 缺项：用启发式补全（与审核 `split-template-content-sections` 类似：`instructions`→题面、`labeling`→作答等），**只用于本次渲染**，不写 schema。\n- 提交仍只交 `annotateSchema` 里 `importRole=input` 的字段（后端逻辑不变）；题面 section 若误含 input 字段，**展示可编辑但提交范围不变**（设置里可加一行警告）。\n\n#### 5.3 题面壳\n\n| `payloadShell` | 行为 |\n|----------------|------|\n| `singleForm` | 现有 `PayloadPanelForm` + `LHResourceForm`，`displaySchema.sections` 为所有 payload section |\n| `sectionPanels` | 题面 widget 内用 `WorkbenchSortableSchemaSections` / 多 Tab，每 section 一个小表单或 `SchemaDataView`；layout 来自 `payloadSectionLayout`（localStorage） |\n\n**不**新增持久化 widget id 到 registry：sectionPanels 仍在 **`payload-main` 一个 widget** 内切换布局；若以后要「每 section 拖成独立 widget」，用虚拟 id `payload-section:{key}` 只存在于内存 + `widget-board` order，**仍不写 schema**（P2）。\n\n---\n\n### 6. 与现有「视图切换」的分工\n\n| 层级 | 控制什么 | 存储 |\n|------|----------|------|\n| **展示方式（新）** | 题面/作答数据从 schema 怎么切、section 怎么排 | `render-prefs` |\n| **Widget 视图（已有）** | 同一 widget 内 inline/cards/json | `widget-board:*:widget-modes` |\n| **Slot 模式（已有）** | 整个 slot 默认视图 | `slot-modes` |\n| **布局（已有）** | 区域大小、widget 拖拽 | `workbench2:labeler` + widget-board |\n\n优先级建议：**widget-modes[id]** > **render-prefs.defaults.payload** > 硬编码默认 `inline`。\n\n---\n\n### 7. 实现分期（仍不动 schema）\n\n| 阶段 | 内容 |\n|------|------|\n| **P0** | `labeler-render-prefs` 读写；设置 Popover；`bySection` + `singleForm`；`splitBySectionSlots` |\n| **P1** | `payloadSectionLayout` + 复用 `SchemaSectionsLayoutToggle`；`sectionPanels` |\n| **P2** | 可选：按 section 拆成可拖拽虚拟 widget（仅 localStorage order） |\n\n**改动面（预估）**\n\n- 新增：`labeler-render-prefs.ts`、`resolve-labeler-schemas.ts`（包装 split）\n- 改：`LabelerWorkPage` / `LabelerWorkbench` context 传入 `renderPrefs`\n- 改：`top-bar.tsx` 设置 UI\n- 改：`PayloadPanelBody` 分支 `singleForm` / `sectionPanels`\n- **不改**：`types.ts` 的 `FormSchema`、`exportFormSchemaJson`、后端 `schema_json`\n\n---\n\n### 8. 产品默认（建议）\n\n- 新用户 / 未配置：`contentPartition: \"byRole\"`，`payloadShell: \"singleForm\"`，与线上一致。\n- 偏好对比类题：标注员自己在设置里切 **按区块**，并把「标注说明」「题目上下文」标为题面——**模板发布无需改版**。\n\n---\n\n### 9. 和上一版设计的差异（一句话）\n\n上一版把策略写进 **`schemaJson.labelerWorkbench`**；本版改为 **仅 Labeler Workbench2 本地 `render-prefs`**，模板 schema **完全不动**，分区/布局全是标注端的「查看偏好」。\n\n若你认可 P0 范围，下一步可以直接实现：`render-prefs` + 设置 Popover + `bySection` 拆分。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 标注工作台展示设置（修订版）\n\n**约束：`schemaJson` / 模板 schema 不改**；所有「怎么渲染」只在 **Labeler Workbench2** 里配置，存 **浏览器本地**（与现有 `labelhub:labeler:slot-modes`、`labelhub:labeler:widget-board:*` 一致）。\n\n-…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 43,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "ok 状态，无异常现象，无需记录。",
+      "text_snippet": "<user_query>\nok\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 44,
+      "role": "assistant",
+      "display_text": "开始实现 P0：本地 `render-prefs`、设置 UI，以及 `bySection` 拆分逻辑。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "开始实现 P0：本地 `render-prefs`、设置 UI，以及 `bySection` 拆分逻辑。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/pages/LabelerWorkPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 45,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/pages/LabelerWorkPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/split-labeler-schema.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/shared/schema-data/split-template-content-sections.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 46,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/labeler-render-prefs.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/split-labeler-schema-by-section.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/resolve-labeler-split-schemas.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 47,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/chrome/LabelerRenderSettings.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/layout/top-bar.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 48,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/pages/LabelerWorkPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 49,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/pages/LabelerWorkPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 50,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 51,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/labeler-render-prefs.test.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 52,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/labeler-render-prefs.test.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/split-labeler-schema-by-section.test.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 53,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 54,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 55,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 56,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/labeler-render-prefs.test.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/split-labeler-schema-by-section.test.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 57,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/split-labeler-schema.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/vitest.config.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 58,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 59,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/labeler-render-prefs.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/split-labeler-schema-by-section.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/vitest.config.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 60,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/chrome/LabelerRenderSettings.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/layout/top-bar.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 61,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/chrome/LabelerRenderSettings.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 62,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "ReadLints"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/chrome/LabelerRenderSettings.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 63,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/api/labeler-work-api.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 64,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "ReadLints"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/LabelerWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/pages/LabelerWorkPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 65,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 66,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/pages/LabelerWorkPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 67,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "ReadLints"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 68,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 69,
+      "role": "assistant",
+      "display_text": "P0 已落地：**展示方式只存在本机**，不写 `schemaJson`。\n\n### 怎么用\n顶栏 **设置 → 展示方式**：\n- **按字段角色**（默认）：与原来一致\n- **按模板区块**：为每个 section 选择题面 / 作答，整段展示、不再按 `importRole` 拆字段\n- **题面 / 作答默认视图**：紧凑 / 卡片 / JSON（会同步到 slot 与主 widget 视图）\n- **恢复展示默认**：重置本地展示偏好\n\n### 存储\n- 全局：`labelhub:labeler:render-prefs`\n- 按模板版本覆盖区块归属：`labelhub:labeler:render-prefs:tpl:{templateVersionId}`（仅 `sectionSlots`）\n\n### 主要新增/改动\n- `labeler-render-prefs.ts` — 读写与 section 归属推断\n- `split-labeler-schema-by-section.ts` + `resolve-labeler-split-schemas.ts` — 运行时拆分\n- `LabelerRenderSettings.tsx` — 设置 UI\n- `LabelerWorkPage` / `LabelerWorkbench` — 接入拆分与 context\n\n单测已通过；`vitest.config.ts` 补充了 `@` 别名解析。\n\n切换 **按模板区块** 后，「标注说明」「题目上下文」会稳定留在题面；作答区只显示你标为「作答」的 section。若要验证，刷新标注页后在设置里切换即可。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "P0 已落地：**展示方式只存在本机**，不写 `schemaJson`。\n\n### 怎么用\n顶栏 **设置 → 展示方式**：\n- **按字段角色**（默认）：与原来一致\n- **按模板区块**：为每个 section 选择题面 / 作答，整段展示、不再按 `importRole` 拆字段\n- **题面 / 作答默认视图**：紧凑 / 卡片 / JSON…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 70,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "终端日志显示，LabelHub 的 Java 进程因未捕获的异常导致线程中断，影响核心业务模块的正常执行。",
+      "text_snippet": "<user_query>\n@/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-label-hub/terminals/7.txt:301-318 \n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "artifact_pointer",
+      "tool_names": [],
+      "file_paths": [
+        "/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-label-hub/terminals/7.txt:301-318"
+      ],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 71,
+      "role": "assistant",
+      "display_text": "正在排查提交记录重复插入导致的唯一键冲突。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在排查提交记录重复插入导致的唯一键冲突。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 72,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V43__labelhub_submission_current_per_labeler.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 73,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/support/SubmissionCurrentSupport.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 74,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 75,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/business/submission/support/SubmissionCurrentSupportTest.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 76,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 77,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/SubmissionEntity.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/pages/LabelerWorkPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 78,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbSubmissionService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 79,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/stores/labeler-work-session.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/api/labeler-work-api.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 80,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/stores/labeler-work-session.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 81,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/workflow/LabelerClaimExecutor.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 82,
+      "role": "assistant",
+      "display_text": "定位为并发下重复创建 `is_current=1` 的 submission。正在修复 `SubmissionCurrentSupport`：加入事务与重复键重试。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "定位为并发下重复创建 `is_current=1` 的 submission。正在修复 `SubmissionCurrentSupport`：加入事务与重复键重试。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/support/SubmissionCurrentSupport.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 83,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/business/submission/support/SubmissionCurrentSupportTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 84,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-label-hub/agent-tools/58cb0fd0-eea6-425b-a6a3-563cc3ba9db4.txt"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 85,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 86,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 87,
+      "role": "assistant",
+      "display_text": "## 原因\n\n唯一约束 `uk_submissions_assignment_current` 规定：同一 `(tenant_id, assignment_id)` 在 `is_current=1` 且 `deleted_flag=0` 时只能有一条 submission。\n\n报错 `Duplicate entry '1-910237000002-1-0'` 表示 **assignment `910237000002` 已存在当前 submission**，代码仍执行了 `INSERT`。常见触发场景：\n\n1. **并发请求**：同时调用 `loadWork` 与 `loadWorkSession`（都会走 `buildWorkDetail` → `ensureCurrentDraftForAssignment`）\n2. **领取后立刻打开题目**：`LabelerClaimExecutor` 里 `createDraft` 与前端 `bootstrapWorkSession` 几乎同时执行\n\n两边都先查不到 current，再各自 insert，第二条就会撞唯一键。\n\n## 修复\n\n在 `SubmissionCurrentSupport` 中：\n\n1. 为 `ensureCurrentDraftForAssignment` 增加 `@Transactional`\n2. 新增 `insertNewDraftResilient`：捕获 `DuplicateKeyException` 后回读当前 submission；若 labeler 一致则直接返回，否则归档后再插入一次\n\n请**重启后端**后再打开标注页验证。\n\n若仍报错，可在库里检查是否已有脏数据（同一 assignment 多条 `is_current=1`）：\n\n```sql\nSELECT id, assignment_id, labeler_id, is_current, deleted_flag, current_status\nFROM submissions\nWHERE assignment_id = 910237000002 AND deleted_flag = 0;\n```\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 原因\n\n唯一约束 `uk_submissions_assignment_current` 规定：同一 `(tenant_id, assignment_id)` 在 `is_current=1` 且 `deleted_flag=0` 时只能有一条 submission。\n\n报错 `Duplicate entry '1-910237000002-1-0'…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 88,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "订单 910238000002 因状态为 ABANDONED 被废弃，影响关联对象 910237000002 与 910100000102。",
+      "text_snippet": "<user_query>\n910238000002 910237000002 910100000102 1 0 ABANDONED\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 89,
+      "role": "assistant",
+      "display_text": "你提供的数据显示：`is_current=1` 且状态为 `ABANDONED`，仍会占用唯一键。正在检查并修复该边界情况。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "你提供的数据显示：`is_current=1` 且状态为 `ABANDONED`，仍会占用唯一键。正在检查并修复该边界情况。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/support/SubmissionCurrentSupport.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 90,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/SubmissionEntity.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 91,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/SubmissionEntity.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 92,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine/SubmissionStatus.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 93,
+      "role": "assistant",
+      "display_text": "根因是 MyBatis-Plus 的 `updateById` 默认不更新 `null` 字段，导致 `supersedeCurrent` 未清除 `is_current`，出现 `ABANDONED` 仍占用唯一键。正在修复。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "根因是 MyBatis-Plus 的 `updateById` 默认不更新 `null` 字段，导致 `supersedeCurrent` 未清除 `is_current`，出现 `ABANDONED` 仍占用唯一键。正在修复。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/support/SubmissionCurrentSupport.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 94,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/business/submission/support/SubmissionCurrentSupportTest.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 95,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/business/submission/support/SubmissionCurrentSupportTest.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 96,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/business/submission/support/SubmissionCurrentSupportTest.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 97,
+      "role": "assistant",
+      "display_text": "这条记录正好说明了根因：\n\n| 字段 | 你的值 | 含义 |\n|------|--------|------|\n| `is_current` | **1** | 仍占用「当前 submission」唯一槽位 |\n| `current_status` | **ABANDONED** | 业务上已归档 |\n| `deleted_flag` | 0 | 未删除 |\n\n归档时 `supersedeCurrent` 把 `is_current` 设成了 `null`，但 **MyBatis-Plus 的 `updateById` 默认不更新 null 字段**，所以库里 `is_current` 仍是 1。  \n再插入新 submission 就会撞 `uk_submissions_assignment_current`；若同一标注员命中这条记录，还会被直接返回这条 **ABANDONED** 记录。\n\n## 已做修复\n\n1. **`supersedeCurrent`**：改用 `LambdaUpdateWrapper` 显式 `SET is_current = NULL`\n2. **`ensureCurrentDraftForAssignment`**：若当前记录是 `ABANDONED` 且 `is_current=1`，同一标注员会归档并新建 `DRAFT`，不再直接返回脏数据\n\n重启后端后再打开该题即可。\n\n## 一次性修这条脏数据（可选）\n\n```sql\nUPDATE submissions\nSET is_current = NULL,\n    updated_at = NOW(3)\nWHERE id = 910238000002\n  AND assignment_id = 910237000002\n  AND is_current = 1\n  AND current_status = 'ABANDONED';\n```\n\n执行后重新进入标注页，系统会新建一条 `DRAFT` 的当前 submission。若同 assignment 还有多条 `is_current=1`，把查询结果发我，可以再帮你写批量清理 SQL。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "这条记录正好说明了根因：\n\n| 字段 | 你的值 | 含义 |\n|------|--------|------|\n| `is_current` | **1** | 仍占用「当前 submission」唯一槽位 |\n| `current_status` | **ABANDONED** | 业务上已归档 |\n| `deleted_flag` | 0 | 未删除…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    }
+  ]
+}

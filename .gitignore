@@ -1,0 +1,71 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+.cursor/
+.trae/
+*.iml
+*.ipr
+*.iws
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+replay_pid*
+
+# Maven
+target/
+**/.m2/
+backend/.m2/
+
+# Node / frontend
+node_modules/
+.pnpm-store/
+frontend/node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# Python / agent
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Logs
+*.log
+**/logs/
+
+# Environment
+.env
+.env.*
+
+# Build / cache (misc)
+backend/plugins/dist/
+.mtj.tmp/
+*.ctxt
+
+# Deploy build outputs (regenerated locally; keep out of git)
+deploy/artifacts/
+
+# Playwright MCP cache
+.playwright-mcp/
+
+.superpowers/
+.codex-tmp/
+worktrees/
+lowcode-docs/*
+packages/low-code-engine/dist
+frontend/.vite/

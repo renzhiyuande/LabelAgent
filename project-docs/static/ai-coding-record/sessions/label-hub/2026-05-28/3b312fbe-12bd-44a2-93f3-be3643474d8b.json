@@ -1,0 +1,210 @@
+{
+  "project": "label-hub",
+  "session_id": "3b312fbe-12bd-44a2-93f3-be3643474d8b",
+  "date": "2026-05-28",
+  "modified_at": "2026-05-28 14:12:48",
+  "time_bucket": "afternoon",
+  "top_stage": "development",
+  "stages": [
+    "development"
+  ],
+  "tracks": [
+    "business_development"
+  ],
+  "module_tags": [
+    "标注工作台-标注执行"
+  ],
+  "key_topics": [],
+  "tool_usage": [
+    "Glob",
+    "SemanticSearch",
+    "Read",
+    "Grep"
+  ],
+  "models_used": [],
+  "selected_prompt_count": 1,
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "display_text": "@frontend/src/components/workbench标准工作台实现视图显示 可以切换显示的组件 包括小组件。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n@frontend/src/components/workbench标准工作台实现视图显示 可以切换显示的组件 包括小组件\n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "rewritten"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "display_text": "正在了解标准工作台的视图切换实现，并查看其与模板设计器/标注台的集成。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在了解标准工作台的视图切换实现，并查看其与模板设计器/标注台的集成。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "SemanticSearch",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/unified-workbench-design.zh.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/index.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/DesignerZenWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/components/LabelerZenWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/auxiliary/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/constants/designer-layout-schema.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/material-pane/MaterialLibraryContent.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/panels/DesignerMaterialPanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/WorkbenchLayoutEngine.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/unified-workbench-design.zh.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/template-designer-migration-guide.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/components/material-pane/LeadingPanelSortableTabs.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/auxiliary/AuxiliaryModuleDock.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 6,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/labeler-auxiliary-registry.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/unified-workbench-design.zh.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/use-labeler-workbench-layout.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/workbench/use-designer-workbench-layout.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-designer/hooks/use-leading-tab-order.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 8,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/WorkbenchPanelShell.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/hooks/use-workbench-layout.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 9,
+      "role": "assistant",
+      "display_text": "`frontend/src/components/workbench` 把「视图显示 / 可切换组件」分成两层：**主面板（三栏布局）** 和 **辅助模块坞（小组件）**。模板设计器已用前者；左侧「组件库 / 预览值」是业务内自研 Tab，与标注台的 `AuxiliaryModuleDock` 模式类似但未复用平台组件。\n\n## 整体结构\n\n```mermaid\nflowchart TB\n  subgraph page [StandardWorkbenchPage]\n    H[Header 槽位]\n    subgraph shell [WorkbenchShell]\n      LE[WorkbenchLayoutEngine]\n    end\n  end\n  LE --> P1[leading 面板 slot]\n  LE --> P2[primary 面板 slot]\n  LE --> P3[trailing 面板 slot]\n  H --> ADH[AuxiliaryModuleDock header]\n  P1 --> ADL[AuxiliaryModuleDock left 可选]\n  P3 --> ADR[AuxiliaryModuleDock right 可选]\n```\n\n业务通过 `StandardWorkbenchPage` 注入 `panels` 与 `config`，不在这里写 `switch(mode)`。\n\n```37:76:frontend/src/components/workbench/StandardWorkbenchPage.tsx\nexport function StandardWorkbenchPage<\n  TPanelId extends string,\n  TPreset extends string,\n  TConfig extends WorkbenchLayoutConfig<TPanelId, TPreset> = WorkbenchLayoutConfig<TPanelId, TPreset>,\n>({\n  schema,\n  config,\n  onConfigChange,\n  panels,\n  // ...\n}: StandardWorkbenchPageProps<TPanelId, TPreset, TConfig>) {\n  const layoutBody = (\n    <WorkbenchLayoutEngine\n      schema={schema}\n      config={config}\n      onConfigChange={onConfigChange}\n      panels={panels as Record<TPanelId, WorkbenchPanelSlot>}\n      // ...\n    />\n  );\n```\n\n---\n\n## 1. 主面板切换（大区域）\n\n由 `WorkbenchLayoutEngine` + `WorkbenchLayoutConfig` 驱动：\n\n| 能力 | 配置 / API | 效果 |\n|------|------------|------|\n| 显示哪一栏、顺序 | `panelOrder` | 三栏左右顺序 |\n| 布局预设 | `preset` + `schema.presets` | 如标注 classic-lcr / focus-annotate / stacked |\n| 折叠 | `panelCollapsed` | 窄条或 `collapsedBody` |\n| 宽度 | `sizes.leadingWidth` / `trailingWidth` | `ResizeDivider` 拖拽 |\n| 换序 | `schema.features.panelReorder` | 栏标题条拖拽 |\n\n每个面板是一个 **slot**：\n\n```30:33:frontend/src/components/workbench/WorkbenchLayoutEngine.tsx\nexport interface WorkbenchPanelSlot {\n  body: ReactNode;\n  collapsedBody?: ReactNode;\n}\n```\n\n折叠时在 `WorkbenchPanelShell` 里切 `children` / `collapsedContent`（标注左栏折叠后仍用窄态 Dock）。\n\n持久化：`useWorkbenchLayout` + `designerLayoutSchema.storageKey`（模板设计器已接入）。\n\n---\n\n## 2. 小组件切换（辅助模块坞）\n\n`AuxiliaryModuleDock` 负责 **同一坞位内多模块 Tab 切换**，支持拖拽排序。\n\n核心状态：\n\n```8:21:frontend/src/components/workbench/auxiliary/types.ts\nexport interface AuxiliaryDockState<TModuleId extends string = string> {\n  modules: TModuleId[];\n  activeModule: TModuleId;\n  visible: boolean;\n}\n\nexport interface AuxiliaryModuleDefinition<TContext, TModuleId extends string = string> {\n  label: string;\n  icon: LucideIcon;\n  capsuleTone?: \"default\" | \"accent\";\n  renderSummary: (context: TContext, mode: AuxiliaryDisplayMode) => ReactNode;\n  renderBody: (context: TContext, mode: AuxiliaryDisplayMode) => ReactNode;\n}\n```\n\n**显示形态**由 `placement × density` 决定：\n\n| placement | density | displayMode | 典型 UI |\n|-----------|---------|-------------|---------|\n| `header` | — | `header-capsule` | 顶栏胶囊 + Popover |\n| `left` / `right` | `wide` | `sidebar-wide` | 侧栏完整内容 |\n| `left` / `right` | `narrow` | `sidebar-narrow` | 竖向 Rail / 仅图标 |\n\n切换逻辑：`activeModule` 决定 `renderBody`；`modules` 顺序即 Tab 顺序。\n\n---\n\n## 3. 标注台：两层都用上了\n\n```118:188:frontend/src/features/labeler/components/LabelerZenWorkbench.tsx\n  const renderDock = (dockId: AuxiliaryDockId, density: \"wide\" | \"narrow\", className?: string) => (\n    <AuxiliaryModuleDock\n      placement={dockId}\n      density={density}\n      state={layoutConfig.auxiliaryDocks[dockId]}\n      onStateChange={(next) => handleDockChange(dockId, next)}\n      context={moduleContext}\n      modules={labelerAuxiliaryModules}\n      className={className}\n    />\n  );\n\n  // header：顶栏小组件\n  headerExtras={renderDock(\"header\", \"wide\")}\n\n  // queue 栏：宽/窄两种 Dock\n  queue: {\n    body: renderDock(\"left\", \"wide\", \"h-full\"),\n    collapsedBody: renderDock(\"left\", \"narrow\", \"h-full\"),\n  },\n```\n\n模块在 `labeler-auxiliary-registry.tsx` 注册（题序、AI 预检等）；`auxiliaryDocks` 随布局写入 localStorage。\n\n---\n\n## 4. 模板设计器：主面板已统一，小组件仍是面板内 Tab\n\n`DesignerZenWorkbench` 已用 `StandardWorkbenchPage` + 三栏 `panels`：\n\n```72:76:frontend/src/features/template-designer/components/DesignerZenWorkbench.tsx\n      panels={{\n        material: { body: <DesignerMaterialPanel /> },\n        canvas: { body: <DesignerCanvasPanel /> },\n        property: { body: <DesignerPropertyPanel /> },\n      }}\n```\n\n`designerLayoutSchema` 里 `auxiliaryDock: false`——**未**在 workbench 层挂 header/left/right 坞。\n\n左侧「组件库 / 预览值」在 `DesignerMaterialPanel` 里用 `LeadingPanelSortableTabs` + `activeTab` 自实现，语义与 `AuxiliaryModuleDock` 接近（Tab、排序、localStorage），但未走平台 `AuxiliaryModuleDock` + registry。\n\n---\n\n## 5. 若要「标准工作台」统一小组件切换\n\n推荐做法（与文档 §4.4 一致）：\n\n1. 建 `designer-auxiliary-registry`（`materials` / `preview` 等 `AuxiliaryModuleDefinition`）。\n2. 在 `DesignerMaterialPanel` 内用 `AuxiliaryModuleDock`（`placement=\"left\"`、`density=\"wide\"`）。\n3. 将 `useLeadingTabOrder` 的 `tabOrder` / `activeTab` 映射为 `AuxiliaryDockState`（或并入扩展后的 layout config）。\n4. 顶栏小组件再挂 `placement=\"header\"`（schema 可开 `auxiliaryDock: true`）。\n\n这样「大栏」与「栏内小组件」都走同一套切换与动画（`lh-workbench-module-fade` 等）。\n\n---\n\n如果你希望我把模板设计器左侧 Tab **迁到 `AuxiliaryModuleDock`**（并保留现有 localStorage 行为），可以说一下要保留哪些模块（仅 materials/preview，还是还要加顶栏胶囊）。我可以按标注台模式直接改一版。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "`frontend/src/components/workbench` 把「视图显示 / 可切换组件」分成两层：**主面板（三栏布局）** 和 **辅助模块坞（小组件）**。模板设计器已用前者；左侧「组件库 / 预览值」是业务内自研 Tab，与标注台的 `AuxiliaryModuleDock` 模式类似但未复用平台组件。\n\n## 整体结构\n\n```mer…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "labelhub-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "smoke:browser": "node project-work/contest-delivery-ops/playwright/run-browser-smoke.mjs",
+    "delivery:stack:up": "bash scripts/labelhub-local-stack-up.sh",
+    "delivery:stack:down": "bash scripts/labelhub-local-stack-down.sh",
+    "delivery:stack:status": "bash scripts/labelhub-local-stack-status.sh",
+    "delivery:openapi": "bash scripts/export-openapi-artifacts.sh"
+  },
+  "workspaces": [
+    "frontend",
+    "packages/*"
+  ]
+}

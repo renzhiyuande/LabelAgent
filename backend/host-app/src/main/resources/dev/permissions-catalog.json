@@ -1,0 +1,155 @@
+[
+  {
+    "code": "system:admin",
+    "name": "异步任务-页面",
+    "module": "system:asyncTasks",
+    "kind": "page",
+    "resource": "asyncTasks"
+  },
+  {
+    "code": "system:dict:write",
+    "name": "字典类型-创建",
+    "module": "system:dictTypes",
+    "kind": "create",
+    "resource": "dictTypes"
+  },
+  {
+    "code": "system:users:action:assignRoles",
+    "name": "用户-分配角色",
+    "module": "system:users",
+    "kind": "action",
+    "resource": "users",
+    "elementKey": "assignRoles"
+  },
+  {
+    "code": "system:users:column:email",
+    "name": "用户-邮箱",
+    "module": "system:users",
+    "kind": "column",
+    "resource": "users",
+    "elementKey": "email",
+    "sensitive": true
+  },
+  {
+    "code": "system:users:column:phone",
+    "name": "用户-手机号",
+    "module": "system:users",
+    "kind": "column",
+    "resource": "users",
+    "elementKey": "phone",
+    "sensitive": true
+  },
+  {
+    "code": "system:users:create",
+    "name": "用户-创建",
+    "module": "system:users",
+    "kind": "create",
+    "resource": "users"
+  },
+  {
+    "code": "system:users:edit",
+    "name": "用户-编辑",
+    "module": "system:users",
+    "kind": "edit",
+    "resource": "users"
+  },
+  {
+    "code": "system:users:field:email",
+    "name": "用户-字段-邮箱",
+    "module": "system:users",
+    "kind": "field",
+    "resource": "users",
+    "elementKey": "email"
+  },
+  {
+    "code": "system:users:field:password",
+    "name": "用户-字段-密码",
+    "module": "system:users",
+    "kind": "field",
+    "resource": "users",
+    "elementKey": "password"
+  },
+  {
+    "code": "system:users:field:phone",
+    "name": "用户-字段-手机号",
+    "module": "system:users",
+    "kind": "field",
+    "resource": "users",
+    "elementKey": "phone"
+  },
+  {
+    "code": "system:users:filter:status",
+    "name": "用户-筛选-状态",
+    "module": "system:users",
+    "kind": "filter",
+    "resource": "users",
+    "elementKey": "status"
+  },
+  {
+    "code": "system:users:list",
+    "name": "用户-列表",
+    "module": "system:users",
+    "kind": "list",
+    "resource": "users"
+  },
+  {
+    "code": "system:users:page",
+    "name": "用户-页面",
+    "module": "system:users",
+    "kind": "page",
+    "resource": "users"
+  },
+  {
+    "code": "system:users:sort:displayName",
+    "name": "用户-排序-显示名",
+    "module": "system:users",
+    "kind": "sort",
+    "resource": "users",
+    "elementKey": "displayName"
+  },
+  {
+    "code": "system:users:sort:lastLoginAt",
+    "name": "用户-排序-最近登录",
+    "module": "system:users",
+    "kind": "sort",
+    "resource": "users",
+    "elementKey": "lastLoginAt"
+  },
+  {
+    "code": "system:users:sort:username",
+    "name": "用户-排序-用户名",
+    "module": "system:users",
+    "kind": "sort",
+    "resource": "users",
+    "elementKey": "username"
+  },
+  {
+    "code": "business:task:read",
+    "name": "标注任务-页面",
+    "module": "business:tasks",
+    "kind": "page",
+    "resource": "tasks"
+  },
+  {
+    "code": "business:task:create",
+    "name": "标注任务-创建",
+    "module": "business:tasks",
+    "kind": "create",
+    "resource": "tasks"
+  },
+  {
+    "code": "business:task:update",
+    "name": "标注任务-编辑",
+    "module": "business:tasks",
+    "kind": "edit",
+    "resource": "tasks"
+  },
+  {
+    "code": "business:task:publish",
+    "name": "标注任务-发布",
+    "module": "business:tasks",
+    "kind": "action",
+    "resource": "tasks",
+    "elementKey": "publish"
+  }
+]

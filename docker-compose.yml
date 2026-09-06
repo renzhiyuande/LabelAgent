@@ -1,0 +1,49 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: labelhub
+      MYSQL_USER: ${LABELHUB_MYSQL_USER:-labelhub}
+      MYSQL_PASSWORD: ${LABELHUB_MYSQL_PASSWORD:?LABELHUB_MYSQL_PASSWORD is required}
+      MYSQL_ROOT_PASSWORD: ${LABELHUB_MYSQL_ROOT_PASSWORD:?LABELHUB_MYSQL_ROOT_PASSWORD is required}
+      TZ: Asia/Shanghai
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  minio:
+    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${LABELHUB_MINIO_ACCESS_KEY:?LABELHUB_MINIO_ACCESS_KEY is required}
+      MINIO_ROOT_PASSWORD: ${LABELHUB_MINIO_SECRET_KEY:?LABELHUB_MINIO_SECRET_KEY is required}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - minio-data:/data
+
+volumes:
+  mysql-data:
+  minio-data:

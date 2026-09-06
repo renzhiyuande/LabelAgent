@@ -1,0 +1,104 @@
+server:
+  port: 8080
+
+crane4j:
+  ignore-null-key-when-assembling: true
+
+spring:
+  application:
+    name: labelhub-host
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  servlet:
+    multipart:
+      max-file-size: ${LABELHUB_UPLOAD_MAX_FILE_SIZE:10MB}
+      max-request-size: ${LABELHUB_UPLOAD_MAX_REQUEST_SIZE:10MB}
+  datasource:
+    url: ${LABELHUB_DATASOURCE_URL}
+    username: ${LABELHUB_DATASOURCE_USERNAME}
+    password: ${LABELHUB_DATASOURCE_PASSWORD}
+  flyway:
+    enabled: ${LABELHUB_FLYWAY_ENABLED:true}
+    locations: classpath:db/migration
+  main:
+    allow-bean-definition-overriding: true
+
+labelhub:
+  internal-token: ${LABELHUB_INTERNAL_TOKEN}
+  security:
+    # 32 字节明文，或 64 位十六进制字符串；其他长度将 SHA-256 派生为 32 字节
+    aes-key: ${LABELHUB_AES_KEY}
+    llm-outbound-allow-localhost: false
+  auth:
+    access-ttl-seconds: 3600
+    permission-sync:
+      enabled: ${LABELHUB_PERMISSION_SYNC_ENABLED:true}
+  review:
+    # mock：本地确定性分流（无需 Agent）；pyagent：调用 Python Agent POST /v1/ai-review 真实 LLM 预审
+    ai-engine: ${LABELHUB_REVIEW_AI_ENGINE:pyagent}
+  agent:
+    base-url: ${LABELHUB_AGENT_BASE_URL}
+  llm:
+    suggest:
+      max-concurrent: ${LABELHUB_LLM_SUGGEST_MAX_CONCURRENT:4}
+      read-timeout-ms: ${LABELHUB_LLM_SUGGEST_READ_TIMEOUT_MS:15000}
+      thread-pool:
+        core: ${LABELHUB_LLM_SUGGEST_THREAD_POOL_CORE:4}
+        max: ${LABELHUB_LLM_SUGGEST_THREAD_POOL_MAX:8}
+        queue-capacity: ${LABELHUB_LLM_SUGGEST_THREAD_POOL_QUEUE:50}
+      circuit-breaker:
+        failure-threshold: ${LABELHUB_LLM_CB_FAILURE_THRESHOLD:3}
+        open-duration-ms: ${LABELHUB_LLM_CB_OPEN_DURATION_MS:30000}
+        half-open-max-calls: ${LABELHUB_LLM_CB_HALF_OPEN_MAX_CALLS:1}
+      cache-ttl-seconds: ${LABELHUB_LLM_SUGGEST_CACHE_TTL_SECONDS:300}
+  claim:
+    lock-enabled: ${LABELHUB_CLAIM_LOCK_ENABLED:true}
+    lock-ttl-seconds: ${LABELHUB_CLAIM_LOCK_TTL_SECONDS:30}
+    preseed-on-publish: ${LABELHUB_CLAIM_PRESEED_ON_PUBLISH:true}
+    preseed-batch-size: ${LABELHUB_CLAIM_PRESEED_BATCH_SIZE:500}
+  claim-token:
+    ttl-seconds: ${LABELHUB_CLAIM_TOKEN_TTL_SECONDS:120}
+    stock-reservation-enabled: ${LABELHUB_CLAIM_TOKEN_STOCK_RESERVATION:true}
+    reconcile-interval-ms: ${LABELHUB_CLAIM_TOKEN_RECONCILE_INTERVAL_MS:300000}
+  async:
+    poll-interval-ms: ${LABELHUB_ASYNC_POLL_INTERVAL_MS:5000}
+    batch-size: ${LABELHUB_ASYNC_BATCH_SIZE:10}
+    claim-timeout-ms: ${LABELHUB_ASYNC_CLAIM_TIMEOUT_MS:120000}
+    cron-check-interval-ms: ${LABELHUB_ASYNC_CRON_CHECK_INTERVAL_MS:30000}
+  storage:
+    minio:
+      enabled: ${LABELHUB_MINIO_ENABLED:true}
+      endpoint: ${LABELHUB_MINIO_ENDPOINT}
+      access-key: ${LABELHUB_MINIO_ACCESS_KEY}
+      secret-key: ${LABELHUB_MINIO_SECRET_KEY}
+      bucket: ${LABELHUB_MINIO_BUCKET:labelhub}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor: INFO
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: INFO
+  pattern:
+    level: "%5p traceId=%X{traceId:-} requestId=%X{requestId:-} userId=%X{userId:-} role=%X{role:-}"
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+knife4j:
+  enable: false
+  setting:
+    language: zh_cn
+    swagger-model-name: DTO

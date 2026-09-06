@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contest Delivery Board</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="aurora aurora-a"></div>
+    <div class="aurora aurora-b"></div>
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">LabelHub Contest Delivery</p>
+        <h1>本地推进看板</h1>
+        <p id="phase" class="phase"></p>
+        <div class="hero-meta">
+          <div class="meta-card">
+            <span>Current Branch</span>
+            <strong id="current-branch">-</strong>
+          </div>
+          <div class="meta-card">
+            <span>Screenshots</span>
+            <strong id="shot-count">0</strong>
+          </div>
+          <div class="meta-card">
+            <span>Docs Outputs</span>
+            <strong id="doc-count">0</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid grid-top">
+        <article class="card">
+          <div class="card-head">
+            <h2>Verification Gates</h2>
+            <span class="chip chip-accent">必须可核对</span>
+          </div>
+          <ul id="validation-list" class="check-list"></ul>
+        </article>
+        <article class="card">
+          <div class="card-head">
+            <h2>Known Risks</h2>
+            <span class="chip chip-warn">需要跟踪</span>
+          </div>
+          <ul id="blocker-list" class="plain-list"></ul>
+        </article>
+      </section>
+
+      <section class="grid grid-middle">
+        <article class="card wide">
+          <div class="card-head">
+            <h2>Feature Tasks</h2>
+            <span class="chip chip-muted">本地状态文件驱动</span>
+          </div>
+          <div id="task-sections" class="task-sections"></div>
+        </article>
+        <article class="card">
+          <div class="card-head">
+            <h2>Branch / Dirty Summary</h2>
+            <span class="chip chip-muted">当前工作树</span>
+          </div>
+          <div class="stack">
+            <div>
+              <h3>Workspace Roots</h3>
+              <ul id="root-list" class="plain-list compact"></ul>
+            </div>
+          </div>
+          <div class="two-col">
+            <div>
+              <h3>Branches</h3>
+              <ul id="branch-list" class="plain-list compact"></ul>
+            </div>
+            <div>
+              <h3>Dirty Files</h3>
+              <ul id="dirty-list" class="plain-list compact"></ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid grid-bottom">
+        <article class="card wide">
+          <div class="card-head">
+            <h2>Recent Screenshots</h2>
+            <span class="chip chip-pass">自动产物</span>
+          </div>
+          <div id="gallery" class="gallery"></div>
+        </article>
+        <article class="card">
+          <div class="card-head">
+            <h2>Docs Outputs</h2>
+            <span class="chip chip-accent">submission/</span>
+          </div>
+          <ul id="docs-list" class="docs-list"></ul>
+        </article>
+      </section>
+
+      <section class="grid grid-bottom">
+        <article class="card">
+          <div class="card-head">
+            <h2>Next Actions</h2>
+            <span class="chip chip-accent">执行顺序</span>
+          </div>
+          <ol id="next-actions" class="plain-list ordered"></ol>
+        </article>
+        <article class="card">
+          <div class="card-head">
+            <h2>ReAct Resume</h2>
+            <span class="chip chip-muted">本地记忆</span>
+          </div>
+          <pre id="react-preview" class="code-block"></pre>
+        </article>
+      </section>
+    </main>
+    <script src="/app.js" defer></script>
+  </body>
+  </html>

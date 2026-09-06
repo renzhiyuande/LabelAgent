@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LabelHub</title>
+    <style>
+      #labelhub-boot-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background:
+          radial-gradient(circle at top left, rgba(30, 90, 76, 0.14), transparent 42%),
+          radial-gradient(circle at bottom right, rgba(240, 193, 75, 0.16), transparent 36%),
+          #f4f7f2;
+        color: #122233;
+        transition: opacity 0.32s ease, visibility 0.32s ease;
+      }
+
+      #labelhub-boot-splash.labelhub-boot-splash--hide {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .labelhub-boot-card {
+        width: min(100%, 420px);
+        border: 1px solid rgba(18, 34, 51, 0.08);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 24px 80px rgba(18, 34, 51, 0.12);
+        padding: 28px 24px;
+        text-align: center;
+      }
+
+      .labelhub-boot-spinner {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 18px;
+        border: 3px solid rgba(30, 90, 76, 0.16);
+        border-top-color: #1e5a4c;
+        border-radius: 999px;
+        animation: labelhub-boot-spin 0.9s linear infinite;
+      }
+
+      .labelhub-boot-title {
+        margin: 0 0 10px;
+        font: 600 18px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .labelhub-boot-desc {
+        margin: 0;
+        font: 400 14px/1.7 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #5b6b7c;
+      }
+
+      @keyframes labelhub-boot-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="labelhub-boot-splash" aria-live="polite" aria-busy="true">
+      <div class="labelhub-boot-card">
+        <div class="labelhub-boot-spinner" aria-hidden="true"></div>
+        <p class="labelhub-boot-title">LabelHub 资源加载中</p>
+        <p class="labelhub-boot-desc">
+          当前为演示服务器，带宽较低，首次打开需要下载较多前端资源，请耐心等待。
+        </p>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

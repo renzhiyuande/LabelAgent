@@ -1,0 +1,3869 @@
+{
+  "project": "label-hub",
+  "session_id": "83d720aa-45c3-4caa-8375-491290c1bb87",
+  "date": "2026-06-04",
+  "modified_at": "2026-06-04 16:26:44",
+  "time_bucket": "afternoon",
+  "top_stage": "development",
+  "stages": [
+    "development",
+    "design"
+  ],
+  "tracks": [
+    "system_infrastructure",
+    "business_development"
+  ],
+  "module_tags": [
+    "系统基建-需求与方案输入",
+    "系统管理-权限控制",
+    "系统管理-安全审计",
+    "标注工作台-标注执行",
+    "审核工作台-审核执行",
+    "AI审核-预审质检",
+    "低代码-模板设计器",
+    "种子数据-观测性",
+    "系统基建-版本控制"
+  ],
+  "key_topics": [
+    "权限",
+    "seed",
+    "预审",
+    "时间线",
+    "submission",
+    "reviewer"
+  ],
+  "tool_usage": [
+    "Grep",
+    "Glob",
+    "Read",
+    "Shell",
+    "Write",
+    "StrReplace",
+    "Delete",
+    "SemanticSearch"
+  ],
+  "models_used": [],
+  "selected_prompt_count": 3,
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "display_text": "当前已实现的部分\n后端（有基础能力）\n人工审核池的通过 / 驳回 / 打回已接入 DbReviewerWorkbenchService.applyHumanDecision：\n\n读取任务上的 review_workflow_json，用 ReviewWorkflowResolver 解析层级（默认只有 L1）。\n非终审通过：更新 current_review_level → 下一级，状态仍为 HUMAN_REVIEWING。\n终审通过：走状态机到 APPROVED。\n打回：回到 NEEDS_REVISION，并把审核层级重置为第一级。\n每次决策写入 review_records（含 review_level、review_stage_no、next_review_level、diff_json 等）。\n详情 API 也会返回 currentReviewLevel（见 ReviewerSubmissionDetail / 前端 reviewer-workbench-api.ts）。\n\n前端（单池工作台）\nReviewer 侧目前只有两个本地路由：\n\n页面\t路径\t作用\nAI 待审队列\n/reviewer/ai-queue\nAI 预审\n人工审核池\n/reviewer/audit-pool\n人工审核工作台\n工作台支持：通过 / 驳回 / 打回修改、题目与标注展示、差异对比、时间线等。\n操作区只有三个按钮，没有「当前处于初审 / 复审 / 终审」的展示或分流。\n\n批量审核\n后端有 POST /api/v1/reviewer/audit-pool/batch 和批次查询接口，前端尚未接入。\n\n尚未实现 / 未产品化的部分（你关心的多级审核）\n对照需求文档里的「初审 / 复审 / 终审、审核结果列表」：\n\n能力\t状态\t说明\n初审 / 复审 / 终审视图\n❌ 未做\n没有按层级拆分的列表或 Tab，只有一个「人工审核池」\n按层级筛队列\n❌ 未做\nlistAuditPool 只筛 HUMAN_REVIEWING，不按 current_review_level\n按角色只能审某一级\n❌ 未做\n没有「初审员 / 复审员」权限与队列隔离\n工作台展示当前审核级\n❌ 未做\nAPI 有 currentReviewLevel，前端未映射、未展示\n多级审核历史\n△ 很弱\n左侧「历史」主要是上一轮打回意见，不是完整 review_records 时间线\n审核结果列表\n❌ 未做\n无独立「已审 / 全部审核记录」列表页（无对应菜单与路由）\n任务配置多级流程 UI\n△ 存疑\nSeed 里 review_workflow_json 是 { levels: [{ key, label, actions }] }，而 ReviewWorkflowResolver 期望的是 { levels: [\"L1\",\"L2\",\"L3\"] } 字符串数组，格式不一致时实际会退化成单级 L1\n演示数据多级\n❌ 实质上单级\n偏好对比 seed 只配了 L1 初审 一级\n因此：不是「完全没有多级逻辑」，而是 「多级只在后端决策里能推进一级，前端和运营侧几乎按单级人工池在用」。\n\n和状态机的关系\n主状态仍是 HUMAN_REVIEWING 一个态，层级靠 current_review_level / next_review_level 区分（与设计文档一致）。\n这在模型上合理，但缺少：\n\n队列按层级过滤\nUI 上「本轮是第几审」\n不同审核员看不同池\n所以体验上仍像「单级审核台」。\n\n结论（直接回答你的问题）\n多级审核（初审 / 复审 / 终审）\n\n后端：有推进逻辑 + 表结构，但默认/种子多为单级，且 workflow JSON 解析格式可能让配置的多级失效。\n前端：未实现分级视图、分级筛选、分级展示与分级权限。\n审核工作台\n\n已实现：单池审核工作台（人工审核池 + AI 队列）、打回 / 通过 / 驳回。\n未实现：分级工作台、批量审核 UI、完整审核记录浏览。\n审核结果列表\n\n尚未实现独立页面；review_records 有落库，但没有 Reviewer 端的「审核结果列表」产品页。\n整体更接近 Stage 04 规划里的 「人工审核 MVP（单池 + 三动作）」，.cursor/plans/labelhub_数据标注平台 里写的 「复审 / 终审视图、审核结果列表」仍属待做项。\n\n若你打算补这一块，比较合理的顺序是：\n\n统一 review_workflow_json 格式（配置 + 解析 + 任务发布）。\n审核池 API 增加 reviewLevel 筛选；详情/列表展示「当前级 / 下一级」。\n前端：层级 Tab 或筛选 + 展示 currentReviewLevel。\n审核结果列表（查 review_records）+ 工作台完整审核历史。\n需要的话我可以按你们期望的层级模型（L1/L2/L3 或 初审/复审/终审）列一版具体接口与页面改造清单。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n当前已实现的部分\n后端（有基础能力）\n人工审核池的通过 / 驳回 / 打回已接入 DbReviewerWorkbenchService.applyHumanDecision：\n\n读取任务上的 review_workflow_json，用 ReviewWorkflowResolver 解析层级（默认只有 L1）。\n非终审通过：更新 …",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "display_text": "你这份现状梳理很清晰。我先对照代码核对关键点，再给出一份可落地的接口与页面改造清单。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "你这份现状梳理很清晰。我先对照代码核对关键点，再给出一份可落地的接口与页面改造清单。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewWorkflowResolver.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/ReviewerWorkbenchController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-timeline.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-audit-pool.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 6,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "display_text": "你的现状判断与代码一致，下面是一份可直接排期的**接口与页面改造清单**（按依赖顺序）。\n\n## 核对结论（与代码一致）\n\n| 点 | 代码事实 |\n|---|---|\n| `review_workflow_json` 格式分裂 | `ReviewWorkflowResolver` 只认 `levels: [\"L1\",\"L2\"]`；seed 是 `levels: [{ key, label, actions }]`，解析失败会退回默认 `[\"L1\"]` |\n| 队列不按级 | `listAuditPool` 仅 `HUMAN_REVIEWING` + scope，无 `current_review_level` 条件 |\n| 列表无层级字段 | `ReviewerQueueRow` 无 `currentReviewLevel`，只有详情 `ReviewerSubmissionDetail` 有 |\n| 前端未用层级 | `mapReviewerDetailToManualReviewDetail` 未映射 `currentReviewLevel` |\n| 批量写死 L1 | `submitBatchDecision` 里 `op.setReviewLevel(\"L1\")` |\n| 时间线偏弱 | `timeline` 来自 `submissionTimelineAssembler` 生命周期，不是完整 `review_records` |\n\n多级**决策推进**在 `applyHumanDecision` 里已具备；产品化缺口主要在**配置格式、队列筛选、展示与权限**。\n\n---\n\n## 推荐实施顺序与改造清单\n\n### Phase 0：统一 `review_workflow_json`（阻塞项）\n\n**目标**：配置、解析、发布、seed 同一套契约。\n\n**建议 canonical 格式**（兼顾 UI 与解析）：\n\n```json\n{\n  \"levels\": [\n    { \"key\": \"L1\", \"label\": \"初审\", \"actions\": [\"approve\", \"reject\", \"return\"] },\n    { \"key\": \"L2\", \"label\": \"复审\", \"actions\": [\"approve\", \"reject\", \"return\"] },\n    { \"key\": \"L3\", \"label\": \"终审\", \"actions\": [\"approve\", \"reject\", \"return\"] }\n  ]\n}\n```\n\n**后端**\n\n- 扩展 `ReviewWorkflowResolver`：对象数组时取 `key`；仍兼容纯字符串数组 `[\"L1\",\"L2\"]`。\n- 新增 `ReviewWorkflowDefinition`（或 DTO）：`parseDefinition()` → `keys`、`label(key)`、`actions(key)`、`isFinal(key)`。\n- 决策前校验：`action` 是否在该级 `actions` 内（可选，防配置错误）。\n- 迁移/修复：seed、`preference_compare_full_flow_seed.sql`、`generate_preference_compare_seed.py` 改为 L1/L2/L3（至少一条演示任务三级）。\n- 任务发布/模板保存：校验 workflow JSON；运营端配置 UI 可放 Phase 5。\n\n**验收**：三级任务上，连续两次「通过」后 `current_review_level` 依次为 L1→L2→L3，第三次才 `APPROVED`。\n\n---\n\n### Phase 1：审核池 API 支持「按级看队列」\n\n**接口变更**\n\n| 方法 | 路径 | 新增参数 | 行为 |\n|------|------|----------|------|\n| GET | `/api/v1/reviewer/audit-pool` | `reviewLevel`（可选，如 `L2`） | `eq(current_review_level, ?)`；空则全部待审级 |\n| GET | `/api/v1/reviewer/audit-pool/groups` | 同上（可选） | 分组统计可按级过滤 |\n| GET | `/api/v1/reviewer/audit-pool/{id}` | — | 响应增加 `reviewWorkflow`（levels 元数据）、`nextReviewLevel`、`reviewStageNo`、`reviewStageLabel` |\n| GET | **新** `/api/v1/reviewer/audit-pool/meta` 或任务详情附带 | — | 返回当前用户可见 levels + 各 level 待审 count（供 Tab 角标） |\n\n**DTO**\n\n- `ReviewerQueueRow` 增加：`currentReviewLevel`、`reviewStageLabel`（或由前端用 workflow 映射）。\n- `ReviewerSubmissionDetail` 增加：`nextReviewLevel`、`reviewWorkflowLevels`（`{ key, label, stageNo, isFinal }[]`）。\n\n**服务层**\n\n- `listAuditPool` / `listAuditPoolGroups`：`wrapper.eq(SubmissionEntity::getCurrentReviewLevel, reviewLevel)`（有参时）。\n- 首次进入池、级为空：与 `applyHumanDecision` 一致，用 `firstLevel(workflow)` 初始化（或列表查询时 lazy init，二选一，建议只在决策时 init，列表只读展示 `null`→显示「待初始化」）。\n\n**验收**：同一任务下 L1/L2 待审条数分离；筛 `reviewLevel=L2` 只看到复审队列。\n\n---\n\n### Phase 2：前端人工池 — 分级 Tab + 工作台展示\n\n**路由**（可保持单页，用 query 表达级）\n\n- 继续 `/reviewer/audit-pool`；增加 `?reviewLevel=L1`（或 store：`reviewer-audit-pool-session` 扩展 `reviewLevel`）。\n\n**页面 / 组件**\n\n| 位置 | 改造 |\n|------|------|\n| `AuditPool*QueuePanel` | 顶部 Tab：初审 / 复审 / 终审（来自 `meta` 或任务 workflow）；切换时带 `reviewLevel` 重拉列表 |\n| 队列行 | 展示「当前级」徽章（`currentReviewLevel` + label） |\n| `ContentHeaderPanelBody` / 操作区 | 展示「本轮：复审（2/3）」；终审通过文案区分「通过并结案」vs「通过并进入复审」 |\n| `map-reviewer-audit-pool.ts` | 映射 `currentReviewLevel`、`nextReviewLevel`、`workflowLevels` → `ManualReviewDetail` |\n| `types.ts` | `ManualReviewRow/Detail` 增加 review 级字段 |\n\n**类型示例**\n\n```ts\nreviewStage: { key: string; label: string; stageNo: number; totalStages: number; isFinal: boolean };\nnextReviewLevel?: string | null;\n```\n\n**验收**：审核员打开详情能看到当前级；非终审通过后面板仍 `HUMAN_REVIEWING` 且级变为下一级。\n\n---\n\n### Phase 3：权限与队列隔离（可选但产品常要）\n\n**模型**\n\n- 权限码示例：`business:reviewer:level:L1` / `L2` / `L3`，或角色绑定 `review_levels: [\"L1\",\"L2\"]`。\n- `listAuditPool`：无参 `reviewLevel` 时，自动 `IN (用户可审 levels)`；显式传了无权限的 level → 403。\n\n**前端**\n\n- Tab 只显示有权限的级；默认打开第一个可审级。\n\n**验收**：初审员看不到 L2/L3 队列（或条数为 0 且不可切换）。\n\n---\n\n### Phase 4：完整审核历史 + 审核结果列表\n\n**4a 工作台内历史（增强现有 Timeline）**\n\n| 方案 | 说明 |\n|------|------|\n| A（推荐） | 新 API `GET .../submissions/{id}/review-records` 返回 `review_records` 列表（级、动作、意见、操作人、时间、是否终审） |\n| B | 扩展 `submissionTimelineAssembler`，合并 `review_records` 节点 |\n\n前端：`AuditTimeline` 区分「生命周期」与「人工审核记录」两段，或统一时间线但 `tone`/`label` 标明 L1/L2。\n\n**4b 审核结果列表页（新产品页）**\n\n| 项 | 设计 |\n|----|------|\n| 路由 | `/reviewer/review-results`（菜单：审核结果） |\n| API | `GET /api/v1/reviewer/review-records?page&keyword&taskId&reviewLevel&action&from&to` |\n| 列 | 提交编号、任务、标注员、审核级、动作、审核人、时间、意见摘要 |\n| 行点击 | 跳转 audit-pool 详情（只读）或抽屉只读工作台 |\n\n**索引**：`review_records(submission_id, decided_at)`、`(task_id, review_level, decided_at)`（按查询习惯加）。\n\n**验收**：一条经历 L1 通过 → L2 驳回的提交，时间线 ≥2 条人工记录；结果列表可筛「复审 + 驳回」。\n\n---\n\n### Phase 5：批量审核 UI + 决策加固\n\n**后端**\n\n- `ReviewerBatchDecisionCommand` 增加 `reviewLevel`（或与每条 submission 校验 `currentReviewLevel` 一致）。\n- 批量 worker 调用 `applyHumanDecision` 前校验级；`ReviewBatchOperationEntity.reviewLevel` 用真实级。\n\n**前端**\n\n- 列表多选 + 批量通过/打回/驳回（必填意见）；轮询 `GET /batch-operations/{batchKey}`。\n- 仅在同 `reviewLevel` 下允许多选（或自动按当前 Tab 级过滤）。\n\n---\n\n### Phase 6：运营配置与演示数据\n\n- 任务/模板编辑：`review_workflow_json` 可视化（增删级、label、actions）。\n- Seed：至少 1 个三级 workflow + 若干条分布在 L1/L2 的 `HUMAN_REVIEWING` 提交。\n\n---\n\n## 层级命名建议\n\n| 存储 key | 展示 label | 说明 |\n|----------|------------|------|\n| `L1` | 初审 | 与现有 `stageNo`、权限码一致 |\n| `L2` | 复审 | |\n| `L3` | 终审 | `isFinalLevel` 为 true |\n\n前端统一用 **API 返回的 `label`**，避免硬编码「初审」；key 仅用于筛选与权限。\n\n---\n\n## 与现有改动的衔接（git 里已在动）\n\n你们已在做的 audit-pool **分组浏览 / scope / 队列树** 与 Phase 1–2 正交：在 `listAuditPool` 加 `reviewLevel` 后，把该参数贯穿 `audit-pool-scope.ts`、`reviewer-audit-pool-session`、各 `AuditPool*Panel` 即可，不必另开三个路由。\n\n---\n\n## 建议首期 MVP 切片（2–3 个 PR）\n\n1. **PR1**：`ReviewWorkflowResolver` + seed 格式 + 详情/workflow 字段（无 UI Tab，仅详情展示当前级）。\n2. **PR2**：`listAuditPool(reviewLevel)` + 队列行字段 + 前端 Tab/徽章。\n3. **PR3**：`review-records` 列表 API + 工作台时间线 + `/reviewer/review-results` 页。\n\n权限、批量、运营配置可跟 PR4+。\n\n---\n\n如果你希望下一步**直接开工**，可以说一下优先级（例如「先 PR1+PR2，权限暂缓」）以及层级是固定 L1/L2/L3 还是任务可配置级数；我可以按该切片在仓库里改第一版代码。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "你的现状判断与代码一致，下面是一份可直接排期的**接口与页面改造清单**（按依赖顺序）。\n\n## 核对结论（与代码一致）\n\n| 点 | 代码事实 |\n|---|---|\n| `review_workflow_json` 格式分裂 | `ReviewWorkflowResolver` 只认 `levels: [\"L1\",\"L2\"]`；seed 是 `leve…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 8,
+      "role": "user",
+      "display_text": "创建一个 审核分支 的分支 然后计划实现。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n创建一个 审核分支 的分支 然后计划实现\n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "rewritten"
+    },
+    {
+      "order": 9,
+      "role": "assistant",
+      "display_text": "正在创建审核功能分支并起草分阶段实现计划。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在创建审核功能分支并起草分阶段实现计划。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/skills/labelhub-development-standards/SKILL.md",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 10,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/00_labelhub_roadmap.plan.md",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 11,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/00_labelhub_roadmap.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 12,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/04_labelhub_business_scenarios.plan.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/撤回与申诉状态机_96723b5c.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 13,
+      "role": "assistant",
+      "display_text": "正在创建功能分支并编写分阶段实施计划文档。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在创建功能分支并编写分阶段实施计划文档。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 14,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 15,
+      "role": "assistant",
+      "display_text": "已完成两件事：\n\n## 1. Git 分支\n\n| 项 | 值 |\n|----|-----|\n| **分支名** | `feature/reviewer-multi-level-audit` |\n| **基于** | `explore/base`（当前工作区干净） |\n| **当前分支** | 已切换到此分支 |\n\n## 2. 实施计划\n\n计划文件：`.cursor/plans/多级人工审核_审核分支.plan.md`\n\n按 **P0 → P7** 拆分，与之前讨论的清单对齐：\n\n| 阶段 | 内容 | 优先级 |\n|------|------|--------|\n| **P0** | 统一 `review_workflow_json` 解析 + seed 三级演示 + 单测 | 必须先做 |\n| **P1** | `audit-pool` 按 `reviewLevel` 筛选 + DTO/meta API | 核心 |\n| **P2** | 前端 Tab / 徽章 / 操作区展示当前级 | 核心 |\n| **P3** | `review_records` API + 工作台时间线 | 高 |\n| **P4** | `/reviewer/review-results` 审核结果列表页 | 高 |\n| **P5** | 批量审核（修 L1 写死 + 前端接入） | 中 |\n| **P6** | 按级权限隔离（可选） | 低 |\n| **P7** | Owner workflow 配置 UI（可选） | 低 |\n\n建议 PR 切片：**PR-1（P0+P1）→ PR-2（P1 列表+P2）→ PR-3（P3）→ PR-4（P4）→ PR-5（P5）**。\n\n计划中写明了：不改 `HUMAN_REVIEWING` 状态机主图、canonical JSON 格式、现有代码锚点与验收标准。\n\n---\n\n计划文件目前**未提交**。若要把它作为分支起点，可执行：\n\n```bash\ngit add .cursor/plans/多级人工审核_审核分支.plan.md\ngit commit -m \"docs: add multi-level human review implementation plan\"\n```\n\n需要的话我可以从 **P0（ReviewWorkflowResolver + seed）** 开始直接写代码。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已完成两件事：\n\n## 1. Git 分支\n\n| 项 | 值 |\n|----|-----|\n| **分支名** | `feature/reviewer-multi-level-audit` |\n| **基于** | `explore/base`（当前工作区干净） |\n| **当前分支** | 已切换到此分支 |\n\n## 2. 实施计划\n\n计划文件：`.cu…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 16,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "ok 状态，无异常现象，无需记录问题。",
+      "text_snippet": "<user_query>\nok\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 17,
+      "role": "assistant",
+      "display_text": "开始实现 P0：统一 workflow 解析并更新 seed 与单测。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "开始实现 P0：统一 workflow 解析并更新 seed 与单测。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewWorkflowResolver.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 18,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 19,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/business/reward/RewardRuleAmountSupportTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 20,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 21,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 22,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewWorkflowLevel.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewWorkflowResolver.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/business/review/support/ReviewWorkflowResolverTest.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 23,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 24,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 25,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-label-hub/agent-tools/2867605d-051b-4443-95dd-d4f5259b980a.txt"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 26,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 27,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 28,
+      "role": "assistant",
+      "display_text": "**P0 已完成**（分支 `feature/reviewer-multi-level-audit`）\n\n### 后端\n- 新增 `ReviewWorkflowLevel`，扩展 `ReviewWorkflowResolver`：\n  - 支持 `levels: [{ key, label, actions }]` 与 `levels: [\"L1\",\"L2\"]`\n  - 提供 `parseDefinition`、`labelFor`、`allowsAction`\n- `applyHumanDecision`：决策前校验当前级是否允许该 `action`\n- 单测：`ReviewWorkflowResolverTest`（5 个用例，已通过）\n\n### 数据\n- `generate_preference_compare_seed.py`：常量 `THREE_LEVEL_REVIEW_WORKFLOW`（初审 / 复审 / 终审）\n- `preference_compare_full_flow_seed.sql`：模板与任务 workflow 同步为三级\n\n### 计划\n- `.cursor/plans/多级人工审核_审核分支.plan.md` 中 **P0** 已标为 `completed`\n\n---\n\n**效果**：演示任务的 seed 对象格式 workflow 不再退化成单级 L1；三级任务上连续「通过」会按 L1→L2→L3 推进，第三次才结案。\n\n下一步是 **P1**（`audit-pool` 的 `reviewLevel` 筛选 + DTO/meta API）。需要的话我直接继续做 P1。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**P0 已完成**（分支 `feature/reviewer-multi-level-audit`）\n\n### 后端\n- 新增 `ReviewWorkflowLevel`，扩展 `ReviewWorkflowResolver`：\n - 支持 `levels: [{ key, label, actions }]` 与 `levels: [\"L1\",\"L2\"…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 29,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "在指令执行过程中，未检测到明确异常，系统状态正常。",
+      "text_snippet": "<user_query>\nok\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 30,
+      "role": "assistant",
+      "display_text": "开始实现 P1：为审核池 API 增加按级筛选与层级元数据。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "开始实现 P1：为审核池 API 增加按级筛选与层级元数据。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/ReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 31,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 32,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/SubmissionEntity.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/api/reviewer-workbench-api.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 33,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/api/reviewer-workbench-api.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 34,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/api/reviewer-workbench-api.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewWorkflowLevel.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 35,
+      "role": "assistant",
+      "display_text": "正在实现 P1 的后端 API 与前端类型定义。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在实现 P1 的后端 API 与前端类型定义。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/ReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 36,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 37,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 38,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/ReviewerWorkbenchController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 39,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 40,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/TaskEntity.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 41,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/api/reviewer-workbench-api.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 42,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 43,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 44,
+      "role": "assistant",
+      "display_text": "**P1 已完成**（后端编译通过）\n\n### 新增 API\n\n| 方法 | 路径 | 说明 |\n|------|------|------|\n| GET | `/api/v1/reviewer/audit-pool/meta?taskId=` | 各级待审数量（`levels[].pendingCount`） |\n| GET | `/api/v1/reviewer/audit-pool?reviewLevel=L2&...` | 按当前审核级筛选队列 |\n| GET | `/api/v1/reviewer/audit-pool/groups?reviewLevel=...` | 分组统计同样按级过滤 |\n\n### DTO 扩展\n\n- **队列行** `ReviewerQueueRow`：`currentReviewLevel`、`reviewStageLabel`\n- **详情** `ReviewerSubmissionDetail`：`nextReviewLevel`、`reviewStageNo`、`reviewStageLabel`、`isFinalReviewLevel`、`reviewWorkflowLevels[]`\n- **元数据** `AuditPoolMetaSummary` / `ReviewWorkflowLevelDto`\n\n### 筛选规则\n\n- `reviewLevel=L1` 时包含 `current_review_level` 为空（尚未初始化、视为初审）\n- 单任务 scope 时，「第一级」以该任务 `review_workflow_json` 为准\n\n### 其他修复\n\n- 人工池列表 `queueStatus` 改用 `mapAuditQueueStatus`（不再误用 AI 队列映射）\n\n### 前端（仅类型/API 客户端，无 UI）\n\n- `reviewer-workbench-api.ts` 已对齐新字段，并增加 `fetchReviewerAuditPoolMeta`\n\n---\n\n**P2** 将在审核池加 Tab/徽章、操作区展示「本轮第几审」。需要的话我继续做 P2。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**P1 已完成**（后端编译通过）\n\n### 新增 API\n\n| 方法 | 路径 | 说明 |\n|------|------|------|\n| GET | `/api/v1/reviewer/audit-pool/meta?taskId=` | 各级待审数量（`levels[].pendingCount`） |\n| GET | `/api/v1/rev…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 45,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "ok 指令执行成功，无异常。",
+      "text_snippet": "<user_query>\nok\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 46,
+      "role": "assistant",
+      "display_text": "开始实现 P2：人工审核池分级 Tab、徽章与操作区展示。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "开始实现 P2：人工审核池分级 Tab、徽章与操作区展示。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/stores/reviewer-audit-pool-session.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-audit-pool.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/audit-pool-scope.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 47,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolFlatQueuePanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/ContentHeaderPanelBody.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 48,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewAuditPoolPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 49,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/ReviewPanels.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/audit-pool-request-cache.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 50,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/ReviewWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolGroupedQueuePanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/ReviewActionsPanelBody.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/ReviewHeaderPanelBody.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 51,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/slots/review/QueueSlotContent.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewAuditPoolPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolGroupedQueuePanel.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 52,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/QueueListPanelBody.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 53,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolQueueBrowseDrawer.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/ReviewWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 54,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 55,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 56,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/shared/StatusFilterTabs.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 57,
+      "role": "assistant",
+      "display_text": "正在实现 P2 的前端改动。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在实现 P2 的前端改动。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/review-stage.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolReviewLevelTabs.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/audit-pool-scope.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-audit-pool.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 58,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/stores/reviewer-audit-pool-session.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 59,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolFlatQueuePanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/ContentHeaderPanelBody.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/ReviewHeaderPanelBody.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/ReviewActionsPanelBody.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/QueueListPanelBody.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 60,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/ReviewWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 61,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/ReviewWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 62,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/ReviewWorkbench.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 63,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewAuditPoolPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 64,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 65,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/ReviewPanels.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 66,
+      "role": "assistant",
+      "display_text": "**P2 已完成**（前端分级 UI）\n\n### 队列侧\n- 新增 `AuditPoolReviewLevelTabs`：多级时显示「初审 / 复审 / 终审」Tab，带待审角标\n- `AuditPoolFlatQueuePanel`：队列行徽章优先展示 `reviewStageLabel`（如「初审」）\n- URL 支持 `?reviewLevel=L2`，与 session 同步\n\n### Session / API\n- `reviewer-audit-pool-session`：维护 `reviewLevel`、`levelMeta`，请求队列/分组时带上 `reviewLevel`\n- 进入页面或切换 scope 时调用 `fetchReviewerAuditPoolMeta`（单任务 scope 时带 `taskId`）\n- 审核决策后刷新 meta 与队列\n\n### 工作台展示\n- **题目头**：`本轮：复审（2/3）` 徽章\n- **操作区标题**：附带当前审核级说明\n- **通过按钮**：终审为「通过并结案」，非终审为「通过并进入下一审」\n- Toast 文案与按钮一致\n\n### 类型与映射\n- `ManualReviewRow/Detail`、`map-reviewer-audit-pool.ts`、`review-stage.ts` 已贯通后端 P1 字段\n\n---\n\n**使用方式**：在任务视图选好范围后，左侧会出现审核级别 Tab；切换级别会按 `current_review_level` 拉取对应队列。\n\n下一步 **P3**：`review_records` API + 工作台完整审核时间线。需要的话继续说「继续 P3」。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**P2 已完成**（前端分级 UI）\n\n### 队列侧\n- 新增 `AuditPoolReviewLevelTabs`：多级时显示「初审 / 复审 / 终审」Tab，带待审角标\n- `AuditPoolFlatQueuePanel`：队列行徽章优先展示 `reviewStageLabel`（如「初审」）\n- URL 支持 `?reviewLevel=L2…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 67,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "ok 指令执行成功，无异常。",
+      "text_snippet": "<user_query>\nok\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 68,
+      "role": "assistant",
+      "display_text": "开始实现 P3：审核记录 API 与工作台完整审核时间线。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "开始实现 P3：审核记录 API 与工作台完整审核时间线。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/shared/AuditTimeline.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/ReviewRecordEntity.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 69,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 70,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-timeline.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/HistoryListPanelBody.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 71,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 72,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/display/assembler/SubmissionTimelineAssembler.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 73,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 74,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/ReviewWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-audit-pool.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 75,
+      "role": "assistant",
+      "display_text": "正在实现后端 API 与前端时间线合并逻辑。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在实现后端 API 与前端时间线合并逻辑。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/ReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/ReviewerWorkbenchController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 76,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/ReviewerWorkbenchController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-review-records.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/api/reviewer-workbench-api.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-audit-pool.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 77,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/stores/reviewer-audit-pool-session.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/ReviewWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-review-records.test.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 78,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 79,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/audit-pool-scope.test.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 80,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 81,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Delete"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-review-records.test.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 82,
+      "role": "assistant",
+      "display_text": "**P3 已完成**\n\n### 后端 API\n- **`GET /api/v1/reviewer/submissions/{submissionId}/review-records`**\n- 返回 `ReviewerReviewRecordRow`：审核级、级标签、阶段号、动作、状态流转、意见、审核人、时间、是否终审、下一级\n- 按 `decided_at` 升序；带数据权限校验\n\n### 前端\n- **`fetchReviewerSubmissionReviewRecords`** + 类型 `ReviewerReviewRecordResponse`\n- **`map-reviewer-review-records.ts`**：`mergeReviewerTimelines` 将生命周期时间线与 `review_records` 按时间合并\n- 人工审核节点展示为 **`初审 · 通过`** 等，stage 为「人工审核」，并按动作着色（通过/驳回/打回）\n- **`ensureDetail`** 并行拉取详情与审核记录\n- **历史侧栏**：优先使用全部 `reviewHistoryComments`（含级别与动作），不再只有「上一轮审核」一条\n\n### 展示位置\n- 标注区 **时间线** widget（`content-annotate-timeline`）\n- **历史** 面板列表\n\n---\n\n当前分支进度：**P0–P3 已完成**；待做 **P4**（审核结果列表页）、**P5**（批量审核）等。\n\n需要的话可以继续做 **P4**。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**P3 已完成**\n\n### 后端 API\n- **`GET /api/v1/reviewer/submissions/{submissionId}/review-records`**\n- 返回 `ReviewerReviewRecordRow`：审核级、级标签、阶段号、动作、状态流转、意见、审核人、时间、是否终审、下一级\n- 按 `decided_at…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 83,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "该指令要求继续执行，但未提供具体上下文或异常现象，无法生成有效摘要。",
+      "text_snippet": "<user_query>\n继续\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 84,
+      "role": "assistant",
+      "display_text": "继续实现 P4：审核结果列表页与分页查询 API。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "继续实现 P4：审核结果列表页与分页查询 API。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "SemanticSearch"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 85,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/index.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 86,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/datapermission/DataScopeApplier.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 87,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/system/SystemResourcePage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 88,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/app/layout/AppPageContainer.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 89,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/dashboard/DashboardPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 90,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-review-records.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 91,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 92,
+      "role": "assistant",
+      "display_text": "正在实现 P4：先放宽详情 API 以支持从结果列表查看已结案提交，并添加分页列表 API 与前端页面。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在实现 P4：先放宽详情 API 以支持从结果列表查看已结案提交，并添加分页列表 API 与前端页面。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/ReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/ReviewerWorkbenchController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 93,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-review-records.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewResultsPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/api/reviewer-workbench-api.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/index.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/lib/route-meta/local-routes.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/app/navigation/menu-config.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewAuditPoolPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/ReviewActionsPanelBody.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 94,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewResultsPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 95,
+      "role": "assistant",
+      "display_text": "**P4 已完成**\n\n### 后端\n- **`GET /api/v1/reviewer/review-records`**：分页查询人工审核记录（`APPROVE` / `REJECT` / `RETURN`）\n- 筛选：`keyword`、`taskId`、`reviewLevel`、`action`、`from`、`to`\n- 返回 `ReviewerReviewRecordListRow`（提交号、题目、任务、标注员、级别、动作、审核人、时间、意见等）\n- **`getAuditPoolDetail`**：不再限制为 `HUMAN_REVIEWING`，便于从结果列表打开已结案提交（只读）\n\n### 前端\n- 新页面 **`/reviewer/review-results`**（`ReviewResultsPage`）\n- 侧栏菜单：**审核工作台 → 审核结果**\n- 表格 + 筛选（关键词、任务 ID、级别、动作）+ 分页\n- 点击行跳转到 **`/reviewer/audit-pool/{submissionId}`** 查看详情\n- 已结案提交的操作按钮会自动禁用（`status !== pending`）\n\n### 其它修复\n- 从结果列表深链进入人工池时，即使队列为空也能用 URL 中的 `reviewId` 加载详情\n\n---\n\n**分支进度**：P0–P4 已完成；待做 **P5**（批量审核 UI）、**P6**（按级权限）、**P7**（Owner workflow 配置）。\n\n需要的话可以继续做 **P5（批量审核）**。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**P4 已完成**\n\n### 后端\n- **`GET /api/v1/reviewer/review-records`**：分页查询人工审核记录（`APPROVE` / `REJECT` / `RETURN`）\n- 筛选：`keyword`、`taskId`、`reviewLevel`、`action`、`from`、`to`\n- 返回 `Reviewe…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 96,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "前端页面持续加载，核心组件渲染被阻塞，导致用户无法正常交互。",
+      "text_snippet": "<user_query>\n继续\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 97,
+      "role": "assistant",
+      "display_text": "开始实现 P5：批量审核 API 按级校验与前端多选批量 UI。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "开始实现 P5：批量审核 API 按级校验与前端多选批量 UI。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 98,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/handler/BatchReviewTaskHandler.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolFlatQueuePanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/api/reviewer-workbench-api.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 99,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 100,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/shared/WorkbenchQueueList.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 101,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/components/workbench/shared/WorkbenchQueueList.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 102,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolBatchQueueFooter.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 103,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewAuditPoolPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 104,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewAuditPoolPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 105,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/api/reviewer-workbench-api.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/ReviewWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolFlatQueuePanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/panels/review/QueueListPanelBody.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/ReviewPanels.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewAuditPoolPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 106,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "MCP工具集不完整导致任务受阻，需在总结中记录未完成项及原因，禁止用浏览器自动化绕过限制。",
+      "text_snippet": "If the available MCP tools do not fully support what the user asked you to do, complete the work you can with the current tool set. In your work summary, include what you were una…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 107,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "该指令要求继续执行，未包含具体异常现象或影响对象，无法生成有效摘要。",
+      "text_snippet": "<user_query>\n继续\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 108,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewAuditPoolPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 109,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewAuditPoolPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 110,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/ReviewWorkbench.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 111,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 112,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 113,
+      "role": "assistant",
+      "display_text": "继续推进 P6（按审核级权限）。先查看现有权限与 audit-pool meta 的实现。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "继续推进 P6（按审核级权限）。先查看现有权限与 audit-pool meta 的实现。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md",
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 114,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 115,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolReviewLevelTabs.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 116,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/system/CurrentUserContext.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V7__labelhub_business_workbenches_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 117,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 118,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/auth/AuthenticatedUser.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/api/reviewer-workbench-api.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/stores/reviewer-audit-pool-session.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 119,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/stores/reviewer-audit-pool-session.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 120,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 121,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 122,
+      "role": "assistant",
+      "display_text": "正在实现 P6：按审核级权限隔离队列与操作。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在实现 P6：按审核级权限隔离队列与操作。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewerReviewLevelAccess.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V37__labelhub_reviewer_level_permissions.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 123,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V37__labelhub_reviewer_level_permissions.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 124,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 125,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/business/review/support/ReviewerReviewLevelAccessTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 126,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 127,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 128,
+      "role": "assistant",
+      "display_text": "已继续完成 **P6：按审核级权限**，摘要如下。\n\n## 实现内容\n\n### 后端\n- 新增 `ReviewerReviewLevelAccess`：解析 `business:reviewer:level:L1|L2|L3`\n- **兼容策略**：仅有 `business:reviewer:workbench`、无级别权限时 → 仍可看/审所有级；`system:admin` 不受限\n- **有级别权限时**：\n  - `audit-pool/meta` 只返回可访问级别的 `pendingCount`（前端 Tab 自动对齐）\n  - `listAuditPool` / `listAuditPoolGroups`：未传 `reviewLevel` 时按可审级别 `IN` 过滤；传了则校验权限\n  - 单条审核 / 批量审核：校验当前/提交的 `reviewLevel`\n- 迁移 `V37__labelhub_reviewer_level_permissions.sql`：新增 3 个权限点，默认 **Reviewer 角色(2004) 仍授予 L1+L2+L3**（与现网行为一致）\n\n### 测试\n- `ReviewerReviewLevelAccessTest` 已通过\n\n### 前端\n- 无需改代码：`loadLevelMeta` 已根据 meta 返回的 `levels` 重置 `reviewLevel`，无权限的 Tab 不会出现在列表中\n\n---\n\n## 计划进度\n\n| 阶段 | 状态 |\n|------|------|\n| P0–P5 | ✅ |\n| **P6 按级权限** | ✅ |\n| P7 Owner workflow 配置 UI | 待做（可选） |\n\n---\n\n## 建议验证\n\n1. 跑迁移后，用仅 `business:reviewer:level:L2` 的用户登录 → 审核池只应看到「复审」Tab 与 L2 队列  \n2. 普通 Reviewer（带 L1/L2/L3）行为应与改造前一致  \n\n若要接着做 **P7（Owner 任务/模板 workflow 配置 UI）**，可以说一下优先做任务编辑还是模板编辑。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已继续完成 **P6：按审核级权限**，摘要如下。\n\n## 实现内容\n\n### 后端\n- 新增 `ReviewerReviewLevelAccess`：解析 `business:reviewer:level:L1|L2|L3`\n- **兼容策略**：仅有 `business:reviewer:workbench`、无级别权限时 → 仍可看/审所有级；`sy…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 129,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "ok 状态，无异常。",
+      "text_snippet": "<user_query>\nok\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 130,
+      "role": "assistant",
+      "display_text": "开始实现 P7（Owner 任务/模板 `review_workflow_json` 配置 UI）。先查看现有任务/模板编辑相关代码。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "开始实现 P7（Owner 任务/模板 `review_workflow_json` 配置 UI）。先查看现有任务/模板编辑相关代码。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 131,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/owner",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 132,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 133,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "SemanticSearch"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 134,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/tasks.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 135,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 136,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/OwnerTemplateVersionController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/components/TemplateReviewConfigPanel.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 137,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 138,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 139,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 140,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 141,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/OwnerTemplateVersionController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 142,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 143,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/review-config-api.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 144,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 145,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewWorkflowResolver.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/review-config-api.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 146,
+      "role": "assistant",
+      "display_text": "实现 P7：后端校验与持久化、发布时同步到任务，并在模板审核配置面板加入 workflow 编辑器。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "实现 P7：后端校验与持久化、发布时同步到任务，并在模板审核配置面板加入 workflow 编辑器。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewWorkflowValidator.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/TaskService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 147,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewWorkflowValidator.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/TaskService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 148,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 149,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 150,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/OwnerTemplateVersionController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 151,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 152,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/OwnerTemplateVersionController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 153,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 154,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 155,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 156,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 157,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/review-workflow-types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/review-workflow-utils.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/components/ReviewWorkflowEditor.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 158,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/components/TemplateReviewConfigPanel.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 159,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/components/TemplateReviewConfigPanel.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 160,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/review-config-api.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/components/TemplateReviewConfigPanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/tasks.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 161,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/business/review/support/ReviewWorkflowValidatorTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/template-review-config/review-workflow-utils.test.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 162,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 163,
+      "role": "assistant",
+      "display_text": "**P7 已完成**，多级人工审核计划 **P0–P7 全部落地**。\n\n## P7 实现摘要\n\n### 后端\n- **`ReviewWorkflowValidator`**：校验级别连续（L1→L2→…）、展示名、操作集合（approve/reject/return），并序列化为 canonical JSON\n- **模板审核配置 API**：`TemplateReviewConfigDetail/SaveCommand` 增加 `reviewWorkflowLevels`；保存时写入 `template_versions.review_workflow_json`\n- **模板发布**：发布前校验 workflow\n- **任务发布**：若任务未单独配置 workflow，从当前模板版本同步到 `tasks.review_workflow_json`\n- **任务更新/详情**：`TaskUpdateCommand` 可覆盖 workflow；`TaskDetail` 返回 `reviewWorkflowLevels`\n- **Reviewer**：任务 workflow 为空时回退到当前模板版本配置\n\n### 前端\n- **`ReviewWorkflowEditor`**：在模板设计器「审核配置」中增删级别、编辑名称与操作\n- **任务详情**：低代码任务详情展示 `reviewWorkflowLevels`（JSON）\n\n### 使用路径\n1. Owner → 任务 → 模板设计器 → **审核配置** → 配置「人工审核流程」并保存  \n2. 发布模板版本 → 发布任务 → 审核员侧按 L1/L2/L3 Tab 与队列生效  \n\n---\n\n## 全分支状态\n\n| 阶段 | 内容 |\n|------|------|\n| P0–P5 | workflow、审核池、历史、结果列表、批量审核 |\n| P6 | 按级权限 `business:reviewer:level:L*` |\n| P7 | Owner workflow 配置 UI |\n\n后端已编译通过，相关单测通过。若要提交 git 或开 PR，直接说一声即可。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**P7 已完成**，多级人工审核计划 **P0–P7 全部落地**。\n\n## P7 实现摘要\n\n### 后端\n- **`ReviewWorkflowValidator`**：校验级别连续（L1→L2→…）、展示名、操作集合（approve/reject/return），并序列化为 canonical JSON\n- **模板审核配置 API**：`Temp…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 164,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "模块导入错误：/src/features/review/utils/map-reviewer-review-records.ts 未导出 formatApproveActionLabel，在 AuditPoolBatchQueueFooter.tsx:3:10 触发 SyntaxError。",
+      "text_snippet": "<user_query>\nUncaught SyntaxError: The requested module '/src/features/review/utils/map-reviewer-review-records.ts?t=1780558314616' does not provide an export named 'formatApprove…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "console_error",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 165,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolBatchQueueFooter.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/map-reviewer-review-records.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 166,
+      "role": "assistant",
+      "display_text": "导入路径写错了：`formatApproveActionLabel` 在 `review-stage.ts`，不在 `map-reviewer-review-records.ts`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "导入路径写错了：`formatApproveActionLabel` 在 `review-stage.ts`，不在 `map-reviewer-review-records.ts`。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolBatchQueueFooter.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 167,
+      "role": "assistant",
+      "display_text": "已修复。`AuditPoolBatchQueueFooter.tsx` 误从 `map-reviewer-review-records.ts` 导入 `formatApproveActionLabel`，该函数实际在 `review-stage.ts`（与 `ReviewActionsPanelBody` 一致）。刷新页面后应可正常加载。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已修复。`AuditPoolBatchQueueFooter.tsx` 误从 `map-reviewer-review-records.ts` 导入 `formatApproveActionLabel`，该函数实际在 `review-stage.ts`（与 `ReviewActionsPanelBody` 一致）。刷新页面后应可正常加载。\n\n[REDACT…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 168,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "RemoteSchemaProvider 未按预期改为注解方式，导致组件引用异常。",
+      "text_snippet": "<user_query>\nRemoteSchemaProvider 这个不是改成注解的方式了吗\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 169,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/RemoteSchemaProvider.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/provider/ReviewWorkflowRemoteSchemaProvider.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 170,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/schema/RemoteSchemaBeanRegistrar.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/schema/SchemaRemoteSchemaProvider.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 171,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 172,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/settings/TaskSettingsDocument.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/reward/PerApprovedRewardRuleConfig.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/schema/LhSchemaRoot.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/schema/LhSchemaField.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/schema/SchemaIntrospector.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 173,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/schema/LhSchemaComponent.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/lowcode/provider/ReviewWorkflowRemoteSchemaProviderTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/tasks.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 174,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/tasks.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/lowcode/schema/SchemaIntrospectorTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/schema/LhSchemaRootClasspathScanner.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 175,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 176,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/dimension-packs.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/form-schema/template-helper.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 177,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 178,
+      "role": "assistant",
+      "display_text": "对，`ReviewWorkflowRemoteSchemaProvider` 应改为 `@LhSchemaRoot` 注解扫描注册，与 `TaskSettingsDocument` 一致。正在迁移。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "对，`ReviewWorkflowRemoteSchemaProvider` 应改为 `@LhSchemaRoot` 注解扫描注册，与 `TaskSettingsDocument` 一致。正在迁移。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/schema/LhSchemaArray.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/schema/LhSchemaComponent.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/review/ReviewWorkflowSchemas.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/review/ReviewWorkflowLevelItem.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/review/ReviewWorkflowDocument.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 179,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Delete",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/schema/SchemaIntrospector.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/schema/LhSchemaRootClasspathScanner.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/provider/ReviewWorkflowRemoteSchemaProvider.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/lowcode/schema/ReviewWorkflowDocumentSchemaTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/lowcode/provider/ReviewWorkflowRemoteSchemaProviderTest.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 180,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 181,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/schema/SchemaIntrospector.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/lowcode/schema/ReviewWorkflowDocumentSchemaTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/RemoteSchemaProvider.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 182,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 183,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-label-hub/agent-tools/6f7d5d52-798d-4c65-8ce2-921a8ae85ad9.txt"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 184,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 185,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 186,
+      "role": "assistant",
+      "display_text": "是的，**`RemoteSchemaProvider` 接口仍保留**，但实现方式已统一为注解驱动，不再手写 `@Component` 实现类。\n\n## 机制说明\n\n| 层级 | 作用 |\n|------|------|\n| `@LhSchemaRoot` + `@LhSchemaField` 等 | 在 `host-core` 的 record 上声明 schema |\n| `RemoteSchemaBeanRegistrar` | 扫描并注册 `SchemaRemoteSchemaProvider` bean |\n| `RemoteSchemaProvider` | 运行时契约（namespace / key / formSchema） |\n\n与 `TaskSettingsDocument`、`PerApprovedRewardRuleConfig` 相同。\n\n## 本次改动\n\n已删除手写的 `ReviewWorkflowRemoteSchemaProvider`，改为：\n\n- `ReviewWorkflowDocument` — `@LhSchemaRoot(namespace = \"reviewWorkflow\", key = \"default\")`\n- `ReviewWorkflowLevelItem` — 数组项（展示名称 + 操作 checkboxGroup）\n- 新增 `@LhSchemaArray`、`LhSchemaComponent.ARRAY` / `CHECKBOX_GROUP`\n- `SchemaIntrospector` 支持数组字段生成\n- `LhSchemaRootClasspathScanner` 增加包 `com.labelhub.core.business.review`\n\n前端 `tasks.ts` 里的  \n`/api/v1/owner/remote-schemas/reviewWorkflow/default/form-schema`  \n无需修改，重启后端后会自动由注解 schema 提供。\n\n**请重启后端**（你当前在 debug 里的话重新跑一次）以加载新的 `SchemaRemoteSchemaProvider` bean。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "是的，**`RemoteSchemaProvider` 接口仍保留**，但实现方式已统一为注解驱动，不再手写 `@Component` 实现类。\n\n## 机制说明\n\n| 层级 | 作用 |\n|------|------|\n| `@LhSchemaRoot` + `@LhSchemaField` 等 | 在 `host-core` 的 record 上声明 …",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 187,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "新增功能列表未提供具体内容，无法提取功能描述或变更对象。",
+      "text_snippet": "<user_query>\n总结一下 新增了哪些功能\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 188,
+      "role": "assistant",
+      "display_text": "以下是本分支（`feature/reviewer-multi-level-audit`）**新增/补齐的功能**汇总，按模块说明。\n\n---\n\n## 一、多级人工审核核心（P0–P2）\n\n**后端**\n- 统一 `review_workflow_json` 解析：支持对象数组 `{ key, label, actions }` 与历史字符串数组 `[\"L1\",\"L2\"]`\n- 审核池 API 支持 `reviewLevel` 筛选；队列/详情 DTO 增加 `currentReviewLevel`、`reviewStageLabel`、`nextReviewLevel`、`reviewWorkflowLevels`、`isFinalReviewLevel` 等\n- `GET /api/v1/reviewer/audit-pool/meta`：按级别返回 `pendingCount`（供 Tab 角标）\n- 人工决策：非终审「通过」推进 `current_review_level`；终审「通过」结案；校验 action 是否属于当前级允许操作\n- Seed：三级演示 workflow（L1/L2/L3）\n\n**前端（Reviewer）**\n- 审核池 **级别 Tab**（初审/复审/终审），URL `?reviewLevel=` + session 持久化\n- 队列徽章、详情头、操作区展示当前级；通过按钮文案区分「通过并结案」/「通过并进入下一审」\n- 分组浏览、scope 与多级筛选贯通\n\n---\n\n## 二、审核历史与结果列表（P3–P4）\n\n**后端**\n- `GET /api/v1/reviewer/submissions/{id}/review-records`：完整 `review_records`\n- `GET /api/v1/reviewer/review-records`：分页列表（keyword / taskId / reviewLevel / action / 时间范围）\n\n**前端**\n- 工作台 **AuditTimeline** 合并 lifecycle + 人工审核记录\n- 新页面 **`/reviewer/review-results`**（审核结果列表 + 筛选）\n- 详情放宽为任意状态只读查看（已结案也可打开）\n\n---\n\n## 三、批量审核（P5）\n\n**后端**\n- 批量提交必填 `reviewLevel`；最多 100 条、状态与级别校验；`review_batch_operations.review_level` 不再写死 L1\n\n**前端**\n- 审核池队列 **多选** + 底部批量操作区（通过/驳回/退回 + 必填意见）\n- 提交 batch 后 **轮询 `batchKey`** 展示成功/失败条数\n\n---\n\n## 四、按审核级权限（P6）\n\n**后端**\n- 新权限：`business:reviewer:level:L1` | `L2` | `L3`（迁移 V37；默认 Reviewer 角色仍授予三级，兼容旧行为）\n- 仅有级别权限时：meta/队列/分组/单条/批量按可审级别过滤；无级别权限时仍视为「全部级别」（仅 `workbench` 即可）\n- `ReviewerReviewLevelAccess` 统一解析与校验\n\n**前端**\n- meta 只返回有权限的级别 → Tab 自动隐藏无权限级\n\n---\n\n## 五、Owner 配置审核流程（P7）\n\n**后端**\n- 模板审核配置保存/读取 **`reviewWorkflowLevels`** → 写入 `review_workflow_json`\n- `ReviewWorkflowValidator`：级别连续 L1…Ln、展示名、操作集合校验；模板发布前校验\n- 任务发布时从当前模板版本 **同步 workflow 到 task**；任务编辑可覆盖 workflow\n- Reviewer 侧：任务无 workflow 时 **回退到当前模板版本**\n\n**前端**\n- 模板设计器 **审核配置** 中的「人工审核流程」编辑器（增删级、名称、操作）\n- 任务低代码表单：**remoteSchema** 绑定 `reviewWorkflowJson`（`/owner/remote-schemas/reviewWorkflow/default/form-schema`）\n- 任务详情展示人工审核流程\n\n---\n\n## 六、Remote Schema 注解化（刚完成）\n\n- 删除手写 `ReviewWorkflowRemoteSchemaProvider`\n- 新增 **`ReviewWorkflowDocument`** + **`ReviewWorkflowLevelItem`**（`@LhSchemaRoot` / `@LhSchemaArray`）\n- `SchemaIntrospector` 支持 **ARRAY、checkboxGroup**；扫描包 `com.labelhub.core.business.review`\n- 与 `TaskSettingsDocument`、奖励规则等同一套注解注册机制\n\n---\n\n## 七、小修复\n\n- `AuditPoolBatchQueueFooter`：`formatApproveActionLabel` 改从 `review-stage.ts` 导入（修复运行时 export 错误）\n\n---\n\n## 架构边界（未改）\n\n- Submission 主状态仍为 **`HUMAN_REVIEWING`**，轮次靠 **`current_review_level`**\n- 未引入 `HUMAN_REVIEWING_L1/L2/L3` 多态状态机\n\n---\n\n## 建议自测路径\n\n1. preference_compare 三级 seed：连续通过 L1→L2→结案  \n2. 审核池切换 Tab、批量审核、结果列表筛选  \n3. Owner 模板审核配置保存 workflow → 发布任务 → Reviewer 侧 Tab/队列一致  \n4. 仅授予 `level:L2` 的用户只能看到复审 Tab/队列  \n\n如需按 **PR 切片** 或 **提交说明** 再整理一版，可以说一下用途（commit / PR description）。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "以下是本分支（`feature/reviewer-multi-level-audit`）**新增/补齐的功能**汇总，按模块说明。\n\n---\n\n## 一、多级人工审核核心（P0–P2）\n\n**后端**\n- 统一 `review_workflow_json` 解析：支持对象数组 `{ key, label, actions }` 与历史字符串数组 `[\"L1…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 189,
+      "role": "user",
+      "display_text": "架构边界（未改）\nSubmission 主状态仍为 HUMAN_REVIEWING，轮次靠 current_review_level\n未引入 HUMAN_REVIEWING_L1/L2/L3 多态状态机 实现 根据 配置流传 级别的状态机 动态状态机？ 可以实现吗",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n架构边界（未改）\nSubmission 主状态仍为 HUMAN_REVIEWING，轮次靠 current_review_level\n未引入 HUMAN_REVIEWING_L1/L2/L3 多态状态机 实现 根据 配置流传 级别的状态机 动态状态机？ 可以实现吗\n</user_query>",
+      "selected": false,
+      "quality_level": "high",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 190,
+      "role": "assistant",
+      "display_text": "先查看当前 Submission 状态机与审核流转的实现，再评估「按 workflow 配置动态生成级别状态」是否可行。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "先查看当前 Submission 状态机与审核流转的实现，再评估「按 workflow 配置动态生成级别状态」是否可行。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "SemanticSearch"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 191,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/statemachine/StateMachineEngine.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 192,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/statemachine"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 193,
+      "role": "assistant",
+      "display_text": "可以，但要想清楚：**「动态」指的是 workflow 配置驱动轮次，还是把每一级都变成独立 `SubmissionStatus`**。两者都能做，成本和收益差很多。\n\n---\n\n## 当前实现（本分支）\n\n本质是 **双层模型**，不是「没有状态机」：\n\n```mermaid\nstateDiagram-v2\n  [*] --> HUMAN_REVIEWING: 进入人工审核\n  HUMAN_REVIEWING --> HUMAN_REVIEWING: 非终审通过(只改 current_review_level)\n  HUMAN_REVIEWING --> APPROVED: 终审通过\n  HUMAN_REVIEWING --> REJECTED: 驳回\n  HUMAN_REVIEWING --> NEEDS_REVISION: 退回\n```\n\n- **宏观**：`SubmissionStatus` + `SubmissionStateMachineFactory`（固定枚举、固定边）\n- **微观**：`current_review_level` / `next_review_level` + `review_workflow_json`（任务可配 L1/L2/L3…）\n\n非终审「通过」时，代码**不调用** `APPROVE` 迁到 `APPROVED`，而是留在 `HUMAN_REVIEWING`，只更新级别字段（见 `DbReviewerWorkbenchService.applyHumanDecision`）。\n\n所以：**轮次流转已经是「按配置走的」**；只是没有把它画进 Submission 枚举状态机里。\n\n---\n\n## 你说的「动态状态机」——三种做法\n\n### 方案 A：枚举膨胀 `HUMAN_REVIEWING_L1/L2/L3`（不推荐）\n\n- 每增一级就要改 `SubmissionStatus`、迁移、字典、前端展示、历史数据\n- 任务 workflow 可配 1～5 级时，**无法**用固定枚举表达「每任务不同级数」\n- 和「任务级 `review_workflow_json`」目标冲突\n\n**结论**：只适合固定 2～3 级且全平台统一的场景，不适合 LabelHub 当前产品方向。\n\n---\n\n### 方案 B：复合状态 / 运行时拼装状态机（可行，改动大）\n\n把「状态」建模成 **(宏观状态, 当前审核级)**，例如：\n\n- `(HUMAN_REVIEWING, L1)` → `APPROVE` → `(HUMAN_REVIEWING, L2)` 或 `APPROVED`\n- 发布任务时根据 `review_workflow_json` **生成**该任务的转移表，塞进现有 `StateMachineEngine`（它本质是 `Map<状态, Map<事件, 下一状态>>`，可以运行时 build）\n\n需要补齐：\n\n| 能力 | 现状 |\n|------|------|\n| Guard（终审通过才到 APPROVED） | `StateMachineEngine` **无 guard**，要在 engine 或 service 层加 |\n| 按任务加载不同 machine | 全局单例 `createStandardMachine()` |\n| 队列/报表按「级」筛选 | 已有 `current_review_level`，若状态字符串变成 `HUMAN_REVIEWING:L2` 要统一口径 |\n| 历史/审计 | `review_records` 已记 level，状态机变更要和 record 一致 |\n\n**结论**：能实现，等于把今天写在 `applyHumanDecision` 里的分支 **搬进状态机定义**；业务语义不变，主要是架构统一与可观测性。\n\n---\n\n### 方案 C：层次状态机（HSM）——语义最贴，工程量最大\n\n- 父状态：`HUMAN_REVIEWING`\n- 子状态：`L1` → `L2` → `L3`（由 workflow 配置子状态列表）\n- 事件仍是 `APPROVE` / `REJECT` / `RETURN`，在子状态图上走边\n\n和方案 B 类似，但要改 core 的 `StateMachineEngine` 支持父子状态，或引入现成 HSM 库。\n\n---\n\n## 和「当前方案」的对比\n\n| 维度 | `HUMAN_REVIEWING` + `current_review_level`（现方案） | 每级独立状态 / 动态 SM |\n|------|------------------------------------------------------|-------------------------|\n| 任务可配 1～5 级 | ✅ 只改 JSON | ✅ 需运行时生成图 |\n| DB/索引/队列筛选 | ✅ 已有 `current_review_level` 索引 | 要统一状态字段或仍保留 level 列 |\n| 与现有 SM 兼容 | ✅ 不动主图 | 要扩展 engine 或双轨校验 |\n| `canTransition` 一眼看懂 | ⚠️ 级内推进在 service 里 | ✅ 全在状态机 |\n| 实现与迁移成本 | 低（已落地） | 中高 |\n\n---\n\n## 建议\n\n1. **产品语义上**：你们要的「按配置流传级别」——**已经实现**；不必为了「动态」再上 `HUMAN_REVIEWING_L1/L2/L3` 枚举。\n2. **若目标是架构统一**（所有转移都走 `canTransition`、审计图一致）：优先考虑 **方案 B**——在 `HUMAN_REVIEWING` 上增加 **带 guard 的 APPROVE**（`isFinalLevel(workflow, level)`），或 **按任务缓存 WorkflowStateMachine**；`current_review_level` 仍可保留，作为子状态持久化字段。\n3. **不建议** 方案 A，除非全平台永远固定三级且不再任务级配置。\n\n---\n\n## 若要做，最小演进路径（示意）\n\n1. `StateMachineEngine` 增加 `addGuardedTransition(from, event, guard, to)`，或 `HumanReviewTransitionPolicy` 接口  \n2. `SubmissionStateMachineService.transition` 传入 `taskId` / `workflowJson` / `currentReviewLevel`  \n3. `applyHumanDecision` 中非终审通过改为：`fire(HUMAN_REVIEWING, ADVANCE_REVIEW_LEVEL)` 或 `fire` + guard 的 `APPROVE`  \n4. 队列、meta、权限仍用 **`current_review_level`**，避免报表口径变化  \n\n---\n\n**一句话**：**能实现动态状态机**；更合理的是 **「宏观固定 + 子状态/级别由 workflow 驱动」**，而不是把每一级写进 `SubmissionStatus` 枚举。当前实现已经是后者的实用版；若要加强，应在 **guard + 运行时 workflow 图** 上演进，而不是改成 `HUMAN_REVIEWING_L1/L2/L3`。\n\n如果你希望往方案 B 落一版设计（接口 + 迁移步骤、是否保留 `current_review_level`），可以说明更在意 **canTransition 统一** 还是 **DB 状态可读性**，我可以按优先级写一版改造草案。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "可以，但要想清楚：**「动态」指的是 workflow 配置驱动轮次，还是把每一级都变成独立 `SubmissionStatus`**。两者都能做，成本和收益差很多。\n\n---\n\n## 当前实现（本分支）\n\n本质是 **双层模型**，不是「没有状态机」：\n\n```mermaid\nstateDiagram-v2\n [*] --> HUMAN_REVIEWIN…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 194,
+      "role": "user",
+      "display_text": "现在是支持了吗 多级流转？ 架构边界（未改）\nSubmission 主状态仍为 HUMAN_REVIEWING，轮次靠 current_review_level\n未引入 HUMAN_REVIEWING_L1/L2/L3 多态状态机 这个是啥意思 需要改吗",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n现在是支持了吗 多级流转？ 架构边界（未改）\nSubmission 主状态仍为 HUMAN_REVIEWING，轮次靠 current_review_level\n未引入 HUMAN_REVIEWING_L1/L2/L3 多态状态机 这个是啥意思 需要改吗\n</user_query>",
+      "selected": false,
+      "quality_level": "high",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 195,
+      "role": "assistant",
+      "display_text": "**是的，现在已经支持多级流转。** 那句「架构边界」是在说明**实现方式**，不是说功能没做。\n\n---\n\n## 现在支持什么？\n\n在任务配置了 `review_workflow_json`（例如 L1→L2→L3）时：\n\n| 操作 | 行为 |\n|------|------|\n| 非终审「通过」 | 仍为 `HUMAN_REVIEWING`，`current_review_level` 从 L1→L2→… |\n| 终审「通过」 | 走状态机 `APPROVE` → `APPROVED` |\n| 驳回 / 退回 | 走 `REJECT` / `RETURN_FOR_REVISION`，与单级相同 |\n| 审核池 | 按 Tab / `reviewLevel` 筛「当前在哪一级待审」 |\n| 历史 | `review_records` 按级别记录每一轮 |\n\n也就是说：**业务上的「初审 → 复审 → 终审」已经能跑**，不依赖 `HUMAN_REVIEWING_L1` 这种独立状态名。\n\n---\n\n## 「架构边界」是什么意思？\n\n可以分成两层理解：\n\n**1. 数据库 / 状态机里只有一个「人工审核中」**\n\n- `submissions.current_status` 在人工审核阶段一直是 **`HUMAN_REVIEWING`**\n- **第几审** 看另一列：**`current_review_level`**（如 `L1`、`L2`、`L3`）\n\n**2. 没有做成「每一级一个状态枚举」**\n\n- **没有** `HUMAN_REVIEWING_L1`、`HUMAN_REVIEWING_L2` 等 `SubmissionStatus`\n- 标准状态机图里也只有一条：`HUMAN_REVIEWING --APPROVE--> APPROVED`（终审才真正触发这条边）\n\n示意：\n\n```\n【状态机层】          DRAFT → … → HUMAN_REVIEWING → APPROVED / REJECTED / NEEDS_REVISION\n                              ↑___________________________|\n                              非终审通过：不迁出，只改 level（在业务代码里）\n\n【轮次层】            current_review_level: (空/L1) → L2 → L3\n                      由 review_workflow_json 配置决定有几级\n```\n\n所以「未改」指的是：**没有改 Submission 主状态枚举/迁移图**，而是用 **`current_review_level` + workflow 配置** 表达多级，这是**刻意的设计选择**，不是缺功能。\n\n---\n\n## 需要改吗？\n\n**一般不需要改**，除非你们有下面这类强需求：\n\n| 需求 | 现方案 | 是否要改 |\n|------|--------|----------|\n| 任务可配 1～5 级人工审 | ✅ | 否 |\n| 按级筛队列、权限、批量 | ✅ | 否 |\n| 审核历史按级追溯 | ✅ | 否 |\n| 报表/监控要 `current_status = HUMAN_REVIEWING_L2` | ❌ 用 level 字段或 join | 看报表，多数用 `current_review_level` 即可 |\n| 所有转移必须 `canTransition()` 统一、禁止 service 里改 level | 部分在 `applyHumanDecision` | 可选演进（guard / 子状态机），非必须 |\n\n**建议**：继续用现模型即可；和计划里「不改动 Submission 状态机主图」一致，也利于兼容旧数据和已有 AI 审、申诉等边。\n\n只有当你明确要求「状态字段本身就要体现 L2」或「全平台强制走动态状态机引擎」时，再考虑上一轮说的 guard / 运行时 workflow 图改造——那是**架构统一**，不是**补多级能力**。\n\n---\n\n**一句话**：多级流转**已支持**；边界句意思是**用 `HUMAN_REVIEWING` + `current_review_level` 实现多级，而不是给每一级单独建状态枚举**——这是实现策略，**不是缺陷，通常也不用改**。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**是的，现在已经支持多级流转。** 那句「架构边界」是在说明**实现方式**，不是说功能没做。\n\n---\n\n## 现在支持什么？\n\n在任务配置了 `review_workflow_json`（例如 L1→L2→L3）时：\n\n| 操作 | 行为 |\n|------|------|\n| 非终审「通过」 | 仍为 `HUMAN_REVIEWING`，`curr…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 196,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "审核流程中缺少对层级区分的明确机制，导致无法判断当前审核属于哪一级别。",
+      "text_snippet": "<user_query>\n那审核 如何区分 哪一级的 ？\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 197,
+      "role": "assistant",
+      "display_text": "区分「哪一级」靠 **`current_review_level`（当前待审级）**，不是看 `current_status`（人工审阶段里它一直是 `HUMAN_REVIEWING`）。\n\n---\n\n## 1. 数据层：两条字段分工\n\n| 字段 | 含义 | 示例 |\n|------|------|------|\n| `current_status` | 宏观生命周期 | `HUMAN_REVIEWING` |\n| `current_review_level` | **当前轮到哪一级人工审** | `L1` / `L2` / `L3` |\n| `next_review_level` | 通过后下一级（辅助） | L1 通过后可能是 `L2` |\n\n任务上还有 **`review_workflow_json`**，定义有几级、每级叫什么、允许哪些操作（通过/驳回/退回）。\n\n**L1 特例**：历史数据里 `current_review_level` 可能为空，系统按 workflow 的**第一级**（通常是 L1）处理，和 L1 待审等价。\n\n---\n\n## 2. 审核员侧：怎么「只看到这一级」\n\n**审核池 Tab**  \n- 请求带 `reviewLevel=L2`（或 session / URL `?reviewLevel=`）  \n- 后端只查：`current_status = HUMAN_REVIEWING` **且** `current_review_level = L2`（L1 会包含 null/空）\n\n**列表 / 详情展示**  \n- 队列徽章、详情头：用 API 的 `reviewStageLabel`（如「复审」），来自 workflow 里该 `level` 的 `label`  \n- 详情里还有 `currentReviewLevel`、`reviewWorkflowLevels`（整段流程说明）\n\n**操作时**  \n- 单条/批量都会校验：只能对**当前级**操作（批量还带 `reviewLevel`）  \n- 非终审通过：只改 `current_review_level` → 下一级，状态仍是 `HUMAN_REVIEWING`  \n- 终审通过：才 `APPROVE` → `APPROVED`\n\n---\n\n## 3. 权限：谁能审哪一级\n\n有 `business:reviewer:level:L1` / `L2` / `L3` 时：  \n- meta 只返回有权限的级别 Tab  \n- 无权限的级看不到队列，也不能提交决策  \n\n只有 `business:reviewer:workbench`、没有分级权限时：默认能看/审所有级。\n\n---\n\n## 4. 历史：事后怎么知道「当时是第几审」\n\n每条 **`review_records`** 里有：\n\n- `review_level`（如 L1）  \n- `review_stage_no`（第几段，1/2/3）  \n- `action`、`reviewer_name`、`decided_at` 等  \n\n时间线 / 「审核结果」列表按 `review_level` 筛选，例如只看「复审 + 驳回」。\n\n---\n\n## 5. 一条提交走三遍的直观例子\n\n```\n进入人工审 → status=HUMAN_REVIEWING, level=L1（或空视为 L1）\n  L1 通过   → 仍 HUMAN_REVIEWING, level=L2\n  L2 通过   → 仍 HUMAN_REVIEWING, level=L3\n  L3 通过   → APPROVED（终审才真正改 status）\n```\n\n审核员在 **「复审」Tab** 里看到的，就是 `level=L2` 的那批；在 **「初审」Tab** 里看不到已通过 L1、已在 L2 的单子。\n\n---\n\n**一句话**：**区分哪一级 = 看 `current_review_level` + 任务 workflow 配置**；界面用 Tab/徽章/详情字段；历史用 `review_records.review_level`。`HUMAN_REVIEWING` 只表示「还在人工审流程里」，不表示「是初审还是终审」。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "区分「哪一级」靠 **`current_review_level`（当前待审级）**，不是看 `current_status`（人工审阶段里它一直是 `HUMAN_REVIEWING`）。\n\n---\n\n## 1. 数据层：两条字段分工\n\n| 字段 | 含义 | 示例 |\n|------|------|------|\n| `current_status` |…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 198,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "审核员身份与权限级别不明确，缺少分级定义影响后续权限判断。",
+      "text_snippet": "<user_query>\n审核员 的身份 怎么看呢 哪一级的？ 这种\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 199,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/stores/auth.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 200,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewerReviewLevelAccess.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 201,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolReviewLevelTabs.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 202,
+      "role": "assistant",
+      "display_text": "**审核员能审哪一级**，和**单子当前在哪一级**，是两件不同的事。\n\n---\n\n## 两个概念别混了\n\n| 问题 | 看什么 | 存在哪 |\n|------|--------|--------|\n| 这条提交**轮到哪一级**？ | `current_review_level`（L1/L2/L3） | 每条 `submission` |\n| 这个**审核员能审哪一级**？ | 权限码 `business:reviewer:level:L1` 等 | 用户/角色上的 **RBAC** |\n\n审核员登录后，系统不会给他贴一个固定标签「你是复审员」；而是：**你有 L2 权限，就只能进 L2 的队列 Tab 并操作 L2 的单子**。\n\n---\n\n## 审核员「哪一级」怎么定？——看权限，不看岗位表\n\n和 LabelHub 其它能力一样，用**权限点**控制：\n\n| 权限码 | 含义 |\n|--------|------|\n| `business:reviewer:workbench` | 能进审核工作台（总开关） |\n| `business:reviewer:level:L1` | 只能做**初审**队列/操作 |\n| `business:reviewer:level:L2` | 只能做**复审** |\n| `business:reviewer:level:L3` | 只能做**终审** |\n\n规则（后端 `ReviewerReviewLevelAccess`）：\n\n1. **`system:admin`** → 所有级都能审  \n2. **只有 `workbench`，没有任何 `level:L*`** → 视为**全部级别**（兼容老账号）  \n3. **挂了部分 `level:L*`** → **只能**审这些级（例如只有 L2，就看不到 L1/L3 Tab）\n\n种子数据里（V37）：默认 **Reviewer 角色 (2004)** 会带上 L1+L2+L3，所以**现网默认审核员仍是三级都能审**；要拆人就要在权限里改。\n\n---\n\n## 审核员自己「怎么看」？\n\n**界面上没有单独的「我的审核级别：复审」页面**，表现是间接的：\n\n1. **人工审核池 → 审核级别 Tab**  \n   - 调 `GET /api/v1/reviewer/audit-pool/meta`  \n   - 后端按你的权限**过滤** `levels`  \n   - 你只能看到有权限的 Tab（例如只有「复审」）\n\n2. **硬闯 API**  \n   - 带无权限的 `reviewLevel` 拉队列 / 提交决策 → **403**（无该级权限）\n\n3. **开发/排查时看登录用户权限**  \n   - 登录后 `currentUser.permissions` 里是否有  \n     `business:reviewer:level:L1` 等（前端未单独做「我的级别」展示）\n\n---\n\n## 管理员怎么给审核员「定级」？\n\n在**系统管理**里给用户/角色分配权限（和分 `business:reviewer:workbench` 一样）：\n\n- 只审初审：给 `workbench` + `level:L1`  \n- 只审复审：给 `workbench` + `level:L2`  \n- 初审+复审：给 L1、L2，不给 L3  \n- 三级都审：L1+L2+L3（或只给 `workbench`、不配任何 level，效果也是全级）\n\n数据库对应：`permissions` 表里的权限码 + `role_permissions` / 用户角色绑定。\n\n---\n\n## 和「单子哪一级」怎么配合？\n\n```\n单子：current_review_level = L2  →  出现在「复审」Tab 的待审列表里\n审核员：仅有 level:L2 权限        →  只能打开复审 Tab、只能对 L2 单子点通过/驳回\n```\n\n若单子在 L2，但审核员只有 L1 权限 → **列表里看不到**（meta/队列已过滤）。\n\n---\n\n## 小结\n\n- **审核员是哪一级**：不是人事档案字段，而是 **RBAC 权限 `business:reviewer:level:L*`**。  \n- **自己怎么看**：看审核池里**有哪些级别 Tab**；Tab 即权限结果。  \n- **要不要改架构**：不用；若要「张三只能复审」，在管理端**收掉 L1/L3 权限**即可。  \n- **默认种子**：Reviewer 角色仍带 L1/L2/L3，所以测试时可能感觉「人人都能审三级」——要测分级权限，需给测试用户单独配权限。\n\n如果你希望产品上有「个人中心显示：可审级别：初审、复审」，那是**展示层增强**，可以在前端用 `permissions` 解析后显示一行文案，后端逻辑不用动。需要的话我可以帮你加这一块 UI。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**审核员能审哪一级**，和**单子当前在哪一级**，是两件不同的事。\n\n---\n\n## 两个概念别混了\n\n| 问题 | 看什么 | 存在哪 |\n|------|--------|--------|\n| 这条提交**轮到哪一级**？ | `current_review_level`（L1/L2/L3） | 每条 `submission` |\n| 这个**审…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 203,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "user组件显示层级功能实现方式不明确，缺少具体实现细节。",
+      "text_snippet": "<user_query>\n对 还有 user 组件 显示 哪一级 如何实现 ?\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 204,
+      "role": "assistant",
+      "display_text": "查看项目中 `user` 组件的用法及审核池页面结构，以实现展示审核员可审级别。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "查看项目中 `user` 组件的用法及审核池页面结构，以实现展示审核员可审级别。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/types",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewAuditPoolPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 205,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/user/LHUserReference.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/stores/auth.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 206,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/user/LHUserProfileCard.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/workbench/layout/review-top-bar.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/types",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolQueuePanel.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 207,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolFlatQueuePanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/assignments.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 208,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolFlatQueuePanel.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/review-stage.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 209,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolGroupedQueuePanel.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 210,
+      "role": "assistant",
+      "display_text": "实现：从登录权限解析可审级别，用 `LHUserReference` + 用户卡片展示。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "实现：从登录权限解析可审级别，用 `LHUserReference` + 用户卡片展示。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/reviewer-level-access.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/reviewer-level-access.test.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/ReviewerSessionIdentity.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/user/LHUserReference.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/user/LHUserProfileCard.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/components/AuditPoolFlatQueuePanel.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 211,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 212,
+      "role": "assistant",
+      "display_text": "已实现，说明如下。\n\n## 实现思路\n\n**审核员能审哪一级**来自登录用户的 `permissions`（与后端 `ReviewerReviewLevelAccess` 规则一致），不是单独的用户档案字段。\n\n| 权限情况 | UI 展示 |\n|----------|---------|\n| 只有 `business:reviewer:workbench`，没有 `level:L*` | 徽章「全部」+ workflow 各级名称 |\n| 有 `business:reviewer:level:L2` 等 | 只显示对应级别徽章 |\n| `system:admin` | 同「全部」 |\n\n---\n\n## 新增内容\n\n1. **`reviewer-level-access.ts`**  \n   从 `permissions` 解析可审级别；可用 `audit-pool/meta` 的 `levelLabel` 做展示名。\n\n2. **`ReviewerSessionIdentity`**（人工审核池队列顶栏）  \n   - 复用 **`LHUserReference`**（与低代码 `component: \"user\"` 同一套）  \n   - 旁边展示「可审级别」徽章  \n\n3. **扩展用户卡片**  \n   点击头像弹出的 **`LHUserProfileCard`** 增加一行 **「可审级别」**（通过 `reviewLevelLabels` 传入）。\n\n---\n\n## 审核员怎么看\n\n1. 打开 **人工审核池** → 队列左侧顶部：自己的名字 + 可审级别徽章。  \n2. **点击名字** → 用户卡片里也有「可审级别」说明。\n\n---\n\n## 管理员怎么配\n\n在系统里给用户/角色分配权限，例如：\n\n- 只复审：`business:reviewer:workbench` + `business:reviewer:level:L2`\n- 三级都审：L1/L2/L3 三个 level 权限，或只给 workbench（默认当全部）\n\n---\n\n## 在别处复用 user 组件\n\n任意场景只要传 `reviewLevelLabels`：\n\n```tsx\n<LHUserReference\n  userId={userId}\n  displayName={name}\n  role=\"REVIEWER\"\n  reviewLevelLabels=\"复审、终审\"\n/>\n```\n\n或直接用：\n\n```tsx\nimport { resolveReviewerLevelAccess, formatReviewerLevelAccessText } from \"@/features/review/utils/reviewer-level-access\";\n\nconst text = formatReviewerLevelAccessText(\n  resolveReviewerLevelAccess(currentUser.permissions, levelMeta),\n);\n```\n\n刷新前端后，在审核池即可看到效果。若还要在 **审核工作台顶栏** 或 **系统用户管理详情** 里展示，可以说一下位置我帮你接上。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已实现，说明如下。\n\n## 实现思路\n\n**审核员能审哪一级**来自登录用户的 `permissions`（与后端 `ReviewerReviewLevelAccess` 规则一致），不是单独的用户档案字段。\n\n| 权限情况 | UI 展示 |\n|----------|---------|\n| 只有 `business:reviewer:workbench…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 213,
+      "role": "user",
+      "display_text": "三级都审：L1/L2/L3 三个 level 权限 这 默认只有三级吗 task 可以自定义配置。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n三级都审：L1/L2/L3 三个 level 权限 这 默认只有三级吗 task 可以自定义配置\n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "rewritten"
+    },
+    {
+      "order": 214,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewWorkflowValidator.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/reviewer-level-access.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V37__labelhub_reviewer_level_permissions.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 215,
+      "role": "assistant",
+      "display_text": "**不是「平台固定只能三级」。** 要分清两件事：**任务配几级流程** 和 **审核员被允许审哪几级**。\n\n---\n\n## 1. 任务：可以自定义（1～5 级）\n\nOwner 在 **模板审核配置 / 任务 `reviewWorkflowJson`** 里配置：\n\n- 最少 **1 级**，最多 **5 级**\n- 级别 **key 必须连续**：`L1` → `L2` → …（不能跳号）\n- **展示名可自定义**（不必叫「初审/复审/终审」，任务里写什么 API 就返回什么 `levelLabel`）\n\n例如某任务只配 **2 级**（L1、L2），或 **4 级**（L1～L4），都可以。审核池 Tab、队列、流转都按**该任务的 workflow** 来，不是写死三级。\n\n---\n\n## 2. 审核员权限：种子默认写了 L1/L2/L3，逻辑上不限于三级\n\n权限码格式是：\n\n`business:reviewer:level:{key}`  \n\n例如 `…:L1`、`…:L2`、`…:L4`。\n\n| 情况 | 能审哪些级 |\n|------|------------|\n| 只有 `business:reviewer:workbench`，**没有**任何 `level:L*` | **该任务 workflow 里的所有级**（1～5 级都跟任务走） |\n| 挂了 `level:L1` + `level:L2` | 只能审 L1、L2（和任务有几级无关；任务若只有 L1，L2 权限里多配的级也审不到单子） |\n| 种子默认 Reviewer 角色 | 预置了 **L1、L2、L3 三条**权限 → 演示上像「三级都能审」 |\n\n**V37 迁移只插了 L1/L2/L3 三条权限记录**，是为了默认兼容演示，**不是**系统最多三级。若要 **L4/L5 分级授权**，需要在权限管理里**新增** `business:reviewer:level:L4`、`L5` 并赋给角色（后端校验认任意 `L{n}` 后缀）。\n\n---\n\n## 3. 和任务配置怎么配合（重要）\n\n```\n任务 workflow：     L1 ── L2 ──（某任务只有 2 级）\n审核员权限：        level:L1 + level:L2\n→ 正常\n\n任务 workflow：     L1 ── L2 ── L3\n审核员权限：        只有 level:L2\n→ 只能进「复审」Tab，只能操作 current_review_level=L2 的单子\n\n审核员权限：        只有 workbench（无 level）\n→ 该任务配几级，Tab 就显示几级（meta 按任务 workflow 返回）\n```\n\n**任务决定「有几级、叫什么」；权限决定「这个人能碰哪几级」。**\n\n---\n\n## 4. 前端「可审级别」展示\n\n- 有 **audit-pool/meta** 时：用任务真实 workflow 的 `levelLabel`（跟任务配置一致）\n- 无 meta、且「全部权限」时的兜底文案里写了 L1/L2/L3 默认名 —— 仅作**没加载到任务时**的占位，不是业务上限\n\n---\n\n## 一句话\n\n- **「三级都审」** = 种子给 Reviewer 配了 L1+L2+L3 的**举例**，不是平台只能三级。  \n- **任务** = 可自定义 **1～5 级** 流程与名称。  \n- **审核员** = 用 `business:reviewer:level:L*` 控制能审哪几级；不配 level 权限则跟任务 workflow 走全部级；要 L4/L5 需在权限里补码，不是改任务就能代替权限。\n\n若你希望 **Owner 配 workflow 时自动生成 L4/L5 权限点**，或 **管理端下拉只显示任务里存在的级**，那是产品增强，可以单独做一版设计。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**不是「平台固定只能三级」。** 要分清两件事：**任务配几级流程** 和 **审核员被允许审哪几级**。\n\n---\n\n## 1. 任务：可以自定义（1～5 级）\n\nOwner 在 **模板审核配置 / 任务 `reviewWorkflowJson`** 里配置：\n\n- 最少 **1 级**，最多 **5 级**\n- 级别 **key 必须连续**：`L…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS sys_user_notification (
+    id BIGINT NOT NULL PRIMARY KEY COMMENT '主键',
+    tenant_id BIGINT NOT NULL DEFAULT 1 COMMENT '租户',
+    recipient_user_id BIGINT NOT NULL COMMENT '接收用户',
+    notification_type VARCHAR(32) NOT NULL COMMENT 'MENTION/REVIEW/ALERT/SYSTEM',
+    title VARCHAR(200) NOT NULL COMMENT '标题',
+    body TEXT NULL COMMENT '正文',
+    link_url VARCHAR(500) NULL COMMENT '跳转链接',
+    biz_type VARCHAR(64) NULL COMMENT '业务类型',
+    biz_id BIGINT NULL COMMENT '业务ID',
+    sender_user_id BIGINT NULL COMMENT '发送人',
+    read_flag TINYINT NOT NULL DEFAULT 0 COMMENT '0未读 1已读',
+    read_at DATETIME NULL COMMENT '已读时间',
+    created_by BIGINT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_by BIGINT NULL,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_flag TINYINT NOT NULL DEFAULT 0,
+    ext_json JSON NULL,
+    INDEX idx_recipient_read_created (recipient_user_id, read_flag, created_at DESC),
+    INDEX idx_recipient_created (recipient_user_id, created_at DESC)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户站内通知';

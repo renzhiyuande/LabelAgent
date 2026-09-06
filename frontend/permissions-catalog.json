@@ -1,0 +1,149 @@
+[ {
+  "code" : "business:acceptance:manage",
+  "name" : "Acceptance Manage",
+  "module" : "business"
+}, {
+  "code" : "business:ai-review:observe:admin",
+  "name" : "Ai Review Observe Admin",
+  "module" : "business"
+}, {
+  "code" : "business:ai-review:observe:owner",
+  "name" : "Ai Review Observe Owner",
+  "module" : "business"
+}, {
+  "code" : "business:assignment:create",
+  "name" : "Assignment Create",
+  "module" : "business"
+}, {
+  "code" : "business:assignment:read",
+  "name" : "Assignment Read",
+  "module" : "business"
+}, {
+  "code" : "business:assignment:update",
+  "name" : "Assignment Update",
+  "module" : "business"
+}, {
+  "code" : "business:export:manage",
+  "name" : "Export Manage",
+  "module" : "business"
+}, {
+  "code" : "business:labeler:workbench",
+  "name" : "Labeler Workbench",
+  "module" : "business"
+}, {
+  "code" : "business:reviewer:level:L1",
+  "name" : "Reviewer Level L1",
+  "module" : "business"
+}, {
+  "code" : "business:reviewer:level:L2",
+  "name" : "Reviewer Level L2",
+  "module" : "business"
+}, {
+  "code" : "business:reviewer:level:L3",
+  "name" : "Reviewer Level L3",
+  "module" : "business"
+}, {
+  "code" : "business:reviewer:level:L4",
+  "name" : "Reviewer Level L4",
+  "module" : "business"
+}, {
+  "code" : "business:reviewer:level:L5",
+  "name" : "Reviewer Level L5",
+  "module" : "business"
+}, {
+  "code" : "business:reviewer:workbench",
+  "name" : "Reviewer Workbench",
+  "module" : "business"
+}, {
+  "code" : "business:reward:manage",
+  "name" : "Reward Manage",
+  "module" : "business"
+}, {
+  "code" : "business:submission:read",
+  "name" : "Submission Read",
+  "module" : "business"
+}, {
+  "code" : "business:submission:update",
+  "name" : "Submission Update",
+  "module" : "business"
+}, {
+  "code" : "business:task:create",
+  "name" : "Task Create",
+  "module" : "business"
+}, {
+  "code" : "business:task:delete",
+  "name" : "Task Delete",
+  "module" : "business"
+}, {
+  "code" : "business:task:import",
+  "name" : "Task Import",
+  "module" : "business"
+}, {
+  "code" : "business:task:publish",
+  "name" : "Task Publish",
+  "module" : "business"
+}, {
+  "code" : "business:task:read",
+  "name" : "Task Read",
+  "module" : "business"
+}, {
+  "code" : "business:task:template_save",
+  "name" : "Task Template Save",
+  "module" : "business"
+}, {
+  "code" : "business:task:update",
+  "name" : "Task Update",
+  "module" : "business"
+}, {
+  "code" : "business:template:create",
+  "name" : "Template Create",
+  "module" : "business"
+}, {
+  "code" : "business:template:manage",
+  "name" : "Template Manage",
+  "module" : "business"
+}, {
+  "code" : "business:template:read",
+  "name" : "Template Read",
+  "module" : "business"
+}, {
+  "code" : "business:template:update",
+  "name" : "Template Update",
+  "module" : "business"
+}, {
+  "code" : "system:admin",
+  "name" : "Admin",
+  "module" : "system"
+}, {
+  "code" : "system:data-scope:read",
+  "name" : "Data Scope Read",
+  "module" : "system"
+}, {
+  "code" : "system:data-scope:write",
+  "name" : "Data Scope Write",
+  "module" : "system"
+}, {
+  "code" : "system:dict:write",
+  "name" : "Dict Write",
+  "module" : "system"
+}, {
+  "code" : "system:file:delete",
+  "name" : "File Delete",
+  "module" : "system"
+}, {
+  "code" : "system:file:read",
+  "name" : "File Read",
+  "module" : "system"
+}, {
+  "code" : "system:file:upload",
+  "name" : "File Upload",
+  "module" : "system"
+}, {
+  "code" : "template:market:audit",
+  "name" : "Market Audit",
+  "module" : "template"
+}, {
+  "code" : "template:market:publish",
+  "name" : "Market Publish",
+  "module" : "template"
+} ]

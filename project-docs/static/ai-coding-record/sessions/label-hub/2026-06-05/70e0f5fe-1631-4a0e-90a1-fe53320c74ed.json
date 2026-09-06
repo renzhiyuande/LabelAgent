@@ -1,0 +1,2241 @@
+{
+  "project": "label-hub",
+  "session_id": "70e0f5fe-1631-4a0e-90a1-fe53320c74ed",
+  "date": "2026-06-05",
+  "modified_at": "2026-06-05 00:36:54",
+  "time_bucket": "late_night",
+  "top_stage": "development",
+  "stages": [
+    "development"
+  ],
+  "tracks": [
+    "system_infrastructure",
+    "business_development"
+  ],
+  "module_tags": [
+    "系统管理-权限控制",
+    "低代码-模板设计器",
+    "低代码-资源引擎",
+    "系统基建-版本控制",
+    "任务管理"
+  ],
+  "key_topics": [
+    "权限",
+    "owner",
+    "submission"
+  ],
+  "tool_usage": [
+    "Grep",
+    "SemanticSearch",
+    "Read",
+    "Glob",
+    "StrReplace",
+    "ReadLints",
+    "Write",
+    "Shell"
+  ],
+  "models_used": [],
+  "selected_prompt_count": 4,
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "HTTP GET 请求资源列表接口与 POST 请求 /api/check 均返回 500 状态码，后端服务内部异常导致数据加载失败，原因为 owner 字段权限逻辑未按角色过滤数据。",
+      "text_snippet": "<external_links>\n### Potentially Relevant Websearch Results\n\nYou should respond as if these information are known to you. Refrain from saying \"I am unable to browse the internet\" …",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "http_trace",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "display_text": "先查项目里 Crane4j 的用法和 owner/审核用户的数据返回方式，再给出是否适合用条件填充的结论。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "先查项目里 Crane4j 的用法和 owner/审核用户的数据返回方式，再给出是否适合用条件填充的结论。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "SemanticSearch"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/display/assembler/SubmissionSummaryAssembler.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/display/fill/SubmissionSummaryFill.java",
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/application.yml"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "SemanticSearch",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/system/UserDisplayNameResolver.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/display/fill/AssignmentSummaryFill.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/visibility/service/DbUserVisibilityService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 6,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewResultsPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 8,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 9,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/display/container/UserDisplayNameContainer.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 10,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 11,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/resolve-user-ref.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 12,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/user/LHUserReference.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/visibility/service/DbUserVisibilityService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 13,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-my-submitted.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 14,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 15,
+      "role": "assistant",
+      "display_text": "## 结论\n\n**Crane4j 的条件填充可以「部分做到」，但不适合作为「按用户角色返回不同字段」的主方案。**  \n更稳妥的做法是：**在 Assembler / Service 层按当前用户裁剪字段**，或 **按角色使用不同 View DTO**。\n\n---\n\n### Crane4j 能做什么\n\n项目已在用 Crane4j 2.10.0（`@Assemble` + `Crane4jTemplate`），[条件填充文档](https://crane4j.cn/basic/operation_condition.html) 里的能力都可用，例如：\n\n- `@ConditionOnExpression(\"#target.xxx\")` — 控制某个装配是否执行  \n- `@ConditionOnPropertyNotNull` — key 为空时跳过装配  \n- `OperationAwareBean` — 用代码写更复杂的触发条件  \n\n本质是：**决定「要不要跑这次 @Assemble」**，不是「Jackson 要不要序列化这个字段」。\n\n---\n\n### 为什么不太适合你的场景\n\n**1. 条件默认看的是 `#target`，不是当前登录用户**\n\n表达式里是 `#target.name`，不是 `#viewer.roles`。  \n要做「OWNER 全量、LABELER/REVIEWER 部分」，需要：\n\n- 在 Fill 对象上塞 `viewerRole` / `viewerId`，或  \n- 自定义 `ConditionParser` + `CurrentUserContext`  \n\n这比在 Assembler 里写 `if (roles.contains(\"OWNER\"))` 更绕，也不直观。\n\n**2. 项目里 owner 信息本来就不是 Crane4j 填的**\n\n`SubmissionSummaryFill` 里 labelerName、reviewerName 用 `@Assemble`，但 **owner 是在 Assembler 里手动批量填的**：\n\n```116:138:backend/host-infra/src/main/java/com/labelhub/infra/business/display/assembler/SubmissionSummaryAssembler.java\n    /** Owner 来自 Task 关联，需等 TASK 装配后再批量解析（Crane4j 单轮无法链式触发 USER 装配）。 */\n    private void applyOwnerDisplay(List<SubmissionSummaryFill> fills) {\n        // ...\n        fill.setOwnerId(ownerId);\n        fill.setOwnerName(userDisplayNameResolver.resolve(ownerId));\n    }\n```\n\n给 `@Assemble` 加 `@ConditionOnExpression` **管不到** 这段逻辑。\n\n**3. 只能「不填充」，不能「安全裁剪响应」**\n\n就算 Crane4j 跳过 ownerName 的装配：\n\n- DTO 里仍可能有 `ownerId`  \n- 手动 `applyOwnerDisplay` 仍会写入  \n- 前端 schema 仍可能展示 `ownerName` 列  \n\n字段级权限应在 **Service 出口统一 sanitize**，不能依赖「没装配就等于没泄露」。\n\n**4. 项目里已有更贴合的模式**\n\n| 机制 | 作用 |\n|------|------|\n| `DbUserVisibilityService` | 按角色决定协作者是否可见（REVIEWER 只能看到审核过的任务 owner 等） |\n| 不同 DTO | 如 `ReviewerQueueRow` 本身就没有 owner 字段 |\n| 不同 API 入口 | Owner / Labeler / Reviewer 各自 Controller |\n| 前端 `LHUserReference` + `role=OWNER` | 列表有名字也会再调 `/collaborators/{id}?role=OWNER`，受可见性约束 |\n\n审核用户看不到 owner，往往是 **API 没返回 ownerName**、**协作者可见性拦截**，或 **Reviewer 专用 DTO 压根没这字段** — 不是 Crane4j 缺条件注解这么简单。\n\n---\n\n### 推荐方向（实现时再选）\n\n| 方案 | 适用 | 说明 |\n|------|------|------|\n| **Assembler 按用户裁剪** | 同一 DTO、多角色复用 | `assemble(entities, viewer)` 里根据 role 决定是否填/清空 owner 等敏感字段 |\n| **Role-specific View DTO** | 差异大 | Owner 用 `SubmissionSummary`，Reviewer 用不含 owner 的 `ReviewerXxxRow`（项目已在部分场景这样做） |\n| **Crane4j 条件填充** | 仅控制关联装配 | 适合「key 为空不查库」；**不适合**做角色级 API 字段授权 |\n\n---\n\n### 一句话\n\n- **能不能按用户返回不同字段？** — 能，应在 **Assembler/Service + DTO 设计** 做，不是 Crane4j 的主场。  \n- **Crane4j 条件填充支持吗？** — **支持控制 @Assemble 是否执行**，但 **不支持** 完整的「按角色 API 字段授权」；且 **管不了** 你们现在的 `applyOwnerDisplay` 手动填充。  \n- **建议**：Crane4j 继续负责批量关联填充；**角色差异化放在 Assembler 出口或分角色 DTO**，和现有 `DbUserVisibilityService` 对齐。\n\n如果你确认要实现，可以说一下是 **Reviewer 列表缺 ownerName**，还是 **点击用户卡片 404** — 两种根因和改法不一样。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 结论\n\n**Crane4j 的条件填充可以「部分做到」，但不适合作为「按用户角色返回不同字段」的主方案。** \n更稳妥的做法是：**在 Assembler / Service 层按当前用户裁剪字段**，或 **按角色使用不同 View DTO**。\n\n---\n\n### Crane4j 能做什么\n\n项目已在用 Crane4j 2.10.0（`@Asse…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 16,
+      "role": "user",
+      "display_text": "是点击 任务 直接打开任务的详情 \nhttp://localhost:5173/api/v1/owner/tasks/910230000001 LABELER 无权限",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n是点击 任务 直接打开任务的详情 \nhttp://localhost:5173/api/v1/owner/tasks/910230000001 LABELER 无权限\n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 17,
+      "role": "assistant",
+      "display_text": "LABELER 点任务链到了 owner 接口，我先查前端 link 配置和 labeler 可用的任务详情 API。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "LABELER 点任务链到了 owner 接口，我先查前端 link 配置和 labeler 可用的任务详情 API。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 18,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page/LHResourcePage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-my-tasks.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/tasks.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 19,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-my-tasks.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/LabelerWorkbenchController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 20,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 21,
+      "role": "assistant",
+      "display_text": "## 根因\n\n这不是 Crane4j 或后端「按角色裁剪字段」的问题，而是 **前端关联跳转配错了资源**。\n\n在 `labeler-submission-display.shared.ts` 里，「任务」列的 link 配置是：\n\n```25:30:frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts\n    link: {\n      labelField: \"taskTitle\",\n      action: \"openRelated\",\n      resourceKey: \"tasks\",\n      idField: \"taskId\",\n    },\n```\n\n`openRelated` 会走 `LHResourcePage.openRelatedDetail` → `fetchDetail(relatedResource, taskId)`，而 `tasks` 资源对应的是 Owner 接口：\n\n```55:58:frontend/src/low-code/schema/resources/tasks.ts\n  api: {\n    list: \"/api/v1/owner/tasks\",\n    detail: \"/api/v1/owner/tasks/{id}\",\n```\n\n该接口需要 `business:task:read`，**LABELER 没有这条权限**，所以点击任务名会 403。\n\n---\n\n## 正确路径\n\n项目里已有标注员专用资源 `labelerMyTasks`：\n\n| 对比 | Owner `tasks` | Labeler `labelerMyTasks` |\n|------|---------------|--------------------------|\n| 详情 API | `/api/v1/owner/tasks/{id}` | `/api/v1/labeler/my-tasks/{taskId}` |\n| 权限 | `business:task:read` | `business:labeler:workbench` |\n| Owner 信息 | 全量任务管理字段 | `getMyTask` 已返回 `ownerId` + `ownerName` |\n\n详情 schema 里也有 Owner 展示（`labelerMyTaskInfoSection`），走 labeler 接口后 **Owner 名字可以直接显示**，不必依赖 Crane4j 条件填充。\n\n---\n\n## 改法（一行配置）\n\n把 labeler 侧 submission 表格里的任务 link 从：\n\n```ts\nresourceKey: \"tasks\"\n```\n\n改成：\n\n```ts\nresourceKey: \"labelerMyTasks\"\n```\n\n`idField: \"taskId\"` 不用动，`labelerMyTasks` 的 `idKey` 就是 `taskId`。\n\n---\n\n## 顺带一提\n\n同文件里「题目」列 link 指向 `resourceKey: \"taskItems\"`，也是 Owner 侧资源，LABELER 点进去大概率同样无权限。若需要，可以改成跳标注工作台，或去掉 link、只展示文本。\n\n---\n\n**总结**：LABELER 无权限是因为 link 误用了 Owner 的 `tasks` 资源；应改为 `labelerMyTasks`，与角色 API 对齐。需要的话我可以直接改这两处 link 配置。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 根因\n\n这不是 Crane4j 或后端「按角色裁剪字段」的问题，而是 **前端关联跳转配错了资源**。\n\n在 `labeler-submission-display.shared.ts` 里，「任务」列的 link 配置是：\n\n```25:30:frontend/src/low-code/schema/resources/labeler-submis…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 22,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "提示词已通过 AI 清洗降级。原因：指向文件行号但无具体任务描述，信息量不足以纳入精选目录。",
+      "text_snippet": "<user_query>\n@labeler-submission-display.shared.ts (33-44) 这个呢 怎么改？\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "deepseek_dropped"
+    },
+    {
+      "order": 23,
+      "role": "assistant",
+      "display_text": "查一下 labeler 侧有没有题目详情 API，以及 `taskItems` 资源的权限配置。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "查一下 labeler 侧有没有题目详情 API，以及 `taskItems` 资源的权限配置。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 24,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/task-items.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 25,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/data-table/LHDataTable.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-my-drafts.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 26,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page/LHResourcePage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 27,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 28,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 29,
+      "role": "assistant",
+      "display_text": "Labeler 没有 `taskItems` 的 Owner API，题目列改为打开当前 submission 详情（`action: \"detail\"`），详情里已有分配/题目信息。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "Labeler 没有 `taskItems` 的 Owner API，题目列改为打开当前 submission 详情（`action: \"detail\"`），详情里已有分配/题目信息。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 30,
+      "role": "assistant",
+      "display_text": "## 怎么改\n\nLabeler **没有** 对应的 `taskItems` 资源。Owner 的接口是：\n\n```20:23:frontend/src/low-code/schema/resources/task-items.ts\n  api: {\n    list: \"/api/v1/owner/tasks/items\",\n    detail: \"/api/v1/owner/tasks/{taskId}/items/{id}\",\n```\n\n需要 `business:task:read`，和任务列一样会 403。\n\n---\n\n### 推荐：`action: \"detail\"`\n\n点击「题目」→ 打开**当前这条提交**的详情抽屉，不再请求 Owner API。\n\n详情里已有题目相关信息（`labelerSubmissionAssignmentDetailSection`）：\n\n- 源数据标识 `sourceItemKey`\n- 题目序号 `itemSeqNo`\n- 题目摘要 `payloadPreview`\n\n草稿、已提交历史两个页面都有 detail 能力，可以共用这一列配置。\n\n已改成：\n\n```ts\nlink: {\n  labelField: \"sourceItemKey\",\n  action: \"detail\",\n},\n```\n\n---\n\n### 其他可选方案（一般不如上面合适）\n\n| 方案 | 做法 | 说明 |\n|------|------|------|\n| 纯展示 | `type: \"text\"`，去掉 `link` | 旁边已有「题目摘要」列，交互价值低 |\n| 进工作台 | `href: \"/labeler/work/{assignmentId}\"` | 表格列 link **暂未支持** `href` 跳转，要改 `LHResourcePage` |\n| 新建 labeler 题目资源 | 新 resource + 后端 API | 工作量大，且 submission 详情已够用 |\n\n---\n\n**任务列** → `resourceKey: \"labelerMyTasks\"`（任务维度）  \n**题目列** → `action: \"detail\"`（提交维度，含题目信息）\n\n若你希望点题目直接进 `/labeler/work/{assignmentId}`，可以说一声，我可以补表格列 `href` 跳转支持。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 怎么改\n\nLabeler **没有** 对应的 `taskItems` 资源。Owner 的接口是：\n\n```20:23:frontend/src/low-code/schema/resources/task-items.ts\n api: {\n list: \"/api/v1/owner/tasks/items\",\n detail: \"/api/v1/…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 31,
+      "role": "user",
+      "display_text": "@frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts (33-44) 标注应能看到题目数据，请修改。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n@labeler-submission-display.shared.ts (33-44) 这个呢 怎么改？标注肯定可以看到题目数据呀 改为@frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts \n</user_query>",
+      "selected": true,
+      "quality_level": "medium",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "deepseek_rewritten"
+    },
+    {
+      "order": 32,
+      "role": "assistant",
+      "display_text": "标注员应能看题目数据，我先查 `taskItems` 资源和 labeler 侧可用的题目详情 API。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "标注员应能看题目数据，我先查 `taskItems` 资源和 labeler 侧可用的题目详情 API。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 33,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 34,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/data-table/LHDataTable.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page/LHResourcePage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-my-drafts.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 35,
+      "role": "assistant",
+      "display_text": "题目列应打开当前提交详情（含分配信息与题目摘要），不能走 Owner 的 `taskItems` 接口。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "题目列应打开当前提交详情（含分配信息与题目摘要），不能走 Owner 的 `taskItems` 接口。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 36,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadLints"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 37,
+      "role": "assistant",
+      "display_text": "## 改法\n\n题目列不要跳 Owner 的 `taskItems`，改为打开**当前行提交详情**：\n\n```38:42:frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts\n    link: {\n      labelField: \"sourceItemKey\",\n      // 标注员无 owner taskItems 权限；打开当前提交详情（含分配信息 / 题目摘要）\n      action: \"detail\",\n    },\n```\n\n## 原因\n\n| 原配置 | 问题 |\n|--------|------|\n| `openRelated` → `taskItems` | 走 `/api/v1/owner/tasks/{taskId}/items/{itemId}`，需要 Owner 权限 |\n\n| 新配置 | 效果 |\n|--------|------|\n| `action: \"detail\"` | 打开当前资源详情抽屉（草稿 / 已提交历史） |\n\n详情里已有题目相关字段（`labelerSubmissionAssignmentDetailSection`）：\n\n- 源数据标识 `sourceItemKey`\n- 题目序号 `itemSeqNo`\n- 题目摘要 `payloadPreview`\n\n草稿页还有「草稿内容」tab，历史页有「提交内容」tab，走 labeler 自己的 API：\n\n- `/api/v1/labeler/submissions/drafts/{id}`\n- `/api/v1/labeler/submissions/history/{id}`\n\n## 与任务列对比\n\n- **任务列**：`openRelated` → `labelerMyTasks`（跨资源跳转）\n- **题目列**：`detail`（同资源内打开详情，行里已有 `id`）\n\n如果希望点击题目直接进入作答页，也可以改成 `href: \"/labeler/work/{assignmentId}\"` 的 link action；当前方案更适合「查看题目与提交信息」。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 改法\n\n题目列不要跳 Owner 的 `taskItems`，改为打开**当前行提交详情**：\n\n```38:42:frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts\n link: {\n labelField: \"sourceItemKey\",\n //…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 38,
+      "role": "user",
+      "display_text": "不要打开 detail，detail 是提交详情，不是题目详情。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n不要打开detail detail 是提交详情 不是题目详情\n</user_query>",
+      "selected": true,
+      "quality_level": "medium",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "deepseek_rewritten"
+    },
+    {
+      "order": 39,
+      "role": "assistant",
+      "display_text": "用户要的是题目详情而非提交详情，我先查 labeler 侧是否有题目详情 API，或是否应跳转到工作台。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "用户要的是题目详情而非提交详情，我先查 labeler 侧是否有题目详情 API，或是否应跳转到工作台。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/task-items.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 40,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/task-items.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 41,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page/LHResourcePage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 42,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/LabelerWorkbenchController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 43,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/LabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 44,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resource-registry.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 45,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/LabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 46,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/index.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 47,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 48,
+      "role": "assistant",
+      "display_text": "需要独立的 labeler 题目详情 API 和前端资源，不能复用提交 detail。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "需要独立的 labeler 题目详情 API 和前端资源，不能复用提交 detail。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/LabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/LabelerWorkbenchController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 49,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-task-items.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resource-registry.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 50,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 51,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 52,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Shell",
+        "ReadLints"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/adapters/request.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 53,
+      "role": "assistant",
+      "display_text": "## 方案\n\n题目详情和提交详情是两类数据。已新增 **标注员专用题目详情 API**，点击题目列会打开真正的题目 payload，而不是提交详情。\n\n### 1. 后端：按 assignment 鉴权读题目\n\n```\nGET /api/v1/labeler/assignments/{assignmentId}/item\n```\n\n- 校验该 assignment 属于当前标注员\n- 返回 `TaskItemDetail`（序号、源标识、完整 payload）\n\n### 2. 前端：新资源 `labelerTaskItems`\n\n详情 schema 与 Owner 的 `taskItems` 对齐：题目信息 + 业务数据 + 原始 JSON。\n\n### 3. 列表 link 配置\n\n```38:43:frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts\n    link: {\n      labelField: \"sourceItemKey\",\n      action: \"openRelated\",\n      resourceKey: \"labelerTaskItems\",\n      idField: \"assignmentId\",\n    },\n```\n\n用 **`assignmentId`** 作为入口（标注员只能看自己分配到的题目），不再走 Owner 的 `taskItems`。\n\n### 对比\n\n| 方案 | 结果 |\n|------|------|\n| `taskItems` | Owner API，LABELER 无权限 |\n| `action: \"detail\"` | 提交详情，不是题目详情 |\n| **`labelerTaskItems`** | 题目详情 drawer，含完整 payload |\n\n重启后端后，在草稿/已提交列表点击题目标识即可验证。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 方案\n\n题目详情和提交详情是两类数据。已新增 **标注员专用题目详情 API**，点击题目列会打开真正的题目 payload，而不是提交详情。\n\n### 1. 后端：按 assignment 鉴权读题目\n\n```\nGET /api/v1/labeler/assignments/{assignmentId}/item\n```\n\n- 校验该 assign…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 54,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "控制台 TypeError：在 resolve-field-dict.ts 第10行读取 undefined 的 columns 属性，调用链经 collect-resource-dicts 与 use-resource-dict-options 至 LHDetailDrawer 组件。",
+      "text_snippet": "<user_query>\nchunk-J3QAP64D.js?v=29e43975:9176 Uncaught TypeError: Cannot read properties of undefined (reading 'columns')\n at resolveFieldDictCode (resolve-field-dict.ts:10:20)\n …",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "console_error",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 55,
+      "role": "assistant",
+      "display_text": "错误出在详情 drawer 读取 `table.columns`，我先查 `labelerTaskItems` 资源定义和相关收集逻辑。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "错误出在详情 drawer 读取 `table.columns`，我先查 `labelerTaskItems` 资源定义和相关收集逻辑。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/resolve-field-dict.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/collect-resource-dicts.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-task-items.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 56,
+      "role": "assistant",
+      "display_text": "根因是 `resolveFieldDictCode` 对 `resource.table` 未做空值保护；`labelerTaskItems` 没有 `table` 配置。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "根因是 `resolveFieldDictCode` 对 `resource.table` 未做空值保护；`labelerTaskItems` 没有 `table` 配置。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 57,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/resolve-field-dict.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 58,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadLints"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 59,
+      "role": "assistant",
+      "display_text": "## 原因\n\n`labelerTaskItems` 只有 `detail`，没有 `table`。打开详情 drawer 时，`collectResourceDictCodes` 会遍历 detail 字段并调用 `resolveFieldDictCode`，其中写了：\n\n```ts\nresource?.table.columns  // table 为 undefined 时崩溃\n```\n\n`collect-resource-dicts.ts` 里对 table 用了 `resource.table?.columns`，但 `resolve-field-dict.ts` 漏了可选链。\n\n## 修复\n\n```10:10:frontend/src/low-code/utils/resolve-field-dict.ts\n  return resource?.table?.columns?.find((column) => column.key === field.key)?.dict;\n```\n\n刷新页面后再点题目链接，详情 drawer 应能正常打开。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 原因\n\n`labelerTaskItems` 只有 `detail`，没有 `table`。打开详情 drawer 时，`collectResourceDictCodes` 会遍历 detail 字段并调用 `resolveFieldDictCode`，其中写了：\n\n```ts\nresource?.table.columns // table 为 u…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 60,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "组件访问了未定义的对象的`sections`属性，导致类型错误。",
+      "text_snippet": "<user_query>\nCannot read properties of undefined (reading 'sections')\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 61,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/drawers/LHDetailDrawer.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 62,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page/LHResourcePage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/detail-field-options.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 63,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/drawers/LHDrawerShell.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page/LHResourcePage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 64,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/hooks/use-resource-dict-options.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/detail-field-display.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/detail-remote-schema.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 65,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 66,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/drawers/LHDetailGridView.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/drawers/LHDetailTableView.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 67,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 68,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/drawers/LHDetailPayloadMap.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/drawers/use-detail-view-mode.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 69,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/detail-remote-schema.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 70,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 71,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/adapters/request.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/drawers/LHDetailTabbedView.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 72,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/remote-schema.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 73,
+      "role": "assistant",
+      "display_text": "根因是 `fetchDetail` 会走 `applyRemoteSchemaBindingsToRecord`，其中访问了 `resource.form.sections`，而 `labelerTaskItems` 没有 `form`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "根因是 `fetchDetail` 会走 `applyRemoteSchemaBindingsToRecord`，其中访问了 `resource.form.sections`，而 `labelerTaskItems` 没有 `form`。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/remote-schema.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-task-items.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 74,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadLints"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 75,
+      "role": "assistant",
+      "display_text": "## 原因\n\n点击题目加载详情时，`fetchDetail` 会调用 `applyRemoteSchemaBindingsToRecord`，其中访问了：\n\n```119:119:frontend/src/low-code/utils/remote-schema.ts\n    resource.form.sections.flatMap(...)\n```\n\n`labelerTaskItems` 只有 `detail`，没有 `form`，所以 `resource.form` 为 `undefined`，报错 `reading 'sections'`。\n\n## 修复\n\n**1. `labeler-task-items.ts`** — 补齐 ResourceMeta 必需字段（与 `labelerMyDrafts` 一致）：\n\n```ts\nfilters: { primary: [], fields: [] },\nform: { sections: [], actions: [] },\nactions: [],\n```\n\n**2. `remote-schema.ts`** — 对无 form 的资源做空值保护：\n\n```ts\nresource.form?.sections?.flatMap(...) ?? []\n```\n\n刷新后再点题目链接，详情 drawer 应能正常打开。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 原因\n\n点击题目加载详情时，`fetchDetail` 会调用 `applyRemoteSchemaBindingsToRecord`，其中访问了：\n\n```119:119:frontend/src/low-code/utils/remote-schema.ts\n resource.form.sections.flatMap(...)\n```\n\n`l…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 76,
+      "role": "user",
+      "display_text": "@labeler-task-items.ts (40-58) 支持根据模板配置的 schema 显示，和标注页面一样。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n@labeler-task-items.ts (40-58) 支持根据模板配置的schema 显示吗 和标注页面一样\n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "deepseek_rewritten"
+    },
+    {
+      "order": 77,
+      "role": "assistant",
+      "display_text": "标注页是按模板 schema 渲染题目的，我先查工作台和 low-code 详情里对应的实现方式。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "标注页是按模板 schema 渲染题目的，我先查工作台和 low-code 详情里对应的实现方式。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "SemanticSearch",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 78,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/drawers/LHDetailTemplateDraftView.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/workbench/panels/payload/payload-display-fields.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 79,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/detail-template-form.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 80,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/acceptance-samples.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 81,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/display/assembler/AcceptanceSampleDisplayAssembler.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 82,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 83,
+      "role": "assistant",
+      "display_text": "已有 `templateForm` + `role: \"display\"` 能力（验收样本在用），接下来扩展 API 返回 `templateSchemaJson` 和 `itemPayload`，并更新详情 schema。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已有 `templateForm` + `role: \"display\"` 能力（验收样本在用），接下来扩展 API 返回 `templateSchemaJson` 和 `itemPayload`，并更新详情 schema。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-task-items.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 84,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/LabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 85,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/LabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/LabelerWorkbenchController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-task-items.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 86,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell",
+        "ReadLints"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 87,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 88,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 89,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 90,
+      "role": "assistant",
+      "display_text": "## 已支持：与标注页一致的模板 schema 展示\n\n项目里已有 `templateForm` + `role: \"display\"` 机制（验收样本在用），与标注工作台题面渲染同源。本次把题目详情接到这条链路上。\n\n### 后端\n\n新增 `LabelerTaskItemDetail`，接口 `/api/v1/labeler/assignments/{assignmentId}/item` 返回：\n\n| 字段 | 用途 |\n|------|------|\n| `templateSchemaJson` | 当前提交关联模板版本的 schema |\n| `itemPayload` | 题目完整 payload |\n| `payloadPreview` | 摘要（fallback） |\n| `itemSeqNo` / `sourceItemKey` | 元信息 |\n\n模板 schema 来自该 assignment 对应 submission 的 `currentTemplateVersionId`，与 `loadWork` 一致。\n\n### 前端\n\n`labeler-task-items.ts` 详情改为：\n\n```ts\n{\n  key: \"itemForm\",\n  type: \"templateForm\",\n  templateForm: { role: \"display\" },\n}\n```\n\n渲染链路：\n\n1. 读取 `templateSchemaJson`\n2. `splitLabelerFormSchema` 提取 **display** 区字段\n3. 用 `itemPayload` 填值\n4. 以 `labeler-display` 只读表单展示（与标注页题面相同）\n\n另保留「原始 JSON」tab 作为兜底。\n\n重启后端后，点击题目链接即可看到按模板配置的题面展示。若显示「暂无模板配置」，说明该任务尚未绑定已发布模板版本。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 已支持：与标注页一致的模板 schema 展示\n\n项目里已有 `templateForm` + `role: \"display\"` 机制（验收样本在用），与标注工作台题面渲染同源。本次把题目详情接到这条链路上。\n\n### 后端\n\n新增 `LabelerTaskItemDetail`，接口 `/api/v1/labeler/assignments/{a…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 91,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "浏览器 trace 显示 LHDataTable 组件中 td 元素（内容“偏好对比标注演示任务”）定位异常，位置 top=488px，left=273px，尺寸 180x47px，疑似 UI 布局偏移或渲染错位。",
+      "text_snippet": "<user_query>\nDOM Path: div#root > div.flex h-.creen overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.08),_tran.parent_36%),linear-gradient(180deg,#f8fbff_0%,#f…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "browser_trace",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 92,
+      "role": "assistant",
+      "display_text": "任务名列应显示为 link，我先查表格列配置和 `LHDataTable` 的 link 渲染逻辑。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "任务名列应显示为 link，我先查表格列配置和 `LHDataTable` 的 link 渲染逻辑。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/data-table/LHDataTable.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 93,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/ReviewResultsPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 94,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-my-submitted.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/data-table/LHDataTable.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 95,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 96,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page/LHResourcePage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 97,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/system/SystemResourcePage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 98,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/data-table/LHDataTable.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 99,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/data-table/LHDataTable.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 100,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-my-drafts.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 101,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/table-column-style.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 102,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 103,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/pages/LabelerResourcePage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 104,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/hooks/use-resource-list.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 105,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/app/navigation",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/assignments.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 106,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/assignments.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 107,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 108,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 109,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/submissions.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 110,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/utils/list-scope.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 111,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/styles.css"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 112,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/styles.css"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 113,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-submission-display.shared.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 114,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/labeler-my-rewards.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 115,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 116,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 117,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/types.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 118,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 119,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page/LHResourcePage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 120,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/styles.css"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 121,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/styles.css"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 122,
+      "role": "assistant",
+      "display_text": "任务名列应显示为可点击链接；正在加强 `LHDataTable` 的 link 列识别与样式，并确认 schema 配置正确。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "任务名列应显示为可点击链接；正在加强 `LHDataTable` 的 link 列识别与样式，并确认 schema 配置正确。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/data-table/LHDataTable.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page/LHResourcePage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 123,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "ReadLints"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/resource-page/LHResourcePage.tsx"
+      ],
+      "display_strategy": null
+    }
+  ]
+}

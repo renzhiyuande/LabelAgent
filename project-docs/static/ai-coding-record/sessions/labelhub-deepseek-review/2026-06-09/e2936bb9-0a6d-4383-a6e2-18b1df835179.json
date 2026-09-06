@@ -1,0 +1,1618 @@
+{
+  "project": "labelhub-deepseek-review",
+  "session_id": "e2936bb9-0a6d-4383-a6e2-18b1df835179",
+  "date": "2026-06-09",
+  "modified_at": "2026-06-09 15:51:37",
+  "time_bucket": "afternoon",
+  "top_stage": "design",
+  "stages": [
+    "design",
+    "maintenance"
+  ],
+  "tracks": [
+    "system_infrastructure",
+    "business_development"
+  ],
+  "module_tags": [
+    "文档设计-架构规划",
+    "LLM-Agent-Prompt",
+    "种子数据-观测性",
+    "测试验证-白盒回归"
+  ],
+  "key_topics": [
+    "ai 审核",
+    "seed",
+    "测试",
+    "agent"
+  ],
+  "tool_usage": [
+    "ReadFile",
+    "Glob",
+    "Shell",
+    "SwitchMode",
+    "AskQuestion",
+    "Subagent",
+    "CreatePlan",
+    "TodoWrite",
+    "Grep",
+    "Read",
+    "Write",
+    "StrReplace",
+    "SemanticSearch"
+  ],
+  "models_used": [],
+  "selected_prompt_count": 2,
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "admin和owner角色缺少独立的AI审核队列大屏，现有功能不专一，需实现全平台与个人任务的AI审核可视化看板，包含时间线、尝试次数、prompt、token、模型及吞吐量等实时数据。",
+      "text_snippet": "<timestamp>Tuesday, Jun 9, 2026, 2:30 PM (UTC+8)</timestamp>\n<user_query>\nadmin 和onwer 缺少 ai 审核队列 admin 至于通用的async 任务队列但是不专一 onwer 有审核队列 有ai 和人工 不能专门看ai审核 实现一个大屏 admin看全平台的ai审核 线路…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "bug_report",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "display_text": "我先读取项目技能和开发规范，确认这次需求该按什么边界拆解，再给你一个实现方案和落点。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "我先读取项目技能和开发规范，确认这次需求该按什么边界拆解，再给你一个实现方案和落点。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/.claude/skills/using-superpowers/SKILL.md",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/.cursor/skills/labelhub-development-standards/SKILL.md",
+        "/Users/wangqiyan/.claude/skills/brainstorming/SKILL.md",
+        "/Users/wangqiyan/.claude/skills/writing-plans/SKILL.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "display_text": "我在补齐项目约束和现有设计背景，接下来会先确认这个需求是否要拆成“平台监控大屏”和“owner 专属视图”两个子范围，再跟你确认关键口径。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "我在补齐项目约束和现有设计背景，接下来会先确认这个需求是否要拆成“平台监控大屏”和“owner 专属视图”两个子范围，再跟你确认关键口径。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/.cursor/plans/00_labelhub_roadmap.plan.md",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/docs/functional-design.md",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/docs/database-design.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "display_text": "我已经确认这属于需要先做方案收口的大改动，现在补看现有 AI 审核健康页、后端查询服务和菜单接入点，避免和你当前这批改动打架。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "我已经确认这属于需要先做方案收口的大改动，现在补看现有 AI 审核健康页、后端查询服务和菜单接入点，避免和你当前这批改动打架。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/AGENT.md",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/business/pages/OwnerAiReviewHealthPage.tsx",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/java/com/labelhub/app/business/OwnerAiReviewHealthController.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/review/AiReviewPromptHealthQueryService.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/health/DbAiReviewPromptHealthQueryService.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "SwitchMode"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "display_text": "我已经确认现有仓库里有一版 `owner ai-review health` 能复用，但你这次需求会把它升级成“平台级 AI 审核观测大屏 + owner 专属大屏 + 工作台摘要卡片”的体系。为了把方案定准，我先确认两个会明显影响实现范围的点。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "我已经确认现有仓库里有一版 `owner ai-review health` 能复用，但你这次需求会把它升级成“平台级 AI 审核观测大屏 + owner 专属大屏 + 工作台摘要卡片”的体系。为了把方案定准，我先确认两个会明显影响实现范围的点。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "AskQuestion"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 6,
+      "role": "assistant",
+      "display_text": "我接着补查现有 Admin/Owner 看板、菜单、异步任务与 AI 审核日志落库点，确认这次方案是基于已有表扩展，还是补一套专用观测表。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "我接着补查现有 Admin/Owner 看板、菜单、异步任务与 AI 审核日志落库点，确认这次方案是基于已有表扩展，还是补一套专用观测表。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Subagent"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "display_text": "现有代码已经能复用一部分 AI 健康度和异步任务监控，但你要求的“时间线、尝试次数、每次 prompt/返回、异常、token、模型、吞吐量、TopK、工作台摘要”要不要做历史补齐，会直接决定 SQL 和 Agent 改造深度。再确认这两个口径后，我就给你完整实施计划。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "现有代码已经能复用一部分 AI 健康度和异步任务监控，但你要求的“时间线、尝试次数、每次 prompt/返回、异常、token、模型、吞吐量、TopK、工作台摘要”要不要做历史补齐，会直接决定 SQL 和 Agent 改造深度。再确认这两个口径后，我就给你完整实施计划。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "AskQuestion"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 8,
+      "role": "assistant",
+      "display_text": "我已经把实现范围基本收口了，只剩一个关键现实约束：历史库里没有完整 token 用量，也没有每次 LLM attempt 的逐次明细表，所以“严格回填”最多只能补到现有 `ai_review_records` / `async_tasks` 能恢复的层级。这个口径需要你拍一下板。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "我已经把实现范围基本收口了，只剩一个关键现实约束：历史库里没有完整 token 用量，也没有每次 LLM attempt 的逐次明细表，所以“严格回填”最多只能补到现有 `ai_review_records` / `async_tasks` 能恢复的层级。这个口径需要你拍一下板。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "AskQuestion"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 9,
+      "role": "assistant",
+      "display_text": "我将按你确认的口径生成实施计划：采用轮询实时刷新；新增 Admin 平台级 AI 审核大屏和 Owner 自有任务 AI 审核大屏；同时把 AI 摘要卡片接入 Admin/Owner 工作台首页；Admin 可看完整明细，Owner 只看统计和基础执行记录；历史数据严格回填但缺口字段明确标记不可追溯。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "我将按你确认的口径生成实施计划：采用轮询实时刷新；新增 Admin 平台级 AI 审核大屏和 Owner 自有任务 AI 审核大屏；同时把 AI 摘要卡片接入 Admin/Owner 工作台首页；Admin 可看完整明细，Owner 只看统计和基础执行记录；历史数据严格回填但缺口字段明确标记不可追溯。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "CreatePlan"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 10,
+      "role": "assistant",
+      "display_text": "我在整理成可确认的落地计划，重点会把 SQL 迁移、后端聚合接口、前端两套大屏和工作台摘要卡片拆成可执行任务。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "我在整理成可确认的落地计划，重点会把 SQL 迁移、后端聚合接口、前端两套大屏和工作台摘要卡片拆成可执行任务。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "CreatePlan"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 11,
+      "role": "user",
+      "display_text": "AI 审核观测大屏实施计划。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\nAI 审核观测大屏实施计划\n\nImplement the plan as specified, it is attached for your reference. Do NOT edit the plan file itself.\n\nTo-do's from the plan have already been created.…",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "rewritten"
+    },
+    {
+      "order": 12,
+      "role": "assistant",
+      "display_text": "按计划从数据层开始推进：先把第一个待办标为进行中，并核对现有表结构与迁移编号。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "按计划从数据层开始推进：先把第一个待办标为进行中，并核对现有表结构与迁移编号。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "TodoWrite",
+        "Glob",
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/resources/db/migration",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/AiReviewRecordEntity.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 13,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/resources/db/migration/V1__labelhub_init_schema.sql",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/AiReviewRecordWriter.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/ai_review_service.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 14,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/review/AiReviewResult.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/schemas/ai_review.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/ai_review_service.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 15,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/review_engine.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/dashboard/service/DbDashboardOverviewService.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/resources/db/migration/V7__labelhub_business_workbenches_seed.sql",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/lib/route-meta/local-routes.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 16,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/engine/PyAgentAiReviewEngine.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/llm_client.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/AbstractEntity.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/lib/dashboard-config.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 17,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/review_engine.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/llm_client.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/java/com/labelhub/app/business/DashboardController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 18,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/resources/db/migration/V50__labelhub_ai_review_prompt_health.sql",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/resources/db/migration",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/dashboard-overview-api.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 19,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/resources/db/migration/V2__labelhub_seed_system_services.sql",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/app/navigation/menu-config.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 20,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/orchestrator/AiReviewOrchestrator.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/business/DashboardOverviewService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 21,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/orchestrator/AiReviewOrchestrator.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 22,
+      "role": "assistant",
+      "display_text": "先从数据层迁移和实体开始落地，再逐步接上后端与前端。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "先从数据层迁移和实体开始落地，再逐步接上后端与前端。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/resources/db/migration/V54__labelhub_ai_review_observability.sql",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/AiReviewLlmAttemptEntity.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/persistence/mapper/AiReviewLlmAttemptMapper.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/AiReviewRecordEntity.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 23,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/review/AiReviewLlmAttempt.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/review/AiReviewObservabilityDtos.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/review/AiReviewObservabilityQueryService.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/review/AiReviewResult.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 24,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/observability/DbAiReviewObservabilityQueryService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 25,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/error/ErrorCode.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 26,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/system/CurrentUserContext.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 27,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/api/PageResponse.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 28,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/api/PageResponse.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 29,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/AsyncTaskEntity.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 30,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/observability/DbAiReviewObservabilityQueryService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 31,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/java/com/labelhub/app/business/AdminAiReviewObservabilityController.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/java/com/labelhub/app/business/OwnerAiReviewObservabilityController.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/AiReviewLlmAttemptWriter.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/AiReviewRecordWriter.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 32,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/AiReviewRecordWriter.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 33,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/AiReviewRecordWriter.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 34,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/AiReviewRecordWriter.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 35,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/ai_review_service.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 36,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/llm_client.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/review_engine.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 37,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/review_engine.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/schemas/ai_review.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/ai_review_service.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 38,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "TodoWrite",
+        "StrReplace",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-core/src/main/java/com/labelhub/core/business/BusinessDtos.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/dashboard/service/DbDashboardOverviewService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 39,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/dashboard/service/DbDashboardOverviewService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 40,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 41,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/test",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/test"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 42,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 43,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 44,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 45,
+      "role": "assistant",
+      "display_text": "后端已编译通过，接下来补前端 API、大屏页面和工作台摘要卡片。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "后端已编译通过，接下来补前端 API、大屏页面和工作台摘要卡片。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/business/ai-review-observability-api.ts",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/business/components/AiReviewObservabilityBoard.tsx",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/business/pages/AdminAiReviewObservabilityPage.tsx",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/business/pages/OwnerAiReviewObservabilityPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 46,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/components/ui",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/lib/route-meta/local-routes.tsx",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/DashboardPage.tsx",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/lib/dashboard-config.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 47,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/components/ui"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 48,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/business/components/AiReviewObservabilityBoard.tsx",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/lib/route-meta/local-routes.tsx",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/lib/dashboard-config.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 49,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/lib/use-dashboard-overview.ts",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/dashboard-overview-api.ts",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/lib/dashboard-config.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 50,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/lib/use-dashboard-overview.ts",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/app/navigation/menu-config.ts",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/pages/AdminDashboardDetailPage.tsx",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/pages/OwnerDashboardDetailPage.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 51,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/pages/AdminDashboardDetailPage.tsx",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/dashboard/pages/OwnerDashboardDetailPage.tsx",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/app/navigation/menu-config.ts",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/test/java/com/labelhub/infra/business/review/observability/DbAiReviewObservabilityQueryServiceTest.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/tests/test_review_engine_attempt_traces.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 52,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 53,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/observability/DbAiReviewObservabilityQueryService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 54,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 55,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 56,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/test/java/com/labelhub/infra/business/review/service/DbReviewPromptAssistServiceTest.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 57,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/test/java/com/labelhub/infra/business/review/service/DbReviewPromptAssistServiceTest.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 58,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "TodoWrite"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/features/business/owner-ai-review-health-api.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 59,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/frontend/src/utils/apiClient.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 60,
+      "role": "assistant",
+      "display_text": "AI 审核观测大屏已按计划落地，主要变更如下。\n\n## 已完成内容\n\n### 1. 数据层（`V54__labelhub_ai_review_observability.sql`）\n- 扩展 `ai_review_records`：`total_latency_ms`、`attempt_count`、`token` 字段、`traceability_status`、`history_gap_reason` 等\n- 新增 `ai_review_llm_attempts` 明细表\n- **历史回填**：从现有 `ai_review_records` 回填主记录与单行 attempt；缺失 token/逐次明细标记为 `LEGACY_BACKFILLED` /「不可追溯」\n- 新增权限与菜单：\n  - Admin：`/system/ai-review-observability`\n  - Owner：`/owner/ai-review-observability`\n\n### 2. Agent / Java 写入链路\n- Python：`LlmJsonCallResult` 采集 token；`ReviewEngine` 记录每次 attempt trace\n- Java：`AiReviewResult` 扩展 telemetry + `llmAttempts`；`AiReviewRecordWriter` 落库主记录与 attempt 明细\n\n### 3. 后端查询 API\n- `AdminAiReviewObservabilityController`：平台总览 / 摘要 / 列表 / 详情（**完整 prompt/返回**）\n- `OwnerAiReviewObservabilityController`：仅 Owner 任务范围，详情**脱敏**\n- `DbAiReviewObservabilityQueryService`：吞吐趋势、模型分布、TopK（慢/失败/高重试）、时间线\n- `Dashboard` 扩展 `aiObservability` 摘要字段（Admin/Owner 工作台卡片数据源）\n\n### 4. 前端\n- 共用大屏组件：`AiReviewObservabilityBoard.tsx`（8s 轮询）\n- Admin 页：`/system/ai-review-observability`\n- Owner 页：`/owner/ai-review-observability`\n- 工作台首页 / Admin·Owner 详情页：新增 AI 观测指标卡片\n- 路由、菜单、快速入口已接入\n\n### 5. 测试与验证\n- Agent：`test_review_engine_attempt_traces.py` 通过\n- 后端：新增 `DbAiReviewObservabilityQueryServiceTest`（含 Owner 脱敏 / Admin 完整明细）\n- 前端：`npm run build` 通过\n- 后端主代码 `mvn compile` 通过\n\n## 使用方式\n| 角色 | 入口 |\n|------|------|\n| **Admin** | 工作台卡片 →「平台 AI 审核大屏」或 `/system/ai-review-observability` |\n| **Owner** | 工作台卡片 →「AI 审核大屏」或 `/owner/ai-review-observability` |\n\n## 权限口径（按你确认的）\n- **Admin**：可看完整 prompt、返回、异常\n- **Owner**：仅统计 + 基础执行记录；详情里 prompt/完整返回不返回\n- **历史数据**：严格回填，缺口字段 UI 显示「历史回填 / 不可追溯」\n\n## 部署注意\n启动后端后会自动执行 Flyway `V54`。若本地库已手动改过相关表，请先对齐 schema 再启动。\n\n如需下一步，我可以帮你补一版联调检查清单（提交一条数据 → 大屏可见 → 工作台卡片刷新）。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "AI 审核观测大屏已按计划落地，主要变更如下。\n\n## 已完成内容\n\n### 1. 数据层（`V54__labelhub_ai_review_observability.sql`）\n- 扩展 `ai_review_records`：`total_latency_ms`、`attempt_count`、`token` 字段、`traceability_sta…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 61,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "实现计划指令要求按序执行待办并标记进行中，禁止编辑计划文件或重复创建待办。",
+      "text_snippet": "<user_query>\nImplement the plan as specified, it is attached for your reference. Do NOT edit the plan file itself.\n\nTo-do's from the plan have already been created. Do not create …",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 62,
+      "role": "user",
+      "display_text": "@scripts 增加测试seed 数据 目前数据量不够 ai 优化也优化不出来 ，任务题目数据都是假的 用户输入\t合成题目 S_WTH_01\n回答 A\t合成回答 A\n回答 B\t合成回答 B\n模型 A\tdeepseek-v4-flash\n模型 B\tdeepseek-reasoner 像这种 没办法 ai生成参考 并且没有支持 chat 和 agent 模式 先设计一下 seed数据 补充计划",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n@scripts 增加测试seed 数据 目前数据量不够 ai 优化也优化不出来 ，任务题目数据都是假的 用户输入 合成题目 S_WTH_01\n回答 A 合成回答 A\n回答 B 合成回答 B\n模型 A deepseek-v4-flash\n模型 B deepseek-reasoner 像这种 没办法 ai生成参考 并且没有支持 ch…",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 63,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "MCP工具集不完整，导致部分任务无法完成，需在总结中说明缺失功能及原因，且禁止用浏览器自动化绕过。",
+      "text_snippet": "If the available MCP tools do not fully support what the user asked you to do, complete the work you can with the current tool set. In your work summary, include what you were una…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 64,
+      "role": "user",
+      "display_text": "@scripts 增加测试seed 数据 目前数据量不够 ai 优化也优化不出来 ，任务题目数据都是假的 用户输入\t合成题目 S_WTH_01\n回答 A\t合成回答 A\n回答 B\t合成回答 B\n模型 A\tdeepseek-v4-flash\n模型 B\tdeepseek-reasoner 像这种 没办法 ai生成参考 并且没有支持 chat 和 agent 模式 先设计一下 seed数据 补充计划",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n@scripts 增加测试seed 数据 目前数据量不够 ai 优化也优化不出来 ，任务题目数据都是假的 用户输入 合成题目 S_WTH_01\n回答 A 合成回答 A\n回答 B 合成回答 B\n模型 A deepseek-v4-flash\n模型 B deepseek-reasoner 像这种 没办法 ai生成参考 并且没有支持 ch…",
+      "selected": false,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "duplicate_dropped"
+    },
+    {
+      "order": 65,
+      "role": "assistant",
+      "display_text": "现有测试数据偏少且偏假，我先看 `scripts` 里的 seed 结构和 AI 优化依赖的数据形态，再给你一版可落地的 seed 设计方案。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "现有测试数据偏少且偏假，我先看 `scripts` 里的 seed 结构和 AI 优化依赖的数据形态，再给你一版可落地的 seed 设计方案。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Grep",
+        "SemanticSearch"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 66,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/SEED_README.md",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/test/resources/preference_compare_full_flow_seed.README.md",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/tests/stability/golden_set.json",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 67,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/preference_compare_seed_health.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 68,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/preference_compare_seed_health.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/prompt_optimizer_service.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/generate_all_seeds.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 69,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/preference_compare_seed_health.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/testdata",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/seed_llm_constants.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 70,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-app/src/main/resources/db/migration/V50__labelhub_ai_review_prompt_health.sql",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 71,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/preference_compare_seed_health.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/optimize/PromptOptimizationTrigger.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 72,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/preference_compare_seed_health.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/backend/host-infra/src/main/java/com/labelhub/infra/business/review/optimize/PromptOptimizationTrigger.java",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 73,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 74,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/prompt_optimizer_service.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 75,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/services/prompt_optimizer_service.py",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/agent/app/schemas/prompt_optimize.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 76,
+      "role": "assistant",
+      "display_text": "正在编写独立的 seed 增强设计文档，作为对现有计划的补充。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在编写独立的 seed 增强设计文档，作为对现有计划的补充。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/scripts/ai-review-seed-enhancement.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 77,
+      "role": "assistant",
+      "display_text": "已写好补充计划，路径：`scripts/ai-review-seed-enhancement.plan.md`。\n\n## 问题根因\n\n当前 seed 在三个层面不够用：\n\n1. **仓库缺数据集**：`testdata/preference_compare/` 不存在，生成脚本依赖本机 `~/Downloads`，CI/新环境很难跑通。\n2. **健康度批量数据是假题面**：`preference_compare_seed_health.py` / `preference_compare_seed_universe.py` 的 `_synthetic_payload` 产出「合成题目 S_WTH_01」「合成回答 A/B」。模型名虽已是 `deepseek-v4-flash` / `deepseek-reasoner`，但 **题面无对比语义**。\n3. **优化链路燃料不足**：Prompt Optimizer 会把 `itemPayload` 写进 meta-prompt；假题面下 LLM 无法归纳 AI_STRICT / AI_LENIENT，优化结果几乎不可用。误判 case 目前只有 5 条，且部分与题面脱节。\n4. **chat/agent 未覆盖**：`llm_assist_records` 只有 2 条 stub，模板 `llmSuggest` 未 seed `mode=agent`。\n5. **观测 attempt 未 seed**：V54 的 `ai_review_llm_attempts` 在生成脚本里完全没有。\n\n## 设计方案要点\n\n| 模块 | 内容 |\n|------|------|\n| **入仓数据集** | `testdata/preference_compare/preference_compare.json`（建议 36 条真实偏好对比题） |\n| **共享 Fixture** | `preference_compare_fixtures.py`，health / 辅任务 / 误判共用，替换所有 `_synthetic_payload` |\n| **优化燃料** | 22 条语义化 `misalignment_cases`（TRAIN 16 / TEST 6），可选 `TASK_HEALTH_OPTIMIZE` |\n| **Chat/Agent** | 双 runtime 字段 + `llm_assist_records` 各 ≥6 条 |\n| **观测** | `preference_compare_seed_observability.py` 补 attempt / token / FULL vs LEGACY |\n\n## 实施分期（约 4d）\n\n- **Phase A–B（P0）**：数据集入仓 + 替换合成题面  \n- **Phase C（P0）**：误判样本与优化可触发  \n- **Phase D–E（P1）**：chat/agent + 观测 attempt  \n- **Phase F**：生成脚本校验 + golden_set 对齐  \n\n## 替换后题面示例\n\n```\n用户输入  一件商品先涨价 20%，再打 8 折，最终价格相比原价是涨还是跌？\n回答 A    设原价 100…最终比原价低 4%，为下跌。\n回答 B    先涨后降，应该差不多，变化不大。\n模型 A    deepseek-v4-flash\n模型 B    deepseek-reasoner\n```\n\n---\n\n完整字段约定、样本分布、任务码、风险与 DoD 见计划文档。若你同意这个方向，我可以从 **Phase A（36 条 JSON + fixtures 入仓）** 开始实现。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已写好补充计划，路径：`scripts/ai-review-seed-enhancement.plan.md`。\n\n## 问题根因\n\n当前 seed 在三个层面不够用：\n\n1. **仓库缺数据集**：`testdata/preference_compare/` 不存在，生成脚本依赖本机 `~/Downloads`，CI/新环境很难跑通。\n2. **健康度批…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 79,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "git commit 操作因未提供提交信息或存在未暂存变更而失败，影响版本控制流程。",
+      "text_snippet": "<user_query>\ngit commit\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 80,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 81,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell",
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review",
+        "/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-labelhub-deepseek-review/agent-tools/8c61d616-743f-4e43-96e4-d6e2f92ef7d4.txt"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 82,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/.gitignore",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 83,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review",
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review/testdata"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 84,
+      "role": "assistant",
+      "display_text": "正在暂存相关变更并提交；排除 `.cursor/plans` 中的 IDE 计划文件。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在暂存相关变更并提交；排除 `.cursor/plans` 中的 IDE 计划文件。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 85,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 86,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 87,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/labelhub-deepseek-review"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 88,
+      "role": "assistant",
+      "display_text": "提交完成。\n\n**Commit:** `29d1d83f`  \n**Message:**\n```\nfeat(review): add AI observability, DeepSeek defaults, and llmSuggest chat/agent modes.\n\nShip observability schema/APIs/dashboards with LLM attempt telemetry, switch the agent to DeepSeek defaults, harden prompt optimization and seed tooling, and extend llmSuggest plus labeler workflows for chat vs agent assistance.\n```\n\n**统计：** 110 个文件，+10312 / -457 行\n\n**主要内容：**\n- AI 审核观测（V54 迁移、API、大屏、attempt 遥测）\n- Agent 默认切换 DeepSeek\n- Prompt 优化与 seed 工具链\n- llmSuggest chat/agent 模式\n- 标注员工作流与富文本编辑器增强\n\n**未纳入提交：** `.cursor/plans/ai-review-observability_ef021e23.plan.md`（IDE 计划文件）\n\n当前分支比 `origin/master` 超前 **2** 个 commit。需要的话我可以帮你 `git push`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "提交完成。\n\n**Commit:** `29d1d83f` \n**Message:**\n```\nfeat(review): add AI observability, DeepSeek defaults, and llmSuggest chat/agent modes.\n\nShip observability schema/APIs/dashboards …",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "project": "label-hub",
+  "session_id": "883be4e9-b0d0-4ba3-ac63-dcba4f20d817",
+  "date": "2026-06-05",
+  "modified_at": "2026-06-05 13:41:55",
+  "time_bucket": "afternoon",
+  "top_stage": "development",
+  "stages": [
+    "development"
+  ],
+  "tracks": [
+    "uncategorized"
+  ],
+  "module_tags": [
+    "未分类"
+  ],
+  "key_topics": [],
+  "tool_usage": [
+    "Read",
+    "Glob",
+    "Grep",
+    "Shell",
+    "Write"
+  ],
+  "models_used": [],
+  "selected_prompt_count": 1,
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "display_text": "@app 这个应用的是干 的 然后提供@app/requirements.txt。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n@app 这个应用的是干嘛 的 然后提供@app/requirements.txt \n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "oral_correction_rewritten"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "display_text": "先看 `app` 目录结构和关键文件，再说明用途并给出 `requirements.txt`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "先看 `app` 目录结构和关键文件，再说明用途并给出 `requirements.txt`。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/app/requirements.txt",
+        "/Users/wangqiyan/Desktop/java/label-hub/app/main.py",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/app/api/routes.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/app/core/config.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/app/services/review_service.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/app/tasks/review_worker.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/app/tasks/celery_app.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/app"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/app/services/llm_client.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/app/storage/repository.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "display_text": "## `app` 是做什么的？\n\n`app` 是 **LabelHub Agent Service** —— 一个独立的 **Python AI 审核微服务**，专门负责标注提交的 **智能预审（AI Preview）**。\n\n它和主 Java 后端（`backend/`）分工不同：Java 管业务主流程，这个 Python 服务专注 **用大模型自动审核标注结果**。\n\n### 核心能力\n\n| 能力 | 说明 |\n|------|------|\n| **触发 AI 审核** | 接收标注提交 ID，标记为 `ai_previewing`，异步处理 |\n| **LLM 审核** | 拉取题面 + 标注结果 + 审核维度配置，动态拼装 Prompt，调用 OpenAI 兼容 API |\n| **ReAct 自纠错** | LLM 输出不符合 Schema 时，最多重试 3 次，把校验错误反馈给模型修正 |\n| **决策落库** | Python 后端做一票否决、综合分计算、状态流转（通过/打回/转人工） |\n| **审核看板** | 提供 Dashboard API：队列列表、状态统计、详情页、手动重试 |\n| **前端托管** | 可挂载 `frontend/dist`，一个进程同时提供 API + 前端页面 |\n| **启动自愈** | 服务重启时自动捡回卡在 `ai_previewing` 的遗留任务 |\n\n### 架构概览\n\n```\nHTTP 请求 → FastAPI 路由 → ReviewService（编排层）\n                              ↓\n                    ThreadPoolExecutor（8 线程异步）\n                              ↓\n              拉上下文 → 拼 Prompt → 调 LLM → ReAct 校验\n                              ↓\n                    ReviewRepository → MySQL 落库\n```\n\n### 主要 API\n\n- `POST /api/v1/ai-preview/{submission_id}` — 触发 AI 审核\n- `GET /api/v1/submissions/{submission_id}/detail` — 审核详情（含 Timeline）\n- `GET /api/v1/dashboard/summary` — 看板统计\n- `GET /api/v1/dashboard/reviews` — 分页队列列表\n- `POST /api/v1/reviews/{review_task_id}/retry` — 手动重试\n- `GET /debug/prompt-preview/{submission_id}` — 调试：预览完整 Prompt\n\n### 技术栈\n\n- **FastAPI** + **Uvicorn** — Web 框架\n- **SQLAlchemy** + **MySQL** — 数据持久化（`labelhub_agent` 库）\n- **OpenAI SDK** — 兼容 Doubao / 通义 / DeepSeek 等\n- **内置线程池** — 当前实际用的异步方案（`celery_app.py` 只是预留，未启用）\n\n---\n\n## `app/requirements.txt`\n\n当前文件内容如下：\n\n```1:3:app/requirements.txt\nfastapi\nuvicorn\ncelery\n```\n\n**注意**：这份依赖清单偏精简，代码里实际还用到了但未写进 `requirements.txt` 的包，例如：\n\n- `pydantic` / `pydantic-settings` — 配置与 Schema 校验\n- `sqlalchemy` / `pymysql` — 数据库\n- `openai` — 大模型调用\n\n如果要在新环境跑起来，建议补全这些依赖；需要的话我可以帮你生成一份完整的 `requirements.txt`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## `app` 是做什么的？\n\n`app` 是 **LabelHub Agent Service** —— 一个独立的 **Python AI 审核微服务**，专门负责标注提交的 **智能预审（AI Preview）**。\n\n它和主 Java 后端（`backend/`）分工不同：Java 管业务主流程，这个 Python 服务专注 **用大模型自动审核…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 6,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "生成 requirements.txt 时未提供项目依赖，导致无法输出具体内容。",
+      "text_snippet": "<user_query>\n你生成一份完整的 requirements.txt。\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "display_text": "先扫描 `app` 目录里的全部 import，再生成完整的 `requirements.txt`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "先扫描 `app` 目录里的全部 import，再生成完整的 `requirements.txt`。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/app",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 8,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/requirements.txt",
+        "/Users/wangqiyan/Desktop/java/label-hub/requirements-dev.txt",
+        "/Users/wangqiyan/Desktop/java/label-hub/pyproject.toml",
+        "/Users/wangqiyan/Desktop/java/label-hub/app/storage/db.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 9,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/app/services/prompt_service.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/app"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 10,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 11,
+      "role": "assistant",
+      "display_text": "正在根据项目根目录的依赖清单和代码中的实际 import 生成完整的 `app/requirements.txt`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在根据项目根目录的依赖清单和代码中的实际 import 生成完整的 `app/requirements.txt`。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 12,
+      "role": "assistant",
+      "display_text": "正在写入完整的 `app/requirements.txt`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在写入完整的 `app/requirements.txt`。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/app/requirements.txt"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 13,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 14,
+      "role": "assistant",
+      "display_text": "已生成完整的 `app/requirements.txt`，并通过临时虚拟环境验证 `pip install` 可正常安装。\n\n### 主要变更\n\n相比原来只有 3 行的版本，现在包含 **52 个固定版本** 的运行时依赖，按功能分组：\n\n| 分组 | 核心包 |\n|------|--------|\n| Web 框架 | `fastapi`, `uvicorn[standard]`, `starlette` |\n| 配置校验 | `pydantic`, `pydantic-settings`, `python-dotenv` |\n| 数据库 | `SQLAlchemy`, `PyMySQL` |\n| LLM 客户端 | `openai`, `httpx` 及传递依赖 |\n| 异步队列（预留） | `celery[redis]`, `redis` |\n\n版本号与项目根目录 `requirements.txt` 对齐，并补充了之前缺失的 `openai==2.41.0` 及其传递依赖（`distro`, `jiter`, `sniffio`, `tqdm`, `uvloop` 等）。\n\n### 安装方式\n\n```bash\npip install -r app/requirements.txt\nuvicorn app.main:app --host 0.0.0.0 --port 8000\n```\n\n**说明**：当前实际异步处理用的是内置 `ThreadPoolExecutor`，Celery/Redis 只是预留扩展，不启动 Worker 也能跑。根目录的 `requirements.txt` 与 `app/requirements.txt` 内容基本一致，可按习惯任选其一安装。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已生成完整的 `app/requirements.txt`，并通过临时虚拟环境验证 `pip install` 可正常安装。\n\n### 主要变更\n\n相比原来只有 3 行的版本，现在包含 **52 个固定版本** 的运行时依赖，按功能分组：\n\n| 分组 | 核心包 |\n|------|--------|\n| Web 框架 | `fastapi`, `uvic…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 15,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "终端日志显示修复过程中出现异常，影响对象为LabelHub项目的32号终端会话。",
+      "text_snippet": "<user_query>\n@/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-label-hub/terminals/32.txt:968-1042 fix\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "artifact_pointer",
+      "tool_names": [],
+      "file_paths": [
+        "/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-label-hub/terminals/32.txt:968-1042"
+      ],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 16,
+      "role": "assistant",
+      "display_text": "错误是 `ModuleNotFoundError: No module named 'app'`，通常是因为在 `app` 子目录里启动导致 Python 找不到包。我先确认项目结构和正确的启动方式。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "错误是 `ModuleNotFoundError: No module named 'app'`，通常是因为在 `app` 子目录里启动导致 Python 找不到包。我先确认项目结构和正确的启动方式。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-label-hub/terminals/32.txt"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 17,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/README.md",
+        "/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-label-hub/terminals/32.txt",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    }
+  ]
+}

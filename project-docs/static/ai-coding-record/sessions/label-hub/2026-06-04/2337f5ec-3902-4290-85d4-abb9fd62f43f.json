@@ -1,0 +1,505 @@
+{
+  "project": "label-hub",
+  "session_id": "2337f5ec-3902-4290-85d4-abb9fd62f43f",
+  "date": "2026-06-04",
+  "modified_at": "2026-06-04 12:06:29",
+  "time_bucket": "afternoon",
+  "top_stage": "design",
+  "stages": [
+    "design",
+    "development"
+  ],
+  "tracks": [
+    "uncategorized"
+  ],
+  "module_tags": [
+    "未分类"
+  ],
+  "key_topics": [],
+  "tool_usage": [
+    "Grep",
+    "SemanticSearch",
+    "Read",
+    "Glob"
+  ],
+  "models_used": [],
+  "selected_prompt_count": 1,
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "浏览器trace显示页面DOM路径中按钮“生成奖励批次”定位正常，但UI存在样式类名拼写错误（如tran.parent、tran.ition-color等），可能影响渲染。",
+      "text_snippet": "<user_query>\nDOM Path: div#root > div.flex h-.creen overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.08),_tran.parent_36%),linear-gradient(180deg,#f8fbff_0%,#f…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "browser_trace",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "display_text": "正在查找「生成奖励批次」相关的前后端实现与业务规则。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在查找「生成奖励批次」相关的前后端实现与业务规则。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "SemanticSearch"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/reward-settlements.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/backend-acceptance-reward-design-2026-05-30.zh.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "SemanticSearch"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/acceptance/service/DbAcceptanceService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/acceptance/service/DbAcceptanceService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 6,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/persistence/mapper/RewardSettlementDetailMapper.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/business/DbRewardSettlementServiceTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/reward/RewardRuleSchemas.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 8,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward/strategy/PerApprovedRewardStrategy.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 9,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/acceptance",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/business/reward/PerApprovedRewardRuleConfig.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 10,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/OwnerRewardController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 11,
+      "role": "assistant",
+      "display_text": "根据代码，「生成奖励批次」的完整逻辑如下。\n\n## 整体流程\n\n```mermaid\nflowchart LR\n    A[提交审核通过<br/>status=APPROVED] --> B{当前任务有<br/>DRAFT 批次?}\n    B -->|无| C[自动/手动创建 DRAFT 批次]\n    B -->|有| D[复用现有 DRAFT 批次]\n    C --> E[扫描可结算提交<br/>写入奖励明细]\n    D --> E\n    E --> F[Owner 确认<br/>DRAFT→CONFIRMED]\n    F --> G[标记已打款<br/>CONFIRMED→PAID]\n    F --> H[导出明细]\n    G --> I[可选：冲正 REVERSED]\n```\n\n**两条入批路径：**\n\n1. **自动**：审核员终审通过时，系统调用 `recordApprovedSubmission`，若该任务没有 DRAFT 批次会先建一个，再把这条提交写入明细。\n2. **手动**：点「生成奖励批次」选任务，调用 `createBatch`，扫描该任务下所有 `APPROVED` 提交，把尚未结算的写入当前 DRAFT 批次。\n\n之后仍需 Owner 手动：**确认 → 已打款**（可选导出、冲正）。\n\n---\n\n## 必须「查验/验收」通过吗？\n\n**不必须。** 奖励结算与「验收（Acceptance）」模块无联动，代码里也没有检查 `acceptance_status`。\n\n真正的前置条件是：**提交在审核流程中已终审通过**，即 `submissions.current_status = APPROVED`（`settle_scope = APPROVED_ONLY`）。\n\n| 状态 | 是否计入奖励 |\n|------|-------------|\n| APPROVED（审核通过） | ✅ 计入 |\n| 待审 / 返工 / 驳回 / 草稿等 | ❌ 不计 |\n| 验收抽样 PASS/FAIL | ❌ 不影响奖励结算 |\n\n验收是 Owner 对已通过数据的抽检；奖励只看审核是否通过。\n\n---\n\n## 可以多次新建吗？\n\n**可以有多批，但同一任务同时只能有一个 DRAFT 批次。**\n\n- 再次点「生成奖励批次」：若已有 DRAFT，**不会新建**，而是往现有 DRAFT **补扫**尚未结算的 APPROVED 提交。\n- 上一批 **确认（CONFIRMED）或打款（PAID）** 后，新通过的提交才能进入**下一批**。\n- 若对批次做 **冲正（REVERSED）**，相关提交会从「已结算」释放，可重新纳入新批次。\n\n防重复规则：同一 `submission_version_id` 若已在 **CONFIRMED/PAID** 批次中有明细，不会再计入新批次。\n\n---\n\n## 新建是对「还没奖励」的自动补发吗？\n\n**是，但只生成 DRAFT 明细，不是自动打款。**\n\n`createBatch` 会：\n\n1. 找出任务下全部 `APPROVED` 提交；\n2. 排除已在 CONFIRMED/PAID 批次结算过的；\n3. 排除当前 DRAFT 批次里已有的；\n4. 按任务上的奖励规则算金额，写入明细。\n\n因此：**审核通过但未进入已确认/已打款批次的提交，会被扫进来**；已在 DRAFT 里的不会重复；已在 CONFIRMED/PAID 里的不会重复。\n\n审核通过时也会走 `recordApprovedSubmission` 自动往 DRAFT 里加，效果与手动生成类似。\n\n---\n\n## 奖励规则是「自动奖励」吗？\n\n**半自动：自动算钱，手动确认发钱。**\n\n奖励规则配置在任务上（如 `mode: PER_APPROVED`、`base_amount: 0.5`），生成批次时会**快照**到批次，之后按规则算每条明细金额。\n\n| 环节 | 是否自动 |\n|------|---------|\n| 审核通过后写入 DRAFT 明细 | ✅ 自动 |\n| 按规则计算金额 | ✅ 自动 |\n| 批次确认 | ❌ Owner 手动点「确认」 |\n| 实际打款 | ❌ Owner 手动点「已打款」 |\n\n常见模式：\n\n- **`PER_APPROVED`**：每条审核通过的提交 = 固定 `base_amount`\n- **`FIXED_BONUS`**：固定奖金模式（另有策略实现）\n\n规则必须有有效的 `mode`；缺少 `mode` 会在写入明细时报错。任务未配规则时会用默认结构（金额为 0），批次能建但金额为 0。\n\n---\n\n## 实操建议\n\n1. 任务上先配好奖励规则（含 `mode` 和金额）。\n2. 等标注提交审核通过（`APPROVED`）；之后可自动进 DRAFT，也可手动点「生成奖励批次」补扫。\n3. 在批次详情核对明细 → **确认** → **已打款**。\n4. 同一任务不要指望同时存在多个 DRAFT；要开新一批，需先把当前 DRAFT 确认/冲正后再操作。\n\n若你问的「查验通过」是指**审核通过**而非**验收通过**，结论就是：必须审核通过才进奖励；验收通过不是硬性条件。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "根据代码，「生成奖励批次」的完整逻辑如下。\n\n## 整体流程\n\n```mermaid\nflowchart LR\n A[提交审核通过<br/>status=APPROVED] --> B{当前任务有<br/>DRAFT 批次?}\n B -->|无| C[自动/手动创建 DRAFT 批次]\n B -->|有| D[复用现有 DRAFT 批次]\n C --> E…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 12,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "新建奖励批次时无明细仍成功，冲正（REVERSED）状态含义不明，涉及奖励批次创建逻辑与状态定义问题。",
+      "text_snippet": "<user_query>\n1.新建奖励批次 没有明细 也建成功了； 2.冲正（REVERSED）是什么意思\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 13,
+      "role": "assistant",
+      "display_text": "正在核对「空批次也能创建成功」和「冲正」的具体代码行为。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在核对「空批次也能创建成功」和「冲正」的具体代码行为。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 14,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 15,
+      "role": "assistant",
+      "display_text": "## 1. 为什么没有明细也能建成功？\n\n这是**当前代码的设计行为**，不是前端 bug。\n\n`createBatch` 的逻辑是：\n\n1. 找到该任务下已有的 **DRAFT** 批次；没有就**先建一个空壳批次**（快照奖励规则、金额全为 0）；\n2. 扫描 `current_status = APPROVED` 的提交；\n3. 把「还没结算过、且当前批次里还没有」的提交写入明细；\n4. **无论扫到几条，都直接返回成功**。\n\n```165:178:backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java\n    public RewardBatchSummary createBatch(Long taskId) {\n        TaskEntity task = loadTask(taskId);\n        RewardSettlementBatchEntity batch = findOpenDraftBatch(taskId);\n        if (batch == null) {\n            Map<String, Object> rewardRule = normalizeRewardRule(task.getRewardRuleJson());\n            batch = createOpenDraftBatch(task, rewardRule);\n        }\n        // ...\n        appendApprovedSubmissionsToBatch(batch, task, rewardRule, approvedSubmissions);\n        refreshBatchAggregates(batch.getId(), approvedSubmissions.size());\n        return enrichBatchSummary(loadBatch(batch.getId()));\n    }\n```\n\n**常见导致「0 明细」的原因：**\n\n| 情况 | 结果 |\n|------|------|\n| 任务下还没有审核通过的提交 | 空批次 |\n| 通过的提交都已在 CONFIRMED/PAID 批次结算过 | 空批次（或只更新汇总） |\n| 该任务已有 DRAFT 批次，且明细已全部写入 | 再点一次不会新建，明细数不变 |\n\n另外，`confirmBatch` 目前也**不校验**明细是否 > 0，理论上空 DRAFT 批次也能被确认（一般不建议这么做）。\n\n**实际建议：** 生成后先看「有效条数 / 总金额」；若为 0，说明当前没有可结算数据，等审核通过后再生成，或对已有 DRAFT 批次再点一次补扫。\n\n---\n\n## 2. 冲正（REVERSED）是什么意思？\n\n**冲正 = 作废这一批奖励结算记录**，表示「这批奖励不再有效，需要重新来过」。\n\n点「冲正」后系统会：\n\n```263:277:backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java\n    public RewardBatchSummary reverseBatch(Long batchId) {\n        // ...\n        batch.setStatus(STATUS_REVERSED);\n        batch.setReversedAt(now);\n        updateAllDetailsStatus(batchId, STATUS_REVERSED, now, false, false, true);\n        markTaskSettlementStatus(batch.getTaskId(), STATUS_REVERSED);\n        return enrichBatchSummary(loadBatch(batchId));\n    }\n```\n\n- 批次状态 → **REVERSED（已冲正）**\n- 该批次下所有明细 → **REVERSED**\n- 记录 **冲正时间** `reversedAt`\n- 这些提交**不再占用**「已结算」名额（只有 CONFIRMED/PAID 才算已结算），后续可重新生成新批次\n\n**什么时候用：**\n\n- 批次算错了、规则配错了\n- 确认/打款后发现不应发这批奖励\n- 需要作废后重新结算\n\n**状态流转：**\n\n```\nDRAFT ──确认──► CONFIRMED ──打款──► PAID\n  │                  │               │\n  └──────── 冲正 ────┴───────────────┘\n                    ▼\n               REVERSED（作废，可重新结算）\n```\n\n**注意：**\n\n- DRAFT / CONFIRMED / PAID 都可以冲正\n- 冲正**不会自动退钱**，只是系统内标记作废；若已线下打款，需人工处理退款\n- 冲正后标注员在「我的奖励」里会看到该笔为「已冲正」\n\n---\n\n**一句话总结：**\n\n1. **空批次能建成功** —— 因为接口只负责「建/补 DRAFT 批次并扫描」，不强制要求必须有可结算明细。\n2. **冲正** —— 把整批奖励标记为作废，释放结算占用，以便重新生成正确批次。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 1. 为什么没有明细也能建成功？\n\n这是**当前代码的设计行为**，不是前端 bug。\n\n`createBatch` 的逻辑是：\n\n1. 找到该任务下已有的 **DRAFT** 批次；没有就**先建一个空壳批次**（快照奖励规则、金额全为 0）；\n2. 扫描 `current_status = APPROVED` 的提交；\n3. 把「还没结算过、且当…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 16,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "奖励名称无法单独退回，影响奖励模块的撤回功能。",
+      "text_snippet": "<user_query>\n奖励名字 不能单独打回是吧？\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 17,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/schema/resources/reward-settlement-details.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 18,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/backend-reward-settlement-and-labeler-rewards-design-2026-06-02.zh.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 19,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 20,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 21,
+      "role": "assistant",
+      "display_text": "对，**目前不能单独对某一条奖励明细做「打回」或「冲正」**。\n\n（你写的「奖励名字」我按 **奖励明细** 理解；若是指别的，可以说一下。）\n\n## 当前能力\n\n奖励操作都是**批次级别**的：\n\n| 操作 | 粒度 |\n|------|------|\n| 确认 | 整批 |\n| 已打款 | 整批 |\n| 冲正 | 整批 |\n| 导出 | 整批 |\n\n明细页（`reward-settlement-details`）只有查看，**没有任何操作按钮**（`actions: []`）。后端也没有 `reverseDetail` 这类接口，`reverseBatch` 会把该批次下**所有明细**一起标为 `REVERSED`。\n\n## 实际影响\n\n- 某条明细有问题 → **不能只作废这一条**，只能冲正整批，再重新生成。\n- 审核结果被改判/打回 → 设计文档里写了应同步冲正对应明细（§8.4），但**代码还没实现**；目前只在审核通过时自动写入明细，不会在打回时自动撤销。\n\n## 若只想排除某几个人\n\n当前没有「从批次里剔除某条明细」的功能。常见做法是：\n\n1. **DRAFT 阶段**：先不要确认；若整批里混了不该发的，只能冲正整批后重算（或等后续支持单条操作）。\n2. **已确认/已打款**：冲正整批 → 修正审核或规则 → 重新生成批次。\n\n如果业务上需要「单条奖励打回/冲正」，目前属于**待开发**能力，不是现有功能。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "对，**目前不能单独对某一条奖励明细做「打回」或「冲正」**。\n\n（你写的「奖励名字」我按 **奖励明细** 理解；若是指别的，可以说一下。）\n\n## 当前能力\n\n奖励操作都是**批次级别**的：\n\n| 操作 | 粒度 |\n|------|------|\n| 确认 | 整批 |\n| 已打款 | 整批 |\n| 冲正 | 整批 |\n| 导出 | 整批 |\n\n明…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 22,
+      "role": "user",
+      "display_text": "审核结果被改判/打回 → 设计文档里写了应同步冲正对应明细（§8.4），但代码还没实现；目前只在审核通过时自动写入明细，不会在打回时自动撤销。 这个 好实现吗？",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n审核结果被改判/打回 → 设计文档里写了应同步冲正对应明细（§8.4），但代码还没实现；目前只在审核通过时自动写入明细，不会在打回时自动撤销。 这个 好实现吗\n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "rewritten"
+    },
+    {
+      "order": 23,
+      "role": "assistant",
+      "display_text": "评估「审核改判/打回时同步冲正奖励明细」的实现难度，先梳理审核状态变更与奖励写入的现有链路。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "评估「审核改判/打回时同步冲正奖励明细」的实现难度，先梳理审核状态变更与奖励写入的现有链路。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/backend-reward-settlement-and-labeler-rewards-design-2026-06-02.zh.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 24,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 25,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine/SubmissionStateMachineFactory.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 26,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 27,
+      "role": "assistant",
+      "display_text": "**好实现，但要分层次。** 核心代码改动不大；真正费脑的是**业务规则**和**当前状态机能不能触发**。\n\n---\n\n## 先说现状：为什么现在几乎触发不到\n\n当前提交状态机里，`APPROVED` 是**终态**，没有「已通过 → 打回/驳回」的边：\n\n```51:53:backend/host-infra/src/main/java/com/labelhub/infra/statemachine/SubmissionStateMachineFactory.java\n            .addTransition(SubmissionStatus.HUMAN_REVIEWING, SubmissionEvent.APPROVE, SubmissionStatus.APPROVED)\n            .addTransition(SubmissionStatus.HUMAN_REVIEWING, SubmissionEvent.REJECT, SubmissionStatus.REJECTED)\n            .addTransition(SubmissionStatus.HUMAN_REVIEWING, SubmissionEvent.RETURN_FOR_REVISION, SubmissionStatus.NEEDS_REVISION)\n```\n\n奖励写入也只挂在「终审通过」：\n\n```524:526:backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java\n        if (SubmissionStatus.APPROVED.name().equals(toStatus)) {\n            rewardSettlementService.recordApprovedSubmission(latest.getId());\n        }\n```\n\n所以：\n\n- **打回 / 驳回**发生在 `HUMAN_REVIEWING` 阶段 → 此时通常**还没有奖励明细**，冲正钩子基本是空跑。\n- **改判**若指验收样本改判 → 与奖励结算**无联动**。\n- §8.4 说的「撤销 / 改判 / 重审」要真正生效，往往还需要**产品层支持「已通过后再打开重审」**——这不在现有状态机里。\n\n---\n\n## 实现难度分层\n\n### 第一层：对称钩子 + 按版本冲正明细（**简单，约 0.5～1 天**）\n\n在 `RewardSettlementService` 增加类似：\n\n```java\nvoid reverseSubmissionReward(Long submissionId, Long submissionVersionId);\n```\n\n逻辑：\n\n1. 按 `submission_version_id` 查非 `REVERSED` 的明细；\n2. 标 `REVERSED`、写 `reversed_at`；\n3. 调已有 `refreshBatchAggregates` 重算批次金额/条数。\n\n在 `applyReviewSideEffects` 里，当 `toStatus` 为 `REJECTED` / `NEEDS_REVISION` 时调用（与 `recordApprovedSubmission` 对称）。\n\n**工作量小**，因为：\n\n- 审核侧已有统一入口 `applyReviewSideEffects`；\n- 冲正、汇总刷新、审计模式都可复用 `reverseBatch` / `refreshBatchAggregates`；\n- 明细按 `submission_version_id` 定位，模型已支持。\n\n**局限**：按现有流程，这条路径**几乎不会跑到**。\n\n---\n\n### 第二层：已确认 / 已打款批次的单条冲正（**中等，约 1～2 天**）\n\n设计文档 §8.4 后半句：\n\n> 若明细已进入 CONFIRMED 或 PAID，应回写批次并保留冲正审计痕迹。\n\n这里要先定规则：\n\n| 策略 | 做法 | 复杂度 |\n|------|------|--------|\n| A. 只冲明细 | 单条 `REVERSED`，批次仍 CONFIRMED/PAID，重算 `total_amount` | 低 |\n| B. 批次跟着变 | 任一条冲正 → 整批 REVERSED | 低（已有能力） |\n| C. 部分冲正态 | 批次新增 `PARTIALLY_REVERSED` 等 | 高 |\n\n建议首版用 **A**：单条冲正 + 重算汇总，批次状态不变，前端展示「总金额已调整」。  \n还要补：`@Audit`、幂等（已 REVERSED 跳过）、测试。\n\n---\n\n### 第三层：支持「已通过后再改判」（**产品 + 开发，约 2～3 天+**）\n\n若业务真要「通过后打回重审」，需要：\n\n1. 状态机增加 `APPROVED → HUMAN_REVIEWING`（或 REOPEN）；\n2. 审核台增加「重开」操作；\n3. 重开时触发 `reverseSubmissionReward`；\n4. 若批次已 CONFIRMED/PAID，还要通知 Owner、可能人工退款。\n\n这是**产品决策**，不是纯技术补丁。\n\n---\n\n## 推荐落地顺序\n\n```mermaid\nflowchart TD\n    A[1. reverseSubmissionReward 服务方法] --> B[2. applyReviewSideEffects 对称调用]\n    B --> C[3. 单测: DRAFT 明细被冲正 + 汇总更新]\n    C --> D{要不要支持通过后重审?}\n    D -->|否| E[4a. 仅防御性实现, 文档说明现状]\n    D -->|是| F[4b. 扩展状态机 + 重开审核 + 已确认批次策略]\n```\n\n**最小可用版本（MVP）**：\n\n- 实现 `reverseSubmissionReward`；\n- 审核侧对称调用；\n- DRAFT / PENDING 明细可自动冲正；\n- CONFIRMED/PAID 先只做「重算汇总」或禁止自动冲正（需 Owner 手动整批冲正）。\n\n---\n\n## 结论\n\n| 问题 | 答案 |\n|------|------|\n| 好不好实现？ | **核心逻辑好实现**，改动集中、可复用现有冲正/汇总代码 |\n| 工作量 | MVP **约 1 天**；含 CONFIRMED/PAID 策略 **约 2～3 天** |\n| 最大难点 | 不是代码，是**规则**和**状态机是否允许通过后改判** |\n| 现在值不值得做？ | 若只补 §8.4 对称钩子，**短期收益有限**（正常流程触发不到）；若要做「单条奖励打回」，**更值得先做第二层** |\n\n如果你确定要做，我建议从 **`reverseSubmissionReward` + DRAFT 批次单条冲正** 起步，比先挂审核钩子更贴近「奖励明细不能单独打回」的实际痛点。需要的话我可以直接按 MVP 方案改一版。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**好实现，但要分层次。** 核心代码改动不大；真正费脑的是**业务规则**和**当前状态机能不能触发**。\n\n---\n\n## 先说现状：为什么现在几乎触发不到\n\n当前提交状态机里，`APPROVED` 是**终态**，没有「已通过 → 打回/驳回」的边：\n\n```51:53:backend/host-infra/src/main/java/com/lab…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    }
+  ]
+}

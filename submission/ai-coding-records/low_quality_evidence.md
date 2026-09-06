@@ -1,0 +1,404 @@
+# LabelHub Low-Quality Evidence Catalog
+
+These items were intentionally downgraded. Raw text is preserved in JSON and per-session structured exports; the cleaned display value is [摘要].
+
+- label-hub | 2026-05-21 12:09:41 | de4e34ce-3a78-401e-9cde-09bc3f5a1596 | turn 19 | directive | [摘要] | 在绘制ER图时，未提供具体数据表或字段定义，导致无法生成有效图形。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 0 | http_trace | [摘要] | Docker Compose 启动 mysql、redis、minio 三个服务均失败，redis 拉取镜像时向 registry-1.docker.io 请求 token 返回 503 Service Unavailable，其余服务因 context canceled 终止。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 8 | log_trace | [摘要] | Maven 构建失败，host-app 项目因无法解析 com.labelhub 下 plugins-api、host-domain、host-core、host-infra、host-plugin、agent-runtime 共 6 个 0.1.0-SNAPSHOT 依赖而失败。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 14 | log_trace | [摘要] | labelhub-backend 模块构建失败，spring-boot-maven-plugin 无法找到合适的主类，需添加 mainClass 属性。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 21 | console_error | [摘要] | Spring Boot 启动时因 SLF4J 绑定冲突导致 Logback 日志系统初始化失败，抛出 AssertionError，构建退出码为 1。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 26 | log_trace | [摘要] | Maven 构建失败，redisson、knife4j、springdoc、swagger、flyway 及 togglz 等 13 个依赖项均无法解析。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 38 | directive | [摘要] | Java 编译警告：源发行版 21 要求目标发行版也为 21，否则可能导致编译或运行时兼容性问题。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 44 | question | [摘要] | 数据库连接配置项 LABELHUB_DB_URL 与 LABELHUB_DB_USERNAME 未找到配置位置，影响应用启动或数据库连接初始化。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 49 | directive | [摘要] | 数据库迁移操作未提供具体错误信息或执行结果，无法定位问题。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 54 | stack_trace | [摘要] | Redisson客户端因Redis未配置默认用户密码却执行AUTH命令，抛出RedisException认证失败异常。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 61 | stack_trace | [摘要] | Spring Boot 启动失败，Redisson 客户端连接 localhost:6379 时 AUTH 命令失败，因 Redis 未配置密码但客户端发送认证请求，导致 SaTokenDaoForRedisTemplate 依赖注入异常。
+- label-hub | 2026-05-21 14:15:16 | 48d0079e-5c98-4b7e-8823-b083c92fe721 | turn 68 | bug_report | [摘要] | 前端登录接口跨域请求被拦截，状态码无返回，影响用户认证流程。
+- label-hub | 2026-05-21 14:26:54 | 72fcc63d-ed5d-41d3-8640-af5c52e7b588 | turn 0 | artifact_pointer | [摘要] | PDF 文档中标注了 LabelHub 平台需实现 AI 全栈功能，但未提供具体技术实现细节或异常现象。
+- label-hub | 2026-05-21 14:26:54 | 72fcc63d-ed5d-41d3-8640-af5c52e7b588 | turn 33 | directive | [摘要] | 系统扩展性不足，需通过架构调整提升模块解耦与横向扩展能力。
+- label-hub | 2026-05-21 14:26:54 | 72fcc63d-ed5d-41d3-8640-af5c52e7b588 | turn 37 | directive | [摘要] | 线上切换调用函数的库未指定名称，影响函数调用逻辑的动态选择。
+- label-hub | 2026-05-21 14:26:54 | 72fcc63d-ed5d-41d3-8640-af5c52e7b588 | turn 54 | bug_report | [摘要] | 文档结构异常导致无法识别 todo 组件。
+- label-hub | 2026-05-21 14:26:54 | 72fcc63d-ed5d-41d3-8640-af5c52e7b588 | turn 94 | bug_report | [摘要] | 文档中扩展点与插件架构存在概念冲突，影响架构一致性理解。
+- label-hub | 2026-05-21 14:26:54 | 72fcc63d-ed5d-41d3-8640-af5c52e7b588 | turn 97 | directive | [摘要] | 文档清洗操作中，核心组件/模块未报告异常，无关键错误现象或状态码。
+- label-hub | 2026-05-21 14:26:54 | 72fcc63d-ed5d-41d3-8640-af5c52e7b588 | turn 111 | directive | [摘要] | 根据控制台输出，系统正常启动，未发现异常。
+- label-hub | 2026-05-21 14:26:54 | 72fcc63d-ed5d-41d3-8640-af5c52e7b588 | turn 115 | meta_context | [摘要] | 外部上传的 LabelHub 数据标注平台实现计划文档已保存至本地文件系统。
+- label-hub | 2026-05-21 14:26:54 | 72fcc63d-ed5d-41d3-8640-af5c52e7b588 | turn 157 | meta_context | [摘要] | 上传了 LabelHub 数据标注平台实现计划文档，作为后续开发任务的核心参考。
+- label-hub | 2026-05-21 14:26:54 | 72fcc63d-ed5d-41d3-8640-af5c52e7b588 | turn 161 | meta_context | [摘要] | 外部上传的 LabelHub 数据标注平台实现计划文档已保存至文件系统，作为后续任务执行的参考依据。
+- label-hub | 2026-05-21 15:21:07 | fd778410-4439-48da-bb46-d9e464907618 | turn 23 | directive | [摘要] | 实现计划指令要求按附件执行，禁止编辑计划文件，需按顺序标记待办项为进行中直至全部完成。
+- label-hub | 2026-05-21 16:10:37 | 2f211b70-148d-4d9a-86bc-7dfbd40f7125 | turn 16 | question | [摘要] | 数据表设计中缺少菜单存储表，需确认系统后台菜单对应的数据库表。
+- label-hub | 2026-05-21 16:10:37 | 2f211b70-148d-4d9a-86bc-7dfbd40f7125 | turn 18 | directive | [摘要] | 检查过程中发现缺少必要内容，需补充缺失项以完成完整性校验。
+- label-hub | 2026-05-21 16:10:37 | 2f211b70-148d-4d9a-86bc-7dfbd40f7125 | turn 24 | directive | [摘要] | ok 指令执行成功，无异常。
+- label-hub | 2026-05-21 18:28:40 | 473b454b-88b1-4c5a-8d93-1a8d7e4ee5b7 | turn 4 | question | [摘要] | 在提交 a17fd3c5 处创建分支时，用户询问具体操作方式，未出现异常。
+- label-hub | 2026-05-21 19:00:02 | 7a318b97-876e-4fae-98c3-17379b7a444b | turn 0 | directive | [摘要] | 数据库设计文档转换SQL时出现异常，影响对象为docs/database-design.md文件。
+- label-hub | 2026-05-21 19:16:24 | 97ec71c8-f640-46aa-a60f-7531a3618a38 | turn 7 | directive | [摘要] | 清除 target 指令执行失败，导致目标对象状态异常。
+- label-hub | 2026-05-22 18:58:52 | 5b90cf85-45a7-4f5c-9751-192d7b1896db | turn 3 | directive | [摘要] | 写入文件操作失败，影响文件系统写入功能。
+- label-hub | 2026-05-22 18:58:52 | 5b90cf85-45a7-4f5c-9751-192d7b1896db | turn 6 | bug_report | [摘要] | 提交bccea03fc3b56b79485eeaa750ed73199c36404a误将.m2目录下大量依赖文件纳入版本控制，需回滚后重新提交。
+- label-hub | 2026-05-23 23:59:42 | 71736389-73d7-4b33-8718-9a58899de78c | turn 32 | directive | [摘要] | 分配菜单在界面中重复显示了两遍，子菜单出现异常。
+- label-hub | 2026-05-24 00:22:16 | 56496337-3d16-4909-9b6f-07934f57f254 | turn 46 | stack_trace | [摘要] | UserAdminService.assignUserRoles 调用 UserRoleMapper.updateById 时因唯一键 uk_user_roles 冲突抛出 DuplicateKeyException，根因为重复写入 '1-1001-2001-0' 记录，异常经 UserTokenAuthenticationFilter 的 doFilterInternal 传播。
+- label-hub | 2026-05-24 01:01:53 | 6ad148bd-cc71-4782-8f96-f2b319d1fa2c | turn 16 | directive | [摘要] | 迭代任务列表生成失败，未检测到具体错误现象或影响对象。
+- label-hub | 2026-05-24 01:01:53 | 6ad148bd-cc71-4782-8f96-f2b319d1fa2c | turn 148 | directive | [摘要] | 实现计划指令要求按序执行待办项并标记进行中，禁止编辑计划文件或重复创建待办。
+- label-hub | 2026-05-24 01:28:26 | 14a666b7-8fbf-44ec-934a-02340aafe555 | turn 17 | directive | [摘要] | OWNER 指 labhub 任务所有者而非系统所有者，超级管理员仍为 admin，存在角色权限概念混淆。
+- label-hub | 2026-05-24 01:28:26 | 14a666b7-8fbf-44ec-934a-02340aafe555 | turn 23 | directive | [摘要] | 修复过程中出现关键异常，影响目标组件或模块，需记录具体错误现象与状态码。
+- label-hub | 2026-05-24 01:28:26 | 14a666b7-8fbf-44ec-934a-02340aafe555 | turn 42 | stack_trace | [摘要] | Flyway 校验失败，迁移版本 2 和 3 的 checksum 与数据库记录不匹配，导致 BeanCreationException 阻止 flywayInitializer 初始化，应用启动终止。
+- label-hub | 2026-05-24 01:51:41 | aa424479-4fba-49b7-a9c7-f5aaf06ce624 | turn 0 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：纯追问状态，无具体可执行任务描述。
+- label-hub | 2026-05-24 01:51:41 | aa424479-4fba-49b7-a9c7-f5aaf06ce624 | turn 9 | directive | [摘要] | 该指令未提供具体异常现象，无法生成有效摘要。
+- label-hub | 2026-05-24 01:51:41 | aa424479-4fba-49b7-a9c7-f5aaf06ce624 | turn 50 | directive | [摘要] | 搜索组件点击重置时触发两次页面刷新，导致重复请求。
+- label-hub | 2026-05-24 02:02:12 | 0cd9cb5f-a718-4c69-a751-cb2fad1e69a2 | turn 0 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：纯口语追问，无明确可执行任务描述
+- label-hub | 2026-05-24 02:02:12 | 0cd9cb5f-a718-4c69-a751-cb2fad1e69a2 | turn 13 | directive | [摘要] | 动态表单中时间数型下拉数据缺失，导致菜单管理选择时仍显示为平面下拉。
+- label-hub | 2026-05-24 13:40:59 | 12c507f6-575b-4d70-9738-77ba79ea47c6 | turn 0 | directive | [摘要] | 系统与refine集成深度不足，需评估耦合方式以提升协同效率。
+- label-hub | 2026-05-24 13:40:59 | 12c507f6-575b-4d70-9738-77ba79ea47c6 | turn 8 | directive | [摘要] | pk 模块出现关键异常现象，影响对象为 pk 组件。
+- label-hub | 2026-05-24 13:40:59 | 12c507f6-575b-4d70-9738-77ba79ea47c6 | turn 21 | directive | [摘要] | LabelHub AI 在运行过程中输出“ok”，未出现异常或错误信息，过程正常。
+- label-hub | 2026-05-24 13:40:59 | 12c507f6-575b-4d70-9738-77ba79ea47c6 | turn 32 | directive | [摘要] | LabelHub AI 编码过程中，指令执行未产生有效输出或错误信息，缺少可记录的关键异常现象与影响对象。
+- label-hub | 2026-05-24 13:40:59 | 12c507f6-575b-4d70-9738-77ba79ea47c6 | turn 62 | question | [摘要] | 集成 refine 后，组件状态管理与数据请求流程发生变化，核心差异在于自动处理加载、错误与缓存，减少手动副作用代码。
+- label-hub | 2026-05-24 13:40:59 | 12c507f6-575b-4d70-9738-77ba79ea47c6 | turn 64 | directive | [摘要] | enable/disable操作后未触发表格刷新，导致界面状态与数据不一致。
+- label-hub | 2026-05-24 13:40:59 | 12c507f6-575b-4d70-9738-77ba79ea47c6 | turn 70 | bug_report | [摘要] | 使用 refine 实现无感刷新时，直接改变状态被禁用，请求失败后无法回退状态。
+- label-hub | 2026-05-24 13:40:59 | 12c507f6-575b-4d70-9738-77ba79ea47c6 | turn 97 | bug_report | [摘要] | 加载过程中出现闪烁现象，影响用户体验，需优化加载设计。
+- label-hub | 2026-05-24 13:40:59 | 12c507f6-575b-4d70-9738-77ba79ea47c6 | turn 111 | directive | [摘要] | 数据从有到无切换时出现闪屏，影响列表或视图组件的显示稳定性。
+- label-hub | 2026-05-24 13:40:59 | 12c507f6-575b-4d70-9738-77ba79ea47c6 | turn 136 | directive | [摘要] | 页面从无到有渲染时出现闪屏现象，影响整体视觉稳定性。
+- label-hub | 2026-05-24 13:50:56 | b9a59d10-6997-4fe1-ba2e-6130ea4e8eed | turn 12 | directive | [摘要] | 该指令未提供具体错误信息，无法提取异常现象与影响对象。
+- label-hub | 2026-05-24 14:08:34 | 4f131741-c790-4239-8547-8134f211ec68 | turn 0 | artifact_pointer | [摘要] | 低代码引擎实现清单文档中缺少对关键异常现象与影响对象的记录，需补充以完善过程记录检索。
+- label-hub | 2026-05-24 14:14:49 | 2e89829b-ab5f-4a07-9710-2e69ab395ab2 | turn 0 | console_error | [摘要] | AuthGuard.tsx 因 token 过期触发无限循环，DbAuthService.requireUser 抛出 BusinessException: Invalid or expired token，导致 /api/v1/auth/me 及多个 /api/v1/engine/resources/ 接口返回 500，异常涉及 UserTokenAuthenticationFilter、LogoutFilter 及 Sa-Token 安全过滤器链。
+- label-hub | 2026-05-24 14:14:49 | 2e89829b-ab5f-4a07-9710-2e69ab395ab2 | turn 15 | directive | [摘要] | 登录模块中refreshToken未实现自动刷新机制，导致令牌过期后无法自动续期。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 0 | artifact_pointer | [摘要] | 后端安全审计文档中OWASP Top 10部分存在关键异常，影响安全合规检查的完整性。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 13 | directive | [摘要] | ok 指令执行成功，未出现异常。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 52 | directive | [摘要] | 数据权限仅标记出口权限，入口权限仍无法标记，导致权限标记不完整。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 54 | directive | [摘要] | DTO字段读写权限未正确分离，直接标记为access而非数组，导致同一DTO中读写逻辑混淆。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 56 | directive | [摘要] | 系统字段 lastLoginAt 缺少默认值，导致每次使用需自定义配置。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 58 | directive | [摘要] | ok 状态，无异常现象或影响对象，无需记录。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 87 | bug_report | [摘要] | @RequireAnyPermission 注解中权限标识重复，可能引发权限校验逻辑冲突。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 89 | question | [摘要] | admin 的字段权限被 superuser 绕过，导致权限控制失效。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 91 | directive | [摘要] | 组件设计不合理，缺少对异常场景的容错处理。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 97 | question | [摘要] | RBAC与细粒化权限控制不兼容，导致无法实现级联权限。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 99 | bug_report | [摘要] | system:admin 与 system:* 权限范围混淆，导致平台管理员权限配置出现歧义。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 101 | directive | [摘要] | LabelHub AI 执行过程中，指令处理正常完成，未出现异常。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 120 | directive | [摘要] | 权限系统使用说明缺失，导致无法明确其调用方式与集成路径。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 122 | directive | [摘要] | 权限系统使用说明缺失，导致无法明确其调用方式与集成路径。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 125 | directive | [摘要] | 前端页面正常加载，无异常现象或错误信息。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 141 | stack_trace | [摘要] | 权限分配因未实现树形选择导致外键约束失败，role_permissions 表插入 permission_id 时违反 fk_role_permissions_permission 外键约束。
+- label-hub | 2026-05-24 17:31:34 | 179ffefd-8a90-4b52-b2c5-66c987eeff72 | turn 160 | directive | [摘要] | 前端返回的number类型数据因超出安全整数范围导致精度丢失。
+- label-hub | 2026-05-24 17:44:10 | 7533ec6f-40da-4273-b70c-746d52dd4b15 | turn 0 | directive | [摘要] | 前端因缺少 system:menu:read 权限导致菜单无法显示，需分配该权限才能正常渲染。
+- label-hub | 2026-05-24 23:41:20 | 004307b4-4fd8-4388-b141-de48e786735d | turn 0 | stack_trace | [摘要] | DictAdminService 构造器参数 4 依赖的 DictAdminMapper Bean 未找到，导致应用启动失败。
+- label-hub | 2026-05-24 23:41:20 | 004307b4-4fd8-4388-b141-de48e786735d | turn 33 | directive | [摘要] | 该片段未提供具体异常现象，仅询问“还有其他方式吗”，无法提取问题类型、组件或错误状态。
+- label-hub | 2026-05-24 23:47:00 | 1a9b1d87-ec96-4aa9-8d69-f2cd001595e0 | turn 0 | http_trace | [摘要] | POST /api/v1/auth/login 返回非 2xx 状态码，请求携带了 session 与 Bearer token 但 body 为明文密码，可能因凭证冲突或认证逻辑变更导致登录失败。
+- label-hub | 2026-05-24 23:47:00 | 1a9b1d87-ec96-4aa9-8d69-f2cd001595e0 | turn 6 | directive | [摘要] | ok 状态，无异常现象或错误信息，无需记录问题摘要。
+- label-hub | 2026-05-25 01:17:47 | 5756d59a-38ba-4cea-ae70-3587d09e534a | turn 36 | directive | [摘要] | 点击创建任务菜单后，任务管理模块被选中，但未触发预期行为或页面跳转。
+- label-hub | 2026-05-25 13:57:11 | a504fbe9-3bce-4f4d-a6cc-09bb4d9ad5db | turn 0 | bug_report | [摘要] | DataScopeAdminService 构造函数参数4依赖的 DataScopeAdminMapper 注入失败，导致应用启动异常。
+- label-hub | 2026-05-25 13:57:11 | a504fbe9-3bce-4f4d-a6cc-09bb4d9ad5db | turn 10 | artifact_pointer | [摘要] | 终端日志显示Java进程因OutOfMemoryError异常终止，影响Label Hub应用的内存分配。
+- label-hub | 2026-05-25 13:57:11 | a504fbe9-3bce-4f4d-a6cc-09bb4d9ad5db | turn 13 | directive | [摘要] | host-infra 目录下出现不应存在的 .m2 目录，疑似构建或依赖管理异常。
+- label-hub | 2026-05-25 13:57:11 | a504fbe9-3bce-4f4d-a6cc-09bb4d9ad5db | turn 17 | directive | [摘要] | 用户要求修改“一系”相关代码，但未提供具体修改内容或错误现象，无法生成有效摘要。
+- label-hub | 2026-05-25 13:57:11 | a504fbe9-3bce-4f4d-a6cc-09bb4d9ad5db | turn 22 | question | [摘要] | 构建失败持续弹出确认对话框，影响用户正常操作流程。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 6 | directive | [摘要] | 构建指令执行失败，核心组件 b 未完成初始化或返回异常状态，导致后续流程中断。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 25 | directive | [摘要] | 页面显示正常，未发现异常现象或错误。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 39 | console_error | [摘要] | LHResourcePage 渲染时因缺少 QueryClientProvider 导致 useResourceMutations 抛出 No QueryClient set 错误。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 70 | directive | [摘要] | 组件拖拽功能失效，影响组件交互操作。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 77 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：单句信息量不足，仅提及库名，无明确目标或约束，无法支撑复盘。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 84 | directive | [摘要] | 右侧配置区出现滚动失效，影响用户对配置项的完整访问。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 105 | directive | [摘要] | 生成计划模块出现异常，影响后续任务调度与执行流程。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 154 | directive | [摘要] | 根据计划指令，应标记首个待办项为进行中并依次执行，不得重复创建或编辑计划文件。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 155 | directive | [摘要] | OJ 评测系统在运行测试时出现异常，核心组件为评测模块，关键现象是测试执行中断或结果异常。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 157 | directive | [摘要] | p2 模块出现关键异常现象，影响对象为 p2 相关组件。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 160 | directive | [摘要] | P2 任务继续执行，未出现异常。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 172 | question | [摘要] | 数组/子表单字段在画布中复用进入新区域时，出现与新建区块行为不一致的问题，影响子字段复用逻辑。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 174 | directive | [摘要] | ok 指令执行成功，无异常。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 175 | directive | [摘要] | 根据控制台输出，系统正常启动，未出现异常。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 198 | directive | [摘要] | 子画布组件因key属性重复导致渲染异常。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 215 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：单句信息量不足，缺乏明确目标、对象或约束，无法支撑复盘。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 219 | directive | [摘要] | 默认值未生效，dependsOn 依赖条件未满足导致相关组件行为异常。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 227 | directive | [摘要] | 加吧操作触发异常，影响对象为当前流程节点，关键现象为操作未正常执行。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 239 | console_error | [摘要] | Radix UI SelectItem 组件缺少非空 value prop，导致在 FormSettingsDialog 中渲染时抛出错误。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 251 | directive | [摘要] | 单行下拉组件在实现dependsOn联动演示时，缺少关键实现逻辑或配置说明。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 254 | directive | [摘要] | 字段 key 与 path 含义不明确，导致数据映射或解析逻辑存在歧义。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 258 | directive | [摘要] | LabelHub AI 执行过程中未输出任何异常或错误信息，状态正常。
+- label-hub | 2026-05-25 19:43:58 | 3b93b47e-1d33-47db-bab4-cebc2e947302 | turn 268 | directive | [摘要] | 配置组件右侧的折叠框默认收起，需手动展开才能预览实时JSON，而非直接复制JSON按钮。
+- label-hub | 2026-05-26 12:22:22 | 085c51e5-dbfc-498c-a02b-49ff307c16ca | turn 11 | bug_report | [摘要] | viewVersionHistory 按钮未显示，可能因权限或渲染条件未满足导致功能入口缺失。
+- label-hub | 2026-05-26 12:22:22 | 085c51e5-dbfc-498c-a02b-49ff307c16ca | turn 45 | directive | [摘要] | 卸载时缺少消失特效，导致组件移除过程无过渡动画。
+- label-hub | 2026-05-26 12:22:22 | 085c51e5-dbfc-498c-a02b-49ff307c16ca | turn 52 | directive | [摘要] | Schema使用说明文档中缺少对最新schema的详细说明，导致文档内容不完整。
+- label-hub | 2026-05-26 13:57:01 | 101ce9a7-7eb3-4a8d-8602-894e8ab9b98e | turn 18 | directive | [摘要] | LabelHub AI 执行过程中，ok 指令返回正常状态，未出现异常现象。
+- label-hub | 2026-05-26 13:57:01 | 101ce9a7-7eb3-4a8d-8602-894e8ab9b98e | turn 55 | stack_trace | [摘要] | 数据库写入异常，因 task_id 字段缺少默认值导致 SQL 执行失败。
+- label-hub | 2026-05-26 13:57:01 | 101ce9a7-7eb3-4a8d-8602-894e8ab9b98e | turn 60 | directive | [摘要] | 保存草稿后再次打开未加载，草稿数据丢失或加载逻辑异常。
+- label-hub | 2026-05-26 13:57:01 | 101ce9a7-7eb3-4a8d-8602-894e8ab9b98e | turn 74 | directive | [摘要] | 画布未自动加载草稿，且无任何加载提示文案，影响用户感知草稿状态。
+- label-hub | 2026-05-26 13:57:01 | 101ce9a7-7eb3-4a8d-8602-894e8ab9b98e | turn 90 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：口语化描述且信息量不足，缺乏明确的技术对象和可执行任务描述。
+- label-hub | 2026-05-26 13:57:01 | 101ce9a7-7eb3-4a8d-8602-894e8ab9b98e | turn 94 | directive | [摘要] | ok 状态，无异常现象，无需记录。
+- label-hub | 2026-05-26 13:57:01 | 101ce9a7-7eb3-4a8d-8602-894e8ab9b98e | turn 101 | directive | [摘要] | 切换Tab后返回时，原有内容被重置为新建模板，属于状态丢失或缓存未恢复问题。
+- label-hub | 2026-05-26 13:57:01 | 101ce9a7-7eb3-4a8d-8602-894e8ab9b98e | turn 107 | directive | [摘要] | Tab切换后内容被重置为新建模板，影响页面状态保持。
+- label-hub | 2026-05-26 13:57:01 | 101ce9a7-7eb3-4a8d-8602-894e8ab9b98e | turn 114 | bug_report | [摘要] | 在运行过程中出现未明确描述的异常，影响整体流程稳定性，需进一步定位具体错误类型与触发条件。
+- label-hub | 2026-05-26 13:57:01 | 101ce9a7-7eb3-4a8d-8602-894e8ab9b98e | turn 123 | directive | [摘要] | 草稿版本无法回滚，仅已发布版本支持回滚操作，草稿仅可切换。
+- label-hub | 2026-05-26 14:36:53 | 1f7d07bb-1ca2-4e6b-b243-3ba04060aec8 | turn 0 | console_error | [摘要] | React 组件 <button> 内发生 Maximum update depth exceeded 错误，由 setState 在更新周期中反复调用导致无限循环。
+- label-hub | 2026-05-26 16:34:00 | 4e727e15-e7b2-4cde-82a3-bf8ce41f1bfe | turn 88 | directive | [摘要] | 根据计划执行指令，要求按顺序标记待办项为进行中，不得重复创建或编辑计划文件本身。
+- label-hub | 2026-05-26 16:34:00 | 4e727e15-e7b2-4cde-82a3-bf8ce41f1bfe | turn 143 | question | [摘要] | SystemResourcePage.tsx 第23-25行存在疑似冗余代码，需确认是否可移除。
+- label-hub | 2026-05-26 16:34:00 | 4e727e15-e7b2-4cde-82a3-bf8ce41f1bfe | turn 147 | question | [摘要] | 动态表单与动态表格无法满足customDrawer的自定义功能需求，核心问题在于现有组件对自定义场景的支持不足。
+- label-hub | 2026-05-26 16:34:00 | 4e727e15-e7b2-4cde-82a3-bf8ce41f1bfe | turn 149 | question | [摘要] | schema 动态生成问题被质疑为固定，需确认其是否支持运行时动态变更。
+- label-hub | 2026-05-26 16:34:00 | 4e727e15-e7b2-4cde-82a3-bf8ce41f1bfe | turn 151 | directive | [摘要] | customDrawer组件之外，未发现其他替代方案或异常现象。
+- label-hub | 2026-05-26 16:34:00 | 4e727e15-e7b2-4cde-82a3-bf8ce41f1bfe | turn 153 | directive | [摘要] | 根据原文内容，该片段未包含具体技术异常或错误现象，无法提取有效问题摘要。
+- label-hub | 2026-05-26 16:34:00 | 4e727e15-e7b2-4cde-82a3-bf8ce41f1bfe | turn 155 | directive | [摘要] | 前端页面正常加载，无异常现象或错误记录。
+- label-hub | 2026-05-26 16:34:00 | 4e727e15-e7b2-4cde-82a3-bf8ce41f1bfe | turn 157 | directive | [摘要] | LabelHub AI 执行过程中，指令处理模块返回状态码“ok”，未出现异常或错误现象。
+- label-hub | 2026-05-26 16:34:00 | 4e727e15-e7b2-4cde-82a3-bf8ce41f1bfe | turn 180 | console_error | [摘要] | LHResourcePage 组件中 TaskItemsImportWorkflowRenderer 在条件渲染时 Hook 调用顺序不一致，导致 React 报错 Rendered more hooks than during the previous render。
+- label-hub | 2026-05-26 16:34:00 | 4e727e15-e7b2-4cde-82a3-bf8ce41f1bfe | turn 194 | directive | [摘要] | LabelHub AI 执行指令时返回“ok”状态，未出现异常，无需记录问题。
+- label-hub | 2026-05-26 16:49:09 | 4811b473-4233-41c0-bdde-3448996f329c | turn 13 | directive | [摘要] | 导入数据时schema不一致，导致任务无法导入其他类型题目，标注内容存在差异。
+- label-hub | 2026-05-26 16:49:09 | 4811b473-4233-41c0-bdde-3448996f329c | turn 21 | directive | [摘要] | 前端改动未涉及后端，但缺少对应接口适配或数据验证，可能导致前后端数据不一致。
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 37 | directive | [摘要] | 编译测试时出现异常，影响对象为编译过程。
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 61 | stack_trace | [摘要] | 因类加载失败导致 NoClassDefFoundError，根因是 ClassNotFoundException，缺失类为 com.labelhub.core.error.ErrorCode。
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 74 | directive | [摘要] | 单次删除操作未走批量删除通道，可能影响删除效率与一致性。
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 87 | question | [摘要] | 确认删除弹窗中“删除后不可恢复”的提示未正确显示删除数量，影响用户确认删除操作时的信息完整性。
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 91 | directive | [摘要] | 批量操作配置中缺少 delete 键，导致 bulkActions 对象无效。
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 120 | http_trace | [摘要] | POST 请求 /api/v1/engine/resources/taskItems/actions/delete/batch 返回 404，后端 TaskItemLowCodeProvider 中未找到对应处理逻辑。
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 139 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：信息量不足，仅提及文件位置，无明确任务描述。
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 152 | bug_report | [摘要] | POST /api/v1/engine/resources/taskItems/actions/delete/batch 返回 404，错误码 RESOURCE_NOT_FOUND，批量删除任务项时资源未找到。
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 171 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：纯文件路径指针，无可执行任务描述
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 183 | console_error | [摘要] | DbTaskService 执行 softDeleteTaskItem 时因唯一键冲突抛出 DuplicateKeyException，违反 task_items.uk_task_items_seq 约束。
+- label-hub | 2026-05-26 19:01:26 | da00b5d6-6bee-4c9b-880c-334aed1f6e23 | turn 199 | directive | [摘要] | 暗黑模式下 .lh-query-bar 与 .lh-table-bulk-bar 组件出现白边，属于样式兼容性缺陷。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 10 | directive | [摘要] | 列详情时未正确加载列数据，导致先显示详情再查看列时内容异常。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 15 | directive | [摘要] | ok 状态，无异常。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 38 | bug_report | [摘要] | 黑暗模式在 LHDetailDrawer.tsx 第 80-85 行出现显示异常。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 66 | question | [摘要] | JSON格式化显示时出现字符串转义问题，导致转义符被直接展示而非解析为实际字符。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 93 | directive | [摘要] | 导入数据校验时，需在标记ID列重复检测与MD5/SHA值比对中选择方案，以跳过重复项。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 97 | directive | [摘要] | 导入时未预制默认id列（如id/Id/ID），导致需强制手动选择或依赖JSON序列的SHA256ID。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 116 | http_trace | [摘要] | GET /api/v1/owner/tasks/2059281622593892353/template/latest 返回 404，但数据库中该任务存在，表明模板资源缺失或路由未匹配。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 129 | bug_report | [摘要] | 任务模板版本缺失，返回TEMPLATE_NOT_FOUND错误，影响模板加载流程。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 153 | directive | [摘要] | 外部直角无法显示，且内容全部左移，影响布局渲染完整性。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 167 | question | [摘要] | 编辑模板后模板schema与数据schema不一致，导致无法导入新数据且旧数据对应关系失效。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 168 | question | [摘要] | 编辑模板后，模板schema与数据schema不一致，导致无法导入新数据且旧数据对应关系失效。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 174 | question | [摘要] | 新建任务与新建模板的schema一致性约束导致任务schema固定，模板版本管理意义不明确。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 186 | question | [摘要] | 数据导入列包含题目数据与标注选项，但排除系统内置LLM组件，冻结列仅用于展示且必须存在。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 189 | directive | [摘要] | 根据指令要求，原文“再详细说一下”并非技术证据片段，无法提取问题类型、组件或错误现象，因此无法生成有效摘要。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 191 | directive | [摘要] | 保存文档操作成功完成，无异常。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 197 | directive | [摘要] | LabelHub AI 执行过程中出现异常，影响对象为当前指令模块。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 204 | directive | [摘要] | 代码实现与文档要求不符，导致功能缺失或行为异常。
+- label-hub | 2026-05-26 23:30:49 | 059e2bed-f32b-4d25-a04b-97a3792fd38c | turn 228 | directive | [摘要] | 2期任务执行过程中出现异常，影响对象为后续流程的连续性。
+- label-hub | 2026-05-27 14:16:56 | 6a8a85fe-ef22-4b4b-9983-f70281882511 | turn 0 | directive | [摘要] | trae/skills 导入技能时发生异常，影响技能模块加载。
+- label-hub | 2026-05-27 14:59:02 | 9fe0bd9e-91a6-469f-a1c5-858d8acbc91a | turn 0 | directive | [摘要] | 任务分配模块缺少具体实现细节，无法确认当前功能完成度。
+- label-hub | 2026-05-27 14:59:02 | 9fe0bd9e-91a6-469f-a1c5-858d8acbc91a | turn 8 | meta_context | [摘要] | 用户手动附加了完整开发工作流技能，要求按标准化全生命周期流程实现assignments和Submission前后端功能。
+- label-hub | 2026-05-27 14:59:02 | 9fe0bd9e-91a6-469f-a1c5-858d8acbc91a | turn 16 | directive | [摘要] | LabelHub AI 执行过程中收到“ok”指令，未出现异常。
+- label-hub | 2026-05-27 14:59:02 | 9fe0bd9e-91a6-469f-a1c5-858d8acbc91a | turn 66 | bug_report | [摘要] | 前端菜单设计与页面存在TypeScript类型错误，需修复编译异常。
+- label-hub | 2026-05-27 14:59:02 | 9fe0bd9e-91a6-469f-a1c5-858d8acbc91a | turn 82 | meta_context | [摘要] | 用户手动附加了full-development-workflow技能，要求实现labeler的任务广场和标注控制台功能，并指出不能新建项目，只有labeler角色才能创建。
+- label-hub | 2026-05-27 14:59:02 | 9fe0bd9e-91a6-469f-a1c5-858d8acbc91a | turn 107 | directive | [摘要] | MCP 工具集不完整时，应完成可执行部分并在总结中说明缺失功能及原因，禁止擅自使用浏览器自动化绕过限制。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 0 | meta_context | [摘要] | 用户手动附加了完整开发工作流技能，要求先分析需求与设计，不写代码。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 15 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：单句信息量不足，仅提及扩展设计，无具体目标、约束或交付物，无法支撑复盘。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 19 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：信息量不足，缺少目标对象和约束，无法支撑复盘。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 24 | directive | [摘要] | LabelHub AI 执行指令时出现异常，影响对象为当前任务流程。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 50 | directive | [摘要] | LabelHub AI Coding 过程记录显示，实现后续阶段时出现未明确指出的异常，影响后续开发流程。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 102 | http_trace | [摘要] | GET 请求 /api/v1/owner/tasks/{taskId}/templates 时，taskId 参数未注入，导致请求路径包含原始占位符 %7BtaskId%7D，返回 500 错误。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 110 | directive | [摘要] | MCP工具集不完整导致部分任务无法完成，需在总结中说明缺失功能及原因，禁止使用浏览器自动化绕过限制。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 111 | http_trace | [摘要] | 请求 GET /api/v1/owner/tasks/{taskId}/templates 因 {taskId} 未注入导致 URL 编码错误，返回 500 状态码。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 127 | question | [摘要] | 标注模板版本发布后，状态未明确，影响TASK-2059281622593892353的版本历史记录。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 136 | question | [摘要] | 模板发布功能尚未实现，当前缺少正常设计流程，影响模板模块的可用性。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 151 | directive | [摘要] | 保存到 docs 操作失败，未记录具体错误原因或异常信息。
+- label-hub | 2026-05-27 16:31:46 | 54ac05bb-832e-4073-88fa-cd7066ccdbdc | turn 155 | directive | [摘要] | 链接组件在加载时出现异常，导致页面交互功能受影响。
+- label-hub | 2026-05-27 17:10:04 | 4f025294-acb7-498c-9a98-140e77bc7da8 | turn 0 | directive | [摘要] | 导入任务数据后返回为空，数据库存在数据但查询结果缺失，问题涉及数据读取或映射逻辑。
+- label-hub | 2026-05-27 17:27:41 | 0a22265c-4ac5-4715-abfb-1ac267cd1ccc | turn 0 | artifact_pointer | [摘要] | 文档 implementation-plan-task-template-claim-readiness.zh.md 中记录了任务模板认领就绪状态的实现计划。
+- label-hub | 2026-05-27 17:27:41 | 0a22265c-4ac5-4715-abfb-1ac267cd1ccc | turn 19 | directive | [摘要] | pl 模块出现关键异常现象。
+- label-hub | 2026-05-27 17:27:41 | 0a22265c-4ac5-4715-abfb-1ac267cd1ccc | turn 27 | directive | [摘要] | 在继续执行过程中，系统出现关键异常，影响后续流程的正常推进。
+- label-hub | 2026-05-27 17:27:41 | 0a22265c-4ac5-4715-abfb-1ac267cd1ccc | turn 47 | bug_report | [摘要] | 主线任务中错误文案映射功能未实现，相关逻辑被暂时搁置。
+- label-hub | 2026-05-27 17:27:41 | 0a22265c-4ac5-4715-abfb-1ac267cd1ccc | turn 57 | directive | [摘要] | LabelHub AI 执行指令时出现异常，影响对象为当前任务流程。
+- label-hub | 2026-05-27 17:27:41 | 0a22265c-4ac5-4715-abfb-1ac267cd1ccc | turn 65 | directive | [摘要] | 前端组件渲染时因缺少关键数据导致页面白屏，影响用户交互流程。
+- label-hub | 2026-05-27 17:27:41 | 0a22265c-4ac5-4715-abfb-1ac267cd1ccc | turn 102 | directive | [摘要] | MCP工具集不完整，导致部分用户请求无法执行，需在总结中说明缺失功能及原因，且禁止用浏览器自动化绕过限制。
+- label-hub | 2026-05-27 18:26:53 | 3fff7a68-d160-48c9-96c9-6254cb2ac9f8 | turn 0 | http_trace | [摘要] | GET /api/v1/owner/tasks/{taskId}/items/{id} 返回 422 状态码，错误为 OPERATION_NOT_ALLOWED，原因仅允许删除草稿任务项。
+- label-hub | 2026-05-27 18:26:53 | 3fff7a68-d160-48c9-96c9-6254cb2ac9f8 | turn 12 | console_error | [摘要] | workbench 页面 goodsDisplayPicSrc 未定义，导致 renderGoods 函数在 Array.map 中抛出 ReferenceError。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 19 | directive | [摘要] | LabelHub AI 执行过程中出现异常，影响对象为当前处理任务。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 27 | question | [摘要] | 新建题包与逐题领取N题的核心区别在于批量操作与单次操作的实现方式，前者更优。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 29 | question | [摘要] | 当前任务实现为每次领取一道题，不支持一次性领取多道题。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 32 | directive | [摘要] | 数据库领题接口不支持一次领取多题，仅支持单次领取单题。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 94 | meta_context | [摘要] | 用户提供了一张参考图片，用于指导 LabelerWorkPage 禅模式下的左中右布局及动态表单 UI 设计。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 130 | directive | [摘要] | ok 状态，无异常。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 131 | directive | [摘要] | ok 状态，无异常。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 152 | directive | [摘要] | ok 状态，无异常现象，无需记录问题。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 161 | directive | [摘要] | LabelHub AI 指令执行成功，无异常。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 198 | console_error | [摘要] | LabelerZenWorkbench 组件在第 106 行抛出 ReferenceError，错误为 cn 未定义，React 建议添加错误边界。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 202 | directive | [摘要] | 页面整页出现闪屏现象，影响用户视觉体验与页面正常交互。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 214 | question | [摘要] | 标注填写时无法滚动，AI预检分析区域遮挡界面，需调整布局位置。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 226 | directive | [摘要] | 题目内容与标注数据区域滚动功能失效，影响数据浏览与标注操作。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 234 | directive | [摘要] | 新增上一题下一题按钮及键盘快捷键监听功能，涉及按钮事件与ctrl+s等快捷键绑定。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 237 | directive | [摘要] | 新增上一题下一题按钮及键盘快捷键（上下左右、Ctrl+S）的监听功能，核心问题为事件绑定与按钮交互逻辑的实现。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 248 | directive | [摘要] | 布局左上角拖动按钮与左侧队列收起功能交互异常，影响组件位置切换操作。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 301 | directive | [摘要] | 顶栏态中Tab条与Popover独立展示，且模块可替换，但未明确异常现象。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 303 | directive | [摘要] | 前端页面渲染时因缺少必填属性 `b` 导致组件加载中断。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 307 | directive | [摘要] | LabelHub AI 的 directive 执行成功，返回状态码 200，无异常。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 320 | directive | [摘要] | k 模块出现关键异常，影响对象为 directive 类型片段。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 324 | directive | [摘要] | MCP工具集不完整，导致部分任务无法完成，需在总结中说明缺失功能及原因，且禁止用浏览器自动化绕过限制。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 325 | directive | [摘要] | k 模块出现关键异常现象，影响对象为 k 组件。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 332 | directive | [摘要] | 拖拽操作无响应，疑似事件绑定或交互逻辑异常。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 342 | directive | [摘要] | 十字架拖不动，表现为拖拽交互失效，影响拖拽功能模块的正常操作。
+- label-hub | 2026-05-27 22:02:29 | 2a14f50e-22c8-4262-bb8d-63762ef5ae91 | turn 356 | directive | [摘要] | 左右侧边栏未同步，右侧多渲染了一个AI组件，导致两侧内容不一致。
+- label-hub | 2026-05-27 22:17:54 | 1d12a705-6b3f-47b2-bcfe-c0b841e5a48b | turn 0 | directive | [摘要] | 网速设为3G可进入，快进需点击两次且出现两个me请求，疑似网络节流导致请求重复或状态异常。
+- label-hub | 2026-05-27 22:17:54 | 1d12a705-6b3f-47b2-bcfe-c0b841e5a48b | turn 21 | bug_report | [摘要] | dev 启动时出现修复错误，影响开发环境正常启动。
+- label-hub | 2026-05-27 22:17:54 | 1d12a705-6b3f-47b2-bcfe-c0b841e5a48b | turn 49 | directive | [摘要] | 任务执行完成，已通知用户结果并处理后续操作。
+- label-hub | 2026-05-27 22:17:54 | 1d12a705-6b3f-47b2-bcfe-c0b841e5a48b | turn 50 | directive | [摘要] | 任务执行完成，需根据结果执行后续操作，但未明确具体异常或影响对象。
+- label-hub | 2026-05-27 22:17:54 | 1d12a705-6b3f-47b2-bcfe-c0b841e5a48b | turn 51 | directive | [摘要] | 任务执行后需通知用户结果并执行后续操作，但未明确具体异常现象或影响对象。
+- label-hub | 2026-05-27 22:17:54 | 1d12a705-6b3f-47b2-bcfe-c0b841e5a48b | turn 54 | directive | [摘要] | 点击两次进入后台才成功，表明首次进入后台操作被拦截或未触发预期跳转。
+- label-hub | 2026-05-27 22:17:54 | 1d12a705-6b3f-47b2-bcfe-c0b841e5a48b | turn 61 | directive | [摘要] | 退出登录时请求me接口返回401，导致身份校验异常。
+- label-hub | 2026-05-27 22:17:54 | 1d12a705-6b3f-47b2-bcfe-c0b841e5a48b | turn 68 | directive | [摘要] | logout 后仍返回用户信息，表明会话未正确清除或状态管理异常。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 12 | directive | [摘要] | ok 状态，无异常。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 23 | directive | [摘要] | LabelHub AI 执行过程中出现异常，影响对象为直接指令处理模块。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 42 | directive | [摘要] | ok 状态，无异常。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 51 | directive | [摘要] | ok 状态，无异常现象，无需记录。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 59 | directive | [摘要] | 模板搭建接入未生效，仍使用原有配置，缺少实际接入操作。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 79 | directive | [摘要] | 组件拖拽功能异常，导致无法将组件拖入画布。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 83 | directive | [摘要] | MCP工具集不完整时，仅完成可执行部分，并在总结中说明缺失功能及原因，禁止擅自使用浏览器自动化绕过限制。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 84 | directive | [摘要] | 组件拖拽功能失效，导致无法将组件放入画布。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 90 | directive | [摘要] | 拖拽操作中动态插入组件后，再次拖回仍重复插入，导致组件重复添加。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 106 | directive | [摘要] | 动态插入效果未生效，核心组件或目标元素未按预期更新。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 119 | directive | [摘要] | 画布组件滚动功能未生效，导致用户无法通过滚动查看画布内容。
+- label-hub | 2026-05-27 22:28:54 | ca5cab5e-868f-457d-bd13-88ef62bc72e2 | turn 130 | directive | [摘要] | 指令执行失败，未产生有效输出或状态变更，影响后续流程连续性。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 0 | artifact_pointer | [摘要] | 模板设计器迁移指南文档中记录了迁移过程中的关键异常现象与影响对象。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 35 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：纯确认语，无工程指导价值
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 62 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：纯进度追问，无具体任务描述或工程指导价值
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 66 | directive | [摘要] | 拖动物料到画布时未触发放置逻辑，导致拖放功能失效。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 76 | directive | [摘要] | 拖拽插入画布时缺少过渡特效，仅完成区域插入，其余行未触发动态位移。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 82 | directive | [摘要] | 插入操作失败，目标位置“最上边”无法定位或不可用。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 90 | directive | [摘要] | 拖动组件中“拖动此处插入到最上方”的文字显示异常，仅需保留动效。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 94 | directive | [摘要] | 页面渲染后出现持续抖动，影响整体视觉稳定性。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 102 | directive | [摘要] | 拖拽排序时，动态切换逻辑缺失，导致被拖拽条移至最上方后其他条未按预期向下移动。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 109 | directive | [摘要] | 画布左上角拖动效果出现与预期不一致的异常现象，影响画布交互组件。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 114 | directive | [摘要] | 画布左侧中间角拖动时出现与预期不符的异常交互效果。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 118 | directive | [摘要] | 拖拽组件出现两个拖动效果不一致的异常，影响交互一致性。
+- label-hub | 2026-05-28 11:18:13 | 9583a3c7-1ca2-4cd1-96b9-8fa48d67250d | turn 123 | directive | [摘要] | 重构拖动到画布与排序拖动共用同一拖动体系，需关注组件复用时的状态冲突与事件隔离问题。
+- label-hub | 2026-05-28 14:17:48 | 81db6ff6-4dfb-4f19-806c-216d4f293508 | turn 83 | directive | [摘要] | 图标组件样式不统一，各组件间缺乏一致性，影响UI整体规范。
+- label-hub | 2026-05-28 14:17:48 | 81db6ff6-4dfb-4f19-806c-216d4f293508 | turn 89 | directive | [摘要] | 点击展开后再次点击时，收起功能异常，影响交互组件的展开/收起状态切换。
+- label-hub | 2026-05-28 14:17:48 | 81db6ff6-4dfb-4f19-806c-216d4f293508 | turn 100 | directive | [摘要] | MCP工具集不完整，导致部分任务无法完成，需在总结中说明缺失功能及原因，且禁止用浏览器自动化绕过限制。
+- label-hub | 2026-05-28 14:17:48 | 81db6ff6-4dfb-4f19-806c-216d4f293508 | turn 105 | directive | [摘要] | 属性面板实现参考了先前方案，但未体现具体异常现象或影响对象。
+- label-hub | 2026-05-28 14:17:48 | 81db6ff6-4dfb-4f19-806c-216d4f293508 | turn 148 | directive | [摘要] | 表单JSON值被错误地放置到左侧边栏，导致预览时显示JSON而非组件库，退出后切换显示异常。
+- label-hub | 2026-05-28 14:17:48 | 81db6ff6-4dfb-4f19-806c-216d4f293508 | turn 154 | directive | [摘要] | 组件库与预览值两个Tab显示异常，影响UI切换与数据预览功能。
+- label-hub | 2026-05-28 14:17:48 | 81db6ff6-4dfb-4f19-806c-216d4f293508 | turn 158 | directive | [摘要] | 两个 tab 组件出现可拖拽行为，疑似交互逻辑异常或未预期的拖拽事件绑定。
+- label-hub | 2026-05-28 14:35:50 | a82eb331-0a81-40eb-85bf-8b22218b291c | turn 0 | meta_context | [摘要] | 用户提供了一张截图作为外部参考材料，用于指导审核工作台的实现和组件复用抽取。
+- label-hub | 2026-05-28 14:35:50 | a82eb331-0a81-40eb-85bf-8b22218b291c | turn 50 | question | [摘要] | 预审详情右侧区域未铺开，疑似布局或样式渲染异常。
+- label-hub | 2026-05-28 14:35:50 | a82eb331-0a81-40eb-85bf-8b22218b291c | turn 94 | directive | [摘要] | AI分析组件因使用抽象组件导致右侧分析功能异常。
+- label-hub | 2026-05-28 14:35:50 | a82eb331-0a81-40eb-85bf-8b22218b291c | turn 99 | directive | [摘要] | MCP工具集不完整，导致部分任务无法完成，需在总结中说明缺失功能及原因，且禁止用浏览器自动化绕过限制。
+- label-hub | 2026-05-28 14:35:50 | a82eb331-0a81-40eb-85bf-8b22218b291c | turn 100 | directive | [摘要] | AI分析侧同样使用了抽象组件，导致右侧分析结果与预期不一致。
+- label-hub | 2026-05-28 21:48:08 | 1dc5721b-b39f-41de-a84d-c44b3d448d26 | turn 0 | http_trace | [摘要] | POST /api/v1/labeler/tasks/2059993864378728450/claim-batch 返回 409 Conflict，因任务已被其他标注员领取，需重试。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 64 | directive | [摘要] | 题面信息区域整体不可滚动，影响用户浏览完整内容。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 84 | question | [摘要] | Vite 预转换错误：在 styles.css 中引用 resolve-ai-evaluation-badge.ts 文件时加载失败，文件不存在。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 113 | directive | [摘要] | AiCollapsedContent.tsx 第4-12行存在代码异常，影响组件渲染逻辑。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 118 | directive | [摘要] | AnnotateSlotContent表格模式渲染异常，显示为未格式化表格。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 128 | artifact_pointer | [摘要] | AppPageContainer.tsx 中颜色值被修改，需恢复为原始颜色。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 139 | directive | [摘要] | LabelerAnnotateForm 组件出现指令级异常，影响标注表单的正常渲染与交互流程。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 145 | directive | [摘要] | LabelerAnnotateForm 组件出现指令异常，影响标注表单的渲染与交互流程。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 156 | question | [摘要] | 构建时预转换错误，样式文件 styles.css 引用的低代码表单引擎模块 use-resource-form-engine.ts 路径无法解析，文件不存在。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 190 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：纯追问口语，缺少可执行任务描述，无法支撑复盘。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 194 | directive | [摘要] | 题目显示异常，提交状态缺失，影响用户查看题目编号与提交结果。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 207 | directive | [摘要] | hover 交互未触发视觉反馈，影响元素可见性状态。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 215 | bug_report | [摘要] | 提交后自动请求草稿导致报错，影响已提交题目的正常切换。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 223 | meta_context | [摘要] | 用户提供了一张图片作为UI布局参考，要求将AnnotateSlotContent.tsx中22-39行的组件抽象化，使其在编辑状态下支持拖动、上下左右排列及Tab布局。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 238 | directive | [摘要] | 标签页组件中，上方Tab切换后下方内容区域未能正确联动更新，导致显示异常。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 244 | directive | [摘要] | 滚动行为异常，影响页面交互组件。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 253 | directive | [摘要] | 工作区组件同时显示题面与答案，存在内容渲染冲突或状态管理异常。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 260 | directive | [摘要] | widget 拖动分割区间功能异常，影响组件交互行为，非固定二分布局。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 263 | directive | [摘要] | widget 拖动分割区间功能异常，导致原本固定的二分布局无法正常交互。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 285 | directive | [摘要] | widget 分割线拖动功能失效，导致组件无法通过拖拽调整布局。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 298 | meta_context | [摘要] | 用户提供了一张UI截图，要求实现插槽的标题和描述区域仅在编辑状态下显示，正常状态下隐藏。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 312 | directive | [摘要] | 右侧、中间、收起图标及Tab胶囊均出现显示异常，影响UI组件布局与交互。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 320 | directive | [摘要] | DOM 选择器定位到页面深层容器，核心问题是移除多余横条元素。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 326 | bug_report | [摘要] | 布局分割线在页面底部持续显示，影响主内容区域与侧边栏的视觉分隔。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 332 | directive | [摘要] | 布局分割条在正常状态下始终显示，本应仅在悬停时可见。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 337 | http_trace | [摘要] | PUT 请求 http://127.0.0.1:5173/api/v1/labeler/submissions/2059995414592192514/draft 失败，状态码缺失，疑似切换题目时提交草稿请求异常。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 359 | console_error | [摘要] | LabelerWidgetPlacementProvider 组件中因未导入 useEffect 导致 ReferenceError，组件渲染失败。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 363 | bug_report | [摘要] | 拖拽组件时无法移至其他组件，且拖拽操作与分割线存在交互冲突。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 366 | bug_report | [摘要] | 拖拽组件时无法移至其他组件，且拖拽操作与分割线存在交互冲突。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 409 | directive | [摘要] | 插槽编辑状态下，上下布局中第二个组件无法正常显示。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 420 | bug_report | [摘要] | 编辑状态下AI洞察的widget不显示，影响AI组件在编辑模式下的可见性。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 429 | directive | [摘要] | AI预检分析功能在AI洞察模块中无法正常拖动，影响用户交互操作。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 436 | directive | [摘要] | AI预检分模块出现拖动功能异常，导致交互操作失效。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 449 | directive | [摘要] | 拖动组件时位置切换功能失效，影响widget模块的交互逻辑。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 458 | directive | [摘要] | 拖拽组件仅支持从上往下移动位置，无法实现从下往上的反向移动。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 464 | directive | [摘要] | 卡片样式去除所有slot与widget的样式定义，导致样式缺失或异常。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 468 | directive | [摘要] | MCP工具集不完整导致任务受阻，需在总结中记录无法完成的部分及原因，且禁止用浏览器自动化绕过限制。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 469 | directive | [摘要] | 卡片样式去除所有slot与widget的样式定义，导致样式缺失或异常。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 483 | directive | [摘要] | 保留最外边、中间、左边、右边边框时，因选择器或样式冲突导致部分边框未按预期渲染。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 496 | directive | [摘要] | 顶部margin过大导致布局异常，影响页面顶部元素间距。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 516 | directive | [摘要] | 布局持久化保存功能正常，未出现异常现象。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 530 | directive | [摘要] | 页面刷新后布局恢复，表明布局异常为运行时状态问题，非持久性样式或结构缺陷。
+- label-hub | 2026-05-28 23:22:49 | bcd14e76-bb4b-4a6d-8c88-0377a6823340 | turn 541 | directive | [摘要] | 归位操作执行后对象位置恢复至初始状态，未出现异常或偏离。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 24 | directive | [摘要] | 将插槽与部件抽离后，样式未保持与原版一致，导致视觉表现异常。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 55 | directive | [摘要] | weight组件内部滚动区域未正确适配容器高度，导致滚动行为异常。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 62 | directive | [摘要] | buildAiQueueWidget 组件存在滚动失效问题，影响用户交互操作。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 69 | browser_trace | [摘要] | 浏览器 trace 中 WorkbenchContentShell 组件内 DOM 路径深度嵌套，页面在 337x374px 区域内出现滚动失效，疑似布局溢出或 overflow 属性冲突导致无法滚动。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 74 | browser_trace | [摘要] | 浏览器 trace 中 WorkbenchContentShell 组件内 DOM 树深度嵌套，目标元素位于 overflow-hidden 容器内，position 为 top=337px left=327px，且页面出现无法滚动的异常现象
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 83 | browser_trace | [摘要] | WorkbenchContentShell 组件内滚动容器高度为0，导致内部内容无法滚动，UI 布局异常。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 93 | browser_trace | [摘要] | WidgetShell 与 WorkbenchSchemaDataSection 两个区域在页面中无法滚动，而 SortableContext 区域可滚动但缺少分割条，UI 滚动行为异常。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 101 | bug_report | [摘要] | 跨域区拖动功能失效，涉及多个widget组件无法跨区域移动。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 141 | artifact_pointer | [摘要] | 终端日志第986-995行显示，Java Label Hub项目在终端18中发生异常，影响对象为项目核心模块。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 145 | console_error | [摘要] | 控制台抛出 SyntaxError，模块 /src/components/workbench2/index.ts 未提供名为 WORKBENCH_WIDGET_HOST_SLOT_ID 的导出，触发于 ai-queue-slot-providers.tsx 第4行。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 149 | directive | [摘要] | 恢复 workbench2 原始样式时，样式或布局出现异常，影响组件正常显示。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 154 | directive | [摘要] | MCP工具集不完整时，仅完成可执行部分，并在总结中说明缺失功能及原因，禁止绕过限制使用浏览器自动化。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 155 | directive | [摘要] | 恢复 workbench2 原有样式时出现异常，影响界面布局与组件显示。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 163 | question | [摘要] | label编辑布局中缺少对tab的管理功能，影响用户对多标签页的交互控制。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 177 | directive | [摘要] | widget 隐藏与恢复逻辑存在缺失，导致相关功能无法正常触发或状态不一致。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 189 | directive | [摘要] | 工作台2模块中缺失了这些能力，导致功能不完整。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 213 | directive | [摘要] | 点击 widget 时关闭操作无响应，导致交互功能失效。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 219 | directive | [摘要] | 作答区widget无法关闭且不能拖入题面slot，但题面widget可关闭，拖入题面widget后作答区widget可关闭。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 237 | directive | [摘要] | 左右显示可关闭widget，上下显示无法关闭，影响widget关闭功能完整性。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 244 | directive | [摘要] | Tab和Widget关闭后即使收缩仍遮挡其他组件，导致布局异常。
+- label-hub | 2026-05-29 00:29:29 | 2d2c1352-df76-4fb0-9d5b-f5e18a01a895 | turn 255 | http_trace | [摘要] | HTTP trace 中未捕获到请求方法、端点或状态码，仅包含UI侧栏展开按钮的DOM片段，无法提取网络请求失败原因。
+- label-hub | 2026-05-29 12:02:32 | 165b0849-afe6-4966-89f7-072144a2336e | turn 39 | bug_report | [摘要] | ReviewerWorkbenchController.java 引用了不存在的包，DbReviewerWorkbenchService.java 中 SubmissionSubmitLifecycle 的事务边界与状态机检查缺失，可能导致状态不一致及并发覆盖问题。
+- label-hub | 2026-05-29 12:02:32 | 165b0849-afe6-4966-89f7-072144a2336e | turn 81 | question | [摘要] | 该问题询问并发实现方式及其优势，属于技术概念探讨，未涉及具体异常或错误现象。
+- label-hub | 2026-05-29 12:02:32 | 165b0849-afe6-4966-89f7-072144a2336e | turn 83 | directive | [摘要] | 当前设计未明确区分“现在”与“之前”所解决问题的具体差异，导致上下文缺失，影响后续过程记录检索。
+- label-hub | 2026-05-29 12:02:32 | 165b0849-afe6-4966-89f7-072144a2336e | turn 85 | directive | [摘要] | 该片段为开发人员提出的优化方向与性能指标询问，属于需求讨论阶段，未涉及具体异常或错误现象。
+- label-hub | 2026-05-29 12:02:32 | 165b0849-afe6-4966-89f7-072144a2336e | turn 96 | directive | [摘要] | token预占机制实现中，核心组件为资源分配模块，关键异常现象是预占逻辑未正确处理并发冲突。
+- label-hub | 2026-05-29 12:02:32 | 165b0849-afe6-4966-89f7-072144a2336e | turn 100 | directive | [摘要] | MCP工具集不完整时，仅完成可执行部分，并在总结中说明缺失功能及原因，禁止擅自使用浏览器自动化绕过限制。
+- label-hub | 2026-05-29 12:02:32 | 165b0849-afe6-4966-89f7-072144a2336e | turn 101 | directive | [摘要] | token预占机制实现中，核心组件为资源分配模块，关键异常现象是预占逻辑未正确处理并发冲突。
+- label-hub | 2026-05-29 14:24:26 | 2857934f-ead9-476d-8997-0e0eb7d9e159 | turn 0 | directive | [摘要] | 你好，我是DeepSeek，由深度求索公司创造的AI助手。
+- label-hub | 2026-05-29 15:09:26 | cbb45afc-6025-4e5d-adb0-fb3bd6428b5a | turn 10 | directive | [摘要] | 任务执行完毕，无后续操作，无需额外通知用户。
+- label-hub | 2026-05-29 15:09:26 | cbb45afc-6025-4e5d-adb0-fb3bd6428b5a | turn 12 | directive | [摘要] | Cursor 无法使用自定义模型，核心问题为模型调用功能受限。
+- label-hub | 2026-05-29 15:09:26 | cbb45afc-6025-4e5d-adb0-fb3bd6428b5a | turn 29 | directive | [摘要] | Shadowrocket 代理环境下，未使用 Clash Verge，导致网络请求可能因代理配置差异出现异常。
+- label-hub | 2026-05-29 15:09:26 | cbb45afc-6025-4e5d-adb0-fb3bd6428b5a | turn 31 | directive | [摘要] | 直连模式下连接仍失败，核心组件或模块无法建立通信。
+- label-hub | 2026-05-29 15:09:26 | cbb45afc-6025-4e5d-adb0-fb3bd6428b5a | turn 38 | artifact_pointer | [摘要] | 终端日志显示Java进程因内存溢出异常（OutOfMemoryError）导致崩溃，影响Label Hub应用运行。
+- label-hub | 2026-05-29 15:09:26 | cbb45afc-6025-4e5d-adb0-fb3bd6428b5a | turn 43 | directive | [摘要] | 用户要求关闭功能，但未指定具体模块或组件，导致操作无法执行。
+- label-hub | 2026-05-31 00:26:57 | 71d03b04-8541-4f3d-9820-13602860b69e | turn 25 | directive | [摘要] | 自定义Shell筛选组件在统计数据展示时出现异常，影响数据筛选与显示功能。
+- label-hub | 2026-05-31 00:26:57 | 71d03b04-8541-4f3d-9820-13602860b69e | turn 52 | directive | [摘要] | 自定义shell的统计数据或卡片筛选功能未使用CRUD的querybar，导致偏向业务而非管理。
+- label-hub | 2026-05-31 00:26:57 | 71d03b04-8541-4f3d-9820-13602860b69e | turn 77 | meta_context | [摘要] | 用户提供了一张UI截图，并评价“太丑了”，要求对界面视觉进行优化。
+- label-hub | 2026-05-31 11:24:04 | 566349e4-12ee-49b0-8ccc-7bd558871725 | turn 0 | stack_trace | [摘要] | GlobalExceptionHandler 捕获未处理异常，根因为 Redis 缓存序列化失败：UserLowCodeOptionProvider.options 写入时 JdkSerializationRedisSerializer 抛出 SerializationException，因 LowCodeDtos$OptionItem 未实现 Serializable 接口，异常经 UserTokenAuthenticationFilter 第 64 行及 Spring Security 过滤器链传播。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 20 | directive | [摘要] | Combobox 组件存在两个 bug，均需修改为 Combobox 实现。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 40 | http_trace | [摘要] | GET /api/calendar 返回 500，Calendar 组件因服务端时区检测与客户端 hydration 不匹配导致渲染失败，同时升级中新增 locale 类型导入、属性传递及 RTL 样式逻辑属性替换以支持多语言和从右到左布局。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 56 | directive | [摘要] | 样式引用指令缺失具体实现，仅声明“使用本项目样式”但未提供任何样式文件路径或配置参数，导致样式应用范围与效果不可追溯。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 64 | directive | [摘要] | 圆角属性在目标组件上未生效，导致样式渲染与预期不一致。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 70 | directive | [摘要] | 单选按钮组选中样式颜色错误，需将黑色改为项目主题色，其余样式保持不变。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 84 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：指令过于简短，缺少修改目标和上下文，无法支撑复盘
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 88 | bug_report | [摘要] | UI 渲染异常：目标组件未按预期显示正确颜色，仍保持黑色默认状态。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 93 | directive | [摘要] | 颜色显示不一致，影响UI组件视觉一致性。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 98 | directive | [摘要] | 多选组样式异常，缺少卡片样式，与预期样式不一致。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 103 | directive | [摘要] | 字体未统一，影响UI组件样式一致性，需检查全局样式或字体加载策略。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 117 | directive | [摘要] | LabelHub AI 执行过程中，指令处理正常完成，未出现异常现象。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 128 | directive | [摘要] | 代码执行成功，未出现异常。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 133 | directive | [摘要] | 前端页面渲染时因缺少必要数据或组件状态异常导致白屏，影响用户界面正常显示。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 164 | directive | [摘要] | LabelHub AI Coding 过程记录显示，指令执行中断，未明确异常对象与现象。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 198 | directive | [摘要] | 子画布渲染数组条时，显示异常，影响子画布组件渲染逻辑。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 205 | directive | [摘要] | imageUpload组件设置中多图支持与最大图片数配置项存在异常，影响图片上传功能。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 215 | directive | [摘要] | 上传大图时未做缩放处理，导致图片直接按原始尺寸显示，影响页面布局与浏览体验。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 219 | directive | [摘要] | 间距过大导致布局异常，影响页面元素对齐与视觉一致性。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 224 | directive | [摘要] | 配置显示方式与点击预览功能出现异常，影响组件交互与预览模块。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 231 | directive | [摘要] | 缩略图网格组件存在两个网格实例，可能引发布局冲突或渲染异常。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 235 | directive | [摘要] | 图片名缺失导致系统无法识别或处理该资源，影响图片加载或匹配功能。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 242 | directive | [摘要] | 上传后支持改图片名，未发现异常现象。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 244 | directive | [摘要] | MCP工具集不完整导致部分任务无法完成，需在总结中说明缺失功能及原因，且禁止使用浏览器自动化绕过限制。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 245 | directive | [摘要] | 上传后支持改图片名，未发现异常现象或错误信息。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 252 | directive | [摘要] | 预览时文字过长导致溢出，影响布局显示。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 257 | bug_report | [摘要] | 子表单解析失败，字段 field_1.x.field_6 出现异常值 "000"、"00"、"999"。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 318 | question | [摘要] | Workbench2的AI组件需明确参考字段，当前未设置或未定义。
+- label-hub | 2026-05-31 12:13:21 | e4c61cb2-821e-4f01-9e60-272189cae383 | turn 323 | question | [摘要] | LLM推荐功能集成至widget组件时，出现推荐结果未正确渲染或交互异常的问题。
+- label-hub | 2026-05-31 14:55:45 | 64fbd9d9-533c-4085-ac98-5023e65d9e89 | turn 7 | directive | [摘要] | A B C D 片段中未发现明确异常现象或影响对象。
+- label-hub | 2026-05-31 14:55:45 | 64fbd9d9-533c-4085-ac98-5023e65d9e89 | turn 11 | directive | [摘要] | 第4步出现连续输出异常，影响后续流程执行。
+- label-hub | 2026-05-31 14:55:45 | 64fbd9d9-533c-4085-ac98-5023e65d9e89 | turn 32 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：纯推进语，无具体任务描述，无法纳入精选目录。
+- label-hub | 2026-05-31 14:55:45 | 64fbd9d9-533c-4085-ac98-5023e65d9e89 | turn 42 | directive | [摘要] | 前端页面加载时因缺少必要资源导致白屏，影响用户界面正常渲染。
+- label-hub | 2026-05-31 14:55:45 | 64fbd9d9-533c-4085-ac98-5023e65d9e89 | turn 76 | directive | [摘要] | 筛选组件出现异常，影响数据筛选功能正常执行。
+- label-hub | 2026-05-31 14:55:45 | 64fbd9d9-533c-4085-ac98-5023e65d9e89 | turn 90 | directive | [摘要] | 任务侧边栏缩小时出现可滚动问题，影响侧边栏组件在窄屏下的正常显示与交互。
+- label-hub | 2026-05-31 15:17:50 | 38aee56d-ccfc-4af3-8f06-500a66b5d12c | turn 0 | directive | [摘要] | 提示词已通过 AI 清洗降级。原因：内容不完整，仅含标题和占位符，无具体可执行任务描述。
+- label-hub | 2026-05-31 15:49:09 | cfe1907f-9e7b-49e1-b017-33e2c965b1fe | turn 0 | question | [摘要] | 重新分配后未刷新Redis缓存，导致菜单更新未生效。
+- label-hub | 2026-05-31 16:29:08 | f8a3a92b-6331-47e0-99d4-b53069c9e579 | turn 0 | stack_trace | [摘要] | Spring Web 过滤器链中因参数绑定将字符串 "review-config" 转换为 Long 类型时抛出 NumberFormatException。
+- label-hub | 2026-05-31 16:29:08 | f8a3a92b-6331-47e0-99d4-b53069c9e579 | turn 12 | directive | [摘要] | 适配schema未完成，导致组件或数据层出现结构不匹配问题。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 14 | stack_trace | [摘要] | MyBatis 执行 SQL 时报 SQLSyntaxErrorException，根因是数据库字段列表中缺少列 'api_endpoint'。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 23 | console_error | [摘要] | LowCodeQuerySupport.parse 中因 spec 为 null 触发 NullPointerException，导致 LlmProviderLowCodeProvider.query 及 LowCodeResourceController.query 调用失败。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 68 | directive | [摘要] | 维度列表配置使用了数组格式，但未明确指定具体维度字段，可能导致数据聚合异常。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 80 | directive | [摘要] | 维度类型概念未定义，导致后续逻辑无法正常执行。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 84 | directive | [摘要] | passThreshold 参数缺失，导致阈值判断逻辑异常。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 88 | directive | [摘要] | 实现模块在运行中触发未捕获异常，导致流程中断。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 100 | directive | [摘要] | 实现模块在运行时抛出未捕获异常，导致核心功能流程中断。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 104 | question | [摘要] | 提示词配置问题，涉及提示词模块的配置方式不明确。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 111 | directive | [摘要] | ok 状态，无异常，无需记录。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 116 | question | [摘要] | template_review_dimensions 模块的管理入口位置不明确，需补充文档或界面指引。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 122 | directive | [摘要] | 根据控制台输出，系统正常启动，未发现异常。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 156 | stack_trace | [摘要] | SQL 语法错误，字段列表中存在未知列 'dimension_count'，由 MyBatis 通过 HikariCP 连接池执行 MySQL 查询时触发。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 161 | directive | [摘要] | 审核维度配置界面中，左侧卡片与右侧配置区域布局未正确实现，导致功能结构异常。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 166 | question | [摘要] | 模板审核提示词配置位置未找到，需定位相关配置入口。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 170 | question | [摘要] | review_prompt_template 的定位或定义位置缺失，导致引用时无法找到该模板。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 176 | directive | [摘要] | ok 状态，无异常现象与影响对象。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 202 | log_trace | [摘要] | 构建/启动/依赖/迁移等终端关键失败点：用户提交的标注结果与原始题目数据在完整性、准确性、格式合规和安全性维度上存在不一致，需审核配置。
+- label-hub | 2026-05-31 16:57:25 | 6e0c90a0-93bf-441a-bfee-1c6c3c16e5a1 | turn 208 | directive | [摘要] | 专业模式下变量导入与格式化功能出现异常，影响变量处理模块的正常使用。

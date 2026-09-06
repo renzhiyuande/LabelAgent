@@ -1,0 +1,853 @@
+{
+  "project": "label-hub",
+  "session_id": "2f211b70-148d-4d9a-86bc-7dfbd40f7125",
+  "date": "2026-05-21",
+  "modified_at": "2026-05-21 16:10:37",
+  "time_bucket": "afternoon",
+  "top_stage": "design",
+  "stages": [
+    "design",
+    "development"
+  ],
+  "tracks": [
+    "system_infrastructure",
+    "business_development"
+  ],
+  "module_tags": [
+    "文档设计-架构规划",
+    "系统管理-权限控制",
+    "系统管理-数据字典",
+    "插件架构-扩展点",
+    "系统基建-版本控制",
+    "标注工作台-我的任务",
+    "标注工作台-标注执行",
+    "审核工作台-审核执行",
+    "任务管理",
+    "数据管理-导入导出",
+    "LLM-Agent-Prompt"
+  ],
+  "key_topics": [
+    "权限",
+    "ai 审核",
+    "reviewer",
+    "owner",
+    "agent"
+  ],
+  "tool_usage": [
+    "ReadFile",
+    "rg",
+    "ApplyPatch"
+  ],
+  "models_used": [],
+  "selected_prompt_count": 4,
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "display_text": "请基于【@docs/functional-design.md 功能设计文档】，编写一份**完整、专业、可直接落地、零后期修改**的详细数据库设计文档，输出格式为 @docs/database-design.md。\n\n要求：\n1. 全覆盖：覆盖功能设计中**所有业务场景、所有功能模块、所有接口、所有状态流转、所有查询/统计需求**，无遗漏、无缺失字段。\n2. 高合理性：遵循数据库设计三范式，同时兼顾业务查询性能，合理做反范式优化；表结构、字段、关联关系完全贴合业务逻辑，无冗余、无歧义。\n3. 高可扩展性：预留通用扩展字段、兼容未来业务迭代，**禁止后期修改表结构/新增核心表**，所有潜在场景提前设计到位。\n4. 标准化：包含完整设计要素：设计目标、设计原则、数据字典、ER 关系图说明、分表策略、索引设计、唯一约束、非空约束、默认值、字段长度/类型、数据生命周期、权限数据隔离、日志/审计设计、缓存设计、备份策略。\n5. 严谨性：所有枚举值、状态值、长度限制、业务规则全部明确定义；所有外键关联/逻辑关联清晰标注；所有联表查询、统计场景提前优化索引。\n6. 业务完整性：包含核心业务表、配置表、字典表、关系表、日志表、审计表、文件表、消息表、订单/流程表（如适用）、用户/权限表、统计宽表（如需）。\n\n输出标准：\n- 表名、字段名使用统一命名规范（下划线命名法）\n- 字段类型严格匹配业务存储需求（精准长度，无浪费无溢出）\n- 每张表必须包含：主键、创建时间、更新时间、删除标记（软删除）\n- 明确主键策略、索引清单、唯一键、联合索引、业务约束\n- 明确表之间的一对多/多对多/一对一关系\n- 明确字段业务含义、可选值、默认值、是否为空\n- 明确数据读写场景、高频查询、统计口径、关联查询\n\n最终交付一份**工程可直接建库建表、无需二次沟通**的数据库设计文档。",
+      "summary_text": null,
+      "text_snippet": "<timestamp>Thursday, May 21, 2026, 3:29 PM (UTC+8)</timestamp>\n<user_query>\n请基于【@docs/functional-design.md 功能设计文档】，编写一份**完整、专业、可直接落地、零后期修改**的详细数据库设计文档，输出格式为 @docs/database-design.…",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "display_text": "我会先通读 `docs/functional-design.md` 和现有的 `docs/database-design.md`，梳理全部业务域、状态流转、接口与统计需求，再直接重写成可落地建库的正式数据库设计文档。\n\n**Planning database documentation**\n\nI need to write the docs/database-design.md based on functional-design.md. It seems like using plan mode might be appropriate since the user wants a detailed document, but I might be able to proceed in agent mode since the request is clear, even if the task is large. I must inspect both functional-design.md and the existing database-design.md, ensuring that I gather the right details before I proceed with updating or replacing the content.\n**Preparing documentation rewrite**\n\nIt seems the user wants me to generate content based on functional-design for a potential rewrite of database-design. I should start by reading the relevant documents, possibly using parallel reads. Recent open files might provide helpful context, but likely I'll focus on functional-design. Before diving into the substantial work, I need to provide some commentary to clarify my approach and ensure I’m on the right track. Communication first, then I can get into the details!",
+      "summary_text": null,
+      "text_snippet": "我会先通读 `docs/functional-design.md` 和现有的 `docs/database-design.md`，梳理全部业务域、状态流转、接口与统计需求，再直接重写成可落地建库的正式数据库设计文档。\n\n**Planning database documentation**\n\nI need to write the docs/databas…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/functional-design.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/README.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "我会先通读 `docs/functional-design.md` 和现有的 `docs/database-design.md`，梳理全部业务域、状态流转、接口与统计需求，再直接重写成可落地建库的正式数据库设计文档。\n\n**Planning database documentation**\n\nI need to write the docs/database-design.md based on functional-design.md. It seems like using plan mode might be appropriate since the user wants a detailed document, but I might be able to proceed in agent mode since the request is clear, even if the task is large. I must inspect both functional-design.md and the existing database-design.md, ensuring that I gather the right details before I proceed with updating or replacing the content.\n**Preparing documentation rewrite**\n\nIt seems the user wants me to generate content based on functional-design for a potential rewrite of database-design. I should start by reading the relevant documents, possibly using parallel reads. Recent open files might provide helpful context, but likely I'll focus on functional-design. Before diving into the substantial work, I need to provide some commentary to clarify my approach and ensure I’m on the right track. Communication first, then I can get into the details!"
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "display_text": "我已经拿到功能设计和现有库表文档了。接下来会补看后端接口骨架与首版迁移脚本，把“接口能力、查询口径、统计口径、状态落库”全部对齐后再重写文档。\n\n**Exploring API documentation needs**\n\nI need to create a comprehensive document and inspect the code or API models to make sure the interfaces align. The user's requirement covers all interfaces. The functional design may implicitly mention interfaces, but I'll need to check the skeleton code for actual API endpoints. I'll look into the backend controllers/models to ensure the database supports them, as well as explore the frontend pages for queries and statistics. I'll use tools like rg to list the RequestMapping and endpoints while inspecting the backend.",
+      "summary_text": null,
+      "text_snippet": "我已经拿到功能设计和现有库表文档了。接下来会补看后端接口骨架与首版迁移脚本，把“接口能力、查询口径、统计口径、状态落库”全部对齐后再重写文档。\n\n**Exploring API documentation needs**\n\nI need to create a comprehensive document and inspect the code or A…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "rg",
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V1__init_schema.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub"
+      ],
+      "display_strategy": null,
+      "raw_text": "我已经拿到功能设计和现有库表文档了。接下来会补看后端接口骨架与首版迁移脚本，把“接口能力、查询口径、统计口径、状态落库”全部对齐后再重写文档。\n\n**Exploring API documentation needs**\n\nI need to create a comprehensive document and inspect the code or API models to make sure the interfaces align. The user's requirement covers all interfaces. The functional design may implicitly mention interfaces, but I'll need to check the skeleton code for actual API endpoints. I'll look into the backend controllers/models to ensure the database supports them, as well as explore the frontend pages for queries and statistics. I'll use tools like rg to list the RequestMapping and endpoints while inspecting the backend."
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "display_text": "我在补齐接口层和迁移脚本对应关系，重点核对任务、模板、标注、审核、导出这五条主链路的输入输出字段，确保文档里每张表都能支撑现有接口和未来扩展。\n\n**Inspecting model classes**\n\nI need to look into the relevant model classes to figure out the fields. It sounds like I should check out the controllers and models, maybe even the services or mappers too. I’ll pay attention to the SQL annotations since those can be crucial for my understanding. I'll aim to do this in parallel to save time. Keeping all this organized will definitely help me infer the necessary details!",
+      "summary_text": null,
+      "text_snippet": "我在补齐接口层和迁移脚本对应关系，重点核对任务、模板、标注、审核、导出这五条主链路的输入输出字段，确保文档里每张表都能支撑现有接口和未来扩展。\n\n**Inspecting model classes**\n\nI need to look into the relevant model classes to figure out the fields. It …",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/task/TaskController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/template/TemplateController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/submission/LabelerController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/review/ReviewerController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/export/ExportController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/auth/AuthController.java"
+      ],
+      "display_strategy": null,
+      "raw_text": "我在补齐接口层和迁移脚本对应关系，重点核对任务、模板、标注、审核、导出这五条主链路的输入输出字段，确保文档里每张表都能支撑现有接口和未来扩展。\n\n**Inspecting model classes**\n\nI need to look into the relevant model classes to figure out the fields. It sounds like I should check out the controllers and models, maybe even the services or mappers too. I’ll pay attention to the SQL annotations since those can be crucial for my understanding. I'll aim to do this in parallel to save time. Keeping all this organized will definitely help me infer the necessary details!"
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "display_text": "**Examining model classes**\n\nI need to look into model classes to understand list and detail fields, along with potential stats needs. Let's dive into the model files, as they might provide insights on the structure and functionalities I’m looking for. I’m considering how service query methods play into this as well. By gathering this information, I can better evaluate how everything connects and works together.",
+      "summary_text": null,
+      "text_snippet": "**Examining model classes**\n\nI need to look into model classes to understand list and detail fields, along with potential stats needs. Let's dive into the model files, as they mig…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/task/model/TaskSaveRequest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/task/model/TaskResponse.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/template/model/TemplateSaveRequest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/template/model/TemplateResponse.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/submission/model/MarketTaskView.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/submission/model/MyWorkItemView.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/submission/model/WorkContextResponse.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/submission/model/DraftSaveRequest.java"
+      ],
+      "display_strategy": null,
+      "raw_text": "**Examining model classes**\n\nI need to look into model classes to understand list and detail fields, along with potential stats needs. Let's dive into the model files, as they might provide insights on the structure and functionalities I’m looking for. I’m considering how service query methods play into this as well. By gathering this information, I can better evaluate how everything connects and works together."
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "display_text": "接口入参与返回字段已经清楚了。现在我在反推真实高频查询和联表方式，确保索引、统计宽表、审计表、分区/分表策略不是“泛泛而谈”，而是贴着实际接口来设计。",
+      "summary_text": null,
+      "text_snippet": "接口入参与返回字段已经清楚了。现在我在反推真实高频查询和联表方式，确保索引、统计宽表、审计表、分区/分表策略不是“泛泛而谈”，而是贴着实际接口来设计。",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/task/mapper/TaskMapper.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/submission/mapper/LabelerMapper.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/review/mapper/ReviewMapper.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/export/mapper/ExportMapper.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/ai/mapper/AiReviewMapper.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/async/mapper/AsyncTaskMapper.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/audit/mapper/AuditLogMapper.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/task/service/TaskService.java"
+      ],
+      "display_strategy": null,
+      "raw_text": "接口入参与返回字段已经清楚了。现在我在反推真实高频查询和联表方式，确保索引、统计宽表、审计表、分区/分表策略不是“泛泛而谈”，而是贴着实际接口来设计。"
+    },
+    {
+      "order": 6,
+      "role": "assistant",
+      "display_text": "**Creating comprehensive documentation**\n\nI need to produce a detailed document and might look at frontend pages for statistics or query tasks related to my data. Reviewing the models could help too. I wonder if I should inspect the designer page, but functional design might cover that. It might be useful to check the template and service for names, especially regarding user fields. So, I'll read the template service/mapper and auth service to get a better understanding.",
+      "summary_text": null,
+      "text_snippet": "**Creating comprehensive documentation**\n\nI need to produce a detailed document and might look at frontend pages for statistics or query tasks related to my data. Reviewing the mo…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/template/service/TemplateService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/template/mapper/TemplateMapper.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/auth/service/AuthService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/auth/mapper/AuthMapper.java"
+      ],
+      "display_strategy": null,
+      "raw_text": "**Creating comprehensive documentation**\n\nI need to produce a detailed document and might look at frontend pages for statistics or query tasks related to my data. Reviewing the models could help too. I wonder if I should inspect the designer page, but functional design might cover that. It might be useful to check the template and service for names, especially regarding user fields. So, I'll read the template service/mapper and auth service to get a better understanding."
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "display_text": "我已经把后端接口和查询 SQL 对上了。最后再补一轮前端页面使用场景，确认任务广场、我的数据、审核列表、导出历史这些查询/统计口径，然后就开始直接写正式文档。\n\n**Considering frontend inspection**\n\nI need to take a closer look at the frontend pages for search, filters, and stats since the requirement mentions queries and statistical needs. I think listing the components could be helpful. I could use regular expressions on labels like \"statistic\" or \"useTable,\" but that might not be essential. It could, however, make inspecting the queries easier. I'll review the relevant page files related to market, work, reviewer tasks, and exports from the template designer.",
+      "summary_text": null,
+      "text_snippet": "我已经把后端接口和查询 SQL 对上了。最后再补一轮前端页面使用场景，确认任务广场、我的数据、审核列表、导出历史这些查询/统计口径，然后就开始直接写正式文档。\n\n**Considering frontend inspection**\n\nI need to take a closer look at the frontend pages for search…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/pages/owner/TasksPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/pages/owner/ExportsPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/pages/owner/template-designer/TemplateDesignerPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/pages/labeler/MarketPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/pages/labeler/WorkPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/pages/reviewer/ReviewsPage.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/providers/dataProvider.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/providers/authProvider.ts"
+      ],
+      "display_strategy": null,
+      "raw_text": "我已经把后端接口和查询 SQL 对上了。最后再补一轮前端页面使用场景，确认任务广场、我的数据、审核列表、导出历史这些查询/统计口径，然后就开始直接写正式文档。\n\n**Considering frontend inspection**\n\nI need to take a closer look at the frontend pages for search, filters, and stats since the requirement mentions queries and statistical needs. I think listing the components could be helpful. I could use regular expressions on labels like \"statistic\" or \"useTable,\" but that might not be essential. It could, however, make inspecting the queries easier. I'll review the relevant page files related to market, work, reviewer tasks, and exports from the template designer."
+    },
+    {
+      "order": 8,
+      "role": "assistant",
+      "display_text": "我已经把功能文档、接口骨架、前端查询场景都对齐完成，接下来直接重写 `docs/database-design.md`。这次会把“表结构、状态机、索引、审计、缓存、备份、扩展预留、统计口径、接口映射”一次性写完整。\n\n**Planning comprehensive documentation**\n\nI need to fully edit the database design document and probably replace the entire file. It's essential to make a comprehensive doc with sections like design goals, scope mapping, naming, assumptions, data types, enum definitions, and a domain model.\n\nI also need to include a list of about 20 tables and ensure each one has primary keys, timestamps, and soft delete features since the user specified these must be included. It seems like a good idea to provide some generated SQL DDL snippets as well. I'll format everything nicely in Markdown tables!\n**Clarifying document formatting**\n\nI'm considering the instructions regarding using a canvas for writing markdown tables. It seems that the skill applies mainly when creating standalone analytical artifacts or data-heavy content, but the user has specifically requested a markdown document. \n\nSince they asked for a `.md` file, using markdown tables might not be necessary. Instead, I could use bullet lists or code blocks per field to meet the requirements. I'll create sections with bullet lists and include a summary of SQL DDL instead. This way, I can satisfy the skill while delivering what the user asked for!\n**Designing a comprehensive document**\n\nI need to make sure the document is robust and covers all necessary aspects. Including the phrase \"零后期修改 禁止后期修改表结构/新增核心表\" could be important. I should think about ancillary tables not in the current code, like task_members, item_import_batches, and template_widgets.\n\nIt’s essential to reason through what the business requires, covering all functional design scenarios, modules, interfaces, and status flows. That might also involve users/permissions, import batches, templates, and versions. It seems separating template_versions from templates could help with extensibility while ensuring that each table fits the current design. Submissions with current status will also be necessary.\n**Considering future-proofing**\n\nI'm thinking about how to future-proof our system. It seems wise to add a `task_members` table for task-level authorization, including role codes and permission sets. This approach could help avoid needing to make significant changes to core tables later on. I also wonder if we could manage labeler assignments and reviewer pools through this same table — it might streamline things. There's a lot to consider, and I want to make the right choices!\n**Evaluating database structure**\n\nThe user mentions all core tables, indicating that we might need a dedicated history table for submissions, like `submission_status_histories`. I'm thinking of items to include like `llm_assist_records`, `ai_review_records`, and `ai_review_dimension_scores` for querying by dimension. There's a chance `review_comments` could be part of `review_records`. I’m considering tables for files, notifications, and statistics, which could add up — possibly around 25 tables. I might need to document everything, even if it stretches to 600 lines.\n**Evaluating database strategies**\n\nI'm thinking about how to handle business sharding and define partition-ready tables like `audit_logs`, `llm_call_logs`, and others based on their `created_at` date. I’m considering if hot tables should use yearly or monthly partitions—monthly feels right, but I'm not completely sure yet. Tables like `task_items` and `submissions` shouldn't be partitioned until they exceed 30 million rows. I need an effective backup strategy, and I'm wondering if using ApplyPatch or a Python script for file editing is the best move.\n**Drafting documentation structure**\n\nI’m realizing that since I’m only focusing on documentation, I might not need heavy code or lints. It could be helpful to check the line counts after drafting to keep things concise yet thorough. I should also consider if markdown tables are necessary, but it might be better to avoid them due to canvas concerns. Using sections and bullet lists sounds like a solid plan. Perhaps I can include some pseudo-DDL blocks, even if they end up being lengthy.\n**Evaluating database design**\n\nI’m considering a more scalable and straightforward approach. I might mention that for local demos, we could fall back on `auto_increment`, but I want to avoid any ambiguities. I think keeping `BIGINT UNSIGNED` and using a primary key strategy with a 64-bit snowflake ID is best for future-proofing. Although existing code may not match, the user asked for documentation, not code. I should mention `created_by` and `updated_by` as nullable fields across tables, and perhaps include a section on SQL translation in the documentation.\n**Creating a database setup**\n\nI’m thinking it could be helpful to create a bullet list for each table with its types, which might make direct translation easier. Since the user has explicitly mentioned that “工程可直接建库建表,” I want to ensure the documentation is clear and straightforward. This way, anyone can directly build the database and tables as needed. I'll focus on making this as intuitive as possible for the user, which should really help streamline the process.\n**Considering database structure**\n\nI’m thinking that maybe 3NF isn’t ideal here. However, tags are flexible and not fundamental to relations. I could document a JSON contract instead, which might help avoid creating unnecessary tables. The existing code uses JSON too, so that fits. I'll keep the tags in `tasks` as JSON, with a schema contract for balance. But for later modifications, should I add `task_tag_relations` as an optional generated relation? I don’t want to overcomplicate things. Also, maybe review dimensions and template fields could be helpful.\n**Simplifying database tables**\n\nI’m considering reducing the structure to around 36 tables, including key ones like users, roles, permissions, and submissions. While this is still a lot, it seems manageable. I need to mention the current head for submissions and how submission versions will serve as immutable snapshots. It might be beneficial for review records to reference both `submission_id` and `submission_version_id`. Similarly, AI reviews could link to `submission_version_id`, making it all more robust.\n**Designing submissions structure**\n\nLet’s design the submissions structure. Each submission will be tied to one assignment and have fields like `current_version_id`, `current_round_no`, and `current_status`. It could also track IDs for the most recent AI review and review records. \n\nSubmission versions will serve as immutable snapshots, containing fields like `data_json` and `submitter_id`. Submission status histories might reference `submission_version_id` for transitions. \n\nAI review and review records will reference both submission and version IDs, which seems like a solid plan. The open work can use `draft_data_json` and current status from submissions.\n**Planning table structure**\n\nI think we should add `tenant_id` to all business and core tables now, even if we start with a single-tenant version. Earlier, they mentioned that while the first version won’t be fully multi-tenant, we could prepare for it. So, I’ll include `tenant_id BIGINT UNSIGNED NOT NULL DEFAULT 1` in all tables. This approach makes sense since it allows for permission isolation and future multi-tenancy without schema changes. \n\nI wonder if we need to add `org_id` or stick with just `tenant_id`. All indexes will include this leading `tenant_id`, which feels like a lot. The user prefers a listing of fields for each table, but we could just present the common columns and specify the domain-specific fields for each table. It's essential to reaffirm that all tables will share standard columns like id, tenant_id, created_by, created_at, updated_by, updated_at, and deleted_flag, while avoiding unnecessary repetition.\n**Defining table structure**\n\nThe document mentions that common base columns are included in each table, which is fine. I should consider adding a note like, \"Unless otherwise stated, each table includes base fields.\" This could work well for direct builds, but it might be safer to repeat this in each table's constraint summary. \n\nI wonder if including an ER explanation would help; maybe using simpler Mermaid relationships could clarify things. Also, I should consider adding a section for listing all enums, like status, action, and scene values. That seems useful!\n**Structuring documentation for tables**\n\nI need to include \"read/write scenarios and indexes\" for each of the 36 tables, possibly using bullet points for better clarity. I’m considering grouping these mentions of \"高频查询\" (high-frequency queries) and \"索引\" (indexes). It seems I might not need markdown tables, but instead a simple bullet list could work. I aim to create about 1200 lines of content structured into sections like documentation positioning, design goals, principles, and a table dictionary, which covers all necessary details for each table.\n**Refining database documentation**\n\nI'm considering compressing base fields and listing the core standard fields as \"inherited\" while still detailing domain-specific fields. I want to map core queries to tables and indexes based on interface paths. I should address aspects like state machine design, cache strategy, and partitioning. Backup and archival strategies also need mention. Including JSON contracts for specific fields, like review configurations, makes sense since we only use JSON in certain tables. I need to define normalized versus denormalized data, especially for derived counts, to enhance performance.\n**Designing assignment structure**\n\nI’m thinking about how one item can have multiple assignment slots for redundancy and cross-review. I’ll need to add fields like item_id, slot_no, and required_role_code, among others. I want to ensure there’s a unique identifier for each assignment slot. The submissions should aggregate per assignment, including various fields about the task and status. This might feel complex, but I believe it’s a solid structure that will work well!\n**Evaluating database keys**\n\nI’m considering how to define base columns and the role of foreign keys. Using MySQL foreign keys in high-volume tables can be problematic. Perhaps it’s sensible to use strong foreign keys for low-churn master tables and logical associations for high-throughput log tables. We need a standard approach. For business master tables, maybe using logical foreign keys with application enforcement could help avoid write contention. But the user is asking for clear marking of all foreign key associations.\n**Considering file updates**\n\nI'm thinking about how to manage file updates with options like Delete and ApplyPatch. It seems like I could only add or update due to limitations. Using ApplyPatch for the whole file is another option but could create a big update. The developer prefers not using shell commands. Instead, I should carefully create a patch format to replace the entire content using `@@`. Because this file is large, careful drafting is essential to avoid issues, and I might not even need to mention line numbers.\n**Considering assignment logic**\n\nI’m thinking about how the assignment logic utilizes NOT EXISTS for assignments. It seems like we might also need an index that includes task_id, item_status, and seq_no for our stats. I wonder if that's the best approach, or if there's a more efficient way to go about it. I’m curious about whether incorporating that index will help streamline the process or bring any other improvements. Let’s explore this further!\n**Considering cache design and strategy**\n\nI’m thinking about cache design and the various elements involved, like the auth token/role cache and task-related caches. I should also consider the review queue counts and plugin/provider caches. Invalidation processes should happen when there are changes, such as template publishing or task status updates. I'll need a backup strategy that includes daily full backups and a retention plan for audits and exports. Soft deletion after a certain time helps with data management too.\n**Considering database logic**\n\nI'm thinking about including \"逻辑外键\" for each table. That sounds good! I realize I might not need to produce actual SQL CREATE statements right now to save time. Instead, I can create new file content, even if it could be substantial. I wonder if I should use Python to compose it. However, I could also directly patch it by replacing the entire file. Let's see what the best approach is!",
+      "summary_text": null,
+      "text_snippet": "我已经把功能文档、接口骨架、前端查询场景都对齐完成，接下来直接重写 `docs/database-design.md`。这次会把“表结构、状态机、索引、审计、缓存、备份、扩展预留、统计口径、接口映射”一次性写完整。\n\n**Planning comprehensive documentation**\n\nI need to fully edit the dat…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "我已经把功能文档、接口骨架、前端查询场景都对齐完成，接下来直接重写 `docs/database-design.md`。这次会把“表结构、状态机、索引、审计、缓存、备份、扩展预留、统计口径、接口映射”一次性写完整。\n\n**Planning comprehensive documentation**\n\nI need to fully edit the database design document and probably replace the entire file. It's essential to make a comprehensive doc with sections like design goals, scope mapping, naming, assumptions, data types, enum definitions, and a domain model.\n\nI also need to include a list of about 20 tables and ensure each one has primary keys, timestamps, and soft delete features since the user specified these must be included. It seems like a good idea to provide some generated SQL DDL snippets as well. I'll format everything nicely in Markdown tables!\n**Clarifying document formatting**\n\nI'm considering the instructions regarding using a canvas for writing markdown tables. It seems that the skill applies mainly when creating standalone analytical artifacts or data-heavy content, but the user has specifically requested a markdown document. \n\nSince they asked for a `.md` file, using markdown tables might not be necessary. Instead, I could use bullet lists or code blocks per field to meet the requirements. I'll create sections with bullet lists and include a summary of SQL DDL instead. This way, I can satisfy the skill while delivering what the user asked for!\n**Designing a comprehensive document**\n\nI need to make sure the document is robust and covers all necessary aspects. Including the phrase \"零后期修改 禁止后期修改表结构/新增核心表\" could be important. I should think about ancillary tables not in the current code, like task_members, item_import_batches, and template_widgets.\n\nIt’s essential to reason through what the business requires, covering all functional design scenarios, modules, interfaces, and status flows. That might also involve users/permissions, import batches, templates, and versions. It seems separating template_versions from templates could help with extensibility while ensuring that each table fits the current design. Submissions with current status will also be necessary.\n**Considering future-proofing**\n\nI'm thinking about how to future-proof our system. It seems wise to add a `task_members` table for task-level authorization, including role codes and permission sets. This approach could help avoid needing to make significant changes to core tables later on. I also wonder if we could manage labeler assignments and reviewer pools through this same table — it might streamline things. There's a lot to consider, and I want to make the right choices!\n**Evaluating database structure**\n\nThe user mentions all core tables, indicating that we might need a dedicated history table for submissions, like `submission_status_histories`. I'm thinking of items to include like `llm_assist_records`, `ai_review_records`, and `ai_review_dimension_scores` for querying by dimension. There's a chance `review_comments` could be part of `review_records`. I’m considering tables for files, notifications, and statistics, which could add up — possibly around 25 tables. I might need to document everything, even if it stretches to 600 lines.\n**Evaluating database strategies**\n\nI'm thinking about how to handle business sharding and define partition-ready tables like `audit_logs`, `llm_call_logs`, and others based on their `created_at` date. I’m considering if hot tables should use yearly or monthly partitions—monthly feels right, but I'm not completely sure yet. Tables like `task_items` and `submissions` shouldn't be partitioned until they exceed 30 million rows. I need an effective backup strategy, and I'm wondering if using ApplyPatch or a Python script for file editing is the best move.\n**Drafting documentation structure**\n\nI’m realizing that since I’m only focusing on documentation, I might not need heavy code or lints. It could be helpful to check the line counts after drafting to keep things concise yet thorough. I should also consider if markdown tables are necessary, but it might be better to avoid them due to canvas concerns. Using sections and bullet lists sounds like a solid plan. Perhaps I can include some pseudo-DDL blocks, even if they end up being lengthy.\n**Evaluating database design**\n\nI’m considering a more scalable and straightforward approach. I might mention that for local demos, we could fall back on `auto_increment`, but I want to avoid any ambiguities. I think keeping `BIGINT UNSIGNED` and using a primary key strategy with a 64-bit snowflake ID is best for future-proofing. Although existing code may not match, the user asked for documentation, not code. I should mention `created_by` and `updated_by` as nullable fields across tables, and perhaps include a section on SQL translation in the documentation.\n**Creating a database setup**\n\nI’m thinking it could be helpful to create a bullet list for each table with its types, which might make direct translation easier. Since the user has explicitly mentioned that “工程可直接建库建表,” I want to ensure the documentation is clear and straightforward. This way, anyone can directly build the database and tables as needed. I'll focus on making this as intuitive as possible for the user, which should really help streamline the process.\n**Considering database structure**\n\nI’m thinking that maybe 3NF isn’t ideal here. However, tags are flexible and not fundamental to relations. I could document a JSON contract instead, which might help avoid creating unnecessary tables. The existing code uses JSON too, so that fits. I'll keep the tags in `tasks` as JSON, with a schema contract for balance. But for later modifications, should I add `task_tag_relations` as an optional generated relation? I don’t want to overcomplicate things. Also, maybe review dimensions and template fields could be helpful.\n**Simplifying database tables**\n\nI’m considering reducing the structure to around 36 tables, including key ones like users, roles, permissions, and submissions. While this is still a lot, it seems manageable. I need to mention the current head for submissions and how submission versions will serve as immutable snapshots. It might be beneficial for review records to reference both `submission_id` and `submission_version_id`. Similarly, AI reviews could link to `submission_version_id`, making it all more robust.\n**Designing submissions structure**\n\nLet’s design the submissions structure. Each submission will be tied to one assignment and have fields like `current_version_id`, `current_round_no`, and `current_status`. It could also track IDs for the most recent AI review and review records. \n\nSubmission versions will serve as immutable snapshots, containing fields like `data_json` and `submitter_id`. Submission status histories might reference `submission_version_id` for transitions. \n\nAI review and review records will reference both submission and version IDs, which seems like a solid plan. The open work can use `draft_data_json` and current status from submissions.\n**Planning table structure**\n\nI think we should add `tenant_id` to all business and core tables now, even if we start with a single-tenant version. Earlier, they mentioned that while the first version won’t be fully multi-tenant, we could prepare for it. So, I’ll include `tenant_id BIGINT UNSIGNED NOT NULL DEFAULT 1` in all tables. This approach makes sense since it allows for permission isolation and future multi-tenancy without schema changes. \n\nI wonder if we need to add `org_id` or stick with just `tenant_id`. All indexes will include this leading `tenant_id`, which feels like a lot. The user prefers a listing of fields for each table, but we could just present the common columns and specify the domain-specific fields for each table. It's essential to reaffirm that all tables will share standard columns like id, tenant_id, created_by, created_at, updated_by, updated_at, and deleted_flag, while avoiding unnecessary repetition.\n**Defining table structure**\n\nThe document mentions that common base columns are included in each table, which is fine. I should consider adding a note like, \"Unless otherwise stated, each table includes base fields.\" This could work well for direct builds, but it might be safer to repeat this in each table's constraint summary. \n\nI wonder if including an ER explanation would help; maybe using simpler Mermaid relationships could clarify things. Also, I should consider adding a section for listing all enums, like status, action, and scene values. That seems useful!\n**Structuring documentation for tables**\n\nI need to include \"read/write scenarios and indexes\" for each of the 36 tables, possibly using bullet points for better clarity. I’m considering grouping these mentions of \"高频查询\" (high-frequency queries) and \"索引\" (indexes). It seems I might not need markdown tables, but instead a simple bullet list could work. I aim to create about 1200 lines of content structured into sections like documentation positioning, design goals, principles, and a table dictionary, which covers all necessary details for each table.\n**Refining database documentation**\n\nI'm considering compressing base fields and listing the core standard fields as \"inherited\" while still detailing domain-specific fields. I want to map core queries to tables and indexes based on interface paths. I should address aspects like state machine design, cache strategy, and partitioning. Backup and archival strategies also need mention. Including JSON contracts for specific fields, like review configurations, makes sense since we only use JSON in certain tables. I need to define normalized versus denormalized data, especially for derived counts, to enhance performance.\n**Designing assignment structure**\n\nI’m thinking about how one item can have multiple assignment slots for redundancy and cross-review. I’ll need to add fields like item_id, slot_no, and required_role_code, among others. I want to ensure there’s a unique identifier for each assignment slot. The submissions should aggregate per assignment, including various fields about the task and status. This might feel complex, but I believe it’s a solid structure that will work well!\n**Evaluating database keys**\n\nI’m considering how to define base columns and the role of foreign keys. Using MySQL foreign keys in high-volume tables can be problematic. Perhaps it’s sensible to use strong foreign keys for low-churn master tables and logical associations for high-throughput log tables. We need a standard approach. For business master tables, maybe using logical foreign keys with application enforcement could help avoid write contention. But the user is asking for clear marking of all foreign key associations.\n**Considering file updates**\n\nI'm thinking about how to manage file updates with options like Delete and ApplyPatch. It seems like I could only add or update due to limitations. Using ApplyPatch for the whole file is another option but could create a big update. The developer prefers not using shell commands. Instead, I should carefully create a patch format to replace the entire content using `@@`. Because this file is large, careful drafting is essential to avoid issues, and I might not even need to mention line numbers.\n**Considering assignment logic**\n\nI’m thinking about how the assignment logic utilizes NOT EXISTS for assignments. It seems like we might also need an index that includes task_id, item_status, and seq_no for our stats. I wonder if that's the best approach, or if there's a more efficient way to go about it. I’m curious about whether incorporating that index will help streamline the process or bring any other improvements. Let’s explore this further!\n**Considering cache design and strategy**\n\nI’m thinking about cache design and the various elements involved, like the auth token/role cache and task-related caches. I should also consider the review queue counts and plugin/provider caches. Invalidation processes should happen when there are changes, such as template publishing or task status updates. I'll need a backup strategy that includes daily full backups and a retention plan for audits and exports. Soft deletion after a certain time helps with data management too.\n**Considering database logic**\n\nI'm thinking about including \"逻辑外键\" for each table. That sounds good! I realize I might not need to produce actual SQL CREATE statements right now to save time. Instead, I can create new file content, even if it could be substantial. I wonder if I should use Python to compose it. However, I could also directly patch it by replacing the entire file. Let's see what the best approach is!"
+    },
+    {
+      "order": 9,
+      "role": "assistant",
+      "display_text": "文档已经整体重写完成。我再快速做一轮自检，重点确认表命名、状态枚举、接口映射和“每张表包含统一基础字段”的一致性，避免留下结构性遗漏。\n\n**Verifying file integrity**\n\nI need to check the file thoroughly, possibly reading some sections to ensure everything is in order. There’s a chance I might find it's either too much content or that something's missing. I should definitely check the line count to see if anything's off. It would be wise to read parts from the beginning and some specific sections to make sure the patch works as intended. It’s better to be safe than sorry!",
+      "summary_text": null,
+      "text_snippet": "文档已经整体重写完成。我再快速做一轮自检，重点确认表命名、状态枚举、接口映射和“每张表包含统一基础字段”的一致性，避免留下结构性遗漏。\n\n**Verifying file integrity**\n\nI need to check the file thoroughly, possibly reading some sections to ensure ev…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile",
+        "rg"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "文档已经整体重写完成。我再快速做一轮自检，重点确认表命名、状态枚举、接口映射和“每张表包含统一基础字段”的一致性，避免留下结构性遗漏。\n\n**Verifying file integrity**\n\nI need to check the file thoroughly, possibly reading some sections to ensure everything is in order. There’s a chance I might find it's either too much content or that something's missing. I should definitely check the line count to see if anything's off. It would be wise to read parts from the beginning and some specific sections to make sure the patch works as intended. It’s better to be safe than sorry!"
+    },
+    {
+      "order": 10,
+      "role": "assistant",
+      "display_text": "我补到一个必须覆盖的点：功能设计里有 `AI Provider 管理页`，而当前文档还只有插件注册，没有把 Provider 配置表单独落出来。我正在把这张插件私有核心配置表补进去，避免后续再新增核心配置表。",
+      "summary_text": null,
+      "text_snippet": "我补到一个必须覆盖的点：功能设计里有 `AI Provider 管理页`，而当前文档还只有插件注册，没有把 Provider 配置表单独落出来。我正在把这张插件私有核心配置表补进去，避免后续再新增核心配置表。",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "我补到一个必须覆盖的点：功能设计里有 `AI Provider 管理页`，而当前文档还只有插件注册，没有把 Provider 配置表单独落出来。我正在把这张插件私有核心配置表补进去，避免后续再新增核心配置表。"
+    },
+    {
+      "order": 11,
+      "role": "assistant",
+      "display_text": "**Updating build order**\n\nI need to update the build order section to include a specific table and possibly an example for the plugin private rules. It feels necessary to patch the build order, and I’m considering whether to do this in the first batch or the fourth. Finding the right place for these updates is important to ensure clarity and usability. Let’s work on organizing this effectively!",
+      "summary_text": null,
+      "text_snippet": "**Updating build order**\n\nI need to update the build order section to include a specific table and possibly an example for the plugin private rules. It feels necessary to patch th…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "**Updating build order**\n\nI need to update the build order section to include a specific table and possibly an example for the plugin private rules. It feels necessary to patch the build order, and I’m considering whether to do this in the first batch or the fourth. Finding the right place for these updates is important to ensure clarity and usability. Let’s work on organizing this effectively!"
+    },
+    {
+      "order": 12,
+      "role": "assistant",
+      "display_text": "调用 rg",
+      "summary_text": null,
+      "text_snippet": null,
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "rg"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 13,
+      "role": "assistant",
+      "display_text": "调用 ApplyPatch",
+      "summary_text": null,
+      "text_snippet": null,
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 14,
+      "role": "assistant",
+      "display_text": "**Clarifying documentation issues**\n\nI'm noticing a potential issue in the documentation that mentions \"所有核心表统一预留 tenant_id ext_json,\" but the plg table seems to imply elements via base fields as well. I’d like to consider adding that the reviewer page can support batch review with the `review_batch_key`. Additionally, it might be useful to include a `System Agent` internal auth table and possibly an order/process table. I also need to check for syntax issues in the document and ensure everything is fine.",
+      "summary_text": null,
+      "text_snippet": "**Clarifying documentation issues**\n\nI'm noticing a potential issue in the documentation that mentions \"所有核心表统一预留 tenant_id ext_json,\" but the plg table seems to imply elements vi…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "**Clarifying documentation issues**\n\nI'm noticing a potential issue in the documentation that mentions \"所有核心表统一预留 tenant_id ext_json,\" but the plg table seems to imply elements via base fields as well. I’d like to consider adding that the reviewer page can support batch review with the `review_batch_key`. Additionally, it might be useful to include a `System Agent` internal auth table and possibly an order/process table. I also need to check for syntax issues in the document and ensure everything is fine."
+    },
+    {
+      "order": 15,
+      "role": "assistant",
+      "display_text": "已将 `docs/database-design.md` 完整重写为可直接落地的正式数据库设计文档。\n\n这次不是在原文上做补丁，而是按 `docs/functional-design.md` 全量重构，补齐了原文里欠缺的关键内容：统一基础字段规范、主键策略、全量枚举与状态机落库、接口到表映射、审计与异步任务、文件与通知模型、统计宽表、缓存策略、分区/分表策略、备份归档策略，以及 AI Provider 配置表 `plg_agent_provider_configs`。同时把提交模型升级成了“当前态 `submissions` + 历史快照 `submission_versions` + 状态流水 `submission_status_histories`”的可回放结构，能真正覆盖多轮返工、历史模板回放、AI/人工审核明细和导出一致性。\n\n文档位置还是 `docs/database-design.md`。这次修改仅涉及文档，没有运行测试或改动业务代码。\n\n**Finalizing Document Review**\n\nIt looks fine, but I need to emphasize that any irrelevant lints shouldn't be included in the final version. My answer should be concise in Chinese and mention that the document is written, including the file path and major additions. I also want to clarify that I can't run tests since this is a document-only review. Keeping paragraphs short is essential for clarity.",
+      "summary_text": null,
+      "text_snippet": "已将 `docs/database-design.md` 完整重写为可直接落地的正式数据库设计文档。\n\n这次不是在原文上做补丁，而是按 `docs/functional-design.md` 全量重构，补齐了原文里欠缺的关键内容：统一基础字段规范、主键策略、全量枚举与状态机落库、接口到表映射、审计与异步任务、文件与通知模型、统计宽表、缓存策略、分区/分表策…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "已将 `docs/database-design.md` 完整重写为可直接落地的正式数据库设计文档。\n\n这次不是在原文上做补丁，而是按 `docs/functional-design.md` 全量重构，补齐了原文里欠缺的关键内容：统一基础字段规范、主键策略、全量枚举与状态机落库、接口到表映射、审计与异步任务、文件与通知模型、统计宽表、缓存策略、分区/分表策略、备份归档策略，以及 AI Provider 配置表 `plg_agent_provider_configs`。同时把提交模型升级成了“当前态 `submissions` + 历史快照 `submission_versions` + 状态流水 `submission_status_histories`”的可回放结构，能真正覆盖多轮返工、历史模板回放、AI/人工审核明细和导出一致性。\n\n文档位置还是 `docs/database-design.md`。这次修改仅涉及文档，没有运行测试或改动业务代码。\n\n**Finalizing Document Review**\n\nIt looks fine, but I need to emphasize that any irrelevant lints shouldn't be included in the final version. My answer should be concise in Chinese and mention that the document is written, including the file path and major additions. I also want to clarify that I can't run tests since this is a document-only review. Keeping paragraphs short is essential for clarity."
+    },
+    {
+      "order": 16,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "数据表设计中缺少菜单存储表，需确认系统后台菜单对应的数据库表。",
+      "text_snippet": "<timestamp>Thursday, May 21, 2026, 3:51 PM (UTC+8)</timestamp>\n<user_query>\n数据表设计 中没有菜单设计吗 哪个表存储系统后台的菜单？\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 17,
+      "role": "assistant",
+      "display_text": "对，当前这版文档里**没有单独把后台菜单模型写出来**，这是一个缺口。\n\n如果系统后台菜单需要做成“数据库驱动的动态菜单”，**不应该存在业务表里**，而应该放在系统权限域，通常至少需要这两张表：\n\n## 建议的菜单表\n\n### `sys_menus`\n用于存储后台菜单、目录、按钮本身。\n\n核心字段建议包括：\n\n- `id`\n- `tenant_id`\n- `menu_code`：菜单编码，唯一\n- `menu_name`：菜单名称\n- `menu_type`：`DIRECTORY / MENU / BUTTON`\n- `parent_id`：父菜单 ID\n- `path`：前端路由路径\n- `route_name`：前端路由名\n- `component_path`：前端组件路径\n- `icon`\n- `permission_code`：对应权限点，可为空\n- `sort_no`\n- `visible_flag`\n- `disabled_flag`\n- `keep_alive_flag`\n- `cache_flag`\n- `status`\n- `created_by`\n- `created_at`\n- `updated_by`\n- `updated_at`\n- `deleted_flag`\n- `ext_json`\n\n典型索引：\n\n- `uk_sys_menus_code (tenant_id, menu_code, deleted_flag)`\n- `idx_sys_menus_parent_sort (tenant_id, parent_id, sort_no)`\n- `idx_sys_menus_status_visible (tenant_id, status, visible_flag)`\n\n## 菜单授权表\n\n### `role_menus`\n用于存储角色与菜单的可见/可操作关系。\n\n核心字段建议：\n\n- `id`\n- `tenant_id`\n- `role_id`\n- `menu_id`\n- `created_by`\n- `created_at`\n- `updated_by`\n- `updated_at`\n- `deleted_flag`\n- `ext_json`\n\n典型索引：\n\n- `uk_role_menus (tenant_id, role_id, menu_id, deleted_flag)`\n- `idx_role_menus_menu (tenant_id, menu_id, role_id)`\n\n## 它和现有权限表的关系\n\n你现在文档里已经有：\n\n- `roles`\n- `permissions`\n- `role_permissions`\n\n但这三张更偏“接口/动作权限”。\n\n后台菜单通常要单独建模，因为菜单除了权限，还包含：\n\n- 层级结构\n- 路由路径\n- 前端组件\n- 图标\n- 排序\n- 是否隐藏\n- 是否缓存\n- 是否外链\n\n这些都不是 `permissions` 表适合承载的。\n\n所以结论是：\n\n- **菜单定义存 `sys_menus`**\n- **菜单授权存 `role_menus`**\n- `permission_code` 可以挂在 `sys_menus` 上，与 `permissions.permission_code` 对应\n- 前端登录后按角色查询菜单树，后端再按权限控制接口访问\n\n如果你愿意，我可以直接把这两张表补进 `docs/database-design.md`，并把它们接到现有的 `roles / permissions / user_roles` 体系里。",
+      "summary_text": null,
+      "text_snippet": "对，当前这版文档里**没有单独把后台菜单模型写出来**，这是一个缺口。\n\n如果系统后台菜单需要做成“数据库驱动的动态菜单”，**不应该存在业务表里**，而应该放在系统权限域，通常至少需要这两张表：\n\n## 建议的菜单表\n\n### `sys_menus`\n用于存储后台菜单、目录、按钮本身。\n\n核心字段建议包括：\n\n- `id`\n- `tenant_id`\n-…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "对，当前这版文档里**没有单独把后台菜单模型写出来**，这是一个缺口。\n\n如果系统后台菜单需要做成“数据库驱动的动态菜单”，**不应该存在业务表里**，而应该放在系统权限域，通常至少需要这两张表：\n\n## 建议的菜单表\n\n### `sys_menus`\n用于存储后台菜单、目录、按钮本身。\n\n核心字段建议包括：\n\n- `id`\n- `tenant_id`\n- `menu_code`：菜单编码，唯一\n- `menu_name`：菜单名称\n- `menu_type`：`DIRECTORY / MENU / BUTTON`\n- `parent_id`：父菜单 ID\n- `path`：前端路由路径\n- `route_name`：前端路由名\n- `component_path`：前端组件路径\n- `icon`\n- `permission_code`：对应权限点，可为空\n- `sort_no`\n- `visible_flag`\n- `disabled_flag`\n- `keep_alive_flag`\n- `cache_flag`\n- `status`\n- `created_by`\n- `created_at`\n- `updated_by`\n- `updated_at`\n- `deleted_flag`\n- `ext_json`\n\n典型索引：\n\n- `uk_sys_menus_code (tenant_id, menu_code, deleted_flag)`\n- `idx_sys_menus_parent_sort (tenant_id, parent_id, sort_no)`\n- `idx_sys_menus_status_visible (tenant_id, status, visible_flag)`\n\n## 菜单授权表\n\n### `role_menus`\n用于存储角色与菜单的可见/可操作关系。\n\n核心字段建议：\n\n- `id`\n- `tenant_id`\n- `role_id`\n- `menu_id`\n- `created_by`\n- `created_at`\n- `updated_by`\n- `updated_at`\n- `deleted_flag`\n- `ext_json`\n\n典型索引：\n\n- `uk_role_menus (tenant_id, role_id, menu_id, deleted_flag)`\n- `idx_role_menus_menu (tenant_id, menu_id, role_id)`\n\n## 它和现有权限表的关系\n\n你现在文档里已经有：\n\n- `roles`\n- `permissions`\n- `role_permissions`\n\n但这三张更偏“接口/动作权限”。\n\n后台菜单通常要单独建模，因为菜单除了权限，还包含：\n\n- 层级结构\n- 路由路径\n- 前端组件\n- 图标\n- 排序\n- 是否隐藏\n- 是否缓存\n- 是否外链\n\n这些都不是 `permissions` 表适合承载的。\n\n所以结论是：\n\n- **菜单定义存 `sys_menus`**\n- **菜单授权存 `role_menus`**\n- `permission_code` 可以挂在 `sys_menus` 上，与 `permissions.permission_code` 对应\n- 前端登录后按角色查询菜单树，后端再按权限控制接口访问\n\n如果你愿意，我可以直接把这两张表补进 `docs/database-design.md`，并把它们接到现有的 `roles / permissions / user_roles` 体系里。"
+    },
+    {
+      "order": 18,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "检查过程中发现缺少必要内容，需补充缺失项以完成完整性校验。",
+      "text_snippet": "<timestamp>Thursday, May 21, 2026, 3:52 PM (UTC+8)</timestamp>\n<user_query>\n检查一下还缺少什么\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 19,
+      "role": "assistant",
+      "display_text": "我会按你最初的交付标准反查这份文档，重点找“功能设计覆盖缺口、后台系统能力缺口、与落地建库要求不一致的地方”，然后直接告诉你还缺哪些。\n\n**Considering session management**\n\nI’m thinking about how JWT and refresh tokens may require handling `user_login_sessions` or `refresh_tokens`. There seems to be a distinction with the operational logs; I wonder if they're separate from audit logs or if the audit logs would suffice. I'll need to clarify that to ensure proper logging and session management is in place. Balancing these concepts can be tricky, but it’s important for maintaining security and tracking.",
+      "summary_text": null,
+      "text_snippet": "我会按你最初的交付标准反查这份文档，重点找“功能设计覆盖缺口、后台系统能力缺口、与落地建库要求不一致的地方”，然后直接告诉你还缺哪些。\n\n**Considering session management**\n\nI’m thinking about how JWT and refresh tokens may require handling `user_l…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "rg"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/functional-design.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "我会按你最初的交付标准反查这份文档，重点找“功能设计覆盖缺口、后台系统能力缺口、与落地建库要求不一致的地方”，然后直接告诉你还缺哪些。\n\n**Considering session management**\n\nI’m thinking about how JWT and refresh tokens may require handling `user_login_sessions` or `refresh_tokens`. There seems to be a distinction with the operational logs; I wonder if they're separate from audit logs or if the audit logs would suffice. I'll need to clarify that to ensure proper logging and session management is in place. Balancing these concepts can be tricky, but it’s important for maintaining security and tracking."
+    },
+    {
+      "order": 20,
+      "role": "assistant",
+      "display_text": "我定位到两类更关键的缺口了：一类是“系统后台能力没建模”，另一类是“交付粒度还不够到建表级”。我再读几段对应位置，给你一个按严重级别排序的缺口清单。",
+      "summary_text": null,
+      "text_snippet": "我定位到两类更关键的缺口了：一类是“系统后台能力没建模”，另一类是“交付粒度还不够到建表级”。我再读几段对应位置，给你一个按严重级别排序的缺口清单。",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/functional-design.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "我定位到两类更关键的缺口了：一类是“系统后台能力没建模”，另一类是“交付粒度还不够到建表级”。我再读几段对应位置，给你一个按严重级别排序的缺口清单。"
+    },
+    {
+      "order": 21,
+      "role": "assistant",
+      "display_text": "有，当前这份文档还缺 **3 个比较关键的点**，其中前两个我建议一定补。\n\n## 发现的问题\n\n1. **缺少后台菜单与菜单授权模型，无法支撑“按角色展示不同资源和菜单”。**  \n功能设计明确写了“前端按角色展示不同资源和菜单”，但数据库设计在系统域里只有 `users`、`roles`、`permissions`、`role_permissions`、`user_roles`、`system_clients` 等，没有 `sys_menus` / `role_menus` 这一层，所以后台菜单现在没有落表位置。相关位置：  \n```360:542:docs/database-design.md\n## 8. 数据表设计\n\n## 8.1 身份、权限与系统接入域\n\n### `users`\n...\n### `roles`\n...\n### `permissions`\n...\n### `role_permissions`\n...\n### `user_roles`\n...\n### `system_clients`\n...\n### `sys_dict_types`\n...\n### `sys_dict_items`\n...\n### `plugin_registry`\n...\n### `plg_agent_provider_configs`\n...\n```\n\n```185:201:docs/functional-design.md\n### 7.1 认证与授权\n\n#### 核心能力\n\n- 用户登录、退出、换发 Token\n- 角色识别与接口鉴权\n- 前端按角色展示不同资源和菜单\n- 内部调用与用户调用隔离\n```\n\n2. **缺少登录会话 / Refresh Token 设计，认证链路没有覆盖“换发 Token”。**  \n功能设计要求里有“登录、退出、换发 Token”，但当前数据库文档只覆盖了 `login / register / me`，没有会话表、refresh token 表、token blacklist 表，甚至接口映射里连 `logout` 和 `refresh` 也没写进去。  \n如果你打算做真正可落地的后台认证，这里至少要二选一明确下来：  \n- 建 `user_login_sessions` + `auth_refresh_tokens`；或  \n- 明确“纯无状态 JWT + 短 token + Redis 黑名单/滑动续期”方案。  \n当前文档两种都没落。相关位置：  \n```1461:1468:docs/database-design.md\n### 11.1 认证授权\n\n- `POST /api/v1/auth/login`\n  - 读：`users`、`user_roles`、`roles`\n- `POST /api/v1/auth/register`\n  - 写：`users`、`user_roles`\n- `GET /api/v1/auth/me`\n  - 读：`users`、`user_roles`、`roles`\n```\n\n```193:200:docs/functional-design.md\n- 用户登录、退出、换发 Token\n...\n- 用户接口基于 JWT 登录态。\n```\n\n3. **交付颗粒度还不够“直接建表”，每张表没有完整展开统一基础字段。**  \n文档前面统一定义了所有表都要带 `id / tenant_id / created_by / created_at / updated_by / updated_at / deleted_flag / ext_json`，但后面各张表的字段清单只列了业务字段，没有逐表把这些字段完整写出来。  \n这在“架构说明”层面是成立的，但如果按你最初要求的“工程可直接建库建表、无需二次沟通”，那严格来说还差一步，因为 DDL 编写人仍然要自己把统一字段补回每一张表。相关位置：  \n```85:101:docs/database-design.md\n### 3.4 统一基础字段\n\n所有表必须包含以下统一字段，日志表和关系表也不例外：\n\n- `id BIGINT UNSIGNED NOT NULL`：主键\n- `tenant_id BIGINT UNSIGNED NOT NULL DEFAULT 1`：租户 ID，首版固定为 `1`\n- `created_by BIGINT UNSIGNED NOT NULL DEFAULT 0`：创建人，系统写 `0`\n- `created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3)`：创建时间\n- `updated_by BIGINT UNSIGNED NOT NULL DEFAULT 0`：更新人\n- `updated_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)`：更新时间\n- `deleted_flag TINYINT UNSIGNED NOT NULL DEFAULT 0`：软删除标记，`0` 未删，`1` 已删\n- `ext_json JSON NULL`：扩展字段\n```\n\n```365:387:docs/database-design.md\n### `users`\n\n- 用途：平台用户主表，支撑注册、登录、当前用户信息、任务归属、审核操作人、导出发起人等。\n- 关键关系：被 `tasks.owner_id`、`assignments.labeler_id`、`review_records.reviewer_id`、`export_jobs.requested_by` 等逻辑引用。\n- 业务字段：\n  - `username VARCHAR(64) NOT NULL`：登录名\n  - `password_hash VARCHAR(255) NOT NULL`：密码哈希\n  - `display_name VARCHAR(64) NOT NULL`：显示名\n  - `email VARCHAR(128) NULL`\n  - `phone VARCHAR(32) NULL`\n  - `avatar_file_id BIGINT UNSIGNED NULL`\n  - `status VARCHAR(16) NOT NULL DEFAULT 'ACTIVE'`\n  - `last_login_at DATETIME(3) NULL`\n  - `register_source VARCHAR(32) NOT NULL DEFAULT 'WEB'`\n```\n\n## 目前我认为“不算缺”的点\n\n这些部分目前基本已经补到了，不算缺口：\n\n- AI Provider 配置：已经有 `plg_agent_provider_configs`\n- 文件体系：已有 `file_assets`、`file_references`\n- 通知体系：已有 `notify_messages`、`notify_message_receipts`\n- 批量审核追溯：已有 `review_batch_key`\n- 统计宽表：已有 `task_stats_snapshot`、`task_stats_daily`、`user_stats_daily`\n- 提交历史回放：已有 `submission_versions`、`submission_status_histories`\n\n## 结论\n\n如果按“还能缺什么”来排优先级，我建议你优先补这三块：\n\n1. `sys_menus` + `role_menus`\n2. `user_login_sessions` / `auth_refresh_tokens`（或明确 JWT + Redis 黑名单方案）\n3. 把每张表的统一基础字段补进各自字段清单，做到真正可直接写 DDL\n\n如果你要，我可以下一步直接把这三部分补进 `docs/database-design.md`，而且会按你现有文档风格无缝补齐。",
+      "summary_text": null,
+      "text_snippet": "有，当前这份文档还缺 **3 个比较关键的点**，其中前两个我建议一定补。\n\n## 发现的问题\n\n1. **缺少后台菜单与菜单授权模型，无法支撑“按角色展示不同资源和菜单”。** \n功能设计明确写了“前端按角色展示不同资源和菜单”，但数据库设计在系统域里只有 `users`、`roles`、`permissions`、`role_permissions`、…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "有，当前这份文档还缺 **3 个比较关键的点**，其中前两个我建议一定补。\n\n## 发现的问题\n\n1. **缺少后台菜单与菜单授权模型，无法支撑“按角色展示不同资源和菜单”。**  \n功能设计明确写了“前端按角色展示不同资源和菜单”，但数据库设计在系统域里只有 `users`、`roles`、`permissions`、`role_permissions`、`user_roles`、`system_clients` 等，没有 `sys_menus` / `role_menus` 这一层，所以后台菜单现在没有落表位置。相关位置：  \n```360:542:docs/database-design.md\n## 8. 数据表设计\n\n## 8.1 身份、权限与系统接入域\n\n### `users`\n...\n### `roles`\n...\n### `permissions`\n...\n### `role_permissions`\n...\n### `user_roles`\n...\n### `system_clients`\n...\n### `sys_dict_types`\n...\n### `sys_dict_items`\n...\n### `plugin_registry`\n...\n### `plg_agent_provider_configs`\n...\n```\n\n```185:201:docs/functional-design.md\n### 7.1 认证与授权\n\n#### 核心能力\n\n- 用户登录、退出、换发 Token\n- 角色识别与接口鉴权\n- 前端按角色展示不同资源和菜单\n- 内部调用与用户调用隔离\n```\n\n2. **缺少登录会话 / Refresh Token 设计，认证链路没有覆盖“换发 Token”。**  \n功能设计要求里有“登录、退出、换发 Token”，但当前数据库文档只覆盖了 `login / register / me`，没有会话表、refresh token 表、token blacklist 表，甚至接口映射里连 `logout` 和 `refresh` 也没写进去。  \n如果你打算做真正可落地的后台认证，这里至少要二选一明确下来：  \n- 建 `user_login_sessions` + `auth_refresh_tokens`；或  \n- 明确“纯无状态 JWT + 短 token + Redis 黑名单/滑动续期”方案。  \n当前文档两种都没落。相关位置：  \n```1461:1468:docs/database-design.md\n### 11.1 认证授权\n\n- `POST /api/v1/auth/login`\n  - 读：`users`、`user_roles`、`roles`\n- `POST /api/v1/auth/register`\n  - 写：`users`、`user_roles`\n- `GET /api/v1/auth/me`\n  - 读：`users`、`user_roles`、`roles`\n```\n\n```193:200:docs/functional-design.md\n- 用户登录、退出、换发 Token\n...\n- 用户接口基于 JWT 登录态。\n```\n\n3. **交付颗粒度还不够“直接建表”，每张表没有完整展开统一基础字段。**  \n文档前面统一定义了所有表都要带 `id / tenant_id / created_by / created_at / updated_by / updated_at / deleted_flag / ext_json`，但后面各张表的字段清单只列了业务字段，没有逐表把这些字段完整写出来。  \n这在“架构说明”层面是成立的，但如果按你最初要求的“工程可直接建库建表、无需二次沟通”，那严格来说还差一步，因为 DDL 编写人仍然要自己把统一字段补回每一张表。相关位置：  \n```85:101:docs/database-design.md\n### 3.4 统一基础字段\n\n所有表必须包含以下统一字段，日志表和关系表也不例外：\n\n- `id BIGINT UNSIGNED NOT NULL`：主键\n- `tenant_id BIGINT UNSIGNED NOT NULL DEFAULT 1`：租户 ID，首版固定为 `1`\n- `created_by BIGINT UNSIGNED NOT NULL DEFAULT 0`：创建人，系统写 `0`\n- `created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3)`：创建时间\n- `updated_by BIGINT UNSIGNED NOT NULL DEFAULT 0`：更新人\n- `updated_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)`：更新时间\n- `deleted_flag TINYINT UNSIGNED NOT NULL DEFAULT 0`：软删除标记，`0` 未删，`1` 已删\n- `ext_json JSON NULL`：扩展字段\n```\n\n```365:387:docs/database-design.md\n### `users`\n\n- 用途：平台用户主表，支撑注册、登录、当前用户信息、任务归属、审核操作人、导出发起人等。\n- 关键关系：被 `tasks.owner_id`、`assignments.labeler_id`、`review_records.reviewer_id`、`export_jobs.requested_by` 等逻辑引用。\n- 业务字段：\n  - `username VARCHAR(64) NOT NULL`：登录名\n  - `password_hash VARCHAR(255) NOT NULL`：密码哈希\n  - `display_name VARCHAR(64) NOT NULL`：显示名\n  - `email VARCHAR(128) NULL`\n  - `phone VARCHAR(32) NULL`\n  - `avatar_file_id BIGINT UNSIGNED NULL`\n  - `status VARCHAR(16) NOT NULL DEFAULT 'ACTIVE'`\n  - `last_login_at DATETIME(3) NULL`\n  - `register_source VARCHAR(32) NOT NULL DEFAULT 'WEB'`\n```\n\n## 目前我认为“不算缺”的点\n\n这些部分目前基本已经补到了，不算缺口：\n\n- AI Provider 配置：已经有 `plg_agent_provider_configs`\n- 文件体系：已有 `file_assets`、`file_references`\n- 通知体系：已有 `notify_messages`、`notify_message_receipts`\n- 批量审核追溯：已有 `review_batch_key`\n- 统计宽表：已有 `task_stats_snapshot`、`task_stats_daily`、`user_stats_daily`\n- 提交历史回放：已有 `submission_versions`、`submission_status_histories`\n\n## 结论\n\n如果按“还能缺什么”来排优先级，我建议你优先补这三块：\n\n1. `sys_menus` + `role_menus`\n2. `user_login_sessions` / `auth_refresh_tokens`（或明确 JWT + Redis 黑名单方案）\n3. 把每张表的统一基础字段补进各自字段清单，做到真正可直接写 DDL\n\n如果你要，我可以下一步直接把这三部分补进 `docs/database-design.md`，而且会按你现有文档风格无缝补齐。"
+    },
+    {
+      "order": 22,
+      "role": "user",
+      "display_text": "@docs/functional-design.md 角色\n关键能力\n核心页面\n任务负责人 (Owner)\n创建任务、搭建标注模板、配置审核标准与奖励、查看数据看板、导出\n任务管理 / 模板搭建 / 数据验收\n标注员 (Labeler)\n\n浏览任务广场、领取任务、在线作答、保存草稿、查看打回原因并修改\n任务广场 / 标注工作台 / 我的贡献\n\nAI 审核 Agent (System)\n拉取已提交数据、按规则评测、写回评分与质检结果\n（后台异步流水线）\n人工审核员 (Reviewer)\n多级审核（初审 / 复审 / 终审）、打回 / 通过 / 修订\n审核工作台 / 审核结果列表 缺少哪些功能",
+      "summary_text": null,
+      "text_snippet": "<timestamp>Thursday, May 21, 2026, 3:56 PM (UTC+8)</timestamp>\n<user_query>\n@docs/functional-design.md 角色\n关键能力\n核心页面\n任务负责人 (Owner)\n创建任务、搭建标注模板、配置审核标准与奖励、查看数据看板、导出\n任务管理 / 模板搭建 / 数据验…",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 23,
+      "role": "assistant",
+      "display_text": "按你这份角色/能力/页面矩阵来看，**还缺的功能主要有 8 类**。其中前 4 类是明显缺口，后 4 类是“文档提到了方向，但没形成完整功能闭环”。\n\n## 明显缺口\n\n1. **Owner 的“数据看板”没有真正展开。**  \n你写了“查看数据看板”，但 `functional-design.md` 里实际只有“任务进度和验收结果”的描述，没有把看板拆成明确功能，比如：\n- 任务进度概览\n- 标注通过率 / 打回率\n- AI 评分分布\n- 审核员效率\n- 标注员产能\n- 每日新增提交 / 审核 / 导出统计\n- 按任务、时间、人员维度筛选\n\n也就是说，**Owner 侧缺一个完整的数据看板模块设计**。\n\n2. **Owner 的“奖励配置与结算”只提到规则，没有完整业务闭环。**  \n文档里提到“配置奖励规则和奖励”，但没有继续定义：\n- 奖励规则明细\n- 审核通过后如何计奖\n- 打回 / 重提是否计奖\n- 是否有结算单、发放记录、结算状态\n- 标注员是否可查看收益明细\n\n所以目前只是“任务属性里有奖励”，**还不算完整奖励系统**。\n\n3. **Reviewer 的“审核结果列表”没有真正独立成模块。**  \n现在更偏“待审核列表 + 审核详情”，但你角色页里写的是：\n- 审核工作台\n- 审核结果列表\n\n缺的其实是：\n- 已审核记录查询\n- 按审核动作筛选（通过 / 打回 / 修订）\n- 按审核层级筛选（初审 / 复审 / 终审）\n- 按时间、任务、审核员筛选\n- 审核结果导出 / 回溯\n\n也就是**审核历史结果中心**还没有真正定义完整。\n\n4. **Reviewer 的“多级审核”没有完全闭环。**  \n文档里提到“复审和终审”，但实际状态和接口更像单级人工审核辅助 AI，缺少：\n- 初审/复审/终审的层级规则\n- 每一级由谁审核\n- 某一级通过后是否进入下一级\n- 不同层级的权限边界\n- 多级审核链路的状态流转\n- 多级审核结果汇总逻辑\n\n所以现在是“支持 review_level 字段”，但**还不是完整多级审核流程设计**。\n\n## 中等缺口\n\n5. **Labeler 的“我的贡献”定义不完整。**  \n你列了“我的贡献”，但文档里更偏“我的数据 / 我的任务 / 待修改”。  \n如果真叫“我的贡献”，通常应补齐：\n- 我领取了多少题\n- 提交了多少题\n- 通过 / 打回 / 修订中数量\n- 每日贡献趋势\n- 贡献任务分布\n- 奖励/积分/质量分\n- 最近被打回原因统计\n\n也就是说，**“我的贡献”页还没有被功能化、指标化**。\n\n6. **System Agent 缺少运维视角能力。**  \n现在只描述了“拉取已提交数据、按规则评测、写回结果”，但一个真正可运维的异步流水线通常还应有：\n- 队列监控\n- 失败重试记录\n- 死信任务处理\n- 人工重跑\n- Provider 健康检查\n- 模型调用成本统计\n- Prompt 版本追踪\n- AI 结果异常回放\n\n也就是**业务链路有了，但系统运行管理功能不完整**。\n\n7. **Owner 的“数据验收”页面定义还不够细。**  \n角色页里写了“数据验收”，但文档里没有完全展开它到底包含：\n- 查看通过数据\n- 查看打回数据\n- 查看 AI 与人工差异\n- 按审核状态筛选\n- 验收抽检\n- 终验后锁定\n- 验收后触发导出\n\n现在更像“审核之后可以导出”，但**验收中心本身还不够独立**。\n\n8. **后台系统能力缺失：菜单、资源、页面权限。**  \n既然你已经按角色拆页面了，系统后台其实还需要：\n- 菜单管理\n- 角色菜单授权\n- 页面级资源权限\n- 按角色展示导航\n- 按权限控制按钮\n\n这个在角色设计里是隐含必需能力，但当前功能文档里没有单独成模块。\n\n## 如果按角色归类，当前最缺的是\n\n- **Owner**：数据看板、数据验收细化、奖励/结算闭环\n- **Labeler**：我的贡献指标化、贡献统计与收益视图\n- **Reviewer**：审核结果列表、多级审核完整流转\n- **System Agent**：异步流水线运维能力\n- **后台系统**：菜单与页面权限体系\n\n如果你愿意，我下一步可以直接帮你把这些“缺少功能”整理成一份 **补充功能清单**，并按 `Owner / Labeler / Reviewer / System / 后台系统` 五个域追加到 `docs/functional-design.md`。\n\n**Identifying functionality gaps**\n\nI’ve noticed the bulk review page is missing in the API, which raises questions about roles and permissions. The user is asking about what features are lacking. I really need to frame my response around the role capabilities matrix since several functions, according to the functional design document, are not fully integrated. I’ll create a gap list to clearly outline what's missing. No tools are necessary for this; I can respond directly.",
+      "summary_text": null,
+      "text_snippet": "按你这份角色/能力/页面矩阵来看，**还缺的功能主要有 8 类**。其中前 4 类是明显缺口，后 4 类是“文档提到了方向，但没形成完整功能闭环”。\n\n## 明显缺口\n\n1. **Owner 的“数据看板”没有真正展开。** \n你写了“查看数据看板”，但 `functional-design.md` 里实际只有“任务进度和验收结果”的描述，没有把看板拆成明…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "按你这份角色/能力/页面矩阵来看，**还缺的功能主要有 8 类**。其中前 4 类是明显缺口，后 4 类是“文档提到了方向，但没形成完整功能闭环”。\n\n## 明显缺口\n\n1. **Owner 的“数据看板”没有真正展开。**  \n你写了“查看数据看板”，但 `functional-design.md` 里实际只有“任务进度和验收结果”的描述，没有把看板拆成明确功能，比如：\n- 任务进度概览\n- 标注通过率 / 打回率\n- AI 评分分布\n- 审核员效率\n- 标注员产能\n- 每日新增提交 / 审核 / 导出统计\n- 按任务、时间、人员维度筛选\n\n也就是说，**Owner 侧缺一个完整的数据看板模块设计**。\n\n2. **Owner 的“奖励配置与结算”只提到规则，没有完整业务闭环。**  \n文档里提到“配置奖励规则和奖励”，但没有继续定义：\n- 奖励规则明细\n- 审核通过后如何计奖\n- 打回 / 重提是否计奖\n- 是否有结算单、发放记录、结算状态\n- 标注员是否可查看收益明细\n\n所以目前只是“任务属性里有奖励”，**还不算完整奖励系统**。\n\n3. **Reviewer 的“审核结果列表”没有真正独立成模块。**  \n现在更偏“待审核列表 + 审核详情”，但你角色页里写的是：\n- 审核工作台\n- 审核结果列表\n\n缺的其实是：\n- 已审核记录查询\n- 按审核动作筛选（通过 / 打回 / 修订）\n- 按审核层级筛选（初审 / 复审 / 终审）\n- 按时间、任务、审核员筛选\n- 审核结果导出 / 回溯\n\n也就是**审核历史结果中心**还没有真正定义完整。\n\n4. **Reviewer 的“多级审核”没有完全闭环。**  \n文档里提到“复审和终审”，但实际状态和接口更像单级人工审核辅助 AI，缺少：\n- 初审/复审/终审的层级规则\n- 每一级由谁审核\n- 某一级通过后是否进入下一级\n- 不同层级的权限边界\n- 多级审核链路的状态流转\n- 多级审核结果汇总逻辑\n\n所以现在是“支持 review_level 字段”，但**还不是完整多级审核流程设计**。\n\n## 中等缺口\n\n5. **Labeler 的“我的贡献”定义不完整。**  \n你列了“我的贡献”，但文档里更偏“我的数据 / 我的任务 / 待修改”。  \n如果真叫“我的贡献”，通常应补齐：\n- 我领取了多少题\n- 提交了多少题\n- 通过 / 打回 / 修订中数量\n- 每日贡献趋势\n- 贡献任务分布\n- 奖励/积分/质量分\n- 最近被打回原因统计\n\n也就是说，**“我的贡献”页还没有被功能化、指标化**。\n\n6. **System Agent 缺少运维视角能力。**  \n现在只描述了“拉取已提交数据、按规则评测、写回结果”，但一个真正可运维的异步流水线通常还应有：\n- 队列监控\n- 失败重试记录\n- 死信任务处理\n- 人工重跑\n- Provider 健康检查\n- 模型调用成本统计\n- Prompt 版本追踪\n- AI 结果异常回放\n\n也就是**业务链路有了，但系统运行管理功能不完整**。\n\n7. **Owner 的“数据验收”页面定义还不够细。**  \n角色页里写了“数据验收”，但文档里没有完全展开它到底包含：\n- 查看通过数据\n- 查看打回数据\n- 查看 AI 与人工差异\n- 按审核状态筛选\n- 验收抽检\n- 终验后锁定\n- 验收后触发导出\n\n现在更像“审核之后可以导出”，但**验收中心本身还不够独立**。\n\n8. **后台系统能力缺失：菜单、资源、页面权限。**  \n既然你已经按角色拆页面了，系统后台其实还需要：\n- 菜单管理\n- 角色菜单授权\n- 页面级资源权限\n- 按角色展示导航\n- 按权限控制按钮\n\n这个在角色设计里是隐含必需能力，但当前功能文档里没有单独成模块。\n\n## 如果按角色归类，当前最缺的是\n\n- **Owner**：数据看板、数据验收细化、奖励/结算闭环\n- **Labeler**：我的贡献指标化、贡献统计与收益视图\n- **Reviewer**：审核结果列表、多级审核完整流转\n- **System Agent**：异步流水线运维能力\n- **后台系统**：菜单与页面权限体系\n\n如果你愿意，我下一步可以直接帮你把这些“缺少功能”整理成一份 **补充功能清单**，并按 `Owner / Labeler / Reviewer / System / 后台系统` 五个域追加到 `docs/functional-design.md`。\n\n**Identifying functionality gaps**\n\nI’ve noticed the bulk review page is missing in the API, which raises questions about roles and permissions. The user is asking about what features are lacking. I really need to frame my response around the role capabilities matrix since several functions, according to the functional design document, are not fully integrated. I’ll create a gap list to clearly outline what's missing. No tools are necessary for this; I can respond directly."
+    },
+    {
+      "order": 24,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "ok 指令执行成功，无异常。",
+      "text_snippet": "<timestamp>Thursday, May 21, 2026, 3:57 PM (UTC+8)</timestamp>\n<user_query>\nok\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 25,
+      "role": "assistant",
+      "display_text": "我现在把缺失功能按 `Owner / Labeler / Reviewer / System / 后台系统` 五个域补进 `docs/functional-design.md`，尽量保持你现有文档的结构和语气一致。",
+      "summary_text": null,
+      "text_snippet": "我现在把缺失功能按 `Owner / Labeler / Reviewer / System / 后台系统` 五个域补进 `docs/functional-design.md`，尽量保持你现有文档的结构和语气一致。",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/functional-design.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "我现在把缺失功能按 `Owner / Labeler / Reviewer / System / 后台系统` 五个域补进 `docs/functional-design.md`，尽量保持你现有文档的结构和语气一致。"
+    },
+    {
+      "order": 26,
+      "role": "assistant",
+      "display_text": "我会在现有结构里补一个“缺失功能补充设计”章节，不去打乱原有编号，同时把后台系统能力一并收进去。\n\n**Considering updates and sections**\n\nI’m thinking about inserting a new section before 验收 or after page mapping, titled \"10.4 补充功能清单.\" The user seemed okay with adding this to the functional design. It might be best to add the new section after page mapping and before 验收. I should also consider updating core page names from 我的数据 to 我的贡献, while keeping existing names and mentioning enhancements. Plus, I might need to include a backend system, and I’ll patch one file accordingly.",
+      "summary_text": null,
+      "text_snippet": "我会在现有结构里补一个“缺失功能补充设计”章节，不去打乱原有编号，同时把后台系统能力一并收进去。\n\n**Considering updates and sections**\n\nI’m thinking about inserting a new section before 验收 or after page mapping, titled \"10.4 补充…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "我会在现有结构里补一个“缺失功能补充设计”章节，不去打乱原有编号，同时把后台系统能力一并收进去。\n\n**Considering updates and sections**\n\nI’m thinking about inserting a new section before 验收 or after page mapping, titled \"10.4 补充功能清单.\" The user seemed okay with adding this to the functional design. It might be best to add the new section after page mapping and before 验收. I should also consider updating core page names from 我的数据 to 我的贡献, while keeping existing names and mentioning enhancements. Plus, I might need to include a backend system, and I’ll patch one file accordingly."
+    },
+    {
+      "order": 27,
+      "role": "assistant",
+      "display_text": "我已经把补充功能加进 `docs/functional-design.md` 了，主要新增了一个 `## 11. 缺失功能补充设计` 章节，并补了后台系统侧页面映射。\n\n这次补进去的内容包括：\n\n- `Owner`：数据看板、数据验收中心、奖励规则与结算视图\n- `Labeler`：我的贡献页、我的任务页增强\n- `Reviewer`：多级审核流、审核结果列表、审核效率视图\n- `System Agent`：异步流水线监控、AI Provider 运维能力\n- `后台系统`：菜单与页面权限、用户角色资源管理、系统审计与任务监控\n\n同时我把后续章节编号顺延了，保证文档结构还是连续的。\n\n如果你愿意，我下一步可以继续把这些补充功能**反向同步到 `docs/database-design.md`**，把菜单表、登录会话/refresh token、奖励结算相关表也补齐。",
+      "summary_text": null,
+      "text_snippet": "我已经把补充功能加进 `docs/functional-design.md` 了，主要新增了一个 `## 11. 缺失功能补充设计` 章节，并补了后台系统侧页面映射。\n\n这次补进去的内容包括：\n\n- `Owner`：数据看板、数据验收中心、奖励规则与结算视图\n- `Labeler`：我的贡献页、我的任务页增强\n- `Reviewer`：多级审核流、审核结果…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "我已经把补充功能加进 `docs/functional-design.md` 了，主要新增了一个 `## 11. 缺失功能补充设计` 章节，并补了后台系统侧页面映射。\n\n这次补进去的内容包括：\n\n- `Owner`：数据看板、数据验收中心、奖励规则与结算视图\n- `Labeler`：我的贡献页、我的任务页增强\n- `Reviewer`：多级审核流、审核结果列表、审核效率视图\n- `System Agent`：异步流水线监控、AI Provider 运维能力\n- `后台系统`：菜单与页面权限、用户角色资源管理、系统审计与任务监控\n\n同时我把后续章节编号顺延了，保证文档结构还是连续的。\n\n如果你愿意，我下一步可以继续把这些补充功能**反向同步到 `docs/database-design.md`**，把菜单表、登录会话/refresh token、奖励结算相关表也补齐。"
+    },
+    {
+      "order": 28,
+      "role": "user",
+      "display_text": "基于现有已完成的 @docs/database-design.md 数据库设计文档，对照 @docs/functional-design.md 完整功能清单，**全面排查遗漏业务功能、缺失业务场景、未覆盖流程、未设计字段与数据表**。\n\n1. 所有缺失的功能、流程、业务逻辑、状态节点、操作行为、数据存储需求，**直接无缝融合嵌入现有库表结构中，不单独新增章节、不单独写补充模块，全文一体化整合**。\n2. 缺失字段直接增补到对应数据表，缺失枚举值、状态值、业务类型直接并入原有字典与字段注释，缺失关联关系补齐外键与索引，缺失业务表直接按原有规范统一新增并入整体结构。\n3. 补齐所有边界场景、逆向操作、驳回/撤销/归档/停用/恢复、批量操作、权限控制、数据联动、联动校验、数据溯源、流程流转、附属附属关联数据。\n4. 严格沿用原有统一命名规范、字段格式、公共字段、索引规则、引擎字符集、约束规则，保持全文风格、格式、结构完全一致，无违和割裂感。\n5. 补齐后整体数据库结构完整闭环，100%对齐全部功能需求，无功能盲区、无数据存储漏洞，上线无需二次改库改表。\n6. 最终输出**完整补齐完毕、融合统一版** @docs/database-design.md 全文内容。",
+      "summary_text": null,
+      "text_snippet": "<timestamp>Thursday, May 21, 2026, 3:59 PM (UTC+8)</timestamp>\n<user_query>\n基于现有已完成的 @docs/database-design.md 数据库设计文档，对照 @docs/functional-design.md 完整功能清单，**全面排查遗漏业务功能、缺失业务场景、未覆盖流…",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 29,
+      "role": "assistant",
+      "display_text": "我先对照最新 `docs/functional-design.md` 做一次差异补全清单，然后直接把缺失能力融进现有 `docs/database-design.md` 的对应位置，避免再出现“补充章节式”拼接感。\n\n**Considering document integration**\n\nI need to edit the database-design.md by integrating missing functions from the updated functional-design.md. This work will require a substantial edit, so I’ll read the current database document alongside the functional supplemental sections. \n\nSince the user specifically requested this integrated document, I’ll prepare for a multi-file approach, keeping in mind to create a seamless document without standalone appendices. I'll also consider comments and updates as necessary during this process.\n**Gathering database context**\n\nI might need to use a tool to find key sections efficiently, as the database document is quite large, with about 1897 lines. I think smaller patches could be more manageable, so I should look at enums, ER, and table sections carefully. \n\nI’ll focus on gathering context around the authentication tables and the task/review/export tables. I should also check if any numbering needs updating or if it's already aligned. Additionally, reading key ranges around these sections is important.",
+      "summary_text": null,
+      "text_snippet": "我先对照最新 `docs/functional-design.md` 做一次差异补全清单，然后直接把缺失能力融进现有 `docs/database-design.md` 的对应位置，避免再出现“补充章节式”拼接感。\n\n**Considering document integration**\n\nI need to edit the database-desi…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/functional-design.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "我先对照最新 `docs/functional-design.md` 做一次差异补全清单，然后直接把缺失能力融进现有 `docs/database-design.md` 的对应位置，避免再出现“补充章节式”拼接感。\n\n**Considering document integration**\n\nI need to edit the database-design.md by integrating missing functions from the updated functional-design.md. This work will require a substantial edit, so I’ll read the current database document alongside the functional supplemental sections. \n\nSince the user specifically requested this integrated document, I’ll prepare for a multi-file approach, keeping in mind to create a seamless document without standalone appendices. I'll also consider comments and updates as necessary during this process.\n**Gathering database context**\n\nI might need to use a tool to find key sections efficiently, as the database document is quite large, with about 1897 lines. I think smaller patches could be more manageable, so I should look at enums, ER, and table sections carefully. \n\nI’ll focus on gathering context around the authentication tables and the task/review/export tables. I should also check if any numbering needs updating or if it's already aligned. Additionally, reading key ranges around these sections is important."
+    },
+    {
+      "order": 30,
+      "role": "assistant",
+      "display_text": "我已经把要补的核心点收敛到 5 组：认证会话、菜单资源、验收抽检、奖励结算、多级审核/批量审核。先把这些基础结构补进表设计与枚举，再统一回填状态机、接口映射和索引策略。\n\n**Considering task acceptance records**\n\nI’m thinking about adding tasks acceptance tables, possibly called `task_acceptance_records` and `task_acceptance_samples`, for the Owner’s review and final approval. It seems important since owner acceptance is a focal point in functional supplementation. I want to ensure everything is clear and organized for the users. This way, they can see exactly what’s happening with task acceptance. Let’s keep it structured and make it easy to track!\n**Considering table design for settlements**\n\nI'm thinking about supporting existing review records, but I might need dedicated tables for抽检/备注 in the design. For the reward settlement, should I add `reward_settlement_rules`? The `tasks.reward_rule_json` could be enough for config, but I need storage for settlement views and exports. I could go with `reward_settlement_jobs` and `reward_settlement_details`, or simpler options like `reward_settlement_batches`. Menu sessions and a data dashboard might also require expansion in current stats tables for better trend tracking.\n**Analyzing task and user stats**\n\nI'm considering that existing task/user stats could be enough, especially since counts of \"进行中、已暂停、已结束任务数\" can be derived from what’s available, meaning I might not need a new table. I think enhancements on the \"我的任务页\" could be addressed through submissions or assignment indices; possibly adding fields like `last_review_comment_id` or `last_review_action` might help, but I wonder if they're necessary. For multi-level reviews, I can add `review_stage_no` and `next_review_level` into the existing review system without overcomplicating things.",
+      "summary_text": null,
+      "text_snippet": "我已经把要补的核心点收敛到 5 组：认证会话、菜单资源、验收抽检、奖励结算、多级审核/批量审核。先把这些基础结构补进表设计与枚举，再统一回填状态机、接口映射和索引策略。\n\n**Considering task acceptance records**\n\nI’m thinking about adding tasks acceptance tables, p…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "我已经把要补的核心点收敛到 5 组：认证会话、菜单资源、验收抽检、奖励结算、多级审核/批量审核。先把这些基础结构补进表设计与枚举，再统一回填状态机、接口映射和索引策略。\n\n**Considering task acceptance records**\n\nI’m thinking about adding tasks acceptance tables, possibly called `task_acceptance_records` and `task_acceptance_samples`, for the Owner’s review and final approval. It seems important since owner acceptance is a focal point in functional supplementation. I want to ensure everything is clear and organized for the users. This way, they can see exactly what’s happening with task acceptance. Let’s keep it structured and make it easy to track!\n**Considering table design for settlements**\n\nI'm thinking about supporting existing review records, but I might need dedicated tables for抽检/备注 in the design. For the reward settlement, should I add `reward_settlement_rules`? The `tasks.reward_rule_json` could be enough for config, but I need storage for settlement views and exports. I could go with `reward_settlement_jobs` and `reward_settlement_details`, or simpler options like `reward_settlement_batches`. Menu sessions and a data dashboard might also require expansion in current stats tables for better trend tracking.\n**Analyzing task and user stats**\n\nI'm considering that existing task/user stats could be enough, especially since counts of \"进行中、已暂停、已结束任务数\" can be derived from what’s available, meaning I might not need a new table. I think enhancements on the \"我的任务页\" could be addressed through submissions or assignment indices; possibly adding fields like `last_review_comment_id` or `last_review_action` might help, but I wonder if they're necessary. For multi-level reviews, I can add `review_stage_no` and `next_review_level` into the existing review system without overcomplicating things."
+    },
+    {
+      "order": 31,
+      "role": "assistant",
+      "display_text": "基础系统域已经补上会话和菜单资源了。下一步我把与功能闭环最强相关的业务域补齐：任务验收、奖励结算、多级审核、批量审核，以及这些能力对应的状态字段和统计字段。\n\n**Planning patch updates**\n\nIt looks like I need to tackle the next steps with patches, specifically focusing on tasks, reviews, and exports. I’m thinking I might need to renumber section 8.6 onward and ensure we patch around the tasks and the current 8.6 heading. I should also add new fields to the tasks, templates, submissions, and review sections. It's important to approach this carefully to avoid any oversight!",
+      "summary_text": null,
+      "text_snippet": "基础系统域已经补上会话和菜单资源了。下一步我把与功能闭环最强相关的业务域补齐：任务验收、奖励结算、多级审核、批量审核，以及这些能力对应的状态字段和统计字段。\n\n**Planning patch updates**\n\nIt looks like I need to tackle the next steps with patches, specificall…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "基础系统域已经补上会话和菜单资源了。下一步我把与功能闭环最强相关的业务域补齐：任务验收、奖励结算、多级审核、批量审核，以及这些能力对应的状态字段和统计字段。\n\n**Planning patch updates**\n\nIt looks like I need to tackle the next steps with patches, specifically focusing on tasks, reviews, and exports. I’m thinking I might need to renumber section 8.6 onward and ensure we patch around the tasks and the current 8.6 heading. I should also add new fields to the tasks, templates, submissions, and review sections. It's important to approach this carefully to avoid any oversight!"
+    },
+    {
+      "order": 32,
+      "role": "assistant",
+      "display_text": "结构表已经补进去了。现在我在把这些新增能力回填到“JSON 契约、状态机、接口映射、高频查询、缓存、建表顺序”里，确保文档不是只有表名，而是全链路一致。",
+      "summary_text": null,
+      "text_snippet": "结构表已经补进去了。现在我在把这些新增能力回填到“JSON 契约、状态机、接口映射、高频查询、缓存、建表顺序”里，确保文档不是只有表名，而是全链路一致。",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "结构表已经补进去了。现在我在把这些新增能力回填到“JSON 契约、状态机、接口映射、高频查询、缓存、建表顺序”里，确保文档不是只有表名，而是全链路一致。"
+    },
+    {
+      "order": 33,
+      "role": "assistant",
+      "display_text": "我在做最后一轮结构校验，主要看三件事：新表是否都被接口映射引用、状态机是否和新增字段对应、以及有没有出现“加了表但没进建表顺序”的遗漏。\n\n**Evaluating database changes**\n\nI’m considering changing constraints, possibly by adding a `batch_key VARCHAR(64)` field to ensure uniqueness. I think it’s a good idea to include `batch_key VARCHAR(64) NOT NULL` and unique constraints, especially since `review_records` references `review_batch_key`. I also need to patch this, ensuring the field corresponds in `review_records`. Additionally, I wonder if I should update `role menus` and check if user updates need adjustments. Finally, I might review caching for the owner dashboard and run checks for unique batch presence.\n**Verifying line checks**\n\nI’m thinking about whether I need to check the number of lines; it might not be necessary. Instead, I could use `rg` to search for key terms and confirm that they’ve been correctly inserted. This might be a more efficient way to ensure everything is where it should be without getting bogged down in line counts. I’ll focus on verifying the key terms instead. That feels like a solid approach!",
+      "summary_text": null,
+      "text_snippet": "我在做最后一轮结构校验，主要看三件事：新表是否都被接口映射引用、状态机是否和新增字段对应、以及有没有出现“加了表但没进建表顺序”的遗漏。\n\n**Evaluating database changes**\n\nI’m considering changing constraints, possibly by adding a `batch_key VARCHA…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "rg",
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "我在做最后一轮结构校验，主要看三件事：新表是否都被接口映射引用、状态机是否和新增字段对应、以及有没有出现“加了表但没进建表顺序”的遗漏。\n\n**Evaluating database changes**\n\nI’m considering changing constraints, possibly by adding a `batch_key VARCHAR(64)` field to ensure uniqueness. I think it’s a good idea to include `batch_key VARCHAR(64) NOT NULL` and unique constraints, especially since `review_records` references `review_batch_key`. I also need to patch this, ensuring the field corresponds in `review_records`. Additionally, I wonder if I should update `role menus` and check if user updates need adjustments. Finally, I might review caching for the owner dashboard and run checks for unique batch presence.\n**Verifying line checks**\n\nI’m thinking about whether I need to check the number of lines; it might not be necessary. Instead, I could use `rg` to search for key terms and confirm that they’ve been correctly inserted. This might be a more efficient way to ensure everything is where it should be without getting bogged down in line counts. I’ll focus on verifying the key terms instead. That feels like a solid approach!"
+    },
+    {
+      "order": 34,
+      "role": "assistant",
+      "display_text": "**Figuring out batch operations**\n\nI need to fix the review batch operations—something feels off there. It seems like there are no line numbers showing the batch key, which is a bit of a concern. I should think about adding endpoints for a menu page, just to make sure everything is working smoothly. Definitely going to patch the review batch operations fields to get this all sorted out! It’s all about ensuring everything runs well.",
+      "summary_text": null,
+      "text_snippet": "**Figuring out batch operations**\n\nI need to fix the review batch operations—something feels off there. It seems like there are no line numbers showing the batch key, which is a b…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "**Figuring out batch operations**\n\nI need to fix the review batch operations—something feels off there. It seems like there are no line numbers showing the batch key, which is a bit of a concern. I should think about adding endpoints for a menu page, just to make sure everything is working smoothly. Definitely going to patch the review batch operations fields to get this all sorted out! It’s all about ensuring everything runs well."
+    },
+    {
+      "order": 35,
+      "role": "assistant",
+      "display_text": "我再补一处运行态边界：异步任务的取消、死信、人工重试时间戳。这样系统运维页和失败任务回放就有明确落库了。\n\n**Considering task management**\n\nI'm thinking about tasks that are often high-frequency, like archive restoration. I might need to patch the async tasks and note the task state. There's also the possibility of checking system clients or provider configurations, especially if manual disabling has already occurred. Those details will help in managing everything smoothly. It's interesting to dive into these technical aspects and think about how to make the process better!",
+      "summary_text": null,
+      "text_snippet": "我再补一处运行态边界：异步任务的取消、死信、人工重试时间戳。这样系统运维页和失败任务回放就有明确落库了。\n\n**Considering task management**\n\nI'm thinking about tasks that are often high-frequency, like archive restoration. I might ne…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "我再补一处运行态边界：异步任务的取消、死信、人工重试时间戳。这样系统运维页和失败任务回放就有明确落库了。\n\n**Considering task management**\n\nI'm thinking about tasks that are often high-frequency, like archive restoration. I might need to patch the async tasks and note the task state. There's also the possibility of checking system clients or provider configurations, especially if manual disabling has already occurred. Those details will help in managing everything smoothly. It's interesting to dive into these technical aspects and think about how to make the process better!"
+    },
+    {
+      "order": 36,
+      "role": "assistant",
+      "display_text": "我补了一处比较隐性的闭环：既然你现在已经有“审核结果导出、奖励明细导出、验收样本导出”这类需求，导出任务本身不能只服务通过数据，所以我把导出作业扩成了通用导出类别模型。",
+      "summary_text": null,
+      "text_snippet": "我补了一处比较隐性的闭环：既然你现在已经有“审核结果导出、奖励明细导出、验收样本导出”这类需求，导出任务本身不能只服务通过数据，所以我把导出作业扩成了通用导出类别模型。",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "我补了一处比较隐性的闭环：既然你现在已经有“审核结果导出、奖励明细导出、验收样本导出”这类需求，导出任务本身不能只服务通过数据，所以我把导出作业扩成了通用导出类别模型。"
+    },
+    {
+      "order": 37,
+      "role": "assistant",
+      "display_text": "调用 rg · ReadFile",
+      "summary_text": null,
+      "text_snippet": null,
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "rg",
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 38,
+      "role": "assistant",
+      "display_text": "**Reviewing updates in code**\n\nI see there's an issue with the `review_batch_operations` unique context still showing old info in `rg`. I'm wondering if it's outdated or if the line numbers are pulling from a cache. I need to confirm this by reading around the `review_batch_operations` and possibly using `rg` or reading snippets near line 1295. It's all about ensuring I have the most recent updates!",
+      "summary_text": null,
+      "text_snippet": "**Reviewing updates in code**\n\nI see there's an issue with the `review_batch_operations` unique context still showing old info in `rg`. I'm wondering if it's outdated or if the li…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "**Reviewing updates in code**\n\nI see there's an issue with the `review_batch_operations` unique context still showing old info in `rg`. I'm wondering if it's outdated or if the line numbers are pulling from a cache. I need to confirm this by reading around the `review_batch_operations` and possibly using `rg` or reading snippets near line 1295. It's all about ensuring I have the most recent updates!"
+    },
+    {
+      "order": 39,
+      "role": "assistant",
+      "display_text": "调用 ReadFile",
+      "summary_text": null,
+      "text_snippet": null,
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/database-design.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 40,
+      "role": "assistant",
+      "display_text": "已把 `docs/database-design.md` 按最新 `docs/functional-design.md` 全量融合补齐，不是追加“补充章节”，而是直接并入原有枚举、ER、表设计、状态机、接口映射、索引、缓存、建表顺序中。\n\n这次重点补进了此前真正缺口的几类能力：认证会话与 `refresh token` 轮换、后台菜单与角色菜单授权、任务验收抽检、奖励结算批次与明细、多级审核与批量审核执行记录，以及这些能力对应的状态枚举、索引、缓存键、接口映射和运维字段。像 `tasks`、`template_versions`、`submissions`、`review_records`、`async_tasks`、`export_jobs`、统计宽表等也都同步补了字段，避免出现“有功能但无落库点”或“有表但流程不闭环”的情况。\n\n当前已经新增并融合的核心表包括：\n\n- `sys_menus`\n- `role_menus`\n- `auth_sessions`\n- `auth_refresh_tokens`\n- `review_batch_operations`\n- `task_acceptance_records`\n- `task_acceptance_samples`\n- `reward_settlement_batches`\n- `reward_settlement_details`\n\n同时还补了对应的状态机与接口映射，例如：\n\n- `auth/login/logout/refresh`\n- 后台菜单/用户/角色/审计/异步任务管理\n- Owner 看板、验收、奖励结算\n- Labeler 我的贡献\n- Reviewer 审核结果列表、批量审核\n- System Agent 异步监控与任务重试/取消/回放\n\n这次修改只涉及文档，没有运行代码测试。若你愿意，我下一步可以继续把这份最终版数据库文档**反推成一版完整 Flyway DDL 草案**。\n\n**Considering database updates**\n\nI’m thinking about whether to run the rg tool, but it might not be necessary since the earlier updates could be stale. I'm debating if I should check the documentation for linting — it might not be required. Ultimately, I need to provide a concise final response in Chinese. I should clearly mention the updated database documentation, including integrated tables and coverage, and note that there are no tests available beyond the documentation. I’ll highlight main补齐 points as well.",
+      "summary_text": null,
+      "text_snippet": "已把 `docs/database-design.md` 按最新 `docs/functional-design.md` 全量融合补齐，不是追加“补充章节”，而是直接并入原有枚举、ER、表设计、状态机、接口映射、索引、缓存、建表顺序中。\n\n这次重点补进了此前真正缺口的几类能力：认证会话与 `refresh token` 轮换、后台菜单与角色菜单授权、任务验…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "已把 `docs/database-design.md` 按最新 `docs/functional-design.md` 全量融合补齐，不是追加“补充章节”，而是直接并入原有枚举、ER、表设计、状态机、接口映射、索引、缓存、建表顺序中。\n\n这次重点补进了此前真正缺口的几类能力：认证会话与 `refresh token` 轮换、后台菜单与角色菜单授权、任务验收抽检、奖励结算批次与明细、多级审核与批量审核执行记录，以及这些能力对应的状态枚举、索引、缓存键、接口映射和运维字段。像 `tasks`、`template_versions`、`submissions`、`review_records`、`async_tasks`、`export_jobs`、统计宽表等也都同步补了字段，避免出现“有功能但无落库点”或“有表但流程不闭环”的情况。\n\n当前已经新增并融合的核心表包括：\n\n- `sys_menus`\n- `role_menus`\n- `auth_sessions`\n- `auth_refresh_tokens`\n- `review_batch_operations`\n- `task_acceptance_records`\n- `task_acceptance_samples`\n- `reward_settlement_batches`\n- `reward_settlement_details`\n\n同时还补了对应的状态机与接口映射，例如：\n\n- `auth/login/logout/refresh`\n- 后台菜单/用户/角色/审计/异步任务管理\n- Owner 看板、验收、奖励结算\n- Labeler 我的贡献\n- Reviewer 审核结果列表、批量审核\n- System Agent 异步监控与任务重试/取消/回放\n\n这次修改只涉及文档，没有运行代码测试。若你愿意，我下一步可以继续把这份最终版数据库文档**反推成一版完整 Flyway DDL 草案**。\n\n**Considering database updates**\n\nI’m thinking about whether to run the rg tool, but it might not be necessary since the earlier updates could be stale. I'm debating if I should check the documentation for linting — it might not be required. Ultimately, I need to provide a concise final response in Chinese. I should clearly mention the updated database documentation, including integrated tables and coverage, and note that there are no tests available beyond the documentation. I’ll highlight main补齐 points as well."
+    },
+    {
+      "order": 41,
+      "role": "user",
+      "display_text": "11. 缺失功能补充设计 融合进去@docs/functional-design.md。",
+      "summary_text": null,
+      "text_snippet": "<timestamp>Thursday, May 21, 2026, 4:09 PM (UTC+8)</timestamp>\n<user_query>\n11. 缺失功能补充设计 融合进去@docs/functional-design.md \n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "rewritten"
+    },
+    {
+      "order": 42,
+      "role": "assistant",
+      "display_text": "我会把 `11. 缺失功能补充设计` 里的内容拆散，分别融进角色设计、模块功能设计、页面映射和后续演进里，然后移除这个独立补充章节，让全文恢复成一体化结构。\n\n**Updating functional design**\n\nI need to edit the functional design to integrate section 11 with relevant parts and remove it as a standalone chapter. It’s important for me to provide a commentary update before making these edits. I’ll likely need to inspect the current file positions related to the new section and consider page mapping too. This might require substantial edits, using ReadFile around the ends of sections 3, 7, 10, and 11 before I patch everything up.",
+      "summary_text": null,
+      "text_snippet": "我会把 `11. 缺失功能补充设计` 里的内容拆散，分别融进角色设计、模块功能设计、页面映射和后续演进里，然后移除这个独立补充章节，让全文恢复成一体化结构。\n\n**Updating functional design**\n\nI need to edit the functional design to integrate section 11 with r…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/functional-design.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "我会把 `11. 缺失功能补充设计` 里的内容拆散，分别融进角色设计、模块功能设计、页面映射和后续演进里，然后移除这个独立补充章节，让全文恢复成一体化结构。\n\n**Updating functional design**\n\nI need to edit the functional design to integrate section 11 with relevant parts and remove it as a standalone chapter. It’s important for me to provide a commentary update before making these edits. I’ll likely need to inspect the current file positions related to the new section and consider page mapping too. This might require substantial edits, using ReadFile around the ends of sections 3, 7, 10, and 11 before I patch everything up."
+    },
+    {
+      "order": 43,
+      "role": "assistant",
+      "display_text": "我会把这段补充内容拆散进原来的角色定义、模块设计、页面映射和状态机说明里，然后把独立的 `11. 缺失功能补充设计` 整段删掉并顺延后续编号。",
+      "summary_text": null,
+      "text_snippet": "我会把这段补充内容拆散进原来的角色定义、模块设计、页面映射和状态机说明里，然后把独立的 `11. 缺失功能补充设计` 整段删掉并顺延后续编号。",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "我会把这段补充内容拆散进原来的角色定义、模块设计、页面映射和状态机说明里，然后把独立的 `11. 缺失功能补充设计` 整段删掉并顺延后续编号。"
+    },
+    {
+      "order": 44,
+      "role": "assistant",
+      "display_text": "调用 ApplyPatch",
+      "summary_text": null,
+      "text_snippet": null,
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 45,
+      "role": "assistant",
+      "display_text": "调用 ApplyPatch",
+      "summary_text": null,
+      "text_snippet": null,
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "ApplyPatch"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 46,
+      "role": "assistant",
+      "display_text": "主体融合已经完成了。我再做一轮快速检查，确认没有残留“缺失功能补充设计”标题，也没有章节编号断裂。",
+      "summary_text": null,
+      "text_snippet": "主体融合已经完成了。我再做一轮快速检查，确认没有残留“缺失功能补充设计”标题，也没有章节编号断裂。",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "rg",
+        "ReadFile"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/functional-design.md"
+      ],
+      "display_strategy": null,
+      "raw_text": "主体融合已经完成了。我再做一轮快速检查，确认没有残留“缺失功能补充设计”标题，也没有章节编号断裂。"
+    },
+    {
+      "order": 47,
+      "role": "assistant",
+      "display_text": "已经把 `11. 缺失功能补充设计` 完整拆散并融合进 `docs/functional-design.md` 了，不再保留独立补充章节。\n\n现在这些内容分别落到了：\n\n- `3. 角色与权限设计`：补进了 `Owner` 的数据看板/奖励结算、`Labeler` 的我的任务/我的贡献、`Reviewer` 的多级审核、`System Agent` 的异步监控职责\n- `4. 系统范围`：把数据看板、数据验收、奖励结算、后台系统资源与权限管理并入首版范围\n- `7. 模块功能设计`：新增并融合了\n  - `7.7 数据看板与数据验收`\n  - `7.9 奖励规则与结算`\n  - `7.12 后台系统管理`\n  同时增强了认证、任务管理、标注员工作台、AI 预审、多角色审核、导出等原有模块\n- `8. 状态机设计`：补了多级审核在 `HUMAN_REVIEWING` 阶段内推进的说明\n- `10. 页面与模块映射建议`：补了数据看板页、奖励结算页、我的贡献页、审核结果列表页、审核效率页\n- 后续章节编号也已经顺延，当前是：\n  - `11. 验收视角的最小闭环`\n  - `12. 后续演进方向`\n  - `13. 总结`\n\n我还顺手检查过，文档里已经没有残留 `缺失功能补充设计` 这个独立标题了。  \n如果你愿意，我下一步可以继续把这份融合后的功能文档再和 `docs/database-design.md` 做一次反向一致性核对。\n\n**Updating section numbering**\n\nI need to check if section numbering for 9 and 10 needs updating. I'll take a look around line 578 for any page mapping issues to see if I can renumber successfully. It might also be helpful to include any contributions I've made in the page mapping. Additionally, I should consider running some lints for a final review, ensuring the documentation is concise. Let's clarify everything before finalizing it!",
+      "summary_text": null,
+      "text_snippet": "已经把 `11. 缺失功能补充设计` 完整拆散并融合进 `docs/functional-design.md` 了，不再保留独立补充章节。\n\n现在这些内容分别落到了：\n\n- `3. 角色与权限设计`：补进了 `Owner` 的数据看板/奖励结算、`Labeler` 的我的任务/我的贡献、`Reviewer` 的多级审核、`System Agent` 的异步…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null,
+      "raw_text": "已经把 `11. 缺失功能补充设计` 完整拆散并融合进 `docs/functional-design.md` 了，不再保留独立补充章节。\n\n现在这些内容分别落到了：\n\n- `3. 角色与权限设计`：补进了 `Owner` 的数据看板/奖励结算、`Labeler` 的我的任务/我的贡献、`Reviewer` 的多级审核、`System Agent` 的异步监控职责\n- `4. 系统范围`：把数据看板、数据验收、奖励结算、后台系统资源与权限管理并入首版范围\n- `7. 模块功能设计`：新增并融合了\n  - `7.7 数据看板与数据验收`\n  - `7.9 奖励规则与结算`\n  - `7.12 后台系统管理`\n  同时增强了认证、任务管理、标注员工作台、AI 预审、多角色审核、导出等原有模块\n- `8. 状态机设计`：补了多级审核在 `HUMAN_REVIEWING` 阶段内推进的说明\n- `10. 页面与模块映射建议`：补了数据看板页、奖励结算页、我的贡献页、审核结果列表页、审核效率页\n- 后续章节编号也已经顺延，当前是：\n  - `11. 验收视角的最小闭环`\n  - `12. 后续演进方向`\n  - `13. 总结`\n\n我还顺手检查过，文档里已经没有残留 `缺失功能补充设计` 这个独立标题了。  \n如果你愿意，我下一步可以继续把这份融合后的功能文档再和 `docs/database-design.md` 做一次反向一致性核对。\n\n**Updating section numbering**\n\nI need to check if section numbering for 9 and 10 needs updating. I'll take a look around line 578 for any page mapping issues to see if I can renumber successfully. It might also be helpful to include any contributions I've made in the page mapping. Additionally, I should consider running some lints for a final review, ensuring the documentation is concise. Let's clarify everything before finalizing it!"
+    }
+  ]
+}

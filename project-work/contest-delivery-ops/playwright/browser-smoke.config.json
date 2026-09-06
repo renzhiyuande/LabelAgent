@@ -1,0 +1,64 @@
+{
+  "pages": [
+    {
+      "key": "dashboard-home",
+      "route": "/",
+      "selector": "text=角色工作台",
+      "screenshot": "project-docs/static/img/generated/dashboard-home-browser-smoke.png"
+    },
+    {
+      "key": "dashboard-owner-detail",
+      "route": "/dashboard/owner",
+      "selector": "text=Owner 交付看板",
+      "screenshot": "project-docs/static/img/generated/dashboard-owner-detail-browser-smoke.png"
+    },
+    {
+      "key": "dashboard-labeler-detail",
+      "route": "/dashboard/labeler",
+      "selector": "text=Labeler 工作看板",
+      "screenshot": "project-docs/static/img/generated/dashboard-labeler-detail-browser-smoke.png"
+    },
+    {
+      "key": "dashboard-reviewer-detail",
+      "route": "/dashboard/reviewer",
+      "selector": "text=Reviewer 质检看板",
+      "screenshot": "project-docs/static/img/generated/dashboard-reviewer-detail-browser-smoke.png"
+    },
+    {
+      "key": "reviewer-ai-queue",
+      "route": "/reviewer/ai-queue",
+      "selector": "text=失败重跑",
+      "screenshot": "project-docs/static/img/generated/reviewer-ai-queue-browser-smoke.png"
+    },
+    {
+      "key": "owner-acceptances",
+      "route": "/owner/acceptances",
+      "selector": "text=数据验收",
+      "screenshot": "project-docs/static/img/generated/owner-acceptances-browser-smoke.png"
+    },
+    {
+      "key": "owner-appeals",
+      "route": "/owner/appeals",
+      "selector": "text=申诉记录",
+      "screenshot": "project-docs/static/img/generated/owner-appeals-browser-smoke.png"
+    },
+    {
+      "key": "owner-exports",
+      "route": "/owner/exports",
+      "selector": "text=数据导出",
+      "screenshot": "project-docs/static/img/generated/owner-exports-browser-smoke.png"
+    },
+    {
+      "key": "owner-settlements",
+      "route": "/owner/settlements",
+      "selector": "text=奖励结算",
+      "screenshot": "project-docs/static/img/generated/owner-settlements-browser-smoke.png"
+    },
+    {
+      "key": "labeler-my-rewards",
+      "route": "/labeler/my-rewards",
+      "selector": "text=我的奖励缩略摘要",
+      "screenshot": "project-docs/static/img/generated/labeler-my-rewards-browser-smoke.png"
+    }
+  ]
+}

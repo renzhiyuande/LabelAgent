@@ -1,0 +1,30 @@
+spring:
+  flyway:
+    enabled: false
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration
+      - cn.crane4j.spring.boot.config.Crane4jAutoConfiguration
+  datasource:
+    url: jdbc:h2:mem:labelhub-test
+    username: test
+    password: test
+
+labelhub:
+  auth:
+    mode: memory
+  claim-token:
+    stock-reservation-enabled: false
+  idempotent:
+    enabled: false
+  internal-token: test-internal-token
+  security:
+    aes-key: test-aes-key-32bytes-padding!!
+  agent:
+    base-url: http://localhost:8000
+  storage:
+    minio:
+      endpoint: http://localhost:9000
+      access-key: test
+      secret-key: test

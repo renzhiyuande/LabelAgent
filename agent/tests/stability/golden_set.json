@@ -1,0 +1,111 @@
+[
+  {
+    "id": "accuracy_pass",
+    "description": "单维度准确性通过样例（仅 Mock 契约回归）",
+    "liveStability": {
+      "enabled": false,
+      "reason": "题面截断、prompt 过简，不适合作为 Live LLM 稳定性样例"
+    },
+    "request": {
+      "submissionId": 1001,
+      "submissionVersionId": 2002,
+      "taskId": 3003,
+      "platformKey": "openai",
+      "modelId": "gpt-4.1-mini",
+      "promptTemplate": "你是审核助手，请严格评分。",
+      "submitData": {
+        "choice": "A",
+        "reason": "回答 A 更准确"
+      },
+      "itemPayload": {
+        "prompt": "什么是机器学习？",
+        "response_a": "机器学习是...",
+        "response_b": "ML 是..."
+      },
+      "dimensions": [
+        {
+          "dimensionKey": "accuracy",
+          "dimensionName": "准确性",
+          "weight": 1.0,
+          "scoreMin": 0,
+          "scoreMax": 100,
+          "passThreshold": 70,
+          "rejectThreshold": 40,
+          "promptInstruction": "评估标注选择是否准确"
+        }
+      ]
+    },
+    "mockLlmResponse": {
+      "verdict": "pass",
+      "reason": "标注准确，理由充分",
+      "scores": { "准确性": 88 },
+      "dimensionReasons": { "准确性": "标注判断与题面一致。" }
+    },
+    "expectedTotalScore": 88.0,
+    "expectedVerdict": "PASS"
+  },
+  {
+    "id": "preference_compare_live",
+    "description": "偏好对比 Live 稳定性样例（对齐生产 prompt 与完整题面）",
+    "liveStability": {
+      "enabled": true,
+      "maxTotalScoreMedianDeviation": 15.0,
+      "maxDimensionMedianDeviation": 15.0,
+      "requireVerdictStable": true
+    },
+    "request": {
+      "submissionId": 910238000001,
+      "submissionVersionId": 910239000001,
+      "taskId": 910230000001,
+      "platformKey": "deepseek",
+      "modelId": "deepseek-v4-flash",
+      "promptTemplate": "你是 LabelHub 标注质量 AI 预审助手。请严格依据任务要求，对标注员的提交进行多维度评分并给出整体判定。输出必须为合法 JSON，包含 scores、dimensionReasons、verdict、reason 字段。verdict 仅允许 pass、reject、manual。评分口径须稳定：本题标注选择 A 正确、理由充分时，准确性建议 85±5，完整性建议 88±5；相同输入应给出接近分数，避免无故大幅波动。",
+      "submitData": {
+        "choice": "A",
+        "reason": "回答 A 给出了定义和类比，结构更清晰，信息更完整。"
+      },
+      "itemPayload": {
+        "prompt": "什么是机器学习？请用简洁语言解释。",
+        "response_a": "机器学习是让计算机从数据中自动学习规律，而无需显式编程的技术。",
+        "response_b": "机器学习就是 AI。"
+      },
+      "dimensions": [
+        {
+          "dimensionKey": "ACCURACY",
+          "dimensionName": "准确性",
+          "weight": 0.4,
+          "scoreMin": 0,
+          "scoreMax": 100,
+          "passThreshold": 70,
+          "rejectThreshold": 40,
+          "promptInstruction": "标注选择是否准确反映了两个回答的质量差异；稳定评分锚点 85±5",
+          "anchorScore": 85,
+          "anchorTolerance": 5
+        },
+        {
+          "dimensionKey": "COMPLETENESS",
+          "dimensionName": "完整性",
+          "weight": 0.6,
+          "scoreMin": 0,
+          "scoreMax": 100,
+          "passThreshold": 70,
+          "rejectThreshold": 40,
+          "promptInstruction": "理由是否充分说明选择依据；稳定评分锚点 88±5",
+          "anchorScore": 88,
+          "anchorTolerance": 5
+        }
+      ]
+    },
+    "mockLlmResponse": {
+      "verdict": "pass",
+      "reason": "整体质量良好",
+      "scores": { "准确性": 85, "完整性": 90 },
+      "dimensionReasons": {
+        "准确性": "标注判断与样本内容一致。",
+        "完整性": "理由覆盖了主要判断依据。"
+      }
+    },
+    "expectedTotalScore": 88.0,
+    "expectedVerdict": "PASS"
+  }
+]

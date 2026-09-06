@@ -1,0 +1,90 @@
+{
+  "generatedAt": "2026-06-08T11:56:40.810Z",
+  "startedAt": "2026-06-08T11:55:21.433Z",
+  "frontendBaseUrl": "http://127.0.0.1:5173",
+  "apiBaseUrl": "http://127.0.0.1:8080",
+  "username": "admin",
+  "pageResults": [
+    {
+      "key": "dashboard-home",
+      "route": "/",
+      "selector": "text=角色工作台",
+      "screenshot": "project-docs/static/img/generated/dashboard-home-browser-smoke.png",
+      "status": "passed",
+      "durationMs": 3592
+    },
+    {
+      "key": "dashboard-owner-detail",
+      "route": "/dashboard/owner",
+      "selector": "text=Owner 交付看板",
+      "screenshot": "project-docs/static/img/generated/dashboard-owner-detail-browser-smoke.png",
+      "status": "passed",
+      "durationMs": 3645
+    },
+    {
+      "key": "dashboard-labeler-detail",
+      "route": "/dashboard/labeler",
+      "selector": "text=Labeler 工作看板",
+      "screenshot": "project-docs/static/img/generated/dashboard-labeler-detail-browser-smoke.png",
+      "status": "passed",
+      "durationMs": 3660
+    },
+    {
+      "key": "dashboard-reviewer-detail",
+      "route": "/dashboard/reviewer",
+      "selector": "text=Reviewer 质检看板",
+      "screenshot": "project-docs/static/img/generated/dashboard-reviewer-detail-browser-smoke.png",
+      "status": "passed",
+      "durationMs": 3648
+    },
+    {
+      "key": "reviewer-ai-queue",
+      "route": "/reviewer/ai-queue",
+      "selector": "text=失败重跑",
+      "screenshot": "project-docs/static/img/generated/reviewer-ai-queue-browser-smoke.png",
+      "status": "passed",
+      "durationMs": 3782
+    },
+    {
+      "key": "owner-acceptances",
+      "route": "/owner/acceptances",
+      "selector": "text=数据验收",
+      "screenshot": "project-docs/static/img/generated/owner-acceptances-browser-smoke.png",
+      "status": "passed",
+      "durationMs": 45901
+    },
+    {
+      "key": "owner-appeals",
+      "route": "/owner/appeals",
+      "selector": "text=申诉记录",
+      "screenshot": "project-docs/static/img/generated/owner-appeals-browser-smoke.png",
+      "status": "passed",
+      "durationMs": 3517
+    },
+    {
+      "key": "owner-exports",
+      "route": "/owner/exports",
+      "selector": "text=数据导出",
+      "screenshot": "project-docs/static/img/generated/owner-exports-browser-smoke.png",
+      "status": "passed",
+      "durationMs": 3525
+    },
+    {
+      "key": "owner-settlements",
+      "route": "/owner/settlements",
+      "selector": "text=奖励结算",
+      "screenshot": "project-docs/static/img/generated/owner-settlements-browser-smoke.png",
+      "status": "passed",
+      "durationMs": 3511
+    },
+    {
+      "key": "labeler-my-rewards",
+      "route": "/labeler/my-rewards",
+      "selector": "text=我的奖励缩略摘要",
+      "screenshot": "project-docs/static/img/generated/labeler-my-rewards-browser-smoke.png",
+      "status": "passed",
+      "durationMs": 3666
+    }
+  ],
+  "success": true
+}

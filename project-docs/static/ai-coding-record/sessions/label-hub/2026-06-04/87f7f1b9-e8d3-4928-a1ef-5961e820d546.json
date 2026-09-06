@@ -1,0 +1,2549 @@
+{
+  "project": "label-hub",
+  "session_id": "87f7f1b9-e8d3-4928-a1ef-5961e820d546",
+  "date": "2026-06-04",
+  "modified_at": "2026-06-04 21:55:03",
+  "time_bucket": "evening",
+  "top_stage": "iteration",
+  "stages": [
+    "design",
+    "iteration",
+    "development"
+  ],
+  "tracks": [
+    "business_development",
+    "system_infrastructure"
+  ],
+  "module_tags": [
+    "种子数据-观测性",
+    "系统基建-版本控制",
+    "数据管理-导入导出"
+  ],
+  "key_topics": [
+    "seed",
+    "submission",
+    "reviewer",
+    "owner"
+  ],
+  "tool_usage": [
+    "Read",
+    "Grep",
+    "Glob",
+    "StrReplace",
+    "Shell",
+    "Write"
+  ],
+  "models_used": [],
+  "selected_prompt_count": 3,
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "display_text": "@scripts/generate_preference_compare_seed.py 种子数据 还是不够 覆盖所有的流程 就是 多级审核 任务状态 模板状态 模板市场 标注状态 审核状态 任务奖励等 先进行设计",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n@scripts/generate_preference_compare_seed.py 种子数据 还是不够 覆盖所有的流程 就是 多级审核 任务状态 模板状态 模板市场 标注状态 审核状态 任务奖励等 先进行设计\n</user_query>",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "display_text": "先梳理现有种子脚本与相关领域模型，再给出覆盖多级审核、任务/模板/标注/审核状态及奖励等全流程的设计方案。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "先梳理现有种子脚本与相关领域模型，再给出覆盖多级审核、任务/模板/标注/审核状态及奖励等全流程的设计方案。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine/SubmissionStatus.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V11__labelhub_add_template_market.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine/TaskStatus.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine/AssignmentStatus.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V30__labelhub_dict_enum_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V37__labelhub_reviewer_level_permissions.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 6,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/work-queue-status.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewerReviewLevelAccess.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V38__labelhub_reviewer_task_member_data_scope.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 8,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 9,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/reward/service/DbRewardSettlementService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/market"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 10,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/review/utils/reviewer-level-access.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 11,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/acceptance",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 12,
+      "role": "assistant",
+      "display_text": "基于现有 `generate_preference_compare_seed.py`、生成的 SQL，以及多级审核实现（`applyHumanDecision` 非终审通过会推进 `current_review_level` 而保持 `HUMAN_REVIEWING`），下面是**种子数据扩展设计**（仅设计，不写代码）。\n\n---\n\n## 1. 设计目标\n\n| 目标 | 说明 |\n|------|------|\n| **可演示** | 用固定账号登录后，各列表/Tab 都有非空、语义正确的样例 |\n| **可对齐状态机** | `submissions` / `tasks` / `assignments` 与 `SubmissionStateMachine`、`TaskStateMachine` 一致 |\n| **可测多级审核** | L1/L2/L3 队列、审核结果页、批量审核、按级权限（V37）均有数据 |\n| **可维护** | 继续由 Python 生成 SQL；场景用声明式 `Scenario` 配置，避免在循环里硬编码 |\n\n### 1.1 当前缺口（相对你的诉求）\n\n| 域 | 现状 | 缺口 |\n|----|------|------|\n| 多级审核 | `review_workflow_json` 为 L1/L2/L3 | 所有 `review_records` 仅 **L1 + `is_final_decision=1`**，无 L2/L3 待审池 |\n| 任务状态 | 1 个任务 `PUBLISHED` + 验收/奖励已完结 | 无 `DRAFT` / `PAUSED` / `ARCHIVED`；`reward_settlement_status` 仅 `PAID` |\n| 模板状态 | 1 个模板 + 1 个 `PUBLISHED` 版本 | 无 `DRAFT` 版本、无归档版本、无多版本并存 |\n| 模板市场 | **未写入** `template_market` | 市场列表/审核状态（PENDING/APPROVED/REJECTED）无数据 |\n| 标注（分配） | `UNCLAIMED` / `CLAIMED` / `SUBMITTED` | 缺 `EXPIRED` / `CANCELLED` |\n| 提交状态 | 12 条覆盖部分终态 | 缺 `APPEALING` 系列；多级进行中样本不足 |\n| 任务奖励 | 1 个 `PAID` 批次 + 5 条明细 | 缺 `DRAFT`/`CONFIRMED`/`PENDING`/`REVERSED` 批次与明细 |\n\n---\n\n## 2. 总体架构：「一主多辅」种子宇宙\n\n```mermaid\nflowchart TB\n  subgraph users [用户层 9101xx]\n    Owner[seed_owner]\n    L1[labeler x3]\n    R1[reviewer_lin L1]\n    R2[reviewer_qiao L2/L3]\n    R3[reviewer_ming 全级可选]\n  end\n\n  subgraph main [主任务 TASK_PREF_COMPARE_DEMO]\n    DS[(preference_compare.json 12条)]\n    TPL[templates + v1 PUBLISHED + v2 DRAFT]\n    SUB[submissions 全场景矩阵]\n  end\n\n  subgraph aux [辅助任务 每任务 1~3 题]\n    T_DRAFT[任务 DRAFT]\n    T_PAUSE[任务 PAUSED]\n    T_ARCH[任务 ARCHIVED]\n    T_REWARD[任务 奖励各状态]\n    T_ACC[任务 验收 PENDING]\n  end\n\n  subgraph market [模板市场]\n    TM1[PENDING]\n    TM2[APPROVED 关联 v1]\n    TM3[REJECTED]\n  end\n\n  Owner --> main\n  Owner --> aux\n  TPL --> TM2\n  users --> main\n  users --> aux\n```\n\n**原则**\n\n1. **主任务**仍绑定真实 `preference_compare` 数据集（12 条），承载标注/审核/AI/验收主流程。  \n2. **辅助任务**用极简 payload（可内嵌 1~2 条 synthetic item），只承担「任务级状态」展示，不重复 12 条全量复制。  \n3. **模板市场**独立表，通过 `template_version_id` / `source_task_id` 与主模板关联。  \n4. **ID 段**沿用 `9102xxxxxxxx`，新增池：`template_market`、`aux_task`、`review_batch_operation`（若测批量）。\n\n---\n\n## 3. 状态覆盖矩阵（必须落库的字典值）\n\n### 3.1 任务 `tasks.status`（状态机：DRAFT / PUBLISHED / PAUSED / ARCHIVED）\n\n| 种子任务 code | status | 其它关键字段 | 用途 |\n|---------------|--------|--------------|------|\n| `TASK_PREF_COMPARE_DEMO` | `PUBLISHED` | 三级 workflow、12 quota | 主流程 |\n| `TASK_PREF_STATUS_DRAFT` | `DRAFT` | 无 published_at | Owner 草稿列表 |\n| `TASK_PREF_STATUS_PAUSED` | `PAUSED` | paused_at 有值 | 暂停任务 |\n| `TASK_PREF_STATUS_ARCHIVED` | `ARCHIVED` | archived_at 有值 | 归档任务 |\n| `TASK_PREF_REWARD_LADDER` | `PUBLISHED` | reward 各阶段 | 奖励页 |\n| `TASK_PREF_ACCEPT_PENDING` | `PUBLISHED` | acceptance_status=PENDING | 验收进行中 |\n\n> 说明：字典里有 `FINISHED`，但 `TaskStatus` 枚举无此项；种子**不造 FINISHED**，避免与状态机冲突。\n\n### 3.2 模板 / 版本\n\n| 实体 | 状态组合 | 种子设计 |\n|------|----------|----------|\n| `templates.status` | `DRAFT` / `PUBLISHED` | 主模板 `PUBLISHED`；辅模板 `DRAFT`（未发布任务用） |\n| `template_versions` | `DRAFT` + `PUBLISHED` + `ARCHIVED` | 同 template_id：**v1 PUBLISHED(is_current=0)**、**v2 PUBLISHED(is_current=1)**、**v3 DRAFT**；任务 `current_template_version_id` 指向 v2 |\n| `source_market_id` | 可空 / 有值 | 主模板 `source_market_id` → 已上架市场记录 |\n\n### 3.3 模板市场 `template_market`\n\n| audit_status | status | 说明 |\n|--------------|--------|------|\n| `PENDING` | `ACTIVE` | 待运营审核 |\n| `APPROVED` | `ACTIVE` | 关联主任务 v2，`download_count`>0 |\n| `REJECTED` | `ACTIVE` | 被拒上架，带 ext_json 原因 |\n\n字段与主模板 **schema_json / review_workflow_json** 对齐，便于「从市场安装」演示（可与 `TemplateMarketInstallSupport` 联调）。\n\n### 3.4 分配 `assignments.status`\n\n| 状态 | 样本来源 |\n|------|----------|\n| `UNCLAIMED` | 已有 P0012 |\n| `CLAIMED` | 已有 P0011 |\n| `SUBMITTED` | 多数 |\n| `EXPIRED` | 新增：claimed 后 `deadline_at` 已过，无 submission |\n| `CANCELLED` | 新增：owner 取消，带 cancel_reason |\n\n### 3.5 提交 `submissions.current_status`（完整枚举）\n\n| 状态 | 主任务样本建议 | 备注 |\n|------|----------------|------|\n| `DRAFT` | P0011 | 保留 |\n| `SUBMITTED` | 瞬时态，历史表必有 | |\n| `AI_REVIEWING` | 可选 1 条「卡住」 | AI 队列页 |\n| `AI_PASSED` | P0010 | 保留 |\n| `AI_REJECTED` | P0008 | 保留 |\n| `HUMAN_REVIEWING` | **按 L1/L2/L3 拆 3+ 条** | 审核池 Tab |\n| `APPROVED` | 多级终审完成 + 单级直通 | |\n| `REJECTED` | P0004 | |\n| `NEEDS_REVISION` | P0005 | |\n| `APPEALING` | 新增 P0013 或辅任务 1 条 | 申诉中 |\n| `APPEAL_APPROVED` | 新增 1 条 | 可再提交 |\n| `APPEAL_REJECTED` | 新增 1 条 | 终态 |\n\n### 3.6 多级审核（核心）\n\n与 `DbReviewerWorkbenchService.applyHumanDecision` 一致：\n\n- **非终审 approve**：`HUMAN_REVIEWING` → `HUMAN_REVIEWING`，`current_review_level` L1→L2→L3，`review_records.is_final_decision=0`，`next_review_level` 填下一级。  \n- **终审 approve**：状态机 `APPROVED`，`is_final_decision=1`，`current_review_level` 保持终审级。  \n- **reject / return**：任意级均可终态（return → `NEEDS_REVISION`）。\n\n**主任务样本编排（建议替换现有 FLOW_BY_SAMPLE 中部分项）**\n\n| sample_id | 终态 | 审核轨迹 | 当前 `current_review_level` |\n|-----------|------|----------|----------------------------|\n| P0001 | `APPROVED` | L1✓ → L2✓ → L3✓（3 条 record） | L3（或终审后仍 L3） |\n| P0003 | `HUMAN_REVIEWING` | L1✓ → 待 L2 | L2 |\n| P0006 | `HUMAN_REVIEWING` | 待 L1（AI 已 REQUIRE_HUMAN） | L1 |\n| P0007 | `HUMAN_REVIEWING` | L1✓ → L2✓ → 待 L3 | L3 |\n| P0009 | `APPROVED` | 仅 L1（单级 workflow 对照任务另设） | — |\n| P0004 | `REJECTED` | L2 拒绝（展示非 L1 拒绝） | L2 |\n| P0005 | `NEEDS_REVISION` | L1 return | L1 |\n| P0002 | `APPROVED` | L1 return → 重提 → L1✓→L2✓→L3✓ | 多级 + 退回 |\n\n**审核员分工（支撑 V37 按级权限）**\n\n| 用户 | 权限设计 | 可见队列 |\n|------|----------|----------|\n| `seed_reviewer_lin` | 仅 `business:reviewer:level:L1`（新建 role `20041` 或 user 级 permission） | 仅 L1 |\n| `seed_reviewer_qiao` | L2 + L3 | L2、L3 |\n| `seed_reviewer_ming`（新增） | 全级或仅 workbench | 全部 Tab |\n\n现有 Lin/Qiao 共用 role 2004 且已挂 L1–L3，**无法测权限隔离**；设计里应增加「分级角色」或单独 `user_permissions` seed。\n\n### 3.7 验收 `task_acceptance_records.status`\n\n| 状态 | 挂载任务 |\n|------|----------|\n| `PENDING` | `TASK_PREF_ACCEPT_PENDING` + samples `PENDING` |\n| `CONFIRMED` | 主任务（保留 P0001 PASS / P0002 FAIL） |\n| （可选）`REOPENED` | 若业务支持 |\n\n### 3.8 奖励 `reward_settlement_batches` / `tasks.reward_settlement_status`\n\n| batch.status | task.reward_settlement_status | 场景 |\n|--------------|-------------------------------|------|\n| `DRAFT` | `DRAFT` | 未确认结算 |\n| `CONFIRMED` | `CONFIRMED` | 已确认待打款 |\n| `PENDING` | `PENDING` | 打款中 |\n| `PAID` | `PAID` | 主任务（现有） |\n| `REVERSED` | `REVERSED` | 冲正演示 |\n\n明细 `reward_settlement_details.status` 与批次一致；至少 1 条 `REVERSED` 带 `reversed_at`。\n\n主任务仍用 `PER_APPROVED` + 5 条 APPROVED；**辅任务** `TASK_PREF_REWARD_LADDER` 各挂 1 个批次状态即可。\n\n---\n\n## 4. 脚本结构改造（实现阶段指引）\n\n### 4.1 配置分层\n\n```python\n# 声明式场景（示例）\n@dataclass\nclass ReviewTrack:\n    levels: list[dict]  # [{level, action, reviewer_key, is_final}, ...]\n\n@dataclass  \nclass SampleScenario:\n    sample_id: str\n    assignment_status: str\n    submission_status: str | None\n    review_track: ReviewTrack | None\n    ai_round: str  # approved | ai_passed | ...\n    rounds: list[str]  # 标注轮次\n```\n\n- `build_review_records(scenario)`：根据 `ReviewTrack` 生成 `review_records` + 对齐的 `submission_status_histories`（含 `review_level`）。  \n- `finalize_submission_row()`：根据 track 设置 `current_review_level` / `next_review_level` / `last_review_record_id`。\n\n### 4.2 新增表写入顺序\n\n在现有 `TABLE_CONFIG` 末尾增加：\n\n1. `template_market`（在 `template_versions` 之后、`tasks` 之前或之后均可）  \n2. 辅助 `tasks` + 极简 `task_items` + 可选 `submissions`  \n3. `review_batch_operations`（可选，1 条 SUCCESS 批量记录）  \n4. 扩展 `user_roles` / `role_permissions`（分级审核员）\n\n### 4.3 校验 `validate_seed` 扩展\n\n| 规则 | 说明 |\n|------|------|\n| 多级一致性 | `HUMAN_REVIEWING` 且 workflow 有 L2/L3 时，`current_review_level` 必须在 workflow 内 |\n| review_records | 非终审 approve 的 `to_status` 仍为 `HUMAN_REVIEWING` |\n| 市场关联 | `templates.source_market_id` 指向存在且 `audit_status=APPROVED` 的记录 |\n| 奖励 | `PAID` 批次金额 = details 之和；`APPROVED` submission 数 ≥ PAID 明细数 |\n| 权限 | Lin 的 submission 不应出现在 L2 专属 SQL 抽检（文档化测试步骤） |\n\n---\n\n## 5. 数据集规模策略\n\n| 方案 | 做法 | 优点 | 缺点 |\n|------|------|------|------|\n| A. 仅扩场景 | 仍 12 条 JSON，复用样本多场景 | 改动小 | 单样本无法同时「L2 待审」又「已通过」 |\n| B. 扩 JSON | 增至 ~20 条（P0013+） | 语义清晰 | 需维护数据集文件 |\n| **C. 推荐：12 + 合成** | 主任务 12 条按上表编排；辅任务 synthetic | 平衡体积与覆盖 | 辅任务题目非真实 preference |\n\n**推荐 C**：主任务承担「真实题目 + 多级审核」；`TASK_PREF_*` 辅任务每类 1~2 条 `task_items`，payload 最小化 `{sample_id, prompt}`。\n\n---\n\n## 6. 页面 / API 验收清单（种子加载后人工冒烟）\n\n| 页面/能力 | 依赖数据 |\n|-----------|----------|\n| 标注员「我的任务」 | 多任务 status；CLAIMED/DRAFT/NEEDS_REVISION |\n| 标注工作台 | P0011 草稿、P0005 待修改 |\n| AI 审核队列 | AI_REVIEWING、AI_PASSED、AI_REJECTED |\n| 人工审核池 L1/L2/L3 Tab | 各 `current_review_level` 至少 2 条 `HUMAN_REVIEWING` |\n| 审核结果列表 | 多级 `review_records`（含 `is_final_decision=0`） |\n| 分级权限 | Lin 仅 L1、Qiao L2/L3 |\n| Owner 任务列表 | DRAFT/PAUSED/ARCHIVED/PUBLISHED |\n| 模板版本列表 | DRAFT + PUBLISHED + ARCHIVED |\n| 模板市场管理 | PENDING/APPROVED/REJECTED |\n| 验收 / 奖励 | PENDING 验收、多批次奖励状态 |\n| 导出 | 保持与 APPROVED 数一致 |\n\n---\n\n## 7. 实施分期（建议顺序）\n\n| 阶段 | 内容 | 产出 |\n|------|------|------|\n| **P0** | 修正多级：`review_records` + `current_review_level` + histories | 审核池三 Tab 有数据 |\n| **P1** | `template_market` 3 条 + `source_market_id` + 模板多版本 | 市场/版本页 |\n| **P2** | 辅任务：DRAFT/PAUSED/ARCHIVED + 验收/奖励梯子 | Owner/财务视图 |\n| **P3** | 分配 EXPIRED/CANCELLED + 申诉三态 + AI_REVIEWING 卡住 | 边界态 |\n| **P4** | 分级审核员角色/权限 + `validate_seed` 加强 | 权限 E2E |\n| **P5** | （可选）`review_batch_operations`、第二 import 批次 FAILED | 批量/导入 |\n\n---\n\n## 8. 与现有脚本的兼容\n\n- 输出路径不变：`backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql`  \n- 租户/用户 ID 段不变，避免与集成测试冲突  \n- `THREE_LEVEL_REVIEW_WORKFLOW` 保留；另增 `SINGLE_LEVEL_WORKFLOW` 用于对照任务（仅 L1）  \n- 密码、角色 2001/2003/2004 保持，**新增** `20041`/`20042` 仅用于分级审核演示  \n\n---\n\n## 9. 小结\n\n当前种子的主要问题是：**配置了三級 workflow，但数据层仍按「单级 L1 终审」写入**，且**任务/模板市场/奖励/任务状态**几乎只有「已发布且已完结」一条快乐路径。  \n\n推荐采用 **「主任务 12 条真实数据 + 多辅任务 + 模板市场 + 分级审核员」** 的宇宙模型，用声明式 `SampleScenario`/`ReviewTrack` 驱动生成，使种子与 `applyHumanDecision` 的真实行为一致。\n\n---\n\n若你认可该设计，下一步我可以按 **P0 → P1** 直接在 `generate_preference_compare_seed.py` 里落地（先多级审核与 `review_records`，再 `template_market`）。你希望辅任务也并进 P0，还是严格按上表分期？\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "基于现有 `generate_preference_compare_seed.py`、生成的 SQL，以及多级审核实现（`applyHumanDecision` 非终审通过会推进 `current_review_level` 而保持 `HUMAN_REVIEWING`），下面是**种子数据扩展设计**（仅设计，不写代码）。\n\n---\n\n## 1. 设计目标…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 13,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "状态机定义缺少覆盖所有状态的完整分支，可能导致未定义行为。",
+      "text_snippet": "<user_query>\n所有状态机都要覆盖\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 14,
+      "role": "assistant",
+      "display_text": "正在梳理项目中所有状态机及其状态，并据此补全「全状态覆盖」的种子设计。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在梳理项目中所有状态机及其状态，并据此补全「全状态覆盖」的种子设计。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 15,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/async/AsyncTaskStatus.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 16,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/export",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/market",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/async/AsyncTaskStatus.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 17,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V30__labelhub_dict_enum_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/acceptance",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 18,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/handler/BatchReviewTaskHandler.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 19,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/export",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V30__labelhub_dict_enum_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 20,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbTaskService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/persistence/entity/ReviewBatchOperationEntity.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 21,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine/AssignmentEvent.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine/SubmissionEvent.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine/TaskEvent.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 22,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 23,
+      "role": "assistant",
+      "display_text": "下面是在上一版设计基础上，按「**所有状态机 / 生命周期状态必须各有可查询样例**」收紧后的种子设计。范围以代码里**真实驱动业务**的状态为准（`StateMachineEngine` + 服务层硬编码流转）。\n\n---\n\n## 一、状态机分层\n\n```mermaid\nflowchart LR\n  subgraph core [核心状态机 StateMachineEngine]\n    T[Task DRAFT/PUBLISHED/PAUSED/ARCHIVED]\n    A[Assignment 5态]\n    S[Submission 12态]\n  end\n  subgraph pseudo [Submission 扩展 非独立态]\n    ML[多级审核 HUMAN_REVIEWING + L1/L2/L3]\n  end\n  subgraph lifecycle [业务生命周期 常量流转]\n    TV[template_versions]\n    TM[template_market.audit_status]\n    ACC[task_acceptance_records]\n    RW[reward_settlement_batches]\n    ASYNC[async_tasks]\n    EXP[export_jobs]\n    IMP[task_item_import_batches]\n    RB[review_batch_operations]\n    AIR[ai_review_records.status]\n  end\n  S --> ML\n```\n\n**硬约束**：每个「状态」至少 **1 条可稳定查询的记录**；每条核心状态机的**合法迁移**至少 **1 条**在 `submission_status_histories`（或对应审计字段）里可追溯。\n\n---\n\n## 二、核心状态机 — 全状态 × 种子落点\n\n### 2.1 任务 `TaskStateMachine`（4 态）\n\n| 状态 | 合法入边 | 种子任务 code | 关键字段 |\n|------|----------|---------------|----------|\n| `DRAFT` | 创建 | `TASK_SM_DRAFT` | 无 `published_at` |\n| `PUBLISHED` | PUBLISH / RESUME | `TASK_PREF_COMPARE_DEMO`（主） | `published_at` 有值 |\n| `PAUSED` | PAUSE | `TASK_SM_PAUSED` | `paused_at` 有值 |\n| `ARCHIVED` | ARCHIVE | `TASK_SM_ARCHIVED` | `archived_at` 有值 |\n\n> 字典里的 `FINISHED` **不在** `TaskStatus` 枚举中，种子**不生成**，避免与 `TaskStateMachineService` 冲突。\n\n**`tasks` 衍生字段（与状态机联动）**\n\n| 字段 | 需覆盖值 | 落点 |\n|------|----------|------|\n| `acceptance_status` | `PENDING` / `CONFIRMED` / （随验收单 `REOPENED`） | 主任务 CONFIRMED；`TASK_SM_ACCEPT` → PENDING |\n| `reward_settlement_status` | `DRAFT` / `CONFIRMED` / `PENDING` / `PAID` / `REVERSED` | 主任务 PAID；`TASK_SM_REWARD` 各挂一批次 |\n\n---\n\n### 2.2 分配 `AssignmentStateMachine`（5 态）\n\n| 状态 | 合法迁移示例 | 主/辅任务样本 |\n|------|--------------|---------------|\n| `UNCLAIMED` | 初始 | 主任务 `P0012`（保留） |\n| `CLAIMED` | CLAIM | 主任务 `P0011` + 草稿 submission |\n| `SUBMITTED` | SUBMIT | 主任务 P0001–P0010 |\n| `EXPIRED` | CLAIM → EXPIRE | 辅 `TASK_SM_ASSIGN` / `S_EXP_01`：`claimed_at` 有、`deadline_at` 已过、无 submission |\n| `CANCELLED` | CANCEL | 辅 `S_CAN_01`：`cancel_reason` 有值 |\n\n可选：`EXPIRED`/`CANCELLED` 各 1 条 `REOPEN` 历史（`status` 仍为终态，历史表体现迁移）。\n\n---\n\n### 2.3 提交 `SubmissionStateMachine`（12 态 — **必须 12 条各一**）\n\n| # | 状态 | 触发事件链（histories 必备） | 建议样本 |\n|---|------|------------------------------|----------|\n| 1 | `DRAFT` | SAVE_DRAFT | `P0011` |\n| 2 | `SUBMITTED` | SUBMIT，**停在 AI 前** | 辅 `S_SUB_WAIT`：已 submit，未 ENTER_AI_REVIEW |\n| 3 | `AI_REVIEWING` | ENTER_AI_REVIEW，async 仍 RUNNING/PENDING | 辅 `S_AI_RUN` |\n| 4 | `AI_PASSED` | AI_PASS | `P0010` |\n| 5 | `AI_REJECTED` | AI_REJECT →（可选 RETURN） | `P0008` |\n| 6 | `HUMAN_REVIEWING` | AI_REQUIRE_HUMAN 或 ENTER_HUMAN_REVIEW | 见 §三 多级拆 3+ 条 |\n| 7 | `APPROVED` | 终审 APPROVE | `P0001`（L1→L2→L3）等 |\n| 8 | `REJECTED` | REJECT | `P0004` |\n| 9 | `NEEDS_REVISION` | RETURN_FOR_REVISION | `P0005` |\n| 10 | `APPEALING` | SUBMIT_APPEAL | 辅 `S_APL_01`（自 `REJECTED`） |\n| 11 | `APPEAL_APPROVED` | APPEAL_APPROVE | 辅 `S_APL_02` |\n| 12 | `APPEAL_REJECTED` | APPEAL_REJECT | 辅 `S_APL_03` |\n\n**额外必覆盖的迁移（不必独占终态）**\n\n| 迁移 | 样本 |\n|------|------|\n| `SUBMITTED` → `DRAFT`（WITHDRAW） | 辅 `S_WD_01` |\n| `NEEDS_REVISION` → `SUBMITTED`（RESUBMIT） | `P0002` 第二轮 |\n| `AI_REJECTED` → `NEEDS_REVISION` | 可合并在 P0008 历史 |\n| `APPEAL_APPROVED` → `SUBMITTED` | 辅 `S_APL_04` 申诉通过后待重提 |\n\n当前 12 条 JSON **不够**承载 12 个 submission 终态 + 多级 + 分配异常；采用：\n\n- **主任务** `TASK_PREF_COMPARE_DEMO`：12 条真实题，覆盖标注主路径 + 多数审核态  \n- **辅任务簇** `TASK_SM_SUBMISSION_*`：每态 1 条 synthetic item（`{sample_id, prompt}` 即可）\n\n---\n\n### 2.4 多级人工审核（`HUMAN_REVIEWING` 子空间）\n\n非独立枚举，但必须覆盖 **workflow × level × 动作**：\n\n| 场景 | `current_review_level` | `next_review_level` | `review_records` | 样本 |\n|------|------------------------|---------------------|------------------|------|\n| 待初审 | `L1` | `L2` | 无或仅 AI | `P0006` |\n| 待复审 | `L2` | `L3` | L1 APPROVE `is_final=0` | `P0003` |\n| 待终审 | `L3` | null | L1+L2 APPROVE | `P0007` |\n| 终审通过 | — | — | L1+L2+L3，末条 `is_final=1` → APPROVED | `P0001` |\n| 中级驳回 | `L2` | — | L2 REJECT `is_final=1` | `P0004`（改） |\n| L1 打回 | `L1` | — | RETURN → NEEDS_REVISION | `P0005` |\n| 批量审核 | L1 | — | `review_batch_operations` SUCCESS/PARTIAL | 见 §四 |\n\n审核员权限（V37）：\n\n| 用户 | 权限 | 用途 |\n|------|------|------|\n| `seed_reviewer_lin` | 仅 `level:L1` | L1 池有数据、L2 为空 |\n| `seed_reviewer_qiao` | `L2`+`L3` | 复审/终审 Tab |\n| `seed_reviewer_ming`（新增） | 全级或仅 workbench | 联调全 Tab |\n\n---\n\n## 三、模板 / 市场生命周期（非 Engine，但必须覆盖）\n\n### 3.1 `template_versions.status`\n\n| 状态 | 种子 |\n|------|------|\n| `DRAFT` | 主模板 v3，`is_current=0` |\n| `PUBLISHED` | v1（已归档语义可 ARCHIVED）、v2 **current** |\n| `ARCHIVED` | v1 `archived_at` + `status=ARCHIVED` |\n\n### 3.2 `templates.status`\n\n| 状态 | 种子 |\n|------|------|\n| `DRAFT` | 辅任务未发布模板 |\n| `PUBLISHED` | 主任务模板 |\n\n### 3.3 `template_market.audit_status`（+ `status=ACTIVE`）\n\n| audit_status | 种子 |\n|--------------|------|\n| `PENDING` | 待审上架 |\n| `APPROVED` | 关联 v2，`templates.source_market_id` 指向 |\n| `REJECTED` | 被拒，`ext_json` 含原因 |\n\n---\n\n## 四、其它生命周期状态机\n\n### 4.1 验收 `task_acceptance_records.status`\n\n| 状态 | 种子 |\n|------|------|\n| `PENDING` | `TASK_SM_ACCEPT` |\n| `SAMPLING` | 主任务或辅：已 generateSamples 未 confirm |\n| `CONFIRMED` | 主任务（现有） |\n| `REOPENED` | 辅：从 CONFIRMED 重开 |\n\n`task_acceptance_samples.sample_status`：`PENDING` + `CHECKED`（现有 PASS/FAIL 保留）。\n\n### 4.2 奖励 `reward_settlement_batches.status`（= `tasks.reward_settlement_status`）\n\n| 状态 | 种子 |\n|------|------|\n| `DRAFT` | 批次 1 |\n| `CONFIRMED` | 批次 2 |\n| `PENDING` | 明细层常用 |\n| `PAID` | 主任务 |\n| `REVERSED` | 批次 5 + `reversed_at` |\n\n### 4.3 异步 `async_tasks.status`\n\n| 状态 | `task_type` 示例 |\n|------|------------------|\n| `PENDING` | AI_REVIEW 排队 |\n| `RUNNING` | AI_REVIEW 执行中（配 submission AI_REVIEWING） |\n| `SUCCESS` | 现有 |\n| `DEAD_LETTER` | AI_REVIEW 失败超限 |\n| `CANCELED` | 导出/批量被取消 |\n\n### 4.4 导出 `export_jobs.status`\n\n`PENDING` / `RUNNING` / `SUCCESS` / `FAILED` 各 1 条（可绑不同 `async_tasks`）。\n\n### 4.5 导入 `task_item_import_batches.import_status`\n\n| 状态 | 种子 |\n|------|------|\n| `PROCESSING` | `finished_at` NULL |\n| `COMPLETED` | 主任务现有 |\n\n（代码路径仅见 PROCESSING→COMPLETED；**不造 FAILED**，除非后续代码支持。）\n\n### 4.6 批量审核 `review_batch_operations.status`\n\n`PENDING` / `RUNNING` / `SUCCESS` / `FAILED` / `PARTIAL` 各 1 条 + 对应 `BATCH_REVIEW` async。\n\n### 4.7 AI 审核记录 `ai_review_records.status`\n\n`SUCCESS`（现有）+ `FAILED`（`AiReviewRecordWriter`）各至少 1 条。\n\n---\n\n## 五、种子宇宙结构（实现蓝图）\n\n```\n租户 1\n├── 用户：owner + 3 labeler + 3 reviewer（L1 / L2L3 / 全级）\n├── 主任务 TASK_PREF_COMPARE_DEMO（PUBLISHED，12 真实样本）\n│   ├── 模板：v1 ARCHIVED, v2 PUBLISHED current, v3 DRAFT\n│   ├── 市场：APPROVED ←→ source_market_id\n│   ├── 导入：COMPLETED + import_errors\n│   ├── 提交：覆盖 §2.3 大部分 + §2.4 多级\n│   ├── 验收：CONFIRMED + samples\n│   └── 奖励：PAID 批次\n├── 任务状态辅包（各 1~2 item）\n│   ├── TASK_SM_DRAFT / PAUSED / ARCHIVED\n│   ├── TASK_SM_ACCEPT（验收 PENDING/SAMPLING）\n│   └── TASK_SM_REWARD（奖励 DRAFT→REVERSED 梯子）\n├── 提交态辅包 TASK_SM_SUBMISSION（~8 synthetic items）\n│   └── SUBMITTED-wait, AI_REVIEWING, APPEAL×3, WITHDRAW, …\n├── 分配辅包 TASK_SM_ASSIGN（EXPIRED, CANCELLED）\n└── 运维辅包 TASK_SM_OPS\n    ├── async：5 态\n    ├── export：4 态\n    ├── import：PROCESSING\n    └── review_batch：5 态\n```\n\n**ID 段**：沿用 `9102*`；新增池 `template_market`、`aux_task`、`review_batch_operations`。\n\n---\n\n## 六、脚本改造要点\n\n1. **`STATE_COVERAGE` 注册表**（实现时校验）  \n   每个状态一个 key，生成后 `validate_seed()` 断言 `count >= 1`。\n\n2. **`build_review_track(levels: [(L1,approve,lin), (L2,approve,qiao), ...])`**  \n   自动生成 `review_records` + histories + `current_review_level` / `next_review_level`。\n\n3. **`FLOW_BY_SAMPLE` 拆成**  \n   - `MAIN_SAMPLE_SCENARIOS`（12 条真实数据）  \n   - `AUX_SUBMISSION_SCENARIOS`（合成 item）\n\n4. **`TABLE_CONFIG` 扩展**  \n   `template_market`、`review_batch_operations`、多 `tasks` 行。\n\n5. **校验规则（节选）**  \n   - 12 个 `SubmissionStatus` 各 ≥1  \n   - 5 个 `AssignmentStatus` 各 ≥1  \n   - 4 个 `TaskStatus` 各 ≥1  \n   - 非终审 approve：`to_status=HUMAN_REVIEWING` 且 `is_final_decision=0`  \n   - `AsyncTaskStatus` 五态各 ≥1  \n\n---\n\n## 七、与现网的差异（实施时注意）\n\n| 项 | 现状 | 目标 |\n|----|------|------|\n| 多级审核 | 配置 L1/L2/L3，数据仅 L1 终审 | 至少 3 条 `HUMAN_REVIEWING` 分属 L1/L2/L3 |\n| 提交 12 态 | 缺 APPEAL*、SUBMITTED 等待、AI_REVIEWING 卡住 | 辅任务补齐 |\n| 分配 | 无 EXPIRED/CANCELLED | 辅任务 2 条 |\n| 任务 | 仅 PUBLISHED | +3 辅任务 |\n| 市场 | 无表数据 | 3 条 audit |\n| 奖励 | 仅 PAID | 5 批次状态梯子 |\n| 异步/导出/批量 | 仅 SUCCESS | 全常量覆盖 |\n\n---\n\n## 八、验收清单（加载 SQL 后）\n\n- [ ] Owner 任务列表：DRAFT / PUBLISHED / PAUSED / ARCHIVED 均可筛到  \n- [ ] 标注员：CLAIMED+DRAFT、SUBMITTED+NEEDS_REVISION、申诉三态可操作/只读符合 `work-queue-status.ts`  \n- [ ] AI 队列：pending / passed / rejected / failed(async)  \n- [ ] 人工审核池：L1/L2/L3 Tab 均有待审；审核结果页有多级 `review_records`  \n- [ ] 模板版本：DRAFT / PUBLISHED / ARCHIVED；市场 PENDING/APPROVED/REJECTED  \n- [ ] 验收：PENDING / SAMPLING / CONFIRMED / REOPENED  \n- [ ] 奖励：五态批次 + 冲正明细  \n- [ ] 运维：async 五态、export 四态、review_batch 五态  \n\n---\n\n## 九、数据量预估\n\n| 类别 | 约新增行数 |\n|------|-----------|\n| 辅任务 + items | ~6 任务 × 1–3 item |\n| 提交/版本/历史 | +15~25 submissions 级联 |\n| 市场/模板版本 | +5~8 |\n| 奖励/验收/异步/导出/批量 | +20~30 |\n| **合计** | 在现有 ~数百行 SQL 上 **+80~120 行级联**（可接受） |\n\n---\n\n**结论**：「所有状态机都要覆盖」= **3 个 Engine 全枚举态** + **多级审核子空间** + **8 类生命周期常量表** 全部有样例；单靠 12 条 preference 样本不够，必须用 **主任务 + 状态辅包** 结构。\n\n若你确认按此方案实施，建议实现顺序：**Submission 12 态 + 多级（P0）→ Task/Assignment（P1）→ 模板/市场/验收/奖励（P2）→ 异步/导出/批量（P3）**，每阶段跑 `validate_seed()` 门禁。需要的话我可以直接从 P0 开始改 `generate_preference_compare_seed.py`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "下面是在上一版设计基础上，按「**所有状态机 / 生命周期状态必须各有可查询样例**」收紧后的种子设计。范围以代码里**真实驱动业务**的状态为准（`StateMachineEngine` + 服务层硬编码流转）。\n\n---\n\n## 一、状态机分层\n\n```mermaid\nflowchart LR\n subgraph core [核心状态机 StateMa…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 24,
+      "role": "user",
+      "display_text": "注意数据不要是脏数据 如果之前生成的有脏数据 先修复种子生成器。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n注意数据不要是脏数据 如果之前生成的有脏数据 先修复种子生成器 \n</user_query>",
+      "selected": true,
+      "quality_level": "medium",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "rewritten"
+    },
+    {
+      "order": 25,
+      "role": "assistant",
+      "display_text": "先审查种子生成器中的不一致与脏数据问题，再修复生成逻辑。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "先审查种子生成器中的不一致与脏数据问题，再修复生成逻辑。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 26,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 27,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/workflow/SubmissionSubmitLifecycle.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 28,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewWorkflowResolver.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 29,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 30,
+      "role": "assistant",
+      "display_text": "正在重构种子生成器：修复多级审核与分配/提交状态不一致，并加入一致性校验。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在重构种子生成器：修复多级审核与分配/提交状态不一致，并加入一致性校验。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 31,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 32,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 33,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 34,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 35,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 36,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "前端组件因未定义变量导致渲染中断，影响页面正常显示。",
+      "text_snippet": "<user_query>\n继续\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 37,
+      "role": "assistant",
+      "display_text": "继续完成种子生成器的修复，先查看当前文件状态。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "继续完成种子生成器的修复，先查看当前文件状态。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 38,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 39,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 40,
+      "role": "assistant",
+      "display_text": "正在应用关键修改：更新分配/提交循环、替换人工审核逻辑，并完善校验。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在应用关键修改：更新分配/提交循环、替换人工审核逻辑，并完善校验。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 41,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 42,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 43,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 44,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 45,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 46,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 47,
+      "role": "assistant",
+      "display_text": "已修复种子生成器并重新生成了 SQL。主要变更如下：\n\n## 修复的「脏数据」问题\n\n| 问题 | 修复 |\n|------|------|\n| 配置了 L1/L2/L3，但 `review_records` 一律 L1 终审 | 新增 `apply_human_review_spec`，`approve_all` 走 L1→L2→L3 三级通过 |\n| `APPROVED` 仍显示 `current_review_level=L1` | 终审后设为 `L3`，非终审保持 `HUMAN_REVIEWING` 并推进级别 |\n| `NEEDS_REVISION` 但 `assignment=SUBMITTED` | 打回后 `assignment=CLAIMED`（与 `applyReviewSideEffects` 一致） |\n| `is_final_decision=1` 却在 L1 直接 `APPROVED` | 仅 L3 终审 `is_final=1`；L1/L2 为 `is_final=0` 且 `to_status=HUMAN_REVIEWING` |\n| `tasks.latest_acceptance_id` 为空 | 写入 `910246000001` |\n| 重复/错误的 `file_references`（曾向列表追加 `None`） | 模板引用只在任务级插入一次 |\n\n## 样本编排（与三级审核一致）\n\n- **P0001/P0002/P0009**：三级通过后 `APPROVED`\n- **P0003**：L1 已过，待 **L2**（`HUMAN_REVIEWING` + `current_review_level=L2`）\n- **P0006**：待 **L1**\n- **P0007**：L1/L2 已过，待 **L3**\n- **P0004**：**L2** 驳回\n- **P0005**：L1 打回，`CLAIMED` + `NEEDS_REVISION`\n\n## 新增校验\n\n`validate_seed()` 会检查：非终审通过必须保持 `HUMAN_REVIEWING`、终审必须在 L3、`NEEDS_REVISION` 必须 `CLAIMED`、奖励明细与 `APPROVED` 一一对应等。\n\n已重新生成：`backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql`（脚本本地校验通过）。\n\n重新导入该 SQL 后，审核池 L1/L2/L3 Tab、审核结果时间线、标注员待修改队列应与后端逻辑一致。若还需要按之前设计补全「全状态机辅任务包」，可以说明优先级我继续做。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已修复种子生成器并重新生成了 SQL。主要变更如下：\n\n## 修复的「脏数据」问题\n\n| 问题 | 修复 |\n|------|------|\n| 配置了 L1/L2/L3，但 `review_records` 一律 L1 终审 | 新增 `apply_human_review_spec`，`approve_all` 走 L1→L2→L3 三级通过 |\n| …",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 48,
+      "role": "user",
+      "display_text": "租户 1\n├── 用户：owner + 3 labeler + 3 reviewer（L1 / L2L3 / 全级）\n├── 主任务 TASK_PREF_COMPARE_DEMO（PUBLISHED，12 真实样本）\n│   ├── 模板：v1 ARCHIVED, v2 PUBLISHED current, v3 DRAFT\n│   ├── 市场：APPROVED ←→ source_market_id\n│   ├── 导入：COMPLETED + import_errors\n│   ├── 提交：覆盖 §2.3 大部分 + §2.4 多级\n│   ├── 验收：CONFIRMED + samples\n│   └── 奖励：PAID 批次\n├── 任务状态辅包（各 1~2 item）\n│   ├── TASK_SM_DRAFT / PAUSED / ARCHIVED\n│   ├── TASK_SM_ACCEPT（验收 PENDING/SAMPLING）\n│   └── TASK_SM_REWARD（奖励 DRAFT→REVERSED 梯子）\n├── 提交态辅包 TASK_SM_SUBMISSION（~8 synthetic items）\n│   └── SUBMITTED-wait, AI_REVIEWING, APPEAL×3, WITHDRAW, …\n├── 分配辅包 TASK_SM_ASSIGN（EXPIRED, CANCELLED）\n└── 运维辅包 TASK_SM_OPS\n    ├── async：5 态\n    ├── export：4 态\n    ├── import：PROCESSING\n    └── review_batch：5 态",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n租户 1\n├── 用户：owner + 3 labeler + 3 reviewer（L1 / L2L3 / 全级）\n├── 主任务 TASK_PREF_COMPARE_DEMO（PUBLISHED，12 真实样本）\n│ ├── 模板：v1 ARCHIVED, v2 PUBLISHED current, v3 DRAFT\n│ ├─…",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 49,
+      "role": "assistant",
+      "display_text": "正在实现完整的种子宇宙结构，先查看当前脚本与相关表结构。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在实现完整的种子宇宙结构，先查看当前脚本与相关表结构。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 50,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V1__labelhub_init_schema.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V37__labelhub_reviewer_level_permissions.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 51,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 52,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V1__labelhub_init_schema.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V2__labelhub_seed_system_services.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 53,
+      "role": "assistant",
+      "display_text": "正在创建扩展模块并更新主脚本，以实现完整的种子宇宙结构。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在创建扩展模块并更新主脚本，以实现完整的种子宇宙结构。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V11__labelhub_add_template_market.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 54,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 55,
+      "role": "assistant",
+      "display_text": "正在更新主脚本：添加用户、多版本模板、市场条目，并接入扩展模块。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在更新主脚本：添加用户、多版本模板、市场条目，并接入扩展模块。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 56,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "MCP工具集不完整导致部分任务无法完成，需在总结中说明缺失功能及原因，且禁止用浏览器自动化绕过限制。",
+      "text_snippet": "If the available MCP tools do not fully support what the user asked you to do, complete the work you can with the current tool set. In your work summary, include what you were una…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 57,
+      "role": "user",
+      "display_text": "租户 1\n├── 用户：owner + 3 labeler + 3 reviewer（L1 / L2L3 / 全级）\n├── 主任务 TASK_PREF_COMPARE_DEMO（PUBLISHED，12 真实样本）\n│   ├── 模板：v1 ARCHIVED, v2 PUBLISHED current, v3 DRAFT\n│   ├── 市场：APPROVED ←→ source_market_id\n│   ├── 导入：COMPLETED + import_errors\n│   ├── 提交：覆盖 §2.3 大部分 + §2.4 多级\n│   ├── 验收：CONFIRMED + samples\n│   └── 奖励：PAID 批次\n├── 任务状态辅包（各 1~2 item）\n│   ├── TASK_SM_DRAFT / PAUSED / ARCHIVED\n│   ├── TASK_SM_ACCEPT（验收 PENDING/SAMPLING）\n│   └── TASK_SM_REWARD（奖励 DRAFT→REVERSED 梯子）\n├── 提交态辅包 TASK_SM_SUBMISSION（~8 synthetic items）\n│   └── SUBMITTED-wait, AI_REVIEWING, APPEAL×3, WITHDRAW, …\n├── 分配辅包 TASK_SM_ASSIGN（EXPIRED, CANCELLED）\n└── 运维辅包 TASK_SM_OPS\n    ├── async：5 态\n    ├── export：4 态\n    ├── import：PROCESSING\n    └── review_batch：5 态",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n租户 1\n├── 用户：owner + 3 labeler + 3 reviewer（L1 / L2L3 / 全级）\n├── 主任务 TASK_PREF_COMPARE_DEMO（PUBLISHED，12 真实样本）\n│ ├── 模板：v1 ARCHIVED, v2 PUBLISHED current, v3 DRAFT\n│ ├─…",
+      "selected": false,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "duplicate_dropped"
+    },
+    {
+      "order": 58,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 59,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 60,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 61,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 62,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 63,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 64,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 65,
+      "role": "assistant",
+      "display_text": "「种子宇宙」已按你给的树形结构跑通，生成器校验通过并已写出 SQL。\n\n## 生成方式\n\n```bash\ncd scripts && python3 generate_preference_compare_seed.py\n```\n\n输出：`backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql`\n\n## 租户 1 数据地图\n\n| 层级 | 内容 |\n|------|------|\n| **用户** | owner + 3 labeler（anna/ben/cici）+ 3 reviewer |\n| **审核权限** | Lin → `SEED_REVIEWER_L1`（仅 10010）；Qiao → `SEED_REVIEWER_L2L3`（10011/10012）；Ming → 平台 `REVIEWER` 全级 |\n| **主任务** | `TASK_PREF_COMPARE_DEMO` · PUBLISHED · 12 样本 · 验收 CONFIRMED · 奖励 PAID |\n| **模板** | v1 ARCHIVED / v2 PUBLISHED(current) / v3 DRAFT |\n| **市场** | APPROVED（`source_market_id` 关联）+ PENDING + REJECTED |\n| **导入** | COMPLETED + `task_item_import_errors` |\n| **提交/审核** | §2.3 多态 + §2.4 三级（`current_review_level=L3` 终审、`HUMAN_REVIEWING` 待 L3 等） |\n| **辅任务×8** | 见下表 |\n\n**辅任务包**\n\n- `TASK_SM_DRAFT` / `PAUSED` / `ARCHIVED`\n- `TASK_SM_ACCEPT`（验收 SAMPLING）\n- `TASK_SM_REWARD`（批次 DRAFT→REVERSED 梯子）\n- `TASK_SM_SUBMISSION`（~8 合成：SUBMITTED-wait、AI_REVIEWING、APPEAL×3、WITHDRAW…）\n- `TASK_SM_ASSIGN`（EXPIRED、CANCELLED，绑定真实 `template_version_id`）\n- `TASK_SM_OPS`：async 5 态、export 4 态、import PROCESSING、review_batch 5 态\n\n## 本轮修复\n\n1. `template_version_fields` 缩进错误  \n2. `validate_seed` 误用 `task_row.source_market_id`  \n3. 辅包 assignment 不再用 `template_version_id=0`  \n4. 辅包奖励批次去掉 `submission_id=0` 的脏明细（避免 FK）  \n5. export job 与 async_task 的 `biz_id` 对齐  \n\n## 测试账号（密码同原 seed）\n\n| 账号 | 用途 |\n|------|------|\n| `seed_reviewer_lin` | 仅 L1 |\n| `seed_reviewer_qiao` | L2/L3 |\n| `seed_reviewer_ming` | 全级（平台 reviewer 角色） |\n\n主任务多级审核样例：`APPROVED` 样本 `current_review_level=L3`；`P0003` 停在 `HUMAN_REVIEWING` + `L2` 待终审。\n\n若还需要：**主任务验收 PENDING 对照**、**辅包 reward 明细挂真实 submission**、或 **脚本顶部 README 注释**，可以说一下我接着补。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "「种子宇宙」已按你给的树形结构跑通，生成器校验通过并已写出 SQL。\n\n## 生成方式\n\n```bash\ncd scripts && python3 generate_preference_compare_seed.py\n```\n\n输出：`backend/host-app/src/test/resources/preference_compare_full…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 66,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "还差什么 接着补",
+      "text_snippet": "<user_query>\n还差什么 接着补\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 67,
+      "role": "assistant",
+      "display_text": "对照设计树与当前生成器，盘点缺口并继续补齐。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "对照设计树与当前生成器，盘点缺口并继续补齐。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 68,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 69,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 70,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 71,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 72,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 73,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/features/labeler/work/utils/work-queue-status.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 74,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine/SubmissionStatus.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 75,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/workflow/SubmissionWithdrawLifecycle.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 76,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 77,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 78,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 79,
+      "role": "assistant",
+      "display_text": "补齐缺口：辅任务样本项、提交态扩至 8 种、验收 PENDING 记录、奖励明细 FK、成员与校验文档。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "补齐缺口：辅任务样本项、提交态扩至 8 种、验收 PENDING 记录、奖励明细 FK、成员与校验文档。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 80,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 81,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 82,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 83,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 84,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 85,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 86,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 87,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 88,
+      "role": "assistant",
+      "display_text": "已补齐本轮缺口，生成器与 `validate_seed` 均通过。\n\n## 原先还差什么\n\n| 缺口 | 状态 |\n|------|------|\n| `TASK_SM_SUBMISSION` 仅 5 条，缺 WITHDRAW/REJECTED/AI_PASSED/HUMAN_REVIEWING 等 | 已扩至 **9** 条合成提交 |\n| `TASK_SM_ACCEPT` 只有 SAMPLING 记录，无 PENDING 对照 | 已加 **PENDING + SAMPLING** 两条验收记录，并设置 `latest_acceptance_id` |\n| `TASK_SM_REWARD` 奖励明细曾用 `submission_id=0` | 已挂 **真实 APPROVED 提交 + version**，PAID/REVERSED 各一条明细 |\n| 任务状态辅包（DRAFT/PAUSED/ARCHIVED）无样本 | 各补 **1~2 条** `task_items`（`SM_DRAFT_*` 等） |\n| 辅任务成员不全 | `TASK_SM_SUBMISSION` 已挂 **3 审核员 + 1 标注员** |\n| 脚本说明 / 校验覆盖辅宇宙 | 主脚本 docstring + `validate_seed` 扩展（提交态、验收、export、reward 批次） |\n| `reviewer_ming` 未传入 universe | 已接入参数 |\n\n说明：撤回在状态机里是 **WITHDRAW → DRAFT**（无 `WITHDRAWN` 状态），辅包用 `S_WTH_01` + `assignment=CLAIMED` + `submission=DRAFT` 表示。\n\n## 重新生成\n\n```bash\ncd scripts && python3 generate_preference_compare_seed.py\n```\n\n输出：`backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql`\n\n## 仍可选（未做）\n\n- 单级 workflow 对照任务（仅 L1，与三级主任务对比）\n- `TASK_SM_ACCEPT` / `TASK_SM_REWARD` 的 reviewer 成员（submission 任务已加）\n- 导入 **FAILED** 批次（运维包目前只有 PROCESSING）\n\n若要继续做上面任一项，直接说优先级即可。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已补齐本轮缺口，生成器与 `validate_seed` 均通过。\n\n## 原先还差什么\n\n| 缺口 | 状态 |\n|------|------|\n| `TASK_SM_SUBMISSION` 仅 5 条，缺 WITHDRAW/REJECTED/AI_PASSED/HUMAN_REVIEWING 等 | 已扩至 **9** 条合成提交 |\n| `TASK_…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 89,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "该指令要求继续执行，但未提供具体上下文或异常信息，无法识别问题类型与影响对象。",
+      "text_snippet": "<user_query>\n继续\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 90,
+      "role": "assistant",
+      "display_text": "继续补齐可选项：单级审核对照任务、验收/奖励任务的审核员成员、运维包导入 FAILED 批次。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "继续补齐可选项：单级审核对照任务、验收/奖励任务的审核员成员、运维包导入 FAILED 批次。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 91,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 92,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 93,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 94,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 95,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 96,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 97,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 98,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 99,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 100,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 101,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 102,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 103,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 104,
+      "role": "assistant",
+      "display_text": "修复 `__main__` 与模块导入导致 `ID_POOLS` 双份、ID 冲突的问题。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "修复 `__main__` 与模块导入导致 `ID_POOLS` 双份、ID 冲突的问题。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 105,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 106,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 107,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 108,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 109,
+      "role": "assistant",
+      "display_text": "本轮已把上次列的可选项全部补上，生成器校验通过。\n\n## 新增内容\n\n### 1. `TASK_SM_REVIEW_L1`（单级审核对照）\n- 仅 **L1** 的 `review_workflow_json`，与主任务三级流程对比\n- `S_L1_APP`：Lin 终审通过 → `APPROVED` + `current_review_level=L3` 改为 **L1**\n- `S_L1_WAIT`：待 Lin 初审的 `HUMAN_REVIEWING`\n\n### 2. 验收 / 奖励任务成员\n- `TASK_SM_ACCEPT`、`TASK_SM_REWARD` 均挂载 **3 标注员角色审核员**（Lin / Qiao / Ming）\n\n### 3. 运维包导入 **FAILED**\n- `TASK_SM_OPS` 在 `PROCESSING` 之外增加 **FAILED** 批次 + `task_item_import_errors` 样例行\n\n## 工程修复\n- **不再**从 `generate_preference_compare_seed` 导入 `append_review_record`（`python3 generate_...py` 作为 `__main__` 时会产生双份 `ID_POOLS`，导致 ID 冲突）\n- `validate_seed` 按**任务 workflow** 判断终审层级（L1 单级任务允许 L1 终审）\n\n## 当前任务一览（租户 1）\n\n| 任务码 | 用途 |\n|--------|------|\n| `TASK_PREF_COMPARE_DEMO` | 主流程 12 样本 |\n| `TASK_SM_DRAFT/PAUSED/ARCHIVED` | 任务状态 + 样本 |\n| `TASK_SM_ACCEPT` | 验收 PENDING + SAMPLING |\n| `TASK_SM_REWARD` | 奖励批次梯子 + 明细 |\n| `TASK_SM_SUBMISSION` | 9 种提交态 |\n| `TASK_SM_ASSIGN` | EXPIRED / CANCELLED |\n| `TASK_SM_OPS` | 异步 / 导出 / 导入 / 批量审核 |\n| `TASK_SM_REVIEW_L1` | **单级审核对照** |\n\n重新生成：\n\n```bash\ncd scripts && python3 generate_preference_compare_seed.py\n```\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "本轮已把上次列的可选项全部补上，生成器校验通过。\n\n## 新增内容\n\n### 1. `TASK_SM_REVIEW_L1`（单级审核对照）\n- 仅 **L1** 的 `review_workflow_json`，与主任务三级流程对比\n- `S_L1_APP`：Lin 终审通过 → `APPROVED` + `current_review_level=L3`…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 110,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "缺少对问题类型、核心组件和关键错误现象的明确描述，无法生成有效摘要。",
+      "text_snippet": "<user_query>\n还差什么\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 111,
+      "role": "assistant",
+      "display_text": "对照原始设计树与当前实现，系统盘点仍缺项。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "对照原始设计树与当前实现，系统盘点仍缺项。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 112,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/statemachine/AssignmentStatus.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/plans/多级人工审核_审核分支.plan.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 113,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 114,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 115,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/acceptance",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 116,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 117,
+      "role": "assistant",
+      "display_text": "按你最初的「种子宇宙」树和当前 `validate_seed` 对照，**设计内该有的已基本齐**；剩下主要是「全状态机扫尾」和「工程化交付」，分三档说明。\n\n---\n\n## 一、设计树：已覆盖 ✅\n\n| 节点 | 状态 |\n|------|------|\n| 租户 1 + owner / 3 labeler / 3 reviewer（L1 / L2L3 / 全级） | ✅ |\n| `TASK_PREF_COMPARE_DEMO`（12 样本、三级审核、CONFIRMED 验收、PAID 奖励） | ✅ |\n| 模板 v1/v2/v3、市场三态、`source_market_id` | ✅ |\n| 导入 COMPLETED + `import_errors` | ✅（主任务） |\n| 辅包 DRAFT/PAUSED/ARCHIVED + 样本 | ✅ |\n| `TASK_SM_ACCEPT`（验收 PENDING + SAMPLING） | ✅ |\n| `TASK_SM_REWARD`（批次 DRAFT→REVERSED + 明细 FK） | ✅ |\n| `TASK_SM_SUBMISSION`（9 种提交态） | ✅ |\n| `TASK_SM_ASSIGN`（EXPIRED/CANCELLED） | ✅ |\n| `TASK_SM_OPS`（async 5 / export 4 / import PROCESSING+FAILED / batch 5） | ✅ |\n| `TASK_SM_REVIEW_L1`（单级对照，超出原树） | ✅ |\n\n**原树范围内可以认为「功能种子」已做完。**\n\n---\n\n## 二、状态机 / 数据：仍缺或可加强 ⚠️\n\n### 1. 任务级状态\n- **`tasks.status = FINISHED`**：字典里有，种子里没有「已结束」任务（只有 DRAFT / PUBLISHED / PAUSED / ARCHIVED）。\n\n### 2. 验收\n- **记录态 `REOPENED`**：未造（只有主任务 `CONFIRMED` + 辅任务 `PENDING`/`SAMPLING`）。\n- **`TASK_SM_ACCEPT` 无真实 APPROVED 提交 / 验收样本行**：只能测「验收单状态」，不能测「抽样列表里有 submission」的 UI。\n\n### 3. 导入批次\n- 全库仅有：**主任务 `COMPLETED`**、**OPS `PROCESSING` + `FAILED`**。\n- 缺 **`RUNNING`** 导入批次（若产品列表要展示「导入中」且与 OPS 的 PROCESSING 区分开）。\n\n### 4. 分配态（`assignments`）\n- 辅包只有 EXPIRED / CANCELLED。\n- **`UNCLAIMED` / `CLAIMED`（无提交）** 只在主任务 `P0012` / `P0011`，未在 `TASK_SM_ASSIGN` 集中展示。\n\n### 5. 提交态（`submissions`）\n- **主任务**：12 样本已覆盖 §2.3/§2.4 主流路径（含三级、打回、AI 拒/过等）。\n- **辅任务 `TASK_SM_SUBMISSION`**：刻意不重复 `NEEDS_REVISION` / `AI_REJECTED` / `APPROVED`（在主任务上）。\n- **申诉/撤回计数**：`withdraw_count` / `appeal_count`（V33 字段）**未写入**非 0 样例（仅有 `WITHDRAW`/`APPEAL*` 状态）。\n\n### 6. 模板\n- **v3 DRAFT** 无 `template_version_fields` 行（v1/v2 有），草稿「字段列表」类页面可能为空。\n\n### 7. 权限演示（P6）\n- Lin / Qiao / Ming 分工在数据里有，但**没有**「Ming 专责 L3、Lin 误触 L2 被拒」的独立小任务；全靠主任务 + 角色配置理解。\n\n### 8. 任务成员\n- 主任务、`TASK_SM_SUBMISSION`、ACCEPT、REWARD 成员较全。\n- **`TASK_SM_OPS` / `TASK_SM_ASSIGN` / DRAFT·PAUSED** 等多数只有 owner 或单个 labeler，**审核员未挂全**（若测「任务成员列表」会偏空）。\n\n---\n\n## 三、工程交付：未做 ❌\n\n| 项 | 说明 |\n|----|------|\n| **`DEFAULT_DATASET` 写死本机 Downloads** | CI/他人机器需 `--dataset` 指路径，否则生成失败。 |\n| **仓库内 `SEED_README.md`** | 账号、任务码、场景对照表仍只在脚本 docstring。 |\n| **加载 SQL 的 Java 集成测** | 无 `@Sql` / Flyway test 校验「导入后能跑通审核池」一类测试。 |\n| **`validate_seed` 与全表枚举对齐** | 已校验核心路径，未强制扫**所有**枚举值（如任务 `FINISHED`、验收 `REOPENED`）。 |\n\n---\n\n## 四、建议优先级（若继续补）\n\n1. **高**：`TASK_SM_ACCEPT` 加 1～2 条 APPROVED 提交 + `task_acceptance_samples`；`import RUNNING` 一条。  \n2. **中**：`TASK_SM_ASSIGN` 增加 `UNCLAIMED`；任务 `FINISHED`；验收 `REOPENED` 记录。  \n3. **低**：v3 字段行、`withdraw_count`/`appeal_count`、repo 相对路径默认 dataset、`SEED_README.md`、集成测。\n\n---\n\n**结论**：相对你画的树，**种子宇宙本身已可用来联调主流程 + 辅包状态**；「还差」的主要是 **FINISHED / REOPENED / import RUNNING / 验收可抽样数据 / 部分成员与计数字段**，以及 **文档 + 可移植路径 + 自动化加载**。  \n\n若要我继续写代码，建议从 **验收可抽样 + import RUNNING** 两项做起；你确认一下优先级即可。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "按你最初的「种子宇宙」树和当前 `validate_seed` 对照，**设计内该有的已基本齐**；剩下主要是「全状态机扫尾」和「工程化交付」，分三档说明。\n\n---\n\n## 一、设计树：已覆盖 ✅\n\n| 节点 | 状态 |\n|------|------|\n| 租户 1 + owner / 3 labeler / 3 reviewer（L1 / L2L3 …",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 118,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "前端页面在加载时出现白屏，核心组件渲染异常，影响用户界面正常展示。",
+      "text_snippet": "<user_query>\n继续\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 119,
+      "role": "assistant",
+      "display_text": "继续补齐高、中优先级缺口：验收可抽样、import RUNNING、分配 UNCLAIMED、任务 FINISHED、验收 REOPENED，并顺带处理 v3 字段与计数字段。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "继续补齐高、中优先级缺口：验收可抽样、import RUNNING、分配 UNCLAIMED、任务 FINISHED、验收 REOPENED，并顺带处理 v3 字段与计数字段。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 120,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 121,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 122,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 123,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 124,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 125,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 126,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Downloads/datasets/preference_compare/json/preference_compare.json",
+        "/Users/wangqiyan/Downloads/datasets/preference_compare/标注要求.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 127,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 128,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Write",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/SEED_README.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 129,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 130,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 131,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 132,
+      "role": "assistant",
+      "display_text": "本轮已补齐高/中优先级项，生成器校验通过，SQL 已更新。\n\n## 本次新增\n\n| 项 | 内容 |\n|----|------|\n| **验收可抽样** | `TASK_SM_ACCEPT` 增加 `S_ACC_01/02`（APPROVED）+ 2 条 `task_acceptance_samples`；SAMPLING 记录更新抽样计数 |\n| **验收 REOPENED** | 新增历史验收单 `status=REOPENED`（含 `confirmed_at` + `reopened_at`） |\n| **任务 FINISHED** | 新辅任务 `TASK_SM_FINISHED` + 1 条样本 |\n| **导入 RUNNING** | `TASK_SM_OPS` 增加 `ops-running.json`（RUNNING，部分成功行） |\n| **分配 UNCLAIMED** | `TASK_SM_ASSIGN` 增加 `S_UNC_01` |\n| **模板 v3 字段** | `template_version_fields` 覆盖 v3 DRAFT（与 v1/v2 同套字段） |\n| **撤回/申诉计数** | `submissions` 表增加 `withdraw_count`/`appeal_count`；`S_WTH_01` withdraw=1，`S_APL_01` appeal=1 |\n| **数据集路径** | 优先 `testdata/preference_compare/`，再回退 Downloads |\n| **文档** | [`scripts/SEED_README.md`](scripts/SEED_README.md) 账号/任务码/样本对照 |\n\n## 生成命令\n\n```bash\ncd scripts && python3 generate_preference_compare_seed.py\n```\n\n## 仍可选（未做）\n\n- 仓库内放入 `testdata/preference_compare/preference_compare.json`（否则仍依赖本机 Downloads）\n- Java `@Sql` 集成测自动加载 seed\n- 辅任务 `TASK_SM_OPS` / `TASK_SM_ASSIGN` 挂全量 reviewer 成员\n- 权限负例（Lin 误审 L2 的显式失败记录）\n- `import COMPLETED` 在 OPS 辅包（主任务已有）\n\n若还要继续，建议下一步做 **testdata 数据集进仓 + 集成测加载 SQL**。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "本轮已补齐高/中优先级项，生成器校验通过，SQL 已更新。\n\n## 本次新增\n\n| 项 | 内容 |\n|----|------|\n| **验收可抽样** | `TASK_SM_ACCEPT` 增加 `S_ACC_01/02`（APPROVED）+ 2 条 `task_acceptance_samples`；SAMPLING 记录更新抽样计数 |\n| **验…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 133,
+      "role": "user",
+      "display_text": "@scripts/preference_compare_seed_universe.py @scripts/generate_schema_sql.py @scripts/generate_preference_compare_seed.py 执行哪个？",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n@scripts/preference_compare_seed_universe.py @scripts/generate_schema_sql.py @scripts/generate_preference_compare_seed.py 执行哪个？\n</user_query>",
+      "selected": false,
+      "quality_level": "medium",
+      "prompt_kind": "question",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 134,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_schema_sql.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 135,
+      "role": "assistant",
+      "display_text": "三个脚本分工不同，**日常灌演示数据只跑一个**：\n\n## 执行这个\n\n```bash\ncd /Users/wangqiyan/Desktop/java/label-hub/scripts\npython3 generate_preference_compare_seed.py\n```\n\n会生成：\n\n`backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql`\n\n可选参数：\n\n```bash\npython3 generate_preference_compare_seed.py \\\n  --dataset /path/to/preference_compare.json \\\n  --requirements /path/to/标注要求.md \\\n  --output ../backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql\n```\n\n---\n\n## 三个文件分别干什么\n\n| 脚本 | 是否单独执行 | 作用 |\n|------|----------------|------|\n| **`generate_preference_compare_seed.py`** | ✅ **要执行** | 主入口：读数据集 + 标注要求，生成主任务 + 全辅包种子，内部会 `import preference_compare_seed_universe` |\n| **`preference_compare_seed_universe.py`** | ❌ 不要直接跑 | 辅任务库（`TASK_SM_*`、运维态等），被主脚本调用，没有 `main()` |\n| **`generate_schema_sql.py`** | ⚠️ 仅改表结构时用 | 从设计文档生成 **DDL（建表语句）**，不是业务演示数据；和 Flyway migration 是另一条线 |\n\n---\n\n## 灌库顺序（本地联调）\n\n1. 先跑 Flyway / 已有库结构（不靠 `generate_schema_sql.py`，除非你在改表设计）\n2. 再执行上面的 `generate_preference_compare_seed.py` 得到 SQL\n3. 把生成的 `preference_compare_full_flow_seed.sql` 导入 MySQL（或你们项目里约定的 seed 加载方式）\n\n说明见 [`scripts/SEED_README.md`](scripts/SEED_README.md)。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "三个脚本分工不同，**日常灌演示数据只跑一个**：\n\n## 执行这个\n\n```bash\ncd /Users/wangqiyan/Desktop/java/label-hub/scripts\npython3 generate_preference_compare_seed.py\n```\n\n会生成：\n\n`backend/host-app/src/test/re…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 136,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "数据库外键约束失败，user_roles表插入时role_id在roles表中无对应记录。",
+      "text_snippet": "<user_query>\n1452 - Cannot add or update a child row: a foreign key constraint fails (`labelhub`.`user_roles`, CONSTRAINT `fk_user_roles_role` FOREIGN KEY (`role_id`) REFERENCES `…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 137,
+      "role": "assistant",
+      "display_text": "外键失败通常是因为 `user_roles.role_id` 在 `roles` 里还不存在，或 INSERT 顺序不对。正在检查种子 SQL 与生成器中的角色/插入顺序。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "外键失败通常是因为 `user_roles.role_id` 在 `roles` 里还不存在，或 INSERT 顺序不对。正在检查种子 SQL 与生成器中的角色/插入顺序。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 138,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 139,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V2__labelhub_seed_system_services.sql",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 140,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/db/migration/V37__labelhub_reviewer_level_permissions.sql"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 141,
+      "role": "assistant",
+      "display_text": "定位到问题：`user_roles` 在 SQL 中先于 `roles` 插入，且 `910290000001/002` 的 seed 角色排在后面。正在修复插入顺序，并为平台角色添加 `INSERT IGNORE` 以兼容已跑过 migration 的库。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "定位到问题：`user_roles` 在 SQL 中先于 `roles` 插入，且 `910290000001/002` 的 seed 角色排在后面。正在修复插入顺序，并为平台角色添加 `INSERT IGNORE` 以兼容已跑过 migration 的库。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 142,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/generate_preference_compare_seed.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/preference_compare_seed_universe.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts/SEED_README.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/scripts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 143,
+      "role": "assistant",
+      "display_text": "## 原因\n\n`preference_compare_full_flow_seed.sql` 里 **`user_roles` 写在 `roles` 前面**，而 Lin/Qiao 的 `role_id` 是 `910290000001` / `910290000002`，这两行角色还没插入，外键 `fk_user_roles_role` 就会报错。\n\n若库没跑过 Flyway，`2001` / `2003` / `2004` 不存在时，同样会失败。\n\n## 已修复（请重新生成并导入）\n\n1. **SQL 顺序**：`users` → **`roles`** → **`role_permissions`** → **`user_roles`**\n2. **补平台角色**：seed 里带上 `2001/2003/2004`（与 V2 一致）\n3. **`INSERT IGNORE`**：`roles`、`role_permissions` 在迁移已执行时可重复导入\n\n```bash\ncd scripts\npython3 generate_preference_compare_seed.py\n# 再导入 backend/host-app/src/test/resources/preference_compare_full_flow_seed.sql\n```\n\n## 推荐导入顺序\n\n1. 先让应用跑完 **Flyway**（至少到 V2、V37，含 `permissions` 10010–10012）\n2. 再执行生成的 seed SQL\n\n若仍报错在 **`role_permissions` → `permissions`**，说明 V37 未执行，需要先完成迁移再导 seed。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "## 原因\n\n`preference_compare_full_flow_seed.sql` 里 **`user_roles` 写在 `roles` 前面**，而 Lin/Qiao 的 `role_id` 是 `910290000001` / `910290000002`，这两行角色还没插入，外键 `fk_user_roles_role` 就会报错。\n\n若…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    }
+  ]
+}

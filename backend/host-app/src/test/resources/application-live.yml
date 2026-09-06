@@ -1,0 +1,14 @@
+spring:
+  flyway:
+    enabled: false
+
+labelhub:
+  auth:
+    mode: db
+  internal-token: ${LABELHUB_INTERNAL_TOKEN:test-internal-token}
+  security:
+    aes-key: ${LABELHUB_AES_KEY:TEST_ONLY_AES_KEY_OVERRIDE_ME}
+  review:
+    ai-engine: pyagent
+  agent:
+    base-url: ${LABELHUB_AGENT_BASE_URL:http://localhost:8000}

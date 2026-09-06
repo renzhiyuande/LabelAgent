@@ -1,0 +1,24 @@
+spring:
+  flyway:
+    enabled: true
+
+labelhub:
+  auth:
+    mode: db
+  claim-token:
+    stock-reservation-enabled: false
+  idempotent:
+    enabled: false
+  review:
+    ai-engine: mock
+  internal-token: test-internal-token
+  security:
+    aes-key: test-aes-key-32bytes-padding!!
+  agent:
+    base-url: http://localhost:8000
+  storage:
+    minio:
+      enabled: false
+      endpoint: http://localhost:9000
+      access-key: test
+      secret-key: test

@@ -1,0 +1,315 @@
+{
+  "project": "label-hub",
+  "session_id": "b410f9d1-f90d-47e9-bfcc-c4184b044ae6",
+  "transcript_path": "/Users/wangqiyan/.cursor/projects/Users-wangqiyan-Desktop-java-label-hub/agent-transcripts/b410f9d1-f90d-47e9-bfcc-c4184b044ae6/b410f9d1-f90d-47e9-bfcc-c4184b044ae6.jsonl",
+  "modified_at": "2026-06-04 13:42:15",
+  "date": "2026-06-04",
+  "time_bucket": "afternoon",
+  "selected_prompt_count": 1,
+  "total_user_message_count": 1,
+  "stages": [
+    "development"
+  ],
+  "top_stage": "development",
+  "tracks": [
+    "uncategorized"
+  ],
+  "module_tags": [
+    "未分类"
+  ],
+  "key_topics": [
+    "预审"
+  ],
+  "user_prompt_snippets": [
+    "后端ai预审 异步任务队列实现了吗？"
+  ],
+  "assistant_summary_snippets": [],
+  "tool_usage": [
+    "SemanticSearch",
+    "Grep",
+    "Read",
+    "Glob"
+  ],
+  "models_used": [],
+  "model_invocations": [],
+  "file_references": [
+    "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/workflow/SubmissionSubmitLifecycle.java",
+    "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/orchestrator/AiReviewOrchestrator.java",
+    "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/async/AsyncTaskWorker.java",
+    "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/engine/PyAgentAiReviewEngine.java",
+    "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/engine/MockAiReviewEngine.java",
+    "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/handler/AiReviewTaskHandler.java",
+    "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/async/AsyncTaskService.java"
+  ],
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "raw_text": "<user_query>\n后端ai预审 异步任务队列实现了吗\n</user_query>",
+      "clean_text": "后端ai预审 异步任务队列实现了吗",
+      "display_text": "后端ai预审 异步任务队列实现了吗？",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n后端ai预审 异步任务队列实现了吗\n</user_query>",
+      "quality_score": 5,
+      "quality_reasons": [
+        "domain_specific",
+        "contains_constraint",
+        "guidance_language"
+      ],
+      "quality_level": "medium",
+      "selected": true,
+      "stage": "development",
+      "stages": [
+        "development"
+      ],
+      "tracks": [
+        "uncategorized"
+      ],
+      "modules": [
+        "未分类"
+      ],
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "model_invocations": [],
+      "has_redacted_text": false,
+      "deepseek_enhanced": false,
+      "deepseek_error": null,
+      "display_strategy": "rewritten",
+      "ai_review_action": "keep",
+      "ai_review_reason": "问题指向明确的技术实现点，保留原话便于复盘。"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "raw_text": "正在搜索代码库中与 AI 预审及异步任务队列相关的实现。\n\n[REDACTED]",
+      "clean_text": "正在搜索代码库中与 AI 预审及异步任务队列相关的实现。\n\n[REDACTED]",
+      "display_text": "正在搜索代码库中与 AI 预审及异步任务队列相关的实现。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "正在搜索代码库中与 AI 预审及异步任务队列相关的实现。\n\n[REDACTED]",
+      "quality_score": 0,
+      "quality_reasons": [],
+      "quality_level": "low",
+      "selected": false,
+      "stage": null,
+      "stages": [],
+      "tracks": [],
+      "modules": [],
+      "prompt_kind": null,
+      "tool_names": [
+        "SemanticSearch",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "model_invocations": [],
+      "has_redacted_text": true,
+      "deepseek_enhanced": false,
+      "deepseek_error": null,
+      "display_strategy": null,
+      "ai_review_action": null,
+      "ai_review_reason": null
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "raw_text": "[REDACTED]",
+      "clean_text": "[REDACTED]",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "quality_score": 0,
+      "quality_reasons": [],
+      "quality_level": "low",
+      "selected": false,
+      "stage": null,
+      "stages": [],
+      "tracks": [],
+      "modules": [],
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/workflow/SubmissionSubmitLifecycle.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs"
+      ],
+      "model_invocations": [],
+      "has_redacted_text": true,
+      "deepseek_enhanced": false,
+      "deepseek_error": null,
+      "display_strategy": null,
+      "ai_review_action": null,
+      "ai_review_reason": null
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "raw_text": "[REDACTED]",
+      "clean_text": "[REDACTED]",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "quality_score": 0,
+      "quality_reasons": [],
+      "quality_level": "low",
+      "selected": false,
+      "stage": null,
+      "stages": [],
+      "tracks": [],
+      "modules": [],
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/orchestrator/AiReviewOrchestrator.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/async/AsyncTaskWorker.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/implementation-status-review-report.zh.md"
+      ],
+      "model_invocations": [],
+      "has_redacted_text": true,
+      "deepseek_enhanced": false,
+      "deepseek_error": null,
+      "display_strategy": null,
+      "ai_review_action": null,
+      "ai_review_reason": null
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "raw_text": "[REDACTED]",
+      "clean_text": "[REDACTED]",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "quality_score": 0,
+      "quality_reasons": [],
+      "quality_level": "low",
+      "selected": false,
+      "stage": null,
+      "stages": [],
+      "tracks": [],
+      "modules": [],
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/docs/backend-unimplemented-features-2026-05-29.zh.md"
+      ],
+      "model_invocations": [],
+      "has_redacted_text": true,
+      "deepseek_enhanced": false,
+      "deepseek_error": null,
+      "display_strategy": null,
+      "ai_review_action": null,
+      "ai_review_reason": null
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "raw_text": "[REDACTED]",
+      "clean_text": "[REDACTED]",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "quality_score": 0,
+      "quality_reasons": [],
+      "quality_level": "low",
+      "selected": false,
+      "stage": null,
+      "stages": [],
+      "tracks": [],
+      "modules": [],
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/engine/PyAgentAiReviewEngine.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/engine/MockAiReviewEngine.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/orchestrator/AiReviewOrchestrator.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "model_invocations": [],
+      "has_redacted_text": true,
+      "deepseek_enhanced": false,
+      "deepseek_error": null,
+      "display_strategy": null,
+      "ai_review_action": null,
+      "ai_review_reason": null
+    },
+    {
+      "order": 6,
+      "role": "assistant",
+      "raw_text": "[REDACTED]",
+      "clean_text": "[REDACTED]",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "quality_score": 0,
+      "quality_reasons": [],
+      "quality_level": "low",
+      "selected": false,
+      "stage": null,
+      "stages": [],
+      "tracks": [],
+      "modules": [],
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/app/main.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/handler/AiReviewTaskHandler.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/async/AsyncTaskService.java"
+      ],
+      "model_invocations": [],
+      "has_redacted_text": true,
+      "deepseek_enhanced": false,
+      "deepseek_error": null,
+      "display_strategy": null,
+      "ai_review_action": null,
+      "ai_review_reason": null
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "raw_text": "**是的，后端 AI 预审的异步任务队列已经在 Java 侧实现**，并且已接入提交与审核流程。整体是基于 `async_tasks` 表 + Spring 定时轮询 Worker，而不是独立的 MQ。\n\n## 已实现的部分\n\n### 1. 任务入队（提交时触发）\n\n标注提交后，会先把 submission 切到 `AI_REVIEWING`，再写入 `AI_REVIEW` 异步任务：\n\n```91:94:backend/host-infra/src/main/java/com/labelhub/infra/business/submission/workflow/SubmissionSubmitLifecycle.java\n        transitionIfAllowed(refreshed.getId(), SubmissionEvent.ENTER_AI_REVIEW);\n        int submitCount = refreshed.getSubmitCount() == null ? 1 : refreshed.getSubmitCount();\n        asyncTaskService.enqueue(\"AI_REVIEW\", \"SUBMISSION\", refreshed.getId(),\n                \"ai-review:\" + refreshed.getId() + \":\" + submitCount, 5, Map.of());\n```\n\n- 幂等键：`ai-review:{submissionId}:{submitCount}`\n- 支持 `cancelOpenTasks`（如撤回提交时取消未完成任务）\n\n### 2. 通用异步 Worker\n\n`AsyncTaskWorker` 已启用（`@EnableScheduling`），默认每 5 秒轮询一次，包含：\n\n| 能力 | 说明 |\n|------|------|\n| 拉取 | 按 `PENDING` + `next_run_at` + 优先级 |\n| 抢占 | CAS 更新为 `RUNNING`，记录 `worker_id` / `locked_at` |\n| 执行 | 按 `taskType` 分发到 Handler |\n| 重试 | 指数退避，默认最多 3 次 |\n| 死信 | 超限后进入 `DEAD_LETTER` |\n| 僵尸恢复 | 超时未完成的 `RUNNING` 任务回退为 `PENDING` |\n\n### 3. AI 预审 Handler + 编排\n\n- `AiReviewTaskHandler`：处理 `AI_REVIEW` 类型任务\n- `AiReviewOrchestrator`：组装上下文 → 调用 `AiReviewEngine` → 写 `ai_review_records` / 维度分 → 驱动状态机（`AI_PASS` / `AI_REJECT` / `AI_REQUIRE_HUMAN`）\n\n### 4. 审核引擎（当前默认 Mock）\n\n- 默认：`labelhub.review.ai-engine=mock` → `MockAiReviewEngine`（确定性假数据，可联调全流程）\n- 可选：`labelhub.review.ai-engine=pyagent` → `PyAgentAiReviewEngine`（HTTP 调 Python Agent 的 `/v1/ai-review`）\n\n### 5. 运维与重试\n\n- 审核工作台：`retry-ai-review` 可重试死信任务\n- 管理端：`OperationsAdminService` 支持异步任务列表 / 手动重试 / 取消\n\n---\n\n## 尚未完成 / 需注意的点\n\n1. **Python Agent 侧未接 AI 预审**  \n   `agent/app/main.py` 目前只有 health 和 LLM 模型列表接口，**没有** `/v1/ai-review`，也**不会**自己轮询 `async_tasks`。队列 Worker 在 Java 后端。\n\n2. **生产环境真实 LLM 未默认启用**  \n   不配 `pyagent` 时走 Mock，不是真实大模型预审。\n\n3. **部分文档已过时**  \n   如 `docs/implementation-status-review-report.zh.md` 仍写「async_tasks Worker 需完善 / Python Agent 几乎全空」，与当前 Java 实现不一致。\n\n---\n\n## 流程概览\n\n```mermaid\nsequenceDiagram\n    participant Labeler as 标注提交\n    participant Lifecycle as SubmissionSubmitLifecycle\n    participant Queue as async_tasks\n    participant Worker as AsyncTaskWorker\n    participant Handler as AiReviewTaskHandler\n    participant Orchestrator as AiReviewOrchestrator\n    participant Engine as AiReviewEngine\n\n    Labeler->>Lifecycle: submit()\n    Lifecycle->>Queue: enqueue(AI_REVIEW)\n    Worker->>Queue: poll + claim\n    Worker->>Handler: handle(task)\n    Handler->>Orchestrator: execute(submissionId)\n    Orchestrator->>Engine: review(context)\n    Orchestrator->>Orchestrator: 写 ai_review_records + 状态流转\n```\n\n**结论**：后端 AI 预审的**异步任务队列机制已实现并可跑通**（Mock 引擎下可端到端验证）。若你关心的是「真实 LLM + Python Agent 预审」，那部分仍是占位，需要补 Agent 的 `/v1/ai-review` 并配置 `labelhub.review.ai-engine=pyagent`。\n\n[REDACTED]",
+      "clean_text": "**是的，后端 AI 预审的异步任务队列已经在 Java 侧实现**，并且已接入提交与审核流程。整体是基于 `async_tasks` 表 + Spring 定时轮询 Worker，而不是独立的 MQ。\n\n## 已实现的部分\n\n### 1. 任务入队（提交时触发）\n\n标注提交后，会先把 submission 切到 `AI_REVIEWING`，再写入 `AI_REVIEW` 异步任务：\n\n```91:94:backend/host-infra/src/main/java/com/labelhub/infra/business/submission/workflow/SubmissionSubmitLifecycle.java\n        transitionIfAllowed(refreshed.getId(), SubmissionEvent.ENTER_AI_REVIEW);\n        int submitCount = refreshed.getSubmitCount() == null ? 1 : refreshed.getSubmitCount();\n        asyncTaskService.enqueue(\"AI_REVIEW\", \"SUBMISSION\", refreshed.getId(),\n                \"ai-review:\" + refreshed.getId() + \":\" + submitCount, 5, Map.of());\n```\n\n- 幂等键：`ai-review:{submissionId}:{submitCount}`\n- 支持 `cancelOpenTasks`（如撤回提交时取消未完成任务）\n\n### 2. 通用异步 Worker\n\n`AsyncTaskWorker` 已启用（`@EnableScheduling`），默认每 5 秒轮询一次，包含：\n\n| 能力 | 说明 |\n|------|------|\n| 拉取 | 按 `PENDING` + `next_run_at` + 优先级 |\n| 抢占 | CAS 更新为 `RUNNING`，记录 `worker_id` / `locked_at` |\n| 执行 | 按 `taskType` 分发到 Handler |\n| 重试 | 指数退避，默认最多 3 次 |\n| 死信 | 超限后进入 `DEAD_LETTER` |\n| 僵尸恢复 | 超时未完成的 `RUNNING` 任务回退为 `PENDING` |\n\n### 3. AI 预审 Handler + 编排\n\n- `AiReviewTaskHandler`：处理 `AI_REVIEW` 类型任务\n- `AiReviewOrchestrator`：组装上下文 → 调用 `AiReviewEngine` → 写 `ai_review_records` / 维度分 → 驱动状态机（`AI_PASS` / `AI_REJECT` / `AI_REQUIRE_HUMAN`）\n\n### 4. 审核引擎（当前默认 Mock）\n\n- 默认：`labelhub.review.ai-engine=mock` → `MockAiReviewEngine`（确定性假数据，可联调全流程）\n- 可选：`labelhub.review.ai-engine=pyagent` → `PyAgentAiReviewEngine`（HTTP 调 Python Agent 的 `/v1/ai-review`）\n\n### 5. 运维与重试\n\n- 审核工作台：`retry-ai-review` 可重试死信任务\n- 管理端：`OperationsAdminService` 支持异步任务列表 / 手动重试 / 取消\n\n---\n\n## 尚未完成 / 需注意的点\n\n1. **Python Agent 侧未接 AI 预审**  \n   `agent/app/main.py` 目前只有 health 和 LLM 模型列表接口，**没有** `/v1/ai-review`，也**不会**自己轮询 `async_tasks`。队列 Worker 在 Java 后端。\n\n2. **生产环境真实 LLM 未默认启用**  \n   不配 `pyagent` 时走 Mock，不是真实大模型预审。\n\n3. **部分文档已过时**  \n   如 `docs/implementation-status-review-report.zh.md` 仍写「async_tasks Worker 需完善 / Python Agent 几乎全空」，与当前 Java 实现不一致。\n\n---\n\n## 流程概览\n\n```mermaid\nsequenceDiagram\n    participant Labeler as 标注提交\n    participant Lifecycle as SubmissionSubmitLifecycle\n    participant Queue as async_tasks\n    participant Worker as AsyncTaskWorker\n    participant Handler as AiReviewTaskHandler\n    participant Orchestrator as AiReviewOrchestrator\n    participant Engine as AiReviewEngine\n\n    Labeler->>Lifecycle: submit()\n    Lifecycle->>Queue: enqueue(AI_REVIEW)\n    Worker->>Queue: poll + claim\n    Worker->>Handler: handle(task)\n    Handler->>Orchestrator: execute(submissionId)\n    Orchestrator->>Engine: review(context)\n    Orchestrator->>Orchestrator: 写 ai_review_records + 状态流转\n```\n\n**结论**：后端 AI 预审的**异步任务队列机制已实现并可跑通**（Mock 引擎下可端到端验证）。若你关心的是「真实 LLM + Python Agent 预审」，那部分仍是占位，需要补 Agent 的 `/v1/ai-review` 并配置 `labelhub.review.ai-engine=pyagent`。\n\n[REDACTED]",
+      "display_text": "**是的，后端 AI 预审的异步任务队列已经在 Java 侧实现**，并且已接入提交与审核流程。整体是基于 `async_tasks` 表 + Spring 定时轮询 Worker，而不是独立的 MQ。\n\n## 已实现的部分\n\n### 1. 任务入队（提交时触发）\n\n标注提交后，会先把 submission 切到 `AI_REVIEWING`，再写入 `AI_REVIEW` 异步任务：\n\n```91:94:backend/host-infra/src/main/java/com/labelhub/infra/business/submission/workflow/SubmissionSubmitLifecycle.java\n        transitionIfAllowed(refreshed.getId(), SubmissionEvent.ENTER_AI_REVIEW);\n        int submitCount = refreshed.getSubmitCount() == null ? 1 : refreshed.getSubmitCount();\n        asyncTaskService.enqueue(\"AI_REVIEW\", \"SUBMISSION\", refreshed.getId(),\n                \"ai-review:\" + refreshed.getId() + \":\" + submitCount, 5, Map.of());\n```\n\n- 幂等键：`ai-review:{submissionId}:{submitCount}`\n- 支持 `cancelOpenTasks`（如撤回提交时取消未完成任务）\n\n### 2. 通用异步 Worker\n\n`AsyncTaskWorker` 已启用（`@EnableScheduling`），默认每 5 秒轮询一次，包含：\n\n| 能力 | 说明 |\n|------|------|\n| 拉取 | 按 `PENDING` + `next_run_at` + 优先级 |\n| 抢占 | CAS 更新为 `RUNNING`，记录 `worker_id` / `locked_at` |\n| 执行 | 按 `taskType` 分发到 Handler |\n| 重试 | 指数退避，默认最多 3 次 |\n| 死信 | 超限后进入 `DEAD_LETTER` |\n| 僵尸恢复 | 超时未完成的 `RUNNING` 任务回退为 `PENDING` |\n\n### 3. AI 预审 Handler + 编排\n\n- `AiReviewTaskHandler`：处理 `AI_REVIEW` 类型任务\n- `AiReviewOrchestrator`：组装上下文 → 调用 `AiReviewEngine` → 写 `ai_review_records` / 维度分 → 驱动状态机（`AI_PASS` / `AI_REJECT` / `AI_REQUIRE_HUMAN`）\n\n### 4. 审核引擎（当前默认 Mock）\n\n- 默认：`labelhub.review.ai-engine=mock` → `MockAiReviewEngine`（确定性假数据，可联调全流程）\n- 可选：`labelhub.review.ai-engine=pyagent` → `PyAgentAiReviewEngine`（HTTP 调 Python Agent 的 `/v1/ai-review`）\n\n### 5. 运维与重试\n\n- 审核工作台：`retry-ai-review` 可重试死信任务\n- 管理端：`OperationsAdminService` 支持异步任务列表 / 手动重试 / 取消\n\n---\n\n## 尚未完成 / 需注意的点\n\n1. **Python Agent 侧未接 AI 预审**  \n   `agent/app/main.py` 目前只有 health 和 LLM 模型列表接口，**没有** `/v1/ai-review`，也**不会**自己轮询 `async_tasks`。队列 Worker 在 Java 后端。\n\n2. **生产环境真实 LLM 未默认启用**  \n   不配 `pyagent` 时走 Mock，不是真实大模型预审。\n\n3. **部分文档已过时**  \n   如 `docs/implementation-status-review-report.zh.md` 仍写「async_tasks Worker 需完善 / Python Agent 几乎全空」，与当前 Java 实现不一致。\n\n---\n\n## 流程概览\n\n```mermaid\nsequenceDiagram\n    participant Labeler as 标注提交\n    participant Lifecycle as SubmissionSubmitLifecycle\n    participant Queue as async_tasks\n    participant Worker as AsyncTaskWorker\n    participant Handler as AiReviewTaskHandler\n    participant Orchestrator as AiReviewOrchestrator\n    participant Engine as AiReviewEngine\n\n    Labeler->>Lifecycle: submit()\n    Lifecycle->>Queue: enqueue(AI_REVIEW)\n    Worker->>Queue: poll + claim\n    Worker->>Handler: handle(task)\n    Handler->>Orchestrator: execute(submissionId)\n    Orchestrator->>Engine: review(context)\n    Orchestrator->>Orchestrator: 写 ai_review_records + 状态流转\n```\n\n**结论**：后端 AI 预审的**异步任务队列机制已实现并可跑通**（Mock 引擎下可端到端验证）。若你关心的是「真实 LLM + Python Agent 预审」，那部分仍是占位，需要补 Agent 的 `/v1/ai-review` 并配置 `labelhub.review.ai-engine=pyagent`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "**是的，后端 AI 预审的异步任务队列已经在 Java 侧实现**，并且已接入提交与审核流程。整体是基于 `async_tasks` 表 + Spring 定时轮询 Worker，而不是独立的 MQ。\n\n## 已实现的部分\n\n### 1. 任务入队（提交时触发）\n\n标注提交后，会先把 submission 切到 `AI_REVIEWING`，再写入 `A…",
+      "quality_score": 0,
+      "quality_reasons": [],
+      "quality_level": "low",
+      "selected": false,
+      "stage": null,
+      "stages": [],
+      "tracks": [],
+      "modules": [],
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "model_invocations": [],
+      "has_redacted_text": true,
+      "deepseek_enhanced": false,
+      "deepseek_error": null,
+      "display_strategy": null,
+      "ai_review_action": null,
+      "ai_review_reason": null
+    }
+  ],
+  "session_importance": 15
+}

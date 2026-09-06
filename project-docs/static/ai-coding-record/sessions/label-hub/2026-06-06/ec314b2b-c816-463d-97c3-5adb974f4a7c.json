@@ -1,0 +1,1652 @@
+{
+  "project": "label-hub",
+  "session_id": "ec314b2b-c816-463d-97c3-5adb974f4a7c",
+  "date": "2026-06-06",
+  "modified_at": "2026-06-06 12:29:50",
+  "time_bucket": "afternoon",
+  "top_stage": "iteration",
+  "stages": [
+    "iteration",
+    "development"
+  ],
+  "tracks": [
+    "system_infrastructure"
+  ],
+  "module_tags": [
+    "插件架构-扩展点"
+  ],
+  "key_topics": [],
+  "tool_usage": [
+    "Read",
+    "Grep",
+    "Glob",
+    "Shell",
+    "TodoWrite",
+    "Write",
+    "StrReplace"
+  ],
+  "models_used": [],
+  "selected_prompt_count": 2,
+  "turns": [
+    {
+      "order": 0,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "SQL注入漏洞等安全问题审查中，发现存在未过滤的输入直接拼接至SQL语句的风险。",
+      "text_snippet": "<user_query>\nsql 注入漏洞 等 安全问题审查\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 1,
+      "role": "assistant",
+      "display_text": "进行安全审查，先读取项目规范并系统检索 SQL 注入及其他常见漏洞点。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "进行安全审查，先读取项目规范并系统检索 SQL 注入及其他常见漏洞点。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/.claude/skills/using-superpowers/SKILL.md",
+        "/Users/wangqiyan/Desktop/java/label-hub/.cursor/skills/labelhub-development-standards/SKILL.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 2,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/datapermission/DataScopeApplier.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/config/SecurityConfig.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 3,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 4,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/datapermission/DbDataPermissionService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/datapermission/SqlPredicate.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbOwnerAppealService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/query/MybatisQueryApplier.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 5,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/datapermission/DataPermissionRule.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/security/InternalTokenFilter.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/security/UserTokenAuthenticationFilter.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 6,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/support/ReviewerReviewLevelAccess.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 7,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 8,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/system/DbFileAssetService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/controls/ShowItemRichHtmlView.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 9,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell",
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/application.yml",
+        "/Users/wangqiyan/Desktop/java/label-hub/agent"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 10,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbOwnerAppealService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/app/main.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/auth/DbAuthService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 11,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/show-item-utils.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/visibility/service/DbUserVisibilityService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/workflow/LabelerClaimExecutor.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 12,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app",
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/app/llm_url.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/system/DbInternalClientService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 13,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/LabelerWorkbenchController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/lowcode/query/ResourceQuerySpec.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/storage/service/MinioFileStorageService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 14,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/system/StaticInternalClientService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/security/LoginAttemptService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 15,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/controls/ShowItemFieldControl.tsx",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/system/LlmProviderController.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/java/com/labelhub/app/FoundationSecurityTest.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 16,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/support/LabelerSubmissionAccessSupport.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/llm/service/DbLlmProviderService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 17,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/workflow/LabelerClaimExecutor.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/llm/agent/AgentLlmModelDiscoveryClient.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 18,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/workflow/LabelerClaimExecutor.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/authz/AuthorizationAspect.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 19,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell",
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/authz/SecurityAuthorizationFacade.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 20,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/display/support/FormSchemaRuntimeSanitizer.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 21,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/security/SecurityCurrentUserProvider.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/controls/RichTextFieldControl.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 22,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/java/com/labelhub/app/business/OwnerExportController.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 23,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/show-item-utils.ts",
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/controls/RichTextFieldControl.tsx"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 24,
+      "role": "assistant",
+      "display_text": "# LabelHub 安全审查报告\n\n对后端（Spring Boot + MyBatis-Plus）、前端（React）、Python Agent 做了静态代码审查，并结合 `mvn compile` 验证了当前构建状态。以下是按风险等级分类的结论。\n\n---\n\n## 总体结论\n\n| 类别 | 评估 |\n|------|------|\n| **SQL 注入** | 主路径风险 **较低**；查询普遍走 MyBatis-Plus 参数化 + 白名单过滤 |\n| **鉴权/数据权限** | 架构设计合理，但存在 **未完成重构导致的编译失败与权限逻辑缺陷** |\n| **密钥/配置** | **高风险** — 多处生产级默认值硬编码 |\n| **XSS** | 展示路径有 DOMPurify，富文本 **入库未做服务端清洗** |\n| **SSRF** | 管理员 LLM 探测接口存在内网探测可能 |\n\n---\n\n## 一、SQL 注入\n\n### 做得好的地方\n\n1. **无 MyBatis XML 动态 `${}` 拼接**，查询以 MyBatis-Plus `LambdaQueryWrapper` 为主。\n2. **低代码查询白名单**：`MybatisQueryApplier` 只接受 `ResourceQuerySpec` 注册的字段，未知字段直接拒绝：\n\n```14:28:backend/host-infra/src/main/java/com/labelhub/infra/lowcode/query/MybatisQueryApplier.java\n    public <T> void apply(LambdaQueryWrapper<T> wrapper, ParsedListQuery query, ResourceQuerySpec<T> spec) {\n        for (ParsedFilter filter : query.filters()) {\n            ResourceQuerySpec.FilterApplier<T> applier = spec.filter(filter.field());\n            if (applier == null) {\n                throw new BusinessException(ErrorCode.VALIDATION_ERROR, \"unsupported filter field: \" + filter.field());\n            }\n            applier.apply(wrapper, filter.operator(), filter.value());\n        }\n        for (SortRule sortRule : query.sort()) {\n            SFunction<T, ?> sortField = spec.sort(sortRule.field());\n            if (sortField == null) {\n                continue;\n            }\n            wrapper.orderBy(true, !\"desc\".equalsIgnoreCase(sortRule.order()), sortField);\n```\n\n3. **排序字段不可注入**：`orderBy` 使用 `SFunction` 列映射，不接受用户传入的 SQL 片段。\n4. **数据权限谓词来源可控**：`DbDataPermissionService` 仅从枚举 `DataScopeType` 生成固定 SQL 模板，`scopeValueJson` **未参与 SQL 拼接**。\n5. **正确范例** — `DataScopeApplier` 用参数化 `apply`：\n\n```26:36:backend/host-infra/src/main/java/com/labelhub/infra/datapermission/DataScopeApplier.java\n        List<Object> allParams = new ArrayList<>();\n        List<String> sqlParts = new ArrayList<>();\n        for (SqlPredicate predicate : predicates) {\n            sqlParts.add(predicate.sql());\n            allParams.addAll(predicate.params());\n        }\n        String combinedSql = \"(\" + String.join(\" OR \", sqlParts) + \")\";\n\n        // MyBatis-Plus apply 方法支持可变参数传递，自动完成参数化\n        wrapper.apply(combinedSql, allParams.toArray(new Object[0]));\n```\n\n### 需关注的问题\n\n#### 🔴 高：数据权限重构未完成（编译失败 + 权限逻辑缺陷）\n\n`DataPermissionRule` 已改为 `List<SqlPredicate> predicates`，但以下两处仍调用不存在的 `sqlPredicates()`，且将 SQL 字符串直接 `apply` **未绑定参数**：\n\n- `DbOwnerAppealService`（申诉列表/访问校验）\n- `DbReviewerWorkbenchService.applyDataScopeOnQueryWrapper`\n\n```169:179:backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbOwnerAppealService.java\n    private void applyAppealTaskDataScope(LambdaQueryWrapper<SubmissionAppealEntity> wrapper) {\n        DataPermissionRule rule = DataScopeAspect.currentRule();\n        if (rule == null || rule.sqlPredicates() == null || rule.sqlPredicates().isEmpty()) {\n            wrapper.eq(SubmissionAppealEntity::getOwnerId, currentUserContext.requireUserId());\n            return;\n        }\n        String combined = rule.sqlPredicates().stream()\n                .map(predicate -> rewriteTaskTableAlias(predicate, \"t\"))\n                .collect(Collectors.joining(\" OR \"));\n        wrapper.apply(\n                \"task_id IN (SELECT t.id FROM tasks t WHERE t.deleted_flag = 0 AND (\" + combined + \"))\");\n```\n\n**影响**：\n- 当前 **`mvn compile` 失败**，相关功能无法部署\n- 即便改为 `predicate.sql()`，未传 `params` 会导致 `?` 占位符失效\n- `canAccessAppeal()` 的越权校验可能 **静默失效**（恒 false 或 SQL 异常）\n\n**修复方向**：统一改用 `DataScopeApplier.apply(wrapper)`，不要手工拼接谓词。\n\n#### 🟡 中：`.last(\"LIMIT \" + n)` 拼接\n\n多处使用字符串拼接 LIMIT，例如：\n\n```290:290:backend/host-infra/src/main/java/com/labelhub/infra/business/task/workflow/LabelerClaimExecutor.java\n                .last(\"LIMIT \" + limit);\n```\n\n当前 `limit` 多为 `int` 或已封顶（如 `DbUserVisibilityService` 用 `Math.min`），**暂不构成注入**。建议统一用 `Page<>` 分页，避免 `last()` 拼接习惯蔓延。\n\n#### 🟢 低：`LIKE` 通配符\n\n`keyword` 走 `wrapper.like()`，用户输入 `%`、`_` 可能造成过度匹配，属于逻辑问题而非 SQL 注入。\n\n---\n\n## 二、认证与授权\n\n### 做得好的地方\n\n- Bearer Token + 无状态 Session（`SessionCreationPolicy.STATELESS`）\n- 密码 **BCrypt** 存储与校验\n- 登录失败 **Redis 锁定**（5 次 / 15 分钟）\n- 业务权限通过 AOP `@RequirePermission` / `@RequireAnyPermission` 在 Service 层强制\n- 标注员提交/分配有 **IDOR 防护**（`LabelerSubmissionAccessSupport`）\n- 文件下载有 **所有权/公开标记** 校验（`DbFileAssetService.canAccess`）\n- `/internal/**` 由 `InternalTokenFilter` 独立校验（DB 模式用 BCrypt 比对 `system_clients`）\n\n### 需关注的问题\n\n#### 🔴 高：默认密钥与弱配置（`application.yml`）\n\n```15:28:backend/host-app/src/main/resources/application.yml\n    password: ${LABELHUB_DATASOURCE_PASSWORD:6666qqqq....}\n  ...\n  internal-token: ${LABELHUB_INTERNAL_TOKEN:dev-internal-token}\n  security:\n    aes-key: ${LABELHUB_AES_KEY:LabelHubSecretKey1234567890123456789012}\n```\n\nAgent 侧同样默认 `dev-internal-token`。生产若未覆盖环境变量，将导致：\n- 数据库、内部 API、LLM API Key（AES 加密）可被轻易破解\n- Agent 接口可被未授权调用\n\n#### 🟡 中：Swagger/Knife4j 默认开启\n\n```74:87:backend/host-app/src/main/resources/application.yml\nspringdoc:\n  api-docs:\n    enabled: true\n  swagger-ui:\n    enabled: true\n```\n\n生产环境会暴露完整 API 面，建议按 profile 关闭或加访问控制。\n\n#### 🟡 中：CSRF 全局禁用\n\n对纯 Bearer Token API 可接受，但若未来引入 Cookie 会话需重新评估。\n\n#### 🟡 中：无统一 `pageSize` 上限\n\n多数列表接口直接接受 `pageSize` 参数（如 `LabelerWorkbenchController`），仅通知服务等少数做了封顶。大 `pageSize` 可造成 DB/内存压力（DoS 向量）。\n\n#### 🟡 中：`claimTaskBatch` 请求数量无硬上限\n\n```105:119:backend/host-infra/src/main/java/com/labelhub/infra/business/task/workflow/LabelerClaimExecutor.java\n        int desired = (requestedCount == null || requestedCount <= 0) ? defaultClaimSize(task) : requestedCount;\n        ...\n        if (max <= 0) {\n            allowedByQuota = desired;\n        } else {\n            ...\n            allowedByQuota = Math.min(desired, remaining);\n        }\n```\n\n当 `maxClaimPerUser <= 0` 时，用户可一次请求极大 `count`，引发长事务与资源消耗。建议加全局上限（如 ≤ 50）。\n\n#### 🟢 低：权限注解在 Service 而非 Controller\n\nController 层无注解，但 Service 层有（如 `DbLabelerWorkbenchService` 26 处）。架构上可行，需保证 **所有对外入口都经过带注解的 Service**，避免新增 Controller 方法绕过。\n\n---\n\n## 三、XSS（跨站脚本）\n\n### 做得好的地方\n\n- `ShowItem` 展示路径经 **DOMPurify** 清洗（`sanitizeShowItemHtml`）\n- JSON 高亮先 `escapeHtml` 再插入 span（`highlightJsonHtml`）\n- 下发给标注员/审核员的 form schema 会剥离 LLM 敏感字段（`FormSchemaRuntimeSanitizer`）\n\n### 需关注的问题\n\n#### 🟡 中：富文本入库未做服务端清洗\n\n`RichTextFieldControl` 保存时 `normalizeRichTextOutput` 仅判断空内容，**不消毒 HTML**。展示时 `prepareRichTextDisplayHtml` 会 DOMPurify，因此本应用内读取路径相对安全。\n\n风险在于：\n- 其他客户端/API 消费方直接渲染原始 HTML\n- 管理员导出 JSON 后在外部工具打开\n\n建议在 **提交入库前** 增加服务端 HTML 白名单清洗。\n\n#### 🟢 低：`ShowItemRichHtmlView` 使用 `dangerouslySetInnerHTML`\n\n调用方（`ShowItemFieldControl`）已先 `sanitizeShowItemHtml`，当前安全。需保持「所有调用路径必须先 sanitize」的不变式。\n\n---\n\n## 四、SSRF 与 Agent 安全\n\n#### 🟡 中：LLM 模型发现接口可探测任意 URL\n\n管理员可通过 `discover-models` 传入任意 `baseUrl`，Backend 转发给 Agent，Agent 用 `httpx` 请求该地址：\n\n```31:39:backend/host-infra/src/main/java/com/labelhub/infra/business/llm/agent/AgentLlmModelDiscoveryClient.java\n            String body = restClient.post()\n                    .uri(\"/internal/llm/list-models\")\n                    .header(\"X-Internal-Token\", internalToken)\n                    ...\n```\n\n虽需 `system:admin`，仍可探测内网（`169.254.169.254`、localhost Redis/MinIO 等）。建议：\n- URL 协议白名单（仅 `https://`）\n- 禁止私有 IP / link-local 段\n- 或在 Agent 侧统一做 egress 过滤\n\n#### 🟢 低：Agent `/health` 无鉴权\n\n仅返回 `{\"status\":\"UP\"}`，信息泄露有限。`/v1/ai-review` 和 `/internal/**` 均需 `X-Internal-Token`。\n\n---\n\n## 五、文件上传/存储\n\n| 项目 | 状态 |\n|------|------|\n| 对象 Key 使用 UUID | ✅ 防路径遍历 |\n| `originalName` 仅用于展示 | ✅ 不写入路径 |\n| `categoryCode` 来自用户输入 | ⚠️ 进入 object key 前缀，需校验字符集 |\n| MIME 类型信任客户端 | ⚠️ 未魔数检测 |\n| 恶意文件扫描 | ⚠️ `scanStatus=PENDING`，未见实际扫描逻辑 |\n| 大小限制 | ✅ 默认 10MB |\n\n---\n\n## 六、优先修复建议\n\n| 优先级 | 项目 | 建议 |\n|--------|------|------|\n| P0 | 数据权限重构 | `DbOwnerAppealService` / `DbReviewerWorkbenchService` 改用 `DataScopeApplier`；修复编译 |\n| P0 | 生产密钥 | 移除 `application.yml` 弱默认值；强制环境变量注入 |\n| P1 | SSRF 防护 | LLM `baseUrl` 增加协议/IP 白名单 |\n| P1 | Swagger 生产关闭 | `springdoc.*.enabled=false`（prod profile） |\n| P2 | 分页上限 | 全局 `pageSize ≤ 100` |\n| P2 | 抢单 count 上限 | `claimTaskBatch` 加硬顶 |\n| P2 | 富文本服务端清洗 | 提交时 HTML 白名单过滤 |\n| P3 | 文件上传加固 | 扩展名/MIME 魔数校验、异步病毒扫描 |\n\n---\n\n## 七、SQL 注入结论（专项）\n\n**当前未发现可由外部用户输入直接拼接进 SQL 的经典注入点。** 主要风险来自：\n\n1. 数据权限重构未完成（逻辑/编译问题，而非用户可控输入注入）\n2. `.last()` 拼接习惯（当前数值来源可控，但需防回归）\n\n主查询链路（低代码过滤、排序、LIKE、IN）设计符合安全实践。\n\n---\n\n如需我 **直接修复 P0 项**（数据权限统一走 `DataScopeApplier` + 编译通过），或输出一份可导入漏洞跟踪系统的 checklist，告诉我优先处理哪一块即可。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "# LabelHub 安全审查报告\n\n对后端（Spring Boot + MyBatis-Plus）、前端（React）、Python Agent 做了静态代码审查，并结合 `mvn compile` 验证了当前构建状态。以下是按风险等级分类的结论。\n\n---\n\n## 总体结论\n\n| 类别 | 评估 |\n|------|------|\n| **SQL 注入…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 25,
+      "role": "user",
+      "display_text": "生产密钥 增加 dev 配置 生产移出 然后按顺序修复。",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n生产密钥 增加 dev 配置 生产移出 然后按顺序修复\n</user_query>",
+      "selected": true,
+      "quality_level": "medium",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "rewritten"
+    },
+    {
+      "order": 26,
+      "role": "assistant",
+      "display_text": "先拆分 dev/生产配置，再按 P0 顺序修复数据权限相关问题。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "先拆分 dev/生产配置，再按 P0 顺序修复数据权限相关问题。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/application.yml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbOwnerAppealService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 27,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/application-test.yml"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 28,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/datapermission/DataScopeApplier.java",
+        "/Users/wangqiyan/Desktop/java/label-hub"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 29,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/docker-compose.yml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/application-test.yml"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 30,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "TodoWrite",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/application-dev.yml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/application-prod.yml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/application.yml"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 31,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/datapermission/DataScopeApplier.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbOwnerAppealService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/review/service/DbReviewerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 32,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 33,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell",
+        "TodoWrite"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 34,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/target"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 35,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 36,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 37,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 38,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 39,
+      "role": "assistant",
+      "display_text": "测试配置需补充密钥占位符，正在更新 `application-test.yml`。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "测试配置需补充密钥占位符，正在更新 `application-test.yml`。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/test/resources/application-test.yml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/application-test.yml"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 40,
+      "role": "assistant",
+      "display_text": "已完成两项 P0 修复，变更如下。\n\n## 1. 生产密钥拆分（dev / prod 配置）\n\n**`application.yml`（基线，生产安全）**\n- 敏感项改为 **无默认值**，必须通过环境变量注入：\n  - `LABELHUB_DATASOURCE_URL` / `USERNAME` / `PASSWORD`\n  - `LABELHUB_INTERNAL_TOKEN`\n  - `LABELHUB_AES_KEY`\n  - `LABELHUB_AGENT_BASE_URL`\n  - `LABELHUB_MINIO_ENDPOINT` / `ACCESS_KEY` / `SECRET_KEY`\n- 默认 profile：`SPRING_PROFILES_ACTIVE:dev`（本地开箱即用）\n- Swagger/Knife4j 默认 **关闭**（仅 dev profile 开启）\n\n**新增 `application-dev.yml`**\n- 承载所有本地开发默认值（原 `application.yml` 中的弱密钥）\n\n**新增 `application-prod.yml`**\n- 显式关闭 Swagger/Knife4j\n\n**测试配置** `application-test.yml` 补充了占位密钥，避免 test profile 解析失败。\n\n### 生产部署示例\n\n```bash\nexport SPRING_PROFILES_ACTIVE=prod\nexport LABELHUB_DATASOURCE_URL=jdbc:mysql://...\nexport LABELHUB_DATASOURCE_USERNAME=...\nexport LABELHUB_DATASOURCE_PASSWORD=...\nexport LABELHUB_INTERNAL_TOKEN=<强随机值>\nexport LABELHUB_AES_KEY=<32字节密钥>\nexport LABELHUB_AGENT_BASE_URL=http://agent:8000\nexport LABELHUB_MINIO_ENDPOINT=...\nexport LABELHUB_MINIO_ACCESS_KEY=...\nexport LABELHUB_MINIO_SECRET_KEY=...\n```\n\n---\n\n## 2. 数据权限 P0 修复（编译 + 参数化）\n\n扩展了 `DataScopeApplier`：\n- `applyPredicates()` — 参数化 OR 合并谓词\n- `applyTaskIdInSubquery()` — 申诉列表的 `task_id` 子查询过滤\n- `apply(QueryWrapper)` — 审核工作台 QueryWrapper 支持\n- `grantsAll()` — 判断 `1=1` 全量权限\n\n修复了：\n- `DbOwnerAppealService` — 移除错误的 `sqlPredicates()`，改用参数化谓词\n- `DbReviewerWorkbenchService` — 委托 `DataScopeApplier.apply(wrapper)`\n\n**编译已通过**（`mvn -pl host-infra,host-app compile`）。\n\n---\n\n## 待续（审查清单 P1/P2，未做）\n\n按优先级顺序，下一步可做：\n1. SSRF 防护（LLM `baseUrl` 白名单）\n2. 全局 `pageSize` 上限\n3. `claimTaskBatch` count 硬顶\n4. 富文本服务端 HTML 清洗\n\n需要我继续做第 3 项（SSRF）请直接说。\n\n<reproduction_steps>\n1. 本地开发：在 `backend/` 目录执行 `mvn -pl host-app spring-boot:run`（默认 `dev` profile，无需额外环境变量）\n2. 验证 dev Swagger 可访问：打开 http://localhost:8080/swagger-ui.html\n3. 模拟生产：设置 `SPRING_PROFILES_ACTIVE=prod` 及全部 `LABELHUB_*` 环境变量后启动；未设置密钥时应启动失败\n4. 编译验证：在 `backend/` 执行 `mvn -pl host-infra,host-app compile`，应无编译错误\n5. Press Proceed/Mark as fixed when done.\n</reproduction_steps>\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已完成两项 P0 修复，变更如下。\n\n## 1. 生产密钥拆分（dev / prod 配置）\n\n**`application.yml`（基线，生产安全）**\n- 敏感项改为 **无默认值**，必须通过环境变量注入：\n - `LABELHUB_DATASOURCE_URL` / `USERNAME` / `PASSWORD`\n - `LABELHUB_INT…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 41,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "问题复现，需继续处理。",
+      "text_snippet": "<user_query>\nIssue reproduced, please proceed.\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 42,
+      "role": "assistant",
+      "display_text": "继续按审查清单推进 P1/P2：SSRF 防护、分页上限、`claimTaskBatch` 数量硬顶。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "继续按审查清单推进 P1/P2：SSRF 防护、分页上限、`claimTaskBatch` 数量硬顶。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/llm/service/DbLlmProviderService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/workflow/LabelerClaimExecutor.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 43,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/query/ListQueryParser.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/query/ParsedListQuery.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/test/java/com/labelhub/core/lowcode/query/ListQueryParserTest.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 44,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 45,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/LowCodeDtos.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/llm/service/DbLlmProviderService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/app/llm_models.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 46,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/security/LlmOutboundUrlValidator.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/query/ParsedListQuery.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/workflow/LabelerClaimExecutor.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 47,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/security/LlmOutboundUrlValidator.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/llm/service/DbLlmProviderService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/application-dev.yml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-app/src/main/resources/application.yml"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 48,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Write",
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/app/llm_chat.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/app/outbound_url_guard.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/app/llm_models.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 49,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/app/llm_chat.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/test/java/com/labelhub/infra/security/LlmOutboundUrlValidatorTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/test/java/com/labelhub/core/lowcode/query/ParsedListQueryTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/tests/test_outbound_url_guard.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 50,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/app/llm_chat.py"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 51,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/app/llm_chat.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/agent"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 52,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/agent/tests/test_outbound_url_guard.py",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/agent"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 53,
+      "role": "assistant",
+      "display_text": "已按顺序完成 P1/P2 三项加固，摘要如下。\n\n## 已完成修复\n\n### 1. SSRF 防护（LLM `baseUrl`）\n- **Java**：新增 `LlmOutboundUrlValidator`，在提供商创建/更新/远程发现时校验\n  - 仅允许 `http`/`https`\n  - 禁止内网、link-local、metadata 地址\n  - 生产默认禁止 localhost；**dev** 通过 `labelhub.security.llm-outbound-allow-localhost: true` 允许本地 LLM（如 Ollama）\n- **Agent**：新增 `outbound_url_guard.py`，在 `list-models` 与 `chat` 请求前二次校验\n\n### 2. 全局 `pageSize` 上限\n- `ParsedListQuery` 构造时自动规范化：`page ≤ 0 → 1`，`pageSize ≤ 0 → 10`，**最大 100**\n- 所有 Controller 直接 `new ParsedListQuery(page, pageSize, ...)` 的路径均生效\n\n### 3. `claimTaskBatch` 硬顶\n- `LabelerClaimExecutor` 增加 `MAX_SINGLE_CLAIM_BATCH = 50`，单次抢单不超过 50 条\n\n## 验证结果\n- `ParsedListQueryTest` 通过\n- `host-infra` + `host-app` 编译通过\n- Agent `test_outbound_url_guard.py` 3 项通过\n\n## 待办（P2 最后一项）\n- 富文本 **服务端 HTML 清洗**（入库前 DOMPurify 等价逻辑）\n\n<reproduction_steps>\n1. 编译：在 `backend/` 执行 `mvn -pl host-core,host-infra,host-app compile`\n2. 分页上限：调用任意列表 API 并传 `pageSize=999`，响应中 `pageSize` 应为 100\n3. SSRF（生产模式）：`SPRING_PROFILES_ACTIVE=prod` 且配置好密钥后，管理员调用 `POST /api/v1/admin/llm-providers/discover-models`，`baseUrl` 填 `http://169.254.169.254` 应返回校验错误\n4. SSRF（dev 本地 LLM）：默认 `dev` profile 下，`baseUrl` 为 `http://127.0.0.1:11434/v1` 应可通过校验\n5. 抢单上限：`POST /api/v1/labeler/tasks/{id}/claim-batch?count=200`，实际领取数不超过 50\n6. Agent 测试：在 `agent/` 执行 `python -m pytest tests/test_outbound_url_guard.py -q`\n7. Press Proceed/Mark as fixed when done.\n</reproduction_steps>\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已按顺序完成 P1/P2 三项加固，摘要如下。\n\n## 已完成修复\n\n### 1. SSRF 防护（LLM `baseUrl`）\n- **Java**：新增 `LlmOutboundUrlValidator`，在提供商创建/更新/远程发现时校验\n - 仅允许 `http`/`https`\n - 禁止内网、link-local、metadata 地址\n - …",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 54,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "问题复现成功，需继续处理。",
+      "text_snippet": "<user_query>\nIssue reproduced, please proceed.\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 55,
+      "role": "assistant",
+      "display_text": "继续最后一项 P2：富文本入库前的服务端 HTML 清洗。先定位提交与保存路径。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "继续最后一项 P2：富文本入库前的服务端 HTML 清洗。先定位提交与保存路径。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/frontend/src/low-code/components/fields/show-item-utils.ts"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 56,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/support/DbTemplateSubmissionDataValidator.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 57,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/pom.xml"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 58,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/workflow/SubmissionSubmitLifecycle.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/form/FormSchemaValidator.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 59,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/form/FormSchemaAnnotateFieldSupport.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/form/TemplateSubmissionDataValidator.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 60,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/pom.xml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/pom.xml"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 61,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/form/FormSchemaJsonPaths.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 62,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/test/java/com/labelhub/core/lowcode/form/FormSchemaValidatorTest.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/form/FormSchemaValidator.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 63,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/assignment/service/DbAssignmentService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbSubmissionService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 64,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbSubmissionService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 65,
+      "role": "assistant",
+      "display_text": "实现服务端富文本 HTML 清洗，与前端 DOMPurify 白名单对齐。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "实现服务端富文本 HTML 清洗，与前端 DOMPurify 白名单对齐。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/pom.xml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/pom.xml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/form/FormSchemaJsonPaths.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/form/FormSchemaHtmlSanitizer.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 66,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep"
+      ],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 67,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/form/TemplateSubmissionDataValidator.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/support/DbTemplateSubmissionDataValidator.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbSubmissionService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 68,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbSubmissionService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 69,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/submission/service/DbSubmissionService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 70,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 71,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Write"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-infra/src/main/java/com/labelhub/infra/business/task/service/DbLabelerWorkbenchService.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/test/java/com/labelhub/core/lowcode/form/FormSchemaHtmlSanitizerTest.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 72,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 73,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 74,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/src/main/java/com/labelhub/core/lowcode/form/FormSchemaHtmlSanitizer.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 75,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 76,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 77,
+      "role": "assistant",
+      "display_text": "已完成最后一项 P2：**富文本服务端 HTML 清洗**。安全审查清单中的修复项现已全部落地。\n\n## 本次实现\n\n### 核心组件 `FormSchemaHtmlSanitizer`（host-core）\n- 使用 **OWASP Java HTML Sanitizer**，白名单与前端 `sanitizeShowItemHtml` / DOMPurify 对齐\n- 支持标签：`p`, `img`, `video`, `table`, `a` 等\n- 剥离 `<script>`、`<iframe>`、`onerror` 等危险内容\n- 将 `/api/v1/files/{id}/download` 改写为 `data-lh-file-id`（与前端一致）\n\n### 接入点\n| 路径 | 行为 |\n|------|------|\n| **提交** `validateAnnotateSubmitData` | 先清洗再校验 |\n| **保存草稿** `DbSubmissionService.saveDraft` | 入库前清洗 |\n| **标注员草稿** `DbLabelerWorkbenchService.saveSubmissionDraft` | 入库前清洗 |\n\n### 其他变更\n- `TemplateSubmissionDataValidator` 新增 `sanitizeAnnotateSubmitData()`\n- `FormSchemaJsonPaths` 新增 `writeValue()`（支持数组下标路径）\n- 依赖：`owasp-java-html-sanitizer`（host-core）\n\n### 测试\n- `FormSchemaHtmlSanitizerTest` 3 项通过\n- `host-core` / `host-infra` / `host-app` 编译通过\n\n---\n\n## 安全审查修复总览（全部完成）\n\n1. 生产密钥拆分（dev/prod profile）\n2. 数据权限参数化（`DataScopeApplier`）\n3. SSRF 防护（LLM baseUrl 白名单，Java + Agent）\n4. 全局 `pageSize` 上限（100）\n5. `claimTaskBatch` 硬顶（50）\n6. 富文本服务端 HTML 清洗\n\n<reproduction_steps>\n1. 在 `backend/` 执行 `mvn -pl host-core -Dtest=FormSchemaHtmlSanitizerTest test`，应 3 项全部通过\n2. 启动后端（dev profile），登录标注员账号\n3. 打开含 richText 字段的任务，在富文本中输入 `<p>正常</p><script>alert(1)</script>` 并保存草稿\n4. 查询数据库 `submissions.draft_data_json` 或通过 GET 详情接口查看：应保留 `<p>正常</p>`，不应含 `<script>`\n5. 提交同一数据后检查 `submission_versions.submit_data_json`，同样不应含脚本标签\n6. Press Proceed/Mark as fixed when done.\n</reproduction_steps>\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已完成最后一项 P2：**富文本服务端 HTML 清洗**。安全审查清单中的修复项现已全部落地。\n\n## 本次实现\n\n### 核心组件 `FormSchemaHtmlSanitizer`（host-core）\n- 使用 **OWASP Java HTML Sanitizer**，白名单与前端 `sanitizeShowItemHtml` / DOMPuri…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 78,
+      "role": "user",
+      "display_text": "[摘要]",
+      "summary_text": "问题复现成功，待处理。",
+      "text_snippet": "<user_query>\nIssue reproduced, please proceed.\n</user_query>",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": "summary"
+    },
+    {
+      "order": 79,
+      "role": "assistant",
+      "display_text": "用户已确认复现通过，正在运行测试做最终验证并汇总。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "用户已确认复现通过，正在运行测试做最终验证并汇总。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend",
+        "/Users/wangqiyan/Desktop/java/label-hub/agent"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 80,
+      "role": "assistant",
+      "display_text": "全部安全审查项已验证通过，本轮工作可以收尾。\n\n## 验证结果（运行时）\n\n| 检查项 | 结果 |\n|--------|------|\n| `FormSchemaHtmlSanitizerTest` + `ParsedListQueryTest` + `ListQueryParserTest` | 通过 |\n| Agent `test_outbound_url_guard.py` | 3/3 通过 |\n| `host-infra` + `host-app` 编译 | 通过 |\n\n## 完整交付清单\n\n1. **配置安全**：`application.yml` 移除生产默认密钥；`application-dev.yml` / `application-prod.yml` 分环境\n2. **SQL/数据权限**：`DataScopeApplier` 参数化谓词；修复申诉与审核工作台权限逻辑\n3. **SSRF**：`LlmOutboundUrlValidator`（Java）+ `outbound_url_guard.py`（Agent）\n4. **DoS 防护**：`ParsedListQuery` 分页上限 100；抢单单次上限 50\n5. **XSS 防护**：`FormSchemaHtmlSanitizer` 在草稿保存与正式提交入库前清洗富文本 HTML\n\n## 生产部署提醒\n\n生产环境需设置 `SPRING_PROFILES_ACTIVE=prod` 并注入全部 `LABELHUB_*` 密钥；Agent 侧同步设置 `LABELHUB_INTERNAL_TOKEN`，本地 LLM 仅在 dev 开启 `LABELHUB_LLM_OUTBOUND_ALLOW_LOCALHOST=true`。\n\n如需我将这些变更整理成 git commit，直接说一声即可。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "全部安全审查项已验证通过，本轮工作可以收尾。\n\n## 验证结果（运行时）\n\n| 检查项 | 结果 |\n|--------|------|\n| `FormSchemaHtmlSanitizerTest` + `ParsedListQueryTest` + `ListQueryParserTest` | 通过 |\n| Agent `test_outbound_…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    },
+    {
+      "order": 81,
+      "role": "user",
+      "display_text": "### 高优先级（违规红线，需修复）\n\n**问题 1：host-core 模块违规依赖 plugins-api**\n\n- 位置：`/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/pom.xml` 第21-25行\n- 违规点：host-core 属于核心层，plugins-api 定义为插件侧契约，核心层不应该反向依赖插件契约层，这违反了\"核心层不可卸载、插件层依赖核心\"的单向依赖原则。\n- 影响：导致核心层与插件契约耦合，插件接口变更可能直接影响主业务核心逻辑。\n- 修复建议：将核心层需要的公共接口/事件/DTO 从 plugins-api 上移到 host-core 的对应包下，plugins-api 仅保留插件扩展点定义，插件侧依赖 host-core 的公共契约。\n\n***\n\n###",
+      "summary_text": null,
+      "text_snippet": "<user_query>\n### 高优先级（违规红线，需修复）\n\n**问题 1：host-core 模块违规依赖 plugins-api**\n\n- 位置：`/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/pom.xml` 第21-25行\n- 违规点：host-core 属于核心层，plug…",
+      "selected": true,
+      "quality_level": "high",
+      "prompt_kind": "directive",
+      "tool_names": [],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/pom.xml`"
+      ],
+      "display_strategy": "normalized"
+    },
+    {
+      "order": 82,
+      "role": "assistant",
+      "display_text": "分析 `host-core` 对 `plugins-api` 的依赖并修复架构违规。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "分析 `host-core` 对 `plugins-api` 的依赖并修复架构违规。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/pom.xml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/plugins-api"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 83,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Grep",
+        "Read"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/plugins-api/src/main/java/com/labelhub/plugins/api/LabelHubPluginExtension.java",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/plugins-api/pom.xml"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 84,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Glob",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-plugin/pom.xml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-plugin"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 85,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-plugin/src/main/java/com/labelhub/plugin/PluginHostPlaceholder.java"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 86,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Read",
+        "Grep"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/AGENT.md"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 87,
+      "role": "assistant",
+      "display_text": "`host-core` 未引用 `plugins-api` 中的任何类型，属于无效依赖。正在移除该依赖并验证编译。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "`host-core` 未引用 `plugins-api` 中的任何类型，属于无效依赖。正在移除该依赖并验证编译。\n\n[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "StrReplace",
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend/host-core/pom.xml",
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 88,
+      "role": "assistant",
+      "display_text": "[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "[REDACTED]",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [
+        "Shell"
+      ],
+      "file_paths": [
+        "/Users/wangqiyan/Desktop/java/label-hub/backend"
+      ],
+      "display_strategy": null
+    },
+    {
+      "order": 89,
+      "role": "assistant",
+      "display_text": "已修复 **问题 1：host-core 违规依赖 plugins-api**。\n\n## 分析结论\n\n经全量检索，`host-core` 源码中 **没有任何** `com.labelhub.plugins.*` 的 import 或引用。`plugins-api` 在 `host-core/pom.xml` 中是 **无效依赖**（历史骨架遗留），并未被实际使用。\n\n`plugins-api` 当前仅包含占位接口：\n\n```1:5:backend/plugins-api/src/main/java/com/labelhub/plugins/api/LabelHubPluginExtension.java\npackage com.labelhub.plugins.api;\n\npublic interface LabelHubPluginExtension {\n    String pluginId();\n}\n```\n\n## 修复内容\n\n从 `host-core/pom.xml` 移除了对 `plugins-api` 的依赖。\n\n## 修复后依赖方向（符合三层架构）\n\n```\nhost-domain\n    ↑\nhost-core          （不再依赖 plugins-api）\n    ↑\nhost-infra / host-app\n\nplugins-api        （插件稳定契约，独立 jar）\n    ↑\nhost-plugin        （插件宿主）\n```\n\n## 验证\n\n- `mvn -pl host-core,host-infra,host-app,host-plugin,plugins-api compile` — 通过\n- `mvn -pl host-core dependency:tree -Dincludes=com.labelhub:plugins-api` — 无输出（确认已解除依赖）\n\n## 后续建议（未改代码）\n\n待插件体系落地时，建议按审查报告约定：\n\n1. **核心侧公共契约**（事件、DTO、SPI 抽象）放在 `host-core` 对应包\n2. **`plugins-api`** 仅保留插件扩展点，并可 **依赖 `host-core`** 复用公共类型（单向：`plugins-api → host-core`）\n3. **插件实现** 只依赖 `plugins-api`，不直接引用 `host-infra` 内部包\n\n当前无需迁移 `LabelHubPluginExtension`，因为核心层从未使用它。\n\n[REDACTED]",
+      "summary_text": null,
+      "text_snippet": "已修复 **问题 1：host-core 违规依赖 plugins-api**。\n\n## 分析结论\n\n经全量检索，`host-core` 源码中 **没有任何** `com.labelhub.plugins.*` 的 import 或引用。`plugins-api` 在 `host-core/pom.xml` 中是 **无效依赖**（历史骨架遗留），并未被…",
+      "selected": false,
+      "quality_level": "low",
+      "prompt_kind": null,
+      "tool_names": [],
+      "file_paths": [],
+      "display_strategy": null
+    }
+  ]
+}

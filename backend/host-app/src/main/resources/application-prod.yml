@@ -1,0 +1,9 @@
+# 生产配置：敏感项必须通过环境变量注入，无默认值。
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+knife4j:
+  enable: false
