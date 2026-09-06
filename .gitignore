@@ -69,3 +69,8 @@ worktrees/
 lowcode-docs/*
 packages/low-code-engine/dist
 frontend/.vite/
+
+# 参赛交付物 / 文档站 / 测试数据 —— 非核心代码，且 AI 编码记录内藏真实 DB 密码与 AES 密钥，勿提交
+project-docs/
+submission/
+testdata/
