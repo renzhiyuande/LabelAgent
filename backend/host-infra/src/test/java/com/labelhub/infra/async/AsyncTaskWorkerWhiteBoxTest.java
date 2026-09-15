@@ -2,9 +2,11 @@ package com.labelhub.infra.async;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.labelhub.infra.persistence.entity.AsyncTaskEntity;
 import com.labelhub.infra.persistence.mapper.AsyncTaskMapper;
 import java.time.Instant;
@@ -25,7 +27,7 @@ class AsyncTaskWorkerWhiteBoxTest {
     private AsyncTaskMapper asyncTaskMapper;
 
     @Test
-    @DisplayName("WB-ASYNC-002: poll 消费 PENDING 任务并标记 SUCCESS")
+    @DisplayName("WB-ASYNC-002: poll claim PENDING 后仅由 lease owner 条件更新 SUCCESS")
     void wbAsync002_pollClaimsPendingTaskAndMarksSuccess() {
         AsyncTaskEntity pending = pendingTask(501L, "AI_REVIEW");
         AtomicBoolean handled = new AtomicBoolean();
@@ -39,21 +41,27 @@ class AsyncTaskWorkerWhiteBoxTest {
             public void handle(AsyncTaskEntity task) {
                 handled.set(true);
                 assertThat(task.getId()).isEqualTo(501L);
+                assertThat(task.getStatus()).isEqualTo(AsyncTaskStatus.RUNNING);
+                assertThat(task.getWorkerId()).isNotBlank();
             }
         }));
         AsyncTaskWorker worker = new AsyncTaskWorker(asyncTaskMapper, registry, 10, 120_000L);
 
-        when(asyncTaskMapper.update(any(), any())).thenReturn(0, 1);
-        when(asyncTaskMapper.selectList(any())).thenReturn(List.of(pending));
+        // recoverZombieTasks sees none; fetchCandidates returns this pending task.
+        when(asyncTaskMapper.selectList(any())).thenReturn(List.of(), List.of(pending));
+        when(asyncTaskMapper.update(any(AsyncTaskEntity.class), any(Wrapper.class))).thenReturn(1);
         when(asyncTaskMapper.selectById(501L)).thenReturn(pending);
 
         worker.poll();
+        worker.shutdown();
 
         assertThat(handled).isTrue();
-        ArgumentCaptor<AsyncTaskEntity> successCaptor = ArgumentCaptor.forClass(AsyncTaskEntity.class);
-        verify(asyncTaskMapper).updateById(successCaptor.capture());
-        assertThat(successCaptor.getValue().getStatus()).isEqualTo(AsyncTaskStatus.SUCCESS);
-        assertThat(successCaptor.getValue().getFinishedAt()).isNotNull();
+        ArgumentCaptor<AsyncTaskEntity> updates = ArgumentCaptor.forClass(AsyncTaskEntity.class);
+        verify(asyncTaskMapper, times(2)).update(updates.capture(), any(Wrapper.class));
+        List<AsyncTaskEntity> values = updates.getAllValues();
+        assertThat(values.get(0).getStatus()).isEqualTo(AsyncTaskStatus.RUNNING);
+        assertThat(values.get(1).getStatus()).isEqualTo(AsyncTaskStatus.SUCCESS);
+        assertThat(values.get(1).getFinishedAt()).isNotNull();
     }
 
     private static AsyncTaskEntity pendingTask(long id, String taskType) {
