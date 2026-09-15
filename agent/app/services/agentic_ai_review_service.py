@@ -52,6 +52,7 @@ class AgenticAiReviewService(AiReviewService):
             model_id=request.model_id,
             llm_base_url=request.llm_base_url,
             llm_api_key=request.llm_api_key,
+            settings=self.settings,
         )
         stable_seed = ((int(request.submission_id) * 31) ^ int(request.submission_version_id)) & 0x7FFFFFFF
         planner_input = ReviewEngineInput(
