@@ -34,11 +34,20 @@ class Settings(BaseSettings):
     openai_api_key: str = Field(default="")
     openai_model: str = "deepseek-v4-flash"
     openai_timeout_seconds: int = 60
+
+    # Structured-output repair loop used by ReviewEngine after final evidence collection.
     max_react_retries: int = 3
+
     ai_review_worker_threads: int = 8
     ai_review_score_consensus_runs: int = 1
     # consensus 模式下略提高 temperature，配合 per-run seed 产生可聚合的采样差异。
     ai_review_score_consensus_temperature: float = 0.1
+
+    # Bounded tool-using planner.  It is read-only and cannot mutate workflow state.
+    ai_review_agent_enabled: bool = True
+    ai_review_agent_max_steps: int = 3
+    ai_review_agent_tool_result_max_chars: int = 4000
+
     platform_profiles: str = "{}"
 
     @property
