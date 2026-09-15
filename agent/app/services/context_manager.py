@@ -26,7 +26,6 @@ class _ContextCandidate:
     context_type: str
     priority: int
     dedup_key: str
-    char_size: int
 
 
 class ContextManager:
@@ -37,6 +36,12 @@ class ContextManager:
     @staticmethod
     def _canonical_json(item: dict[str, Any]) -> str:
         return json.dumps(item, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+
+    @staticmethod
+    def _serialized_items_size(items: list[dict[str, Any]]) -> int:
+        if not items:
+            return 0
+        return len(json.dumps(items, ensure_ascii=False, indent=2, default=str))
 
     @classmethod
     def _context_type(cls, item: dict[str, Any]) -> str:
@@ -84,7 +89,6 @@ class ContextManager:
             context_type=context_type,
             priority=cls._priority(normalized, context_type, policy),
             dedup_key=cls._dedup_key(normalized, context_type, canonical),
-            char_size=len(canonical),
         )
 
     def select(
@@ -128,12 +132,14 @@ class ContextManager:
                 item_limit_rejected_count += 1
                 continue
 
-            if selected_chars + candidate.char_size > policy.max_chars:
+            projected = [*selected, candidate.item]
+            projected_chars = self._serialized_items_size(projected)
+            if projected_chars > policy.max_chars:
                 char_budget_rejected_count += 1
                 continue
 
-            selected.append(candidate.item)
-            selected_chars += candidate.char_size
+            selected = projected
+            selected_chars = projected_chars
             type_counts[candidate.context_type] += 1
 
         dropped_count = len(raw_items) - len(selected)
