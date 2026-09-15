@@ -1,3 +1,5 @@
+import json
+
 from app.schemas.context_management import ContextSelectionPolicy
 from app.services.context_manager import ContextManager
 
@@ -41,7 +43,7 @@ def test_duplicate_id_keeps_highest_priority_candidate():
 def test_item_type_and_character_budgets_are_enforced_without_truncating_items():
     policy = ContextSelectionPolicy(
         maxItems=3,
-        maxChars=180,
+        maxChars=230,
         perTypeLimits={"review_history": 1},
     )
     result = ContextManager().select(
@@ -62,6 +64,10 @@ def test_item_type_and_character_budgets_are_enforced_without_truncating_items()
     assert result.stats.type_limit_rejected_count == 1
     assert result.stats.char_budget_rejected_count >= 1
     assert all(len(item.get("content", "")) in {20, 30} for item in result.items)
+    assert result.stats.selected_chars == len(
+        json.dumps(result.items, ensure_ascii=False, indent=2, default=str)
+    )
+    assert result.stats.selected_chars <= policy.max_chars
 
 
 def test_canonical_content_is_deduplicated_without_explicit_id():

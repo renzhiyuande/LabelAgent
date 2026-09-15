@@ -16,7 +16,7 @@ def _result() -> AiReviewResult:
         verdict="PASS",
         totalScore=88.0,
         summary="ok",
-        parsedResult={"verdict": "PASS"},
+        parsedResult={"verdict": "PASS", "engineSuccess": True},
         providerRequestId="req-1",
         totalLatencyMs=321,
         attemptCount=3,
@@ -46,6 +46,30 @@ def test_builder_counts_failed_attempts_not_consensus_runs():
     assert sample.ai_score == 88.0
     assert sample.human_score == 90.0
     assert sample.metadata["reviewerId"] == "reviewer-7"
+
+
+def test_diagnostic_parsed_result_does_not_hide_engine_failure():
+    failed = _result().model_copy(
+        update={
+            "verdict": AiReviewVerdict.REQUIRE_HUMAN,
+            "parsed_result": {"engineSuccess": False, "attempts": 3, "error": "schema validation"},
+            "llm_attempts": [
+                AiReviewLlmAttemptResult(attemptNo=1, success=False),
+                AiReviewLlmAttemptResult(attemptNo=2, success=False),
+                AiReviewLlmAttemptResult(attemptNo=3, success=False),
+            ],
+        }
+    )
+
+    sample = EvaluationDatasetBuilder.from_review_result(
+        sample_id="submission-failed",
+        ai_result=failed,
+        human=HumanReviewGroundTruth(verdict=AiReviewVerdict.REJECT),
+    )
+
+    assert sample.structured_output_success is False
+    assert sample.recovered_by_retry is False
+    assert sample.retry_count == 3
 
 
 def test_builder_can_represent_terminal_structured_output_failure():
