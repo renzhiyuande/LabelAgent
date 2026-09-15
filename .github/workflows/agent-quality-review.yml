@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - review/agent-quality-loop
+      - feat/tool-using-review-agent
   pull_request:
     paths:
       - "agent/**"
