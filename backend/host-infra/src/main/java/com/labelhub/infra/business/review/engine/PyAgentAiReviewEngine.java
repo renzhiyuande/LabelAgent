@@ -24,6 +24,9 @@ import org.springframework.web.client.RestClientResponseException;
 
 /**
  * PyAgent AI 审核引擎：通过 REST 契约调用 Python Agent。
+ *
+ * <p>{@code labelhub.review.pyagent-endpoint} 可在稳定的 /v1/ai-review 与
+ * bounded tool-using /v1/agent-review 之间灰度切换，不改变 Java 侧审核契约。
  */
 @Component
 @ConditionalOnProperty(name = "labelhub.review.ai-engine", havingValue = "pyagent")
@@ -32,6 +35,9 @@ public class PyAgentAiReviewEngine implements AiReviewEngine {
     private final ObjectMapper objectMapper;
     private final String internalToken;
     private final Optional<AgentLlmCredentialResolver> credentialResolver;
+
+    @Value("${labelhub.review.pyagent-endpoint:/v1/ai-review}")
+    private String reviewEndpoint = "/v1/ai-review";
 
     public PyAgentAiReviewEngine(
             @Value("${labelhub.agent.base-url:http://localhost:8000}") String agentBaseUrl,
@@ -46,18 +52,20 @@ public class PyAgentAiReviewEngine implements AiReviewEngine {
 
     @Override
     public AiReviewResult review(AiReviewContext context) {
+        String traceId = buildTraceId(context);
         try {
             Map<String, Object> request = buildRequest(context);
             @SuppressWarnings("unchecked")
             Map<String, Object> response = restClient.post()
-                    .uri("/v1/ai-review")
+                    .uri(normalizeEndpoint(reviewEndpoint))
                     .header("X-Internal-Token", internalToken)
+                    .header("X-Trace-Id", traceId)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(AgentRestClientSupport.toJsonBody(objectMapper, request))
                     .retrieve()
                     .body(Map.class);
             if (response == null) {
-                throw new BusinessException(ErrorCode.SYSTEM_ERROR, "PyAgent returned empty response");
+                throw new BusinessException(ErrorCode.SYSTEM_ERROR, "PyAgent returned empty response traceId=" + traceId);
             }
             return objectMapper.convertValue(response, AiReviewResult.class);
         } catch (BusinessException ex) {
@@ -65,10 +73,11 @@ public class PyAgentAiReviewEngine implements AiReviewEngine {
         } catch (RestClientResponseException ex) {
             throw new BusinessException(
                     ErrorCode.SYSTEM_ERROR,
-                    "PyAgent AI review failed: HTTP " + ex.getStatusCode().value() + " " + ex.getResponseBodyAsString());
+                    "PyAgent AI review failed: HTTP " + ex.getStatusCode().value()
+                            + " traceId=" + traceId + " " + AgentRestClientSupport.truncate(ex.getResponseBodyAsString(), 500));
         } catch (Exception ex) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR,
-                    "PyAgent AI review failed: " + ex.getMessage());
+                    "PyAgent AI review failed: traceId=" + traceId + " " + ex.getMessage());
         }
     }
 
@@ -89,6 +98,18 @@ public class PyAgentAiReviewEngine implements AiReviewEngine {
                 .flatMap(resolver -> resolver.resolve(context.platformKey()))
                 .ifPresent(credentials -> applyCredentials(request, credentials));
         return request;
+    }
+
+    static String buildTraceId(AiReviewContext context) {
+        return "ai-review-" + context.submissionId() + "-v-" + context.submissionVersionId();
+    }
+
+    static String normalizeEndpoint(String endpoint) {
+        if (!StringUtils.hasText(endpoint)) {
+            return "/v1/ai-review";
+        }
+        String trimmed = endpoint.trim();
+        return trimmed.startsWith("/") ? trimmed : "/" + trimmed;
     }
 
     private static void applyCredentials(Map<String, Object> request, LlmCredentials credentials) {
