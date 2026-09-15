@@ -8,7 +8,7 @@
 
 ## 当前问题
 
-现有 `ReviewEngine.build_messages()` 在收到 `memory_context` 后，会把整个列表 JSON 序列化后追加为一条 User Message。这样做简单，但随着历史审核数据增长会出现：
+原有 `ReviewEngine.build_messages()` 在收到 `memory_context` 后，会把整个列表 JSON 序列化后追加为一条 User Message。这样做简单，但随着历史审核数据增长会出现：
 
 - 重复案例反复进入 Prompt；
 - 项目规则和普通历史记录没有优先级差异；
@@ -22,10 +22,36 @@
 agent/
 ├── app/
 │   ├── schemas/context_management.py
-│   └── services/context_manager.py
-├── tests/test_context_manager.py
+│   └── services/
+│       ├── context_manager.py
+│       └── managed_ai_review_service.py
+├── tests/
+│   ├── test_context_manager.py
+│   └── test_managed_ai_review_service.py
 └── docs/branches/context-management/README.md
 ```
+
+同时 `app/main.py` 已改为实例化 `ManagedAiReviewService`，因此 `/v1/ai-review` 已实际经过 Context Manager，而不是只新增一个未调用的工具类。
+
+## 在线执行顺序
+
+```text
+AiReviewRequest
+    ↓
+ManagedAiReviewService
+    ↓
+ContextManager.select(memoryContext)
+    ↓
+裁剪后的 AiReviewRequest
+    ↓
+原 AiReviewService
+    ↓
+ReviewEngine / LLM
+    ↓
+AiReviewResult + contextSelection stats
+```
+
+`ManagedAiReviewService` 使用 `model_copy()` 生成新的 Request，因此不会原地修改调用方传入的 `AiReviewRequest`。
 
 ## Context Selection Policy
 
@@ -36,6 +62,13 @@ agent/
 - `typePriorities`: 不同上下文类型的默认优先级；
 - `defaultPriority`: 未识别类型的默认优先级；
 - `perTypeLimits`: 对某类上下文单独限流。
+
+在线链路可通过环境变量覆盖两个总预算：
+
+```text
+LABELHUB_CONTEXT_MAX_ITEMS
+LABELHUB_CONTEXT_MAX_CHARS
+```
 
 默认优先级：
 
@@ -87,7 +120,20 @@ contextId / caseId / ruleId / id
 - `typeLimitRejectedCount`
 - `selectedChars`
 
-这些指标后续可以写入 Trace，用来分析 Context 增长和 Token 成本。
+在线审核完成后，这组统计会写入：
+
+```text
+AiReviewResult.parsedResult.contextSelection
+```
+
+同一组统计还会记录成：
+
+```text
+component = context
+operation = select_review_context
+```
+
+的结构化 Trace Event。Trace 中只包含计数和字符预算信息，不包含 Context 正文。
 
 ## 向后兼容
 
@@ -120,14 +166,10 @@ contextType / context_type / type / kind
 - 显式 Priority 可以覆盖默认优先级；
 - 同 ID / 同 canonical 内容可以稳定去重；
 - 总条数、字符预算和分类上限全部可生效；
-- 选择过程可输出统计信息；
+- `/v1/ai-review` 实际使用裁剪后的 Context；
+- `parsedResult` 和 Trace 都能看到裁剪统计，但看不到 Context 正文；
+- 原始 Request 不被修改；
 - `main` 分支保持不变。
-
-## 后续接入点
-
-正式在线链路的接入位置应在 `AiReviewService` 组装 `ReviewEngineInput` 之前：先对 `request.memory_context` 调用 `ContextManager.select()`，然后只把 `result.items` 传给 `ReviewEngineInput.memory_context`。
-
-接入后还应把 `ContextSelectionStats` 写进 `parsedResult` 或结构化 Trace，便于观察实际裁剪比例。
 
 ## 不是下一步优先项
 
