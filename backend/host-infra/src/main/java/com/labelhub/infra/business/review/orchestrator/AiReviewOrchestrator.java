@@ -79,15 +79,26 @@ public class AiReviewOrchestrator {
         this.objectMapper = objectMapper;
     }
 
+    /** Backwards-compatible entry point for direct callers/tests. */
     public void execute(Long submissionId, Long asyncTaskId) {
+        execute(submissionId, asyncTaskId, 0);
+    }
+
+    /**
+     * Execute one queue attempt.
+     *
+     * <p>Remote/model failures are deliberately propagated to {@code AsyncTaskWorker}.
+     * The worker owns retry/backoff/dead-letter semantics; this orchestrator only writes
+     * a terminal failure record after the task is truly dead-lettered.
+     */
+    public void execute(Long submissionId, Long asyncTaskId, int queueRetryNo) {
         SubmissionEntity entity = submissionMapper.selectById(submissionId);
         if (entity == null || entity.getDeletedFlag() == 1) {
             log.warn("AI review orchestrator: submission {} not found", submissionId);
             return;
         }
         String currentStatus = entity.getCurrentStatus();
-        if (!SubmissionStatus.AI_REVIEWING.name().equals(currentStatus)
-                && !SubmissionStatus.AI_REVIEWING_APPEAL_HUMAN.name().equals(currentStatus)) {
+        if (!isAiReviewingStatus(currentStatus)) {
             log.info("AI review orchestrator: submission {} status is {}, skip", submissionId, currentStatus);
             return;
         }
@@ -101,7 +112,7 @@ public class AiReviewOrchestrator {
         Map<String, Object> itemPayload = readMap(item == null ? null : item.getPayloadJson());
         List<AiReviewContext.AiReviewDimensionSpec> dimensions = loadDimensionSpecs(version.getId());
         List<Map<String, Object>> memoryContext = aiReviewMemoryRetriever.loadRecentCases(version.getId(), entity.getId());
-        int retryNo = countExistingReviews(entity.getCurrentVersionId());
+        int retryNo = Math.max(Math.max(0, queueRetryNo), countExistingReviews(entity.getCurrentVersionId()));
 
         AiReviewContext context = new AiReviewContext(
                 entity.getId(),
@@ -118,13 +129,14 @@ public class AiReviewOrchestrator {
                 dimensions,
                 memoryContext);
 
-        AiReviewResult result;
+        final AiReviewResult result;
         try {
             result = aiReviewEngine.review(context);
         } catch (Exception ex) {
-            log.error("AI review engine failed for submission {}: {}", submissionId, ex.getMessage(), ex);
-            handleEngineFailure(entity, version, asyncTaskId, retryNo, currentStatus, ex);
-            return;
+            log.warn(
+                    "AI review engine attempt failed submission={} asyncTask={} queueRetry={} error={}",
+                    submissionId, asyncTaskId, queueRetryNo, ex.getMessage());
+            throw new IllegalStateException("AI review engine execution failed: " + ex.getMessage(), ex);
         }
 
         saveReviewResult(entity.getId(), entity.getCurrentVersionId(),
@@ -152,17 +164,36 @@ public class AiReviewOrchestrator {
         }
     }
 
-    private static boolean isRejectVerdict(String verdict) {
-        return verdict != null && "REJECT".equalsIgnoreCase(verdict.trim());
-    }
-
-    private void handleEngineFailure(
-            SubmissionEntity entity,
-            TemplateVersionEntity version,
+    /**
+     * Persist the terminal AI failure and move the business workflow to human review.
+     * Called only by the async worker dead-letter hook after retries are exhausted.
+     */
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void handleTerminalFailure(
+            Long submissionId,
             Long asyncTaskId,
-            int retryNo,
-            String currentStatus,
-            Exception ex) {
+            int queueRetryCount,
+            String errorCode,
+            String errorMessage) {
+        SubmissionEntity entity = submissionMapper.selectById(submissionId);
+        if (entity == null || entity.getDeletedFlag() == 1) {
+            log.warn("AI review terminal failure ignored: submission {} not found", submissionId);
+            return;
+        }
+        String currentStatus = entity.getCurrentStatus();
+        if (!isAiReviewingStatus(currentStatus)) {
+            log.info(
+                    "AI review terminal failure ignored: submission {} already left AI review status={}",
+                    submissionId, currentStatus);
+            return;
+        }
+
+        TemplateVersionEntity version = templateVersionMapper.selectById(entity.getCurrentTemplateVersionId());
+        String platformKey = version == null ? null : version.getProviderPlatformKey();
+        String modelId = version == null ? null : version.getModelId();
+        String outputSchemaJson = version == null ? null : version.getReviewOutputSchemaJson();
+        int retryNo = Math.max(0, queueRetryCount - 1);
+
         AiReviewRecordEntity record = aiReviewRecordWriter.writeFailure(
                 entity.getId(),
                 entity.getCurrentVersionId(),
@@ -171,14 +202,32 @@ public class AiReviewOrchestrator {
                 entity.getCurrentRoundNo(),
                 retryNo,
                 asyncTaskId,
-                version.getProviderPlatformKey(),
-                version.getModelId(),
-                version.getReviewOutputSchemaJson(),
-                ex.getMessage());
+                platformKey,
+                modelId,
+                outputSchemaJson,
+                errorMessage);
+        record.setDeadLetterFlag(1);
+        record.setErrorCode(errorCode == null ? "ASYNC_RETRIES_EXHAUSTED" : errorCode);
+        record.setFallbackTargetStatus(SubmissionStatus.HUMAN_REVIEWING.name());
+        record.setUpdatedAt(Instant.now());
+        aiReviewRecordMapper.updateById(record);
+
         entity.setLastAiReviewId(record.getId());
         entity.setUpdatedAt(Instant.now());
         submissionMapper.updateById(entity);
         applyVerdictTransition(entity.getId(), "REQUIRE_HUMAN", currentStatus);
+        log.error(
+                "AI review terminal failure submission={} asyncTask={} retries={} fallback=HUMAN_REVIEWING errorCode={}",
+                submissionId, asyncTaskId, queueRetryCount, errorCode);
+    }
+
+    private static boolean isRejectVerdict(String verdict) {
+        return verdict != null && "REJECT".equalsIgnoreCase(verdict.trim());
+    }
+
+    private static boolean isAiReviewingStatus(String currentStatus) {
+        return SubmissionStatus.AI_REVIEWING.name().equals(currentStatus)
+                || SubmissionStatus.AI_REVIEWING_APPEAL_HUMAN.name().equals(currentStatus);
     }
 
     private void applyVerdictTransition(Long submissionId, String verdict, String currentStatus) {
