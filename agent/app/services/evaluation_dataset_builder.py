@@ -30,6 +30,25 @@ class EvaluationDatasetBuilder:
     def _failed_attempt_count(result: AiReviewResult) -> int:
         return sum(not attempt.success for attempt in (result.llm_attempts or []))
 
+    @staticmethod
+    def _structured_output_success(result: AiReviewResult) -> bool:
+        """Resolve engine success without confusing diagnostic parsedResult with success.
+
+        ``AiReviewService`` always emits a diagnostic ``parsedResult`` contract,
+        including when the review engine exhausts its structured-output retries.
+        In that contract ``engineSuccess`` is the authoritative signal.  For older
+        persisted records that predate this field, the presence of parsedResult is
+        kept as a backwards-compatible fallback.
+        """
+
+        parsed = result.parsed_result
+        if parsed is None:
+            return False
+        engine_success = parsed.get("engineSuccess")
+        if isinstance(engine_success, bool):
+            return engine_success
+        return True
+
     @classmethod
     def from_review_result(
         cls,
@@ -39,7 +58,7 @@ class EvaluationDatasetBuilder:
         human: HumanReviewGroundTruth,
         metadata: dict[str, Any] | None = None,
     ) -> EvaluationSample:
-        """Build one successful execution sample.
+        """Build one persisted execution sample.
 
         ``retry_count`` counts failed LLM attempts instead of deriving it from
         ``attempt_count``.  The latter may include successful repeated inference
@@ -47,7 +66,8 @@ class EvaluationDatasetBuilder:
         """
 
         failed_attempts = cls._failed_attempt_count(ai_result)
-        recovered_by_retry = failed_attempts > 0 and any(
+        structured_output_success = cls._structured_output_success(ai_result)
+        recovered_by_retry = structured_output_success and failed_attempts > 0 and any(
             attempt.success for attempt in (ai_result.llm_attempts or [])
         )
         merged_metadata = {
@@ -67,7 +87,7 @@ class EvaluationDatasetBuilder:
             ai_verdict=ai_result.verdict,
             human_score=human.score,
             ai_score=ai_result.total_score,
-            structured_output_success=ai_result.parsed_result is not None,
+            structured_output_success=structured_output_success,
             retry_count=failed_attempts,
             recovered_by_retry=recovered_by_retry,
             latency_ms=ai_result.total_latency_ms,
