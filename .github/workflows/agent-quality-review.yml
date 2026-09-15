@@ -1,0 +1,42 @@
+name: Agent Quality Review
+
+on:
+  push:
+    branches:
+      - review/agent-quality-loop
+  pull_request:
+    paths:
+      - "agent/**"
+      - ".github/workflows/agent-quality-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  agent-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: agent/requirements.txt
+
+      - name: Install dependencies
+        run: python -m pip install -r agent/requirements.txt
+
+      - name: Compile Python sources
+        run: python -m compileall -q agent/app agent/scripts
+
+      - name: Run Agent test suite
+        env:
+          LABELHUB_INTERNAL_TOKEN: test-internal-token
+          LABELHUB_AGENT_OPENAI_API_KEY: test-openai-api-key
+        working-directory: agent
+        run: pytest -q -m "not live"
