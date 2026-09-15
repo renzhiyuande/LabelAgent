@@ -5,9 +5,11 @@ on:
     branches:
       - review/agent-quality-loop
       - feat/review-agent-orchestration
+      - feat/agent-async-runtime
   pull_request:
     paths:
       - "agent/**"
+      - "backend/**"
       - ".github/workflows/agent-quality-review.yml"
   workflow_dispatch:
 
@@ -41,3 +43,26 @@ jobs:
           LABELHUB_AGENT_OPENAI_API_KEY: test-openai-api-key
         working-directory: agent
         run: pytest -q -m "not live"
+
+  backend-async-runtime-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+
+      - name: Compile and test async runtime
+        working-directory: backend
+        run: >-
+          mvn -B -pl host-app -am
+          -Dtest=AsyncTaskWorkerTest,AiReviewTaskHandlerAsyncTest
+          -Dsurefire.failIfNoSpecifiedTests=false
+          test
