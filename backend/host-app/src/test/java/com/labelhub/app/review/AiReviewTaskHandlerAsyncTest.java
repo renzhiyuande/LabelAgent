@@ -1,5 +1,6 @@
 package com.labelhub.app.review;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -8,7 +9,6 @@ import com.labelhub.infra.business.review.handler.AiReviewTaskHandler;
 import com.labelhub.infra.business.review.orchestrator.AiReviewOrchestrator;
 import com.labelhub.infra.persistence.entity.AsyncTaskEntity;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.assertThrows;
 
 class AiReviewTaskHandlerAsyncTest {
 
@@ -20,7 +20,7 @@ class AiReviewTaskHandlerAsyncTest {
         doThrow(new IllegalStateException("provider unavailable"))
                 .when(orchestrator).execute(101L, 11L, 1);
 
-        assertThrows<IllegalStateException>(() -> handler.handle(task));
+        assertThrows(IllegalStateException.class, () -> handler.handle(task));
         verify(orchestrator).execute(101L, 11L, 1);
     }
 
