@@ -1,4 +1,4 @@
-"""Context-governed facade for the existing AI review service."""
+"""Context-governed facade for the tool-using AI review service."""
 from __future__ import annotations
 
 import os
@@ -7,6 +7,7 @@ from app.observability.runtime_trace import runtime_trace_recorder
 from app.schemas.ai_review import AiReviewRequest, AiReviewResult
 from app.schemas.context_management import ContextSelectionPolicy
 from app.schemas.trace import TraceEventStatus
+from app.services.agentic_ai_review_service import AgenticAiReviewService
 from app.services.ai_review_service import AiReviewService
 from app.services.context_manager import ContextManager
 
@@ -29,7 +30,7 @@ def context_policy_from_env() -> ContextSelectionPolicy:
 
 
 class ManagedAiReviewService:
-    """Apply deterministic context governance before delegating to AiReviewService."""
+    """Govern context first, then run the bounded tool-using review pipeline."""
 
     def __init__(
         self,
@@ -38,7 +39,7 @@ class ManagedAiReviewService:
         context_manager: ContextManager | None = None,
         context_policy: ContextSelectionPolicy | None = None,
     ) -> None:
-        self.delegate = delegate or AiReviewService()
+        self.delegate = delegate or AgenticAiReviewService()
         self.context_manager = context_manager or ContextManager()
         self.context_policy = context_policy or context_policy_from_env()
 
