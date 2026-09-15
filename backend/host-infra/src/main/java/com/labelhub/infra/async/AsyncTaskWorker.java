@@ -14,6 +14,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -34,6 +35,7 @@ public class AsyncTaskWorker {
     private final long heartbeatIntervalMs;
     private final ScheduledExecutorService heartbeatExecutor;
 
+    @Autowired
     public AsyncTaskWorker(
             AsyncTaskMapper asyncTaskMapper,
             AsyncTaskHandlerRegistry registry,
@@ -56,6 +58,15 @@ public class AsyncTaskWorker {
             thread.setDaemon(true);
             return thread;
         });
+    }
+
+    /** Package-private compatibility constructor retained for existing white-box tests. */
+    AsyncTaskWorker(
+            AsyncTaskMapper asyncTaskMapper,
+            AsyncTaskHandlerRegistry registry,
+            int batchSize,
+            long claimTimeoutMs) {
+        this(asyncTaskMapper, registry, batchSize, claimTimeoutMs, 1000, 60000, 30000);
     }
 
     @Scheduled(fixedDelayString = "${labelhub.async.poll-interval-ms:5000}")
@@ -81,16 +92,26 @@ public class AsyncTaskWorker {
     }
 
     private boolean tryClaim(AsyncTaskEntity task) {
+        Instant now = Instant.now();
         LambdaUpdateWrapper<AsyncTaskEntity> wrapper = new LambdaUpdateWrapper<>();
         wrapper.eq(AsyncTaskEntity::getId, task.getId())
                 .eq(AsyncTaskEntity::getStatus, AsyncTaskStatus.PENDING);
         AsyncTaskEntity update = new AsyncTaskEntity();
         update.setStatus(AsyncTaskStatus.RUNNING);
         update.setWorkerId(workerId);
-        update.setLockedAt(Instant.now());
-        update.setStartedAt(Instant.now());
-        update.setUpdatedAt(Instant.now());
-        return asyncTaskMapper.update(update, wrapper) == 1;
+        update.setLockedAt(now);
+        update.setStartedAt(now);
+        update.setUpdatedAt(now);
+        boolean claimed = asyncTaskMapper.update(update, wrapper) == 1;
+        if (claimed) {
+            // Keep the in-memory lease token aligned with the durable row so every terminal
+            // transition can prove this worker still owns the task.
+            task.setStatus(AsyncTaskStatus.RUNNING);
+            task.setWorkerId(workerId);
+            task.setLockedAt(now);
+            task.setStartedAt(now);
+        }
+        return claimed;
     }
 
     private void execute(AsyncTaskEntity task) {
@@ -143,10 +164,7 @@ public class AsyncTaskWorker {
 
     private void heartbeat(Long taskId) {
         try {
-            LambdaUpdateWrapper<AsyncTaskEntity> wrapper = new LambdaUpdateWrapper<>();
-            wrapper.eq(AsyncTaskEntity::getId, taskId)
-                    .eq(AsyncTaskEntity::getStatus, AsyncTaskStatus.RUNNING)
-                    .eq(AsyncTaskEntity::getWorkerId, workerId);
+            LambdaUpdateWrapper<AsyncTaskEntity> wrapper = ownedRunningTask(taskId);
             AsyncTaskEntity update = new AsyncTaskEntity();
             update.setLockedAt(Instant.now());
             update.setUpdatedAt(Instant.now());
@@ -163,13 +181,18 @@ public class AsyncTaskWorker {
 
     private void markSuccess(AsyncTaskEntity task) {
         AsyncTaskEntity update = new AsyncTaskEntity();
-        update.setId(task.getId());
         update.setStatus(AsyncTaskStatus.SUCCESS);
         update.setFinishedAt(Instant.now());
         update.setWorkerId(null);
         update.setLockedAt(null);
         update.setUpdatedAt(Instant.now());
-        asyncTaskMapper.updateById(update);
+        int changed = asyncTaskMapper.update(update, ownedRunningTask(task));
+        if (changed != 1) {
+            log.warn(
+                    "Async task stale success ignored taskId={} taskType={} workerId={}",
+                    task.getId(), task.getTaskType(), task.getWorkerId());
+            return;
+        }
         log.info(
                 "Async task finished taskId={} taskType={} bizType={} bizId={} bizKey={} status=SUCCESS",
                 task.getId(),
@@ -191,7 +214,6 @@ public class AsyncTaskWorker {
 
         long delayMs = backoffDelayMs(retryCount);
         AsyncTaskEntity update = new AsyncTaskEntity();
-        update.setId(task.getId());
         update.setStatus(AsyncTaskStatus.PENDING);
         update.setRetryCount(retryCount);
         update.setNextRunAt(Instant.now().plusMillis(delayMs));
@@ -200,7 +222,13 @@ public class AsyncTaskWorker {
         update.setLastErrorCode(errorCode);
         update.setLastErrorMessage(errorMessage);
         update.setUpdatedAt(Instant.now());
-        asyncTaskMapper.updateById(update);
+        int changed = asyncTaskMapper.update(update, ownedRunningTask(task));
+        if (changed != 1) {
+            log.warn(
+                    "Async task stale failure ignored taskId={} taskType={} workerId={}",
+                    task.getId(), task.getTaskType(), task.getWorkerId());
+            return;
+        }
         log.info(
                 "Async task scheduled for retry taskId={} retry={}/{} delayMs={}",
                 task.getId(), retryCount, maxRetry, delayMs);
@@ -213,14 +241,6 @@ public class AsyncTaskWorker {
             int retryCount,
             AsyncTaskHandler handler) {
         Instant now = Instant.now();
-        LambdaUpdateWrapper<AsyncTaskEntity> ownership = new LambdaUpdateWrapper<>();
-        ownership.eq(AsyncTaskEntity::getId, task.getId())
-                .in(AsyncTaskEntity::getStatus, AsyncTaskStatus.RUNNING, AsyncTaskStatus.PENDING);
-        if (task.getWorkerId() != null) {
-            ownership.and(wrapper -> wrapper.eq(AsyncTaskEntity::getWorkerId, task.getWorkerId())
-                    .or().isNull(AsyncTaskEntity::getWorkerId));
-        }
-
         AsyncTaskEntity update = new AsyncTaskEntity();
         update.setStatus(AsyncTaskStatus.DEAD_LETTER);
         update.setRetryCount(retryCount);
@@ -231,9 +251,11 @@ public class AsyncTaskWorker {
         update.setLastErrorCode(errorCode);
         update.setLastErrorMessage(truncate(errorMessage, 500));
         update.setUpdatedAt(now);
-        int changed = asyncTaskMapper.update(update, ownership);
+        int changed = asyncTaskMapper.update(update, ownedRunningTask(task));
         if (changed != 1) {
-            log.info("Async task dead-letter skipped taskId={} because ownership/status changed", task.getId());
+            log.info(
+                    "Async task dead-letter skipped taskId={} because lease/status changed workerId={}",
+                    task.getId(), task.getWorkerId());
             return;
         }
         log.error(
@@ -262,8 +284,8 @@ public class AsyncTaskWorker {
     }
 
     /**
-     * RUNNING 任务超过 claim timeout 后按一次失败处理，而不是无限重置为 PENDING。
-     * 这样进程持续崩溃的任务最终也会进入 DEAD_LETTER，避免永久毒任务。
+     * RUNNING tasks beyond the lease timeout consume retry budget instead of being
+     * reset to PENDING forever. A crashed poison task therefore eventually reaches DLQ.
      */
     private void recoverZombieTasks() {
         Instant threshold = Instant.now().minusMillis(claimTimeoutMs);
@@ -285,10 +307,7 @@ public class AsyncTaskWorker {
             }
 
             long delayMs = backoffDelayMs(retryCount);
-            LambdaUpdateWrapper<AsyncTaskEntity> claimWrapper = new LambdaUpdateWrapper<>();
-            claimWrapper.eq(AsyncTaskEntity::getId, task.getId())
-                    .eq(AsyncTaskEntity::getStatus, AsyncTaskStatus.RUNNING)
-                    .eq(AsyncTaskEntity::getWorkerId, task.getWorkerId());
+            LambdaUpdateWrapper<AsyncTaskEntity> claimWrapper = ownedRunningTask(task);
             AsyncTaskEntity update = new AsyncTaskEntity();
             update.setStatus(AsyncTaskStatus.PENDING);
             update.setRetryCount(retryCount);
@@ -305,6 +324,26 @@ public class AsyncTaskWorker {
                         task.getId(), retryCount, maxRetry, delayMs);
             }
         }
+    }
+
+    private LambdaUpdateWrapper<AsyncTaskEntity> ownedRunningTask(Long taskId) {
+        LambdaUpdateWrapper<AsyncTaskEntity> wrapper = new LambdaUpdateWrapper<>();
+        wrapper.eq(AsyncTaskEntity::getId, taskId)
+                .eq(AsyncTaskEntity::getStatus, AsyncTaskStatus.RUNNING)
+                .eq(AsyncTaskEntity::getWorkerId, workerId);
+        return wrapper;
+    }
+
+    private static LambdaUpdateWrapper<AsyncTaskEntity> ownedRunningTask(AsyncTaskEntity task) {
+        LambdaUpdateWrapper<AsyncTaskEntity> wrapper = new LambdaUpdateWrapper<>();
+        wrapper.eq(AsyncTaskEntity::getId, task.getId())
+                .eq(AsyncTaskEntity::getStatus, AsyncTaskStatus.RUNNING);
+        if (task.getWorkerId() == null) {
+            wrapper.isNull(AsyncTaskEntity::getWorkerId);
+        } else {
+            wrapper.eq(AsyncTaskEntity::getWorkerId, task.getWorkerId());
+        }
+        return wrapper;
     }
 
     private long backoffDelayMs(int retryCount) {
