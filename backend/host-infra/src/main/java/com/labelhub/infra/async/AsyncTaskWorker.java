@@ -4,9 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.labelhub.infra.persistence.entity.AsyncTaskEntity;
 import com.labelhub.infra.persistence.mapper.AsyncTaskMapper;
+import jakarta.annotation.PreDestroy;
 import java.net.InetAddress;
 import java.time.Instant;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +31,8 @@ public class AsyncTaskWorker {
     private final long claimTimeoutMs;
     private final long retryBaseDelayMs;
     private final long retryMaxDelayMs;
+    private final long heartbeatIntervalMs;
+    private final ScheduledExecutorService heartbeatExecutor;
 
     public AsyncTaskWorker(
             AsyncTaskMapper asyncTaskMapper,
@@ -33,14 +40,22 @@ public class AsyncTaskWorker {
             @Value("${labelhub.async.batch-size:10}") int batchSize,
             @Value("${labelhub.async.claim-timeout-ms:120000}") long claimTimeoutMs,
             @Value("${labelhub.async.retry-base-delay-ms:1000}") long retryBaseDelayMs,
-            @Value("${labelhub.async.retry-max-delay-ms:60000}") long retryMaxDelayMs) {
+            @Value("${labelhub.async.retry-max-delay-ms:60000}") long retryMaxDelayMs,
+            @Value("${labelhub.async.heartbeat-interval-ms:30000}") long heartbeatIntervalMs) {
         this.asyncTaskMapper = asyncTaskMapper;
         this.registry = registry;
         this.batchSize = batchSize;
         this.claimTimeoutMs = claimTimeoutMs;
         this.retryBaseDelayMs = Math.max(100, retryBaseDelayMs);
         this.retryMaxDelayMs = Math.max(this.retryBaseDelayMs, retryMaxDelayMs);
+        long safeHeartbeatUpperBound = Math.max(1000, claimTimeoutMs / 3);
+        this.heartbeatIntervalMs = Math.max(500, Math.min(heartbeatIntervalMs, safeHeartbeatUpperBound));
         this.workerId = resolveWorkerId();
+        this.heartbeatExecutor = Executors.newSingleThreadScheduledExecutor(runnable -> {
+            Thread thread = new Thread(runnable, "async-task-heartbeat-" + workerId);
+            thread.setDaemon(true);
+            return thread;
+        });
     }
 
     @Scheduled(fixedDelayString = "${labelhub.async.poll-interval-ms:5000}")
@@ -91,6 +106,8 @@ public class AsyncTaskWorker {
                     currentRetryCount(task), null);
             return;
         }
+
+        ScheduledFuture<?> heartbeat = startHeartbeat(task.getId());
         try {
             log.info(
                     "Async task executing taskId={} taskType={} bizType={} bizId={} bizKey={} retry={}",
@@ -111,6 +128,36 @@ public class AsyncTaskWorker {
                     ex.getMessage(),
                     ex);
             handleFailure(task, handler, ex);
+        } finally {
+            heartbeat.cancel(false);
+        }
+    }
+
+    private ScheduledFuture<?> startHeartbeat(Long taskId) {
+        return heartbeatExecutor.scheduleAtFixedRate(
+                () -> heartbeat(taskId),
+                heartbeatIntervalMs,
+                heartbeatIntervalMs,
+                TimeUnit.MILLISECONDS);
+    }
+
+    private void heartbeat(Long taskId) {
+        try {
+            LambdaUpdateWrapper<AsyncTaskEntity> wrapper = new LambdaUpdateWrapper<>();
+            wrapper.eq(AsyncTaskEntity::getId, taskId)
+                    .eq(AsyncTaskEntity::getStatus, AsyncTaskStatus.RUNNING)
+                    .eq(AsyncTaskEntity::getWorkerId, workerId);
+            AsyncTaskEntity update = new AsyncTaskEntity();
+            update.setLockedAt(Instant.now());
+            update.setUpdatedAt(Instant.now());
+            int touched = asyncTaskMapper.update(update, wrapper);
+            if (touched == 0) {
+                log.debug("Async task heartbeat skipped taskId={} workerId={} (lease no longer owned)", taskId, workerId);
+            }
+        } catch (Exception ex) {
+            // A heartbeat failure should be observable, but the business handler keeps running.
+            // If the process/DB stays unhealthy long enough, normal lease recovery will take over.
+            log.warn("Async task heartbeat failed taskId={} workerId={} error={}", taskId, workerId, ex.getMessage());
         }
     }
 
@@ -166,8 +213,15 @@ public class AsyncTaskWorker {
             int retryCount,
             AsyncTaskHandler handler) {
         Instant now = Instant.now();
+        LambdaUpdateWrapper<AsyncTaskEntity> ownership = new LambdaUpdateWrapper<>();
+        ownership.eq(AsyncTaskEntity::getId, task.getId())
+                .in(AsyncTaskEntity::getStatus, AsyncTaskStatus.RUNNING, AsyncTaskStatus.PENDING);
+        if (task.getWorkerId() != null) {
+            ownership.and(wrapper -> wrapper.eq(AsyncTaskEntity::getWorkerId, task.getWorkerId())
+                    .or().isNull(AsyncTaskEntity::getWorkerId));
+        }
+
         AsyncTaskEntity update = new AsyncTaskEntity();
-        update.setId(task.getId());
         update.setStatus(AsyncTaskStatus.DEAD_LETTER);
         update.setRetryCount(retryCount);
         update.setDeadLetteredAt(now);
@@ -177,7 +231,11 @@ public class AsyncTaskWorker {
         update.setLastErrorCode(errorCode);
         update.setLastErrorMessage(truncate(errorMessage, 500));
         update.setUpdatedAt(now);
-        asyncTaskMapper.updateById(update);
+        int changed = asyncTaskMapper.update(update, ownership);
+        if (changed != 1) {
+            log.info("Async task dead-letter skipped taskId={} because ownership/status changed", task.getId());
+            return;
+        }
         log.error(
                 "Async task dead-lettered taskId={} taskType={} retry={} errorCode={}",
                 task.getId(), task.getTaskType(), retryCount, errorCode);
@@ -272,6 +330,11 @@ public class AsyncTaskWorker {
     private static String truncate(String s, int maxLen) {
         if (s == null) return null;
         return s.length() <= maxLen ? s : s.substring(0, maxLen);
+    }
+
+    @PreDestroy
+    public void shutdown() {
+        heartbeatExecutor.shutdownNow();
     }
 
     private static String resolveWorkerId() {
