@@ -26,11 +26,25 @@ public class AiReviewTaskHandler implements AsyncTaskHandler {
 
     @Override
     public void handle(AsyncTaskEntity task) {
+        int queueRetryNo = task.getRetryCount() == null ? 0 : task.getRetryCount();
         try {
-            aiReviewOrchestrator.execute(task.getBizId(), task.getId());
+            aiReviewOrchestrator.execute(task.getBizId(), task.getId(), queueRetryNo);
         } catch (Exception ex) {
-            log.error("AI review task {} failed for submission {}: {}", task.getId(), task.getBizId(), ex.getMessage(), ex);
+            log.warn(
+                    "AI review queue attempt failed task={} submission={} retry={} error={}",
+                    task.getId(), task.getBizId(), queueRetryNo, ex.getMessage());
             throw ex;
         }
+    }
+
+    @Override
+    public void onDeadLetter(AsyncTaskEntity task, String errorCode, String errorMessage) {
+        int retryCount = task.getRetryCount() == null ? 0 : task.getRetryCount();
+        aiReviewOrchestrator.handleTerminalFailure(
+                task.getBizId(),
+                task.getId(),
+                retryCount,
+                errorCode,
+                errorMessage);
     }
 }
