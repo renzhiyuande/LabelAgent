@@ -18,13 +18,13 @@ from app.llm_models import ListModelsRequest, fetch_remote_models
 from app.middleware.request_logging import RequestLoggingMiddleware
 from app.schemas.ai_review import AiReviewRequest, AiReviewResult
 from app.schemas.prompt_optimize import PromptOptimizeRequest, PromptOptimizeResult
-from app.services.ai_review_service import AiReviewService
+from app.services.managed_ai_review_service import ManagedAiReviewService
 from app.services.prompt_optimizer_service import PromptOptimizerService
 
 logger = logging.getLogger(__name__)
 settings = get_settings()
 configure_logging(settings.log_level)
-ai_review_service = AiReviewService()
+ai_review_service = ManagedAiReviewService()
 prompt_optimizer_service = PromptOptimizerService()
 _review_executor = ThreadPoolExecutor(
     max_workers=settings.ai_review_worker_threads,
