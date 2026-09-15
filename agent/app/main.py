@@ -20,11 +20,13 @@ from app.schemas.ai_review import AiReviewRequest, AiReviewResult
 from app.schemas.prompt_optimize import PromptOptimizeRequest, PromptOptimizeResult
 from app.services.managed_ai_review_service import ManagedAiReviewService
 from app.services.prompt_optimizer_service import PromptOptimizerService
+from app.services.review_agent_service import ReviewAgentService
 
 logger = logging.getLogger(__name__)
 settings = get_settings()
 configure_logging(settings.log_level)
 ai_review_service = ManagedAiReviewService()
+review_agent_service = ReviewAgentService()
 prompt_optimizer_service = PromptOptimizerService()
 _review_executor = ThreadPoolExecutor(
     max_workers=settings.ai_review_worker_threads,
@@ -35,6 +37,11 @@ _review_executor = ThreadPoolExecutor(
 def _execute_ai_review(body: AiReviewRequest, tid: str) -> AiReviewResult:
     set_trace_id(tid)
     return ai_review_service.execute(body)
+
+
+def _execute_agent_review(body: AiReviewRequest, tid: str) -> AiReviewResult:
+    set_trace_id(tid)
+    return review_agent_service.execute(body)
 
 
 def _execute_prompt_optimize(body: PromptOptimizeRequest, tid: str) -> PromptOptimizeResult:
@@ -252,10 +259,7 @@ async def internal_chat_completion(request: Request, body: ChatCompletionRequest
     dependencies=[Depends(require_internal_token)],
 )
 async def execute_ai_review(request: Request, body: AiReviewRequest) -> AiReviewResult:
-    """
-    Backend → Agent 预审契约接口（必须携带 X-Internal-Token）。
-    阻塞 LLM 调用在线程池执行，避免阻塞 asyncio 事件循环。
-    """
+    """Stable deterministic review path used by the existing backend integration."""
     tid = trace_id(request)
     logger.info(
         "ai-review start submission_id=%s version_id=%s task_id=%s platform=%s model=%s dimensions=%s",
@@ -298,6 +302,43 @@ async def execute_ai_review(request: Request, body: AiReviewRequest) -> AiReview
 
 
 @app.post(
+    "/v1/agent-review",
+    response_model=AiReviewResult,
+    response_model_by_alias=True,
+    summary="Execute bounded tool-using Agent review",
+    dependencies=[Depends(require_internal_token)],
+)
+async def execute_agent_review(request: Request, body: AiReviewRequest) -> AiReviewResult:
+    """Run the bounded Planner → Tool → Observation → Final Review loop."""
+    tid = trace_id(request)
+    logger.info(
+        "agent-review start submission_id=%s version_id=%s task_id=%s platform=%s model=%s",
+        body.submission_id,
+        body.submission_version_id,
+        body.task_id,
+        body.platform_key,
+        body.model_id,
+    )
+    loop = asyncio.get_running_loop()
+    try:
+        result = await loop.run_in_executor(_review_executor, _execute_agent_review, body, tid)
+        logger.info(
+            "agent-review success submission_id=%s verdict=%s total_score=%s trace=%s",
+            body.submission_id,
+            result.verdict,
+            result.total_score,
+            tid,
+        )
+        return result
+    except ValueError as exc:
+        logger.warning("agent-review bad request submission_id=%s error=%s", body.submission_id, exc)
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except Exception as exc:
+        logger.exception("agent-review execution failed submission_id=%s", body.submission_id)
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@app.post(
     "/v1/prompt-optimize",
     response_model=PromptOptimizeResult,
     response_model_by_alias=True,
@@ -305,10 +346,7 @@ async def execute_ai_review(request: Request, body: AiReviewRequest) -> AiReview
     dependencies=[Depends(require_internal_token)],
 )
 async def execute_prompt_optimize(request: Request, body: PromptOptimizeRequest) -> PromptOptimizeResult:
-    """
-    Backend → Agent 提示词优化契约接口（必须携带 X-Internal-Token）。
-    阻塞 LLM 调用在线程池执行，避免阻塞 asyncio 事件循环。
-    """
+    """Backend → Agent prompt optimization endpoint."""
     tid = trace_id(request)
     logger.info(
         "prompt-optimize start cases=%s dimensions=%s goals=%s",
