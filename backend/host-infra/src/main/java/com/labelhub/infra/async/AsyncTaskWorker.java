@@ -24,16 +24,22 @@ public class AsyncTaskWorker {
     private final String workerId;
     private final int batchSize;
     private final long claimTimeoutMs;
+    private final long retryBaseDelayMs;
+    private final long retryMaxDelayMs;
 
     public AsyncTaskWorker(
             AsyncTaskMapper asyncTaskMapper,
             AsyncTaskHandlerRegistry registry,
             @Value("${labelhub.async.batch-size:10}") int batchSize,
-            @Value("${labelhub.async.claim-timeout-ms:120000}") long claimTimeoutMs) {
+            @Value("${labelhub.async.claim-timeout-ms:120000}") long claimTimeoutMs,
+            @Value("${labelhub.async.retry-base-delay-ms:1000}") long retryBaseDelayMs,
+            @Value("${labelhub.async.retry-max-delay-ms:60000}") long retryMaxDelayMs) {
         this.asyncTaskMapper = asyncTaskMapper;
         this.registry = registry;
         this.batchSize = batchSize;
         this.claimTimeoutMs = claimTimeoutMs;
+        this.retryBaseDelayMs = Math.max(100, retryBaseDelayMs);
+        this.retryMaxDelayMs = Math.max(this.retryBaseDelayMs, retryMaxDelayMs);
         this.workerId = resolveWorkerId();
     }
 
@@ -81,17 +87,19 @@ public class AsyncTaskWorker {
         AsyncTaskHandler handler = registry.getHandler(task.getTaskType());
         if (handler == null) {
             log.error("No handler for async task type: {}", task.getTaskType());
-            markDeadLetter(task, "NO_HANDLER", "No handler registered for type: " + task.getTaskType());
+            markDeadLetter(task, "NO_HANDLER", "No handler registered for type: " + task.getTaskType(),
+                    currentRetryCount(task), null);
             return;
         }
         try {
             log.info(
-                    "Async task executing taskId={} taskType={} bizType={} bizId={} bizKey={}",
+                    "Async task executing taskId={} taskType={} bizType={} bizId={} bizKey={} retry={}",
                     task.getId(),
                     task.getTaskType(),
                     task.getBizType(),
                     task.getBizId(),
-                    task.getBizKey());
+                    task.getBizKey(),
+                    currentRetryCount(task));
             handler.handle(task);
             markSuccess(task);
         } catch (Exception ex) {
@@ -102,7 +110,7 @@ public class AsyncTaskWorker {
                     task.getBizKey(),
                     ex.getMessage(),
                     ex);
-            handleFailure(task, ex);
+            handleFailure(task, handler, ex);
         }
     }
 
@@ -111,6 +119,8 @@ public class AsyncTaskWorker {
         update.setId(task.getId());
         update.setStatus(AsyncTaskStatus.SUCCESS);
         update.setFinishedAt(Instant.now());
+        update.setWorkerId(null);
+        update.setLockedAt(null);
         update.setUpdatedAt(Instant.now());
         asyncTaskMapper.updateById(update);
         log.info(
@@ -122,53 +132,141 @@ public class AsyncTaskWorker {
                 task.getBizKey());
     }
 
-    private void handleFailure(AsyncTaskEntity task, Exception ex) {
-        int retryCount = (task.getRetryCount() == null ? 0 : task.getRetryCount()) + 1;
-        int maxRetry = task.getMaxRetryCount() == null ? 3 : task.getMaxRetryCount();
+    private void handleFailure(AsyncTaskEntity task, AsyncTaskHandler handler, Exception ex) {
+        int retryCount = currentRetryCount(task) + 1;
+        int maxRetry = maxRetryCount(task);
+        String errorCode = ex.getClass().getSimpleName();
+        String errorMessage = truncate(ex.getMessage(), 500);
         if (retryCount >= maxRetry) {
-            markDeadLetter(task, ex.getClass().getSimpleName(), truncate(ex.getMessage(), 500));
-        } else {
-            long delayMs = (long) Math.pow(2, retryCount) * 1000L;
+            markDeadLetter(task, errorCode, errorMessage, retryCount, handler);
+            return;
+        }
+
+        long delayMs = backoffDelayMs(retryCount);
+        AsyncTaskEntity update = new AsyncTaskEntity();
+        update.setId(task.getId());
+        update.setStatus(AsyncTaskStatus.PENDING);
+        update.setRetryCount(retryCount);
+        update.setNextRunAt(Instant.now().plusMillis(delayMs));
+        update.setWorkerId(null);
+        update.setLockedAt(null);
+        update.setLastErrorCode(errorCode);
+        update.setLastErrorMessage(errorMessage);
+        update.setUpdatedAt(Instant.now());
+        asyncTaskMapper.updateById(update);
+        log.info(
+                "Async task scheduled for retry taskId={} retry={}/{} delayMs={}",
+                task.getId(), retryCount, maxRetry, delayMs);
+    }
+
+    private void markDeadLetter(
+            AsyncTaskEntity task,
+            String errorCode,
+            String errorMessage,
+            int retryCount,
+            AsyncTaskHandler handler) {
+        Instant now = Instant.now();
+        AsyncTaskEntity update = new AsyncTaskEntity();
+        update.setId(task.getId());
+        update.setStatus(AsyncTaskStatus.DEAD_LETTER);
+        update.setRetryCount(retryCount);
+        update.setDeadLetteredAt(now);
+        update.setFinishedAt(now);
+        update.setWorkerId(null);
+        update.setLockedAt(null);
+        update.setLastErrorCode(errorCode);
+        update.setLastErrorMessage(truncate(errorMessage, 500));
+        update.setUpdatedAt(now);
+        asyncTaskMapper.updateById(update);
+        log.error(
+                "Async task dead-lettered taskId={} taskType={} retry={} errorCode={}",
+                task.getId(), task.getTaskType(), retryCount, errorCode);
+        notifyDeadLetter(task, handler, errorCode, errorMessage);
+    }
+
+    private void notifyDeadLetter(
+            AsyncTaskEntity task,
+            AsyncTaskHandler handler,
+            String errorCode,
+            String errorMessage) {
+        if (handler == null) {
+            return;
+        }
+        AsyncTaskEntity persisted = asyncTaskMapper.selectById(task.getId());
+        try {
+            handler.onDeadLetter(persisted != null ? persisted : task, errorCode, truncate(errorMessage, 500));
+        } catch (Exception callbackError) {
+            // Dead-letter is already durable. Business compensation failure is observable but must not resurrect the task.
+            log.error(
+                    "Async task dead-letter callback failed taskId={} taskType={} error={}",
+                    task.getId(), task.getTaskType(), callbackError.getMessage(), callbackError);
+        }
+    }
+
+    /**
+     * RUNNING 任务超过 claim timeout 后按一次失败处理，而不是无限重置为 PENDING。
+     * 这样进程持续崩溃的任务最终也会进入 DEAD_LETTER，避免永久毒任务。
+     */
+    private void recoverZombieTasks() {
+        Instant threshold = Instant.now().minusMillis(claimTimeoutMs);
+        LambdaQueryWrapper<AsyncTaskEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(AsyncTaskEntity::getDeletedFlag, 0)
+                .eq(AsyncTaskEntity::getStatus, AsyncTaskStatus.RUNNING)
+                .lt(AsyncTaskEntity::getLockedAt, threshold)
+                .orderByAsc(AsyncTaskEntity::getId)
+                .last("LIMIT " + batchSize);
+        List<AsyncTaskEntity> staleTasks = asyncTaskMapper.selectList(wrapper);
+        for (AsyncTaskEntity task : staleTasks) {
+            int retryCount = currentRetryCount(task) + 1;
+            int maxRetry = maxRetryCount(task);
+            AsyncTaskHandler handler = registry.getHandler(task.getTaskType());
+            if (retryCount >= maxRetry) {
+                markDeadLetter(task, "CLAIM_TIMEOUT",
+                        "Worker lease expired before task completion", retryCount, handler);
+                continue;
+            }
+
+            long delayMs = backoffDelayMs(retryCount);
+            LambdaUpdateWrapper<AsyncTaskEntity> claimWrapper = new LambdaUpdateWrapper<>();
+            claimWrapper.eq(AsyncTaskEntity::getId, task.getId())
+                    .eq(AsyncTaskEntity::getStatus, AsyncTaskStatus.RUNNING)
+                    .eq(AsyncTaskEntity::getWorkerId, task.getWorkerId());
             AsyncTaskEntity update = new AsyncTaskEntity();
-            update.setId(task.getId());
             update.setStatus(AsyncTaskStatus.PENDING);
             update.setRetryCount(retryCount);
             update.setNextRunAt(Instant.now().plusMillis(delayMs));
             update.setWorkerId(null);
             update.setLockedAt(null);
-            update.setLastErrorCode(ex.getClass().getSimpleName());
-            update.setLastErrorMessage(truncate(ex.getMessage(), 500));
+            update.setLastErrorCode("CLAIM_TIMEOUT");
+            update.setLastErrorMessage("Worker lease expired before task completion");
             update.setUpdatedAt(Instant.now());
-            asyncTaskMapper.updateById(update);
+            int recovered = asyncTaskMapper.update(update, claimWrapper);
+            if (recovered == 1) {
+                log.warn(
+                        "Recovered zombie async task taskId={} retry={}/{} delayMs={}",
+                        task.getId(), retryCount, maxRetry, delayMs);
+            }
         }
     }
 
-    private void markDeadLetter(AsyncTaskEntity task, String errorCode, String errorMessage) {
-        AsyncTaskEntity update = new AsyncTaskEntity();
-        update.setId(task.getId());
-        update.setStatus(AsyncTaskStatus.DEAD_LETTER);
-        update.setDeadLetteredAt(Instant.now());
-        update.setLastErrorCode(errorCode);
-        update.setLastErrorMessage(truncate(errorMessage, 500));
-        update.setUpdatedAt(Instant.now());
-        asyncTaskMapper.updateById(update);
+    private long backoffDelayMs(int retryCount) {
+        int exponent = Math.max(0, Math.min(retryCount - 1, 20));
+        long multiplier = 1L << exponent;
+        long candidate;
+        try {
+            candidate = Math.multiplyExact(retryBaseDelayMs, multiplier);
+        } catch (ArithmeticException ignored) {
+            candidate = retryMaxDelayMs;
+        }
+        return Math.min(candidate, retryMaxDelayMs);
     }
 
-    private void recoverZombieTasks() {
-        Instant threshold = Instant.now().minusMillis(claimTimeoutMs);
-        LambdaUpdateWrapper<AsyncTaskEntity> wrapper = new LambdaUpdateWrapper<>();
-        wrapper.eq(AsyncTaskEntity::getDeletedFlag, 0)
-                .eq(AsyncTaskEntity::getStatus, AsyncTaskStatus.RUNNING)
-                .lt(AsyncTaskEntity::getLockedAt, threshold);
-        AsyncTaskEntity update = new AsyncTaskEntity();
-        update.setStatus(AsyncTaskStatus.PENDING);
-        update.setWorkerId(null);
-        update.setLockedAt(null);
-        update.setUpdatedAt(Instant.now());
-        int recovered = asyncTaskMapper.update(update, wrapper);
-        if (recovered > 0) {
-            log.info("Recovered {} zombie async tasks", recovered);
-        }
+    private static int currentRetryCount(AsyncTaskEntity task) {
+        return task.getRetryCount() == null ? 0 : task.getRetryCount();
+    }
+
+    private static int maxRetryCount(AsyncTaskEntity task) {
+        return task.getMaxRetryCount() == null || task.getMaxRetryCount() < 1 ? 3 : task.getMaxRetryCount();
     }
 
     private static String truncate(String s, int maxLen) {
