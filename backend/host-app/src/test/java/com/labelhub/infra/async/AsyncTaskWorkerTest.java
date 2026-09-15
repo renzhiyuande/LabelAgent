@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -41,12 +42,13 @@ class AsyncTaskWorkerTest {
         worker = new AsyncTaskWorker(mapper, registry, 10, 120_000, 1_000, 60_000, 30_000);
         worker.poll();
 
-        ArgumentCaptor<AsyncTaskEntity> update = ArgumentCaptor.forClass(AsyncTaskEntity.class);
-        verify(mapper).updateById(update.capture());
-        assertThat(update.getValue().getStatus()).isEqualTo(AsyncTaskStatus.PENDING);
-        assertThat(update.getValue().getRetryCount()).isEqualTo(1);
-        assertThat(update.getValue().getNextRunAt()).isAfter(Instant.now().minusSeconds(1));
-        verify(handler, times(0)).onDeadLetter(any(), any(), any());
+        ArgumentCaptor<AsyncTaskEntity> updates = ArgumentCaptor.forClass(AsyncTaskEntity.class);
+        verify(mapper, times(2)).update(updates.capture(), any(Wrapper.class));
+        AsyncTaskEntity retry = updates.getAllValues().get(1);
+        assertThat(retry.getStatus()).isEqualTo(AsyncTaskStatus.PENDING);
+        assertThat(retry.getRetryCount()).isEqualTo(1);
+        assertThat(retry.getNextRunAt()).isAfter(Instant.now().minusSeconds(1));
+        verify(handler, never()).onDeadLetter(any(), any(), any());
     }
 
     @Test
@@ -92,6 +94,26 @@ class AsyncTaskWorkerTest {
                 persisted,
                 "CLAIM_TIMEOUT",
                 "Worker lease expired before task completion");
+    }
+
+    @Test
+    void lostLeaseShouldIgnoreLateSuccess() {
+        AsyncTaskMapper mapper = mock(AsyncTaskMapper.class);
+        AsyncTaskHandler handler = mock(AsyncTaskHandler.class);
+        when(handler.taskType()).thenReturn("AI_REVIEW");
+        AsyncTaskHandlerRegistry registry = new AsyncTaskHandlerRegistry(List.of(handler));
+        AsyncTaskEntity task = task(4L, AsyncTaskStatus.PENDING, 0, 3, null);
+
+        when(mapper.selectList(any())).thenReturn(List.of(), List.of(task));
+        // Claim succeeds, but the owner-checked SUCCESS transition sees that another worker already took the lease.
+        when(mapper.update(any(AsyncTaskEntity.class), any(Wrapper.class))).thenReturn(1, 0);
+        when(mapper.selectById(4L)).thenReturn(task);
+
+        worker = new AsyncTaskWorker(mapper, registry, 10, 120_000, 1_000, 60_000, 30_000);
+        worker.poll();
+
+        verify(handler).handle(task);
+        verify(mapper, never()).updateById(any(AsyncTaskEntity.class));
     }
 
     private static AsyncTaskHandler failingHandler(String taskType) {
