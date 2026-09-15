@@ -1,4 +1,4 @@
-"""入站 HTTP 请求链路日志。"""
+"""入站 HTTP 请求链路日志与结构化 Trace Event。"""
 from __future__ import annotations
 
 import logging
@@ -10,7 +10,9 @@ from typing import Any
 from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from app.core.logging_config import safe_json, set_trace_id, truncate_text
+from app.core.logging_config import set_trace_id, truncate_text
+from app.observability.runtime_trace import runtime_trace_recorder
+from app.schemas.trace import TraceEventStatus
 
 logger = logging.getLogger("app.http")
 
@@ -48,10 +50,12 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
             logger.debug("request body: %s", truncate_text(body_bytes.decode("utf-8", errors="replace")))
 
         response: Response | None = None
+        caught_error: BaseException | None = None
         try:
             response = await call_next(request)
             return response
-        except Exception:
+        except Exception as exc:
+            caught_error = exc
             logger.exception("← %s %s unhandled exception", request.method, request.url.path)
             raise
         finally:
@@ -63,6 +67,15 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
                 request.url.path,
                 status,
                 elapsed_ms,
+            )
+            runtime_trace_recorder.record_event(
+                component="http",
+                operation=f"{request.method} {request.url.path}",
+                status=(TraceEventStatus.ERROR if status >= 400 else TraceEventStatus.SUCCESS),
+                duration_ms=elapsed_ms,
+                attributes={"statusCode": status},
+                error=caught_error,
+                trace_id=trace_id,
             )
             if response is not None:
                 response.headers["x-trace-id"] = trace_id
